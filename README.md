@@ -18,7 +18,7 @@
 
 ## 安装 0.5.0
 
-使用 Chrome / Edge 116 或更新版本。正常使用请下载 `chatgpt-tidy-0.5.0.zip` 安装包（发布后见 Releases 发布页），解压到固定文件夹。
+使用 Chrome / Edge 116 或更新版本。正常使用请下载 [`chatgpt-tidy-0.5.0.zip`](https://github.com/AshToIll/chatgpt-tidy/releases/download/v0.5.0/chatgpt-tidy-0.5.0.zip) 安装包，解压到固定文件夹。
 
 1. Chrome 打开 `chrome://extensions`，Edge 打开 `edge://extensions`。
 2. 开启「开发者模式」，点击「加载已解压的扩展程序」，选择含 `manifest.json` 的文件夹。

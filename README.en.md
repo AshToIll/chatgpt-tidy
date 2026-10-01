@@ -18,7 +18,7 @@ This is an independent personal project, not affiliated with OpenAI. Changes to 
 
 ## Install 0.5.0
 
-Use Chrome / Edge 116 or later. Download the `chatgpt-tidy-0.5.0.zip` installation package (available under Releases once published) and extract it to a permanent folder.
+Use Chrome / Edge 116 or later. Download the [`chatgpt-tidy-0.5.0.zip`](https://github.com/AshToIll/chatgpt-tidy/releases/download/v0.5.0/chatgpt-tidy-0.5.0.zip) installation package and extract it to a permanent folder.
 
 1. Open `chrome://extensions` in Chrome or `edge://extensions` in Edge.
 2. Enable **Developer mode**, click **Load unpacked**, and select the folder containing `manifest.json`.

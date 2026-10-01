@@ -18,7 +18,7 @@ OpenAI とは関係のない個人プロジェクトです。ChatGPT のペー�
 
 ## インストール 0.5.0
 
-Chrome / Edge 116 以降を使用してください。通常はインストール用の `chatgpt-tidy-0.5.0.zip` をダウンロードし（公開後は Releases ページに掲載）、そのまま使い続けるフォルダーに展開してください。
+Chrome / Edge 116 以降を使用してください。通常はインストール用の [`chatgpt-tidy-0.5.0.zip`](https://github.com/AshToIll/chatgpt-tidy/releases/download/v0.5.0/chatgpt-tidy-0.5.0.zip) をダウンロードし、そのまま使い続けるフォルダーに展開してください。
 
 1. Chrome では `chrome://extensions`、Edge では `edge://extensions` を開きます。
 2. 「デベロッパー モード」を有効にし、展開済みの拡張機能を読み込むボタンから、`manifest.json` のあるフォルダーを選びます。
