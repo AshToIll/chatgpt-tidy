@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "version": "0.5.0",
-  "buildFingerprint": "5fec0088ce48e0b4df5edd60",
+  "version": "0.5.1",
+  "buildFingerprint": "005a4d096ca13507354a6c78",
   "limitations": [
     "静态文字引用不是唯一触发条件；条件以列出的函数和分支为准。",
     "无静态引用不等于未使用；动态计算键另列，不自动删除任何文案。",
@@ -4829,7 +4829,7 @@
         },
         {
           "source": "src/app/page/request-router.js",
-          "line": 13,
+          "line": 32,
           "kind": "literal-reference",
           "excerpt": "|| identity.phase !== \"ready\" || identity.accountKey !== expected.accountKey || identity.epoch !== expected.epoch) {"
         },

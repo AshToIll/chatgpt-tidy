@@ -21,8 +21,8 @@
     batchExecutions.clear();
   });
 
-  function fault(code, message, httpStatus = null) {
-    return Object.assign(new Error(message), { tidyCode: code, httpStatus });
+  function fault(code, message, httpStatus = null, stage = null) {
+    return Object.assign(new Error(message), { tidyCode: code, httpStatus, stage });
   }
 
   function workspace() {
@@ -268,6 +268,16 @@
     return Number.isFinite(date.getTime()) ? date.toISOString() : null;
   }
 
+  function ownerMatchesIdentity(ownerId, identity) {
+    if (ownerId === identity.accountKey) return true;
+    // 工作区中的本人 owner 可以是“用户 ID__工作区 UUID”，不等于换了一个用户。
+    // 必须核对完整的两段身份；不能去掉后缀或按前缀放行另一个工作区的 owner。
+    const workspaceKey = identity.workspaceKey;
+    return workspaceKey !== "personal"
+      && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(workspaceKey)
+      && ownerId === identity.accountKey + "__" + workspaceKey;
+  }
+
   async function readMetadata(context, auth, deadline) {
     const { conversationId, projectId } = context;
     assertContext(context, auth.identity.workspaceKey);
@@ -282,23 +292,43 @@
     assertContext(context, auth.identity.workspaceKey);
     if (!response.ok) {
       throw fault(response.status === 429 ? "TITLE_RATE_LIMITED" : response.status === 401 ? "TITLE_AUTH_REQUIRED" : "TITLE_UNAVAILABLE",
-        "The current title could not be read.", response.status);
+        "The current title could not be read.", response.status, "main-world.title.metadata.http");
     }
     const body = response.body;
-    if (body?.conversation_id !== conversationId || typeof body.title !== "string") {
-      throw fault("TITLE_UNAVAILABLE", "The title response did not match this conversation.");
+    if (body?.conversation_id !== conversationId) {
+      throw fault("TITLE_UNAVAILABLE", "The title response did not match this conversation.",
+        response.status, "main-world.title.metadata.conversation-id");
+    }
+    if (typeof body.title !== "string") {
+      throw fault("TITLE_UNAVAILABLE", "The title response did not contain a valid title.",
+        response.status, "main-world.title.metadata.title-shape");
     }
     const nativeProjectId = body.gizmo_type === "snorlax" && isProjectId(body.gizmo_id) ? body.gizmo_id : null;
     if (nativeProjectId !== projectId || (body.gizmo_type === "snorlax" && !nativeProjectId)) {
       // A stale directory target is not an owner-tab/account change. The
       // batch may reject this one item and keep preparing unrelated titles;
       // it must never borrow the newly observed project and silently write.
-      throw fault("TITLE_TARGET_CHANGED", "The conversation's project changed.");
+      throw fault("TITLE_TARGET_CHANGED", "The conversation's project changed.",
+        response.status, "main-world.title.metadata.project-match");
     }
-    if (body.is_read_only === true || body.is_temporary_chat === true
-      || (body.owner != null && (typeof body.owner.user_id !== "string"
-        || body.owner.user_id !== auth.identity.accountKey))) {
-      throw fault("TITLE_UNAVAILABLE", "This conversation is not an editable owned conversation.");
+    // Fixed diagnostic stages describe the rejected boundary, never the private title/owner values.
+    if (body.is_read_only === true) {
+      throw fault("TITLE_UNAVAILABLE", "This conversation is read-only.",
+        response.status, "main-world.title.metadata.read-only");
+    }
+    if (body.is_temporary_chat === true) {
+      throw fault("TITLE_UNAVAILABLE", "Temporary conversations cannot be organized.",
+        response.status, "main-world.title.metadata.temporary");
+    }
+    if (body.owner != null) {
+      if (typeof body.owner.user_id !== "string" || !body.owner.user_id) {
+        throw fault("TITLE_UNAVAILABLE", "The conversation owner is unavailable.",
+          response.status, "main-world.title.metadata.owner-shape");
+      }
+      if (!ownerMatchesIdentity(body.owner.user_id, auth.identity)) {
+        throw fault("TITLE_UNAVAILABLE", "This conversation is not owned by the current identity.",
+          response.status, "main-world.title.metadata.owner-match");
+      }
     }
     return {
       conversationId, title: body.title,

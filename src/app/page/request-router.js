@@ -2,6 +2,25 @@
 (function initTidyPageRequestRouter(global) {
   "use strict";
   if (global.TidyPageRequestRouter) return;
+  // 标题失败只透传固定检查点和 HTTP 状态；绝不把服务器文本、账号或正文带出网页。
+  // stage 字面量同时供诊断构建索引采集，白名单只在此处维护。
+  const TITLE_FAILURE_STAGES = new Set([
+    { stage: "main-world.title.metadata.http" },
+    { stage: "main-world.title.metadata.conversation-id" },
+    { stage: "main-world.title.metadata.title-shape" },
+    { stage: "main-world.title.metadata.project-match" },
+    { stage: "main-world.title.metadata.read-only" },
+    { stage: "main-world.title.metadata.temporary" },
+    { stage: "main-world.title.metadata.owner-shape" },
+    { stage: "main-world.title.metadata.owner-match" },
+  ].map(({ stage }) => stage));
+  function titleFailureDetails(error) {
+    const status = error?.httpStatus;
+    return {
+      status: Number.isInteger(status) && status >= 100 && status <= 599 ? status : null,
+      stage: TITLE_FAILURE_STAGES.has(error?.stage) ? error.stage : null,
+    };
+  }
   function create({ readSnapshot: buildSnapshot, publishSnapshot, postEnvelope, navigation,
     routeStillOwnsConversation, searchAdapter, dateIndexAdapter, exportAdapter, titleAdapter, titleProjection: titleSync }) {
     const protocol = global.TidyProtocol;
@@ -129,9 +148,9 @@
               postEnvelope(protocol.response(envelope, result));
             })
             .catch((error) => postEnvelope(protocol.failure(
-              envelope, error.tidyCode || protocol.ErrorCode.TITLE_UNAVAILABLE,
+              envelope, error?.tidyCode || protocol.ErrorCode.TITLE_UNAVAILABLE,
               "The title operation could not be completed.",
-              { httpStatus: error.httpStatus || null },
+              titleFailureDetails(error),
             )));
         } else if (envelope.type === protocol.Type.EXPORT_CURRENT_CONVERSATION) {
           exportAdapter.readCurrentConversation(envelope.payload, {

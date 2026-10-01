@@ -149,7 +149,7 @@ test("canonical architecture/storage facts match the production boundaries", asy
 test("release version and documented development requirements match the project", () => {
   const metadata = JSON.parse(read("package.json"));
   const manifest = JSON.parse(read("src/manifest.json"));
-  assert.equal(metadata.version, "0.5.0");
+  assert.equal(metadata.version, "0.5.1");
   assert.equal(manifest.version, metadata.version);
   assert.equal(metadata.engines.node, ">=24");
   for (const file of READMES) {

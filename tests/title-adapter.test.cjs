@@ -616,6 +616,152 @@ const projectNative = { gizmo_id: projectId, gizmo_type: "snorlax", owner: { use
 const ownerContext = { conversationId: "owner-conversation", pathname: "/c/owner-conversation", projectId: null };
 const ownerUrl = `https://chatgpt.com${ownerContext.pathname}`;
 
+// Synthetic workspace IDs model the native scoped owner without retaining any live account data.
+const workspaceOwnerKey = "11111111-2222-4333-8444-555555555555";
+const otherWorkspaceOwnerKey = "aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee";
+const workspaceTitleIdentity = { accountKey: identity.accountKey, workspaceKey: workspaceOwnerKey };
+const scopedOwnerId = identity.accountKey + "__" + workspaceOwnerKey;
+function workspaceProjectHarness(options = {}) {
+  return harness({ ...options,
+    cookie: options.cookie ?? "_account=" + workspaceOwnerKey,
+    url: options.url ?? "https://chatgpt.com" + projectPath,
+    native: { ...projectNative, owner: { user_id: scopedOwnerId }, ...options.native },
+  });
+}
+
+test("workspace-scoped project owners retain the exact title identity and minimal preview projection", async () => {
+  const h = workspaceProjectHarness();
+  const result = await h.adapter.readCurrent({ conversationId: id });
+  assert.deepEqual(plain(result.identity), workspaceTitleIdentity);
+  assert.equal(result.current.title, "Original");
+  assert.equal(result.catalogAccountKey, "not-workspace", "the directory account remains a separate projection");
+  assert.equal(h.calls[1].init.headers["ChatGPT-Account-ID"], workspaceOwnerKey);
+  assert.equal(h.calls[1].init.headers["chatgpt-project-id"], projectId);
+  assert.equal(h.calls.length, 3, "auth, metadata and final auth; no extra ownership lookup");
+  assert.equal(writes(h.calls).length, 0);
+  assert.doesNotMatch(JSON.stringify(result), /user_id|__|gizmo|fixture-secret|Private body/);
+});
+
+test("exact bare project owners remain valid in personal and explicit workspaces", async () => {
+  for (const cookie of ["", "_account=" + workspaceOwnerKey]) {
+    const h = workspaceProjectHarness({ cookie, native: projectNative });
+    assert.equal((await h.adapter.readCurrent({ conversationId: id })).current.title, "Original");
+  }
+});
+
+test("workspace-scoped owners allow one confirmed rename and the same batch metadata preflight", async () => {
+  for (const batch of [false, true]) {
+    const h = workspaceProjectHarness();
+    const batchScopeId = "scoped-owner-batch";
+    if (batch) await h.adapter.beginBatchExecution({ conversationId: id, batchScopeId,
+      identity: workspaceTitleIdentity, expectedCatalogAccountKey: "not-workspace" });
+    h.calls.length = 0;
+    const result = await h.adapter.writeCurrent(input({ identity: workspaceTitleIdentity,
+      ...(batch ? { batchScopeId } : {}) }));
+    assert.equal(result.status, batch ? "accepted" : "verified");
+    assert.equal(writes(h.calls).length, 1);
+    assert.equal(writes(h.calls)[0].init.headers["ChatGPT-Account-ID"], workspaceOwnerKey);
+    assert.equal(writes(h.calls)[0].init.headers["chatgpt-project-id"], undefined);
+    const metadata = h.calls.filter(({ url }) => url.startsWith("/backend-api/conversations/"));
+    assert.equal(metadata.length, batch ? 1 : 2);
+    assert.ok(metadata.every(({ init }) => init.headers["chatgpt-project-id"] === projectId));
+    assert.doesNotMatch(JSON.stringify(result), /user_id|__|fixture-secret|Private body/);
+  }
+});
+
+test("scoped owner validation compares the full exact user and canonical workspace pair", async () => {
+  const cases = [
+    ["foreign user", workspaceOwnerKey, { user_id: "another-user__" + workspaceOwnerKey }],
+    ["foreign workspace", workspaceOwnerKey, { user_id: identity.accountKey + "__" + otherWorkspaceOwnerKey }],
+    ["user prefix", workspaceOwnerKey, { user_id: identity.accountKey + "0__" + workspaceOwnerKey }],
+    ["appended suffix", workspaceOwnerKey, { user_id: scopedOwnerId + "-extra" }],
+    ["case change", workspaceOwnerKey, { user_id: "USER-1__" + workspaceOwnerKey }],
+    ["workspace case change", otherWorkspaceOwnerKey, { user_id: identity.accountKey + "__" + otherWorkspaceOwnerKey.toUpperCase() }],
+    ["personal", "personal", { user_id: identity.accountKey + "__personal" }],
+    ["personal with scoped owner", "personal", { user_id: scopedOwnerId }],
+    ["non-UUID workspace", "workspace-one", { user_id: identity.accountKey + "__workspace-one" }],
+    ["compact UUID", workspaceOwnerKey.replaceAll("-", ""), { user_id: identity.accountKey + "__" + workspaceOwnerKey.replaceAll("-", "") }],
+    ["workspace whitespace", " " + workspaceOwnerKey, { user_id: identity.accountKey + "__ " + workspaceOwnerKey }],
+  ];
+  for (const [label, workspaceKey, owner] of cases) {
+    const h = workspaceProjectHarness({ cookie: workspaceKey === "personal" ? "" : "_account=" + encodeURIComponent(workspaceKey), native: { owner } });
+    await assert.rejects(h.adapter.readCurrent({ conversationId: id }), {
+      tidyCode: "TITLE_UNAVAILABLE", httpStatus: 200, stage: "main-world.title.metadata.owner-match",
+    }, label);
+    assert.equal((await h.adapter.writeCurrent(input({ identity: { ...identity, workspaceKey } }))).status, "failed", label);
+    assert.equal(writes(h.calls).length, 0, label);
+  }
+});
+
+test("metadata rejection stages distinguish safe response checks without copying response values", async () => {
+  const cases = [
+    [{ conversation_id: "another-conversation" }, "conversation-id", "TITLE_UNAVAILABLE"],
+    [{ title: null }, "title-shape", "TITLE_UNAVAILABLE"],
+    [{ title: 12 }, "title-shape", "TITLE_UNAVAILABLE"],
+    [{ gizmo_id: "g-p-other-project" }, "project-match", "TITLE_TARGET_CHANGED"],
+    [{ is_read_only: true }, "read-only", "TITLE_UNAVAILABLE"],
+    [{ is_temporary_chat: true }, "temporary", "TITLE_UNAVAILABLE"],
+    [{ owner: {} }, "owner-shape", "TITLE_UNAVAILABLE"],
+    [{ owner: { user_id: 17 } }, "owner-shape", "TITLE_UNAVAILABLE"],
+    [{ owner: { user_id: "" } }, "owner-shape", "TITLE_UNAVAILABLE"],
+    [{ owner: { user_id: "foreign-owner" } }, "owner-match", "TITLE_UNAVAILABLE"],
+  ];
+  for (const [native, suffix, tidyCode] of cases) {
+    const h = workspaceProjectHarness({ native });
+    await assert.rejects(h.adapter.readCurrent({ conversationId: id }), error => {
+      assert.equal(error.tidyCode, tidyCode);
+      assert.equal(error.httpStatus, 200);
+      assert.equal(error.stage, "main-world.title.metadata." + suffix);
+      assert.doesNotMatch(JSON.stringify(error), /another-conversation|g-p-other-project|foreign-owner|fixture-secret|Private body/);
+      return true;
+    });
+    assert.equal((await h.adapter.writeCurrent(input({ identity: workspaceTitleIdentity }))).status, "failed");
+    assert.equal(writes(h.calls).length, 0);
+  }
+});
+
+test("metadata HTTP failures retain the fixed request stage and actual status", async () => {
+  for (const status of [401, 403, 404, 429, 500, 503]) {
+    const h = workspaceProjectHarness({ read: async () => ok({}, status) });
+    await assert.rejects(h.adapter.readCurrent({ conversationId: id }), {
+      tidyCode: status === 401 ? "TITLE_AUTH_REQUIRED" : status === 429 ? "TITLE_RATE_LIMITED" : "TITLE_UNAVAILABLE",
+      httpStatus: status, stage: "main-world.title.metadata.http",
+    });
+    assert.equal(writes(h.calls).length, 0);
+  }
+});
+
+test("scoped owner acceptance does not absorb workspace or signed-in user changes", async () => {
+  for (const phase of ["metadata-workspace", "final-workspace", "final-user"]) {
+    const h = workspaceProjectHarness({
+      read: async ({ native, context }) => {
+        if (phase === "metadata-workspace") context.document.cookie = "_account=" + otherWorkspaceOwnerKey;
+        return ok(native);
+      },
+      session: async ({ context, sessionCalls }) => {
+        if (phase === "final-workspace" && sessionCalls === 2) context.document.cookie = "_account=" + otherWorkspaceOwnerKey;
+        return ok({ accessToken: "fixture-secret", activeAccountId: "not-workspace",
+          user: { id: phase === "final-user" && sessionCalls === 2 ? "another-user" : identity.accountKey } });
+      },
+    });
+    await assert.rejects(h.adapter.readCurrent({ conversationId: id }), { tidyCode: "TITLE_ACCOUNT_CHANGED" });
+    assert.equal(writes(h.calls).length, 0);
+  }
+});
+
+test("foreign scoped owner seen after a rename remains uncertain and never replays the POST", async () => {
+  const h = workspaceProjectHarness({ post: async ({ native, init }) => {
+    native.title = JSON.parse(init.body).title;
+    native.owner = { user_id: identity.accountKey + "__" + otherWorkspaceOwnerKey };
+    return ok({});
+  } });
+  const result = await h.adapter.writeCurrent(input({ identity: workspaceTitleIdentity }));
+  assert.equal(result.status, "uncertain");
+  assert.equal(result.messageCode, "readback_unavailable");
+  assert.equal(result.current, null);
+  assert.equal(writes(h.calls).length, 1);
+});
+
 test("current project reads use native metadata header and retain the minimal metadata projection", async () => {
   const h = harness({ url: `https://chatgpt.com${projectPath}`, native: projectNative });
   const result = await h.adapter.readCurrent({ conversationId: id });

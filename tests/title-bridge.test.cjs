@@ -34,7 +34,7 @@ function load(options = {}) {
   // the date model's actual parsing / constructor behavior.
   class WorkerDate extends Date { static now() { return options.now ?? Date.now(); } }
   const base = { console, URL, URLSearchParams, Intl, Date: WorkerDate, Math,
-    crypto: { randomUUID: () => `fixture-${++counter}` } };
+    crypto: { randomUUID: () => `00000000-0000-4000-8000-${String(++counter).padStart(12, "0")}` } };
   const snapshot = snapshotHarness({
     url: options.url || "https://chatgpt.com/c/current",
     sidebar: [{ href: "/c/current", title: current.title, record: {
@@ -223,6 +223,7 @@ function load(options = {}) {
     titleAdapter: {
       readCurrent: async (payload) => {
         calls.push({ stage: "adapter-read", payload: plain(payload) });
+        if (options.readError) throw options.readError;
         if (options.failRead) throw Object.assign(new Error("redacted"), { tidyCode: "TITLE_AUTH_REQUIRED", httpStatus: 401 });
         if (payload.identityOnly === true) {
           identityCalls++;
@@ -986,8 +987,84 @@ test("title bridge rejects response type drift and preserves sanitized auth code
   assert.equal((await h.request("TITLE_STATUS")).error.code, "TITLE_UNAVAILABLE");
   const unauthorized = await load({ failRead: true }).request("TITLE_STATUS");
   assert.equal(unauthorized.error.code, "TITLE_AUTH_REQUIRED");
-  assert.equal(unauthorized.error.details.httpStatus, 401);
+  assert.equal(unauthorized.error.details.status, 401);
+  assert.equal(Object.hasOwn(unauthorized.error.details, "httpStatus"), false);
   assert.doesNotMatch(JSON.stringify(unauthorized), /redacted/);
+});
+
+// Use the real diagnostics observer, transport, admission and session store;
+// only Chrome messaging/storage are isolated. No generated file is written by this test.
+let diagnosticBuild;
+async function exportTitleFailure(response) {
+  diagnosticBuild ||= require("../tools/build-message-index.cjs").buildOutputs().get("src/messages/build-info.js");
+  const context = vm.createContext({ URL, TextEncoder, Uint8Array, crypto: require("node:crypto").webcrypto });
+  const modules = createWorkerModuleLoader(context, {
+    read: file => file === "src/messages/build-info.js" ? diagnosticBuild : source(file),
+  });
+  const { createDiagnosticsService } = modules.load("src/platform/diagnostics/worker-service.js");
+  modules.load("src/platform/diagnostics/client.js");
+  let saved;
+  const runtime = { id: "tidy-test", getURL: file => "chrome-extension://tidy-test/" + file };
+  const service = createDiagnosticsService({ chrome: { runtime, storage: { session: {
+    get: async key => ({ [key]: saved }),
+    set: async value => { saved = plain(value["tidy.diagnostics.session.v1"]); },
+  } } } });
+  const client = context.TidyDiagnosticsTransport.createClient({ runtime: {
+    sendMessage: message => service.handle(message, { id: runtime.id, ...panelSender }),
+  } });
+  client.attach();
+  const cause = context.ChatGPTTidyDiagnostics.cause({ ...response.error, requestId: response.requestId });
+  context.ChatGPTTidyDiagnostics.notice({ event: "show", surface: "titles.current.notice",
+    source: "src/features/titles/ui/title-view.js", messageKey: "titlesReadFailed", ...cause });
+  await new Promise(setImmediate);
+  const result = JSON.parse((await client.exportText()).text);
+  client.dispose();
+  return result;
+}
+
+test("title read failures preserve canonical HTTP status and only fixed stages through copied diagnostics", async () => {
+  const stages = ["http", "conversation-id", "title-shape", "project-match", "read-only", "temporary", "owner-shape", "owner-match"];
+  for (const suffix of stages) {
+    const stage = "main-world.title.metadata." + suffix;
+    const status = suffix === "http" ? 403 : 200;
+    const readError = Object.assign(new Error("PRIVATE_SERVER_TEXT"), {
+      tidyCode: suffix === "project-match" ? "TITLE_TARGET_CHANGED" : "TITLE_UNAVAILABLE", httpStatus: status, stage,
+      details: { authorization: "Bearer PRIVATE_TOKEN", title: "PRIVATE_TITLE", accountKey: "PRIVATE_ACCOUNT" },
+      body: { owner: { user_id: "PRIVATE_OWNER" }, conversation_id: "PRIVATE_CONVERSATION" },
+    });
+    const response = await load({ readError }).request("TITLE_PREVIEW");
+    assert.equal(response.ok, false);
+    assert.deepEqual(plain(response.error.details), { status, stage });
+    assert.doesNotMatch(JSON.stringify(response), /PRIVATE|Bearer/);
+    const report = await exportTitleFailure(response);
+    assert.equal(report.events.length, 1);
+    const event = report.events[0];
+    assert.equal(event.reasonCode, readError.tidyCode);
+    assert.equal(event.requestId, response.requestId);
+    assert.equal(event.status, status);
+    assert.equal(event.stage, stage);
+    assert.doesNotMatch(JSON.stringify(report), /PRIVATE|Bearer|httpStatus/);
+  }
+});
+
+test("title error projection rejects unknown stages and non-HTTP status values without coercion or aliases", async () => {
+  for (const httpStatus of [undefined, null, 0, 99, 600, "403", 403.5, NaN, Infinity, {}, []]) {
+    const readError = Object.assign(new Error("PRIVATE_SERVER_TEXT"), {
+      tidyCode: "TITLE_UNAVAILABLE", httpStatus, stage: "https://PRIVATE_SERVER/PRIVATE_ID",
+      // These fields must not become a fallback compatibility channel.
+      status: 403, details: { httpStatus: 403, status: 403, stage: "main-world.title.metadata.http" },
+    });
+    const response = await load({ readError }).request("TITLE_PREVIEW");
+    assert.deepEqual(plain(response.error.details), { status: null, stage: null });
+    assert.doesNotMatch(JSON.stringify(response), /PRIVATE|httpStatus/);
+  }
+  for (const httpStatus of [100, 200, 401, 403, 429, 599]) {
+    const response = await load({ readError: Object.assign(new Error("PRIVATE_SERVER_TEXT"), {
+      tidyCode: "TITLE_UNAVAILABLE", httpStatus, stage: "main-world.search-adapter",
+    }) }).request("TITLE_PREVIEW");
+    assert.deepEqual(plain(response.error.details), { status: httpStatus, stage: null },
+      "another feature's registered stage is still not a title stage");
+  }
 });
 
 test("a changed global timezone rejects the frozen date plan before adapter dispatch", async () => {

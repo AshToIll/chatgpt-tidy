@@ -2,7 +2,7 @@
 
 ## 当前范围
 
-ChatGPT Tidy 是面向 `chatgpt.com` 的 Chromium Manifest V3 扩展，使用原生 JavaScript、HTML、CSS，没有自建业务服务器。产品版本为 **0.5.0**；当前候选尚不等于已发布。
+ChatGPT Tidy 是面向 `chatgpt.com` 的 Chromium Manifest V3 扩展，使用原生 JavaScript、HTML、CSS，没有自建业务服务器。产品版本为 **0.5.1**；本地构建与正式发布分别验收。
 
 本轮在第一阶段目录归位基础上拆分运行时职责，并修复有回归证据的提示/导航缺陷。不是功能重写，也不承诺消灭未知问题。来源、方案与实际验收分别见 [BASELINE_VALIDATION](BASELINE_VALIDATION.md)、[REFACTOR_PLAN](REFACTOR_PLAN.md)、[VALIDATION](VALIDATION.md)。
 

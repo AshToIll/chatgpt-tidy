@@ -7,7 +7,7 @@ const read = name => fs.readFileSync(path.join(root, name), 'utf8');
 
 test('public name and current release agree across the package and extension', () => {
   const manifest = JSON.parse(read('src/manifest.json'));
-  assert.equal(manifest.version, '0.5.0');
+  assert.equal(manifest.version, '0.5.1');
   assert.equal(JSON.parse(read('package.json')).version, manifest.version);
   for (const locale of ['en', 'ja', 'zh_CN', 'zh_TW']) {
     const messages = JSON.parse(read(`src/_locales/${locale}/messages.json`));
