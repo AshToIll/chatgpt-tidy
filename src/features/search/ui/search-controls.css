@@ -1,0 +1,69 @@
+/* architecture-boundary: 搜索栏目：整体布局、模式切换、日期条件、日历与查询状态占位。 */
+/* 搜索页固定筛选与状态区域，将剩余空间留给结果列表。 */
+.time-panel__body[data-active-route="search"] { overflow-y: hidden; }
+#search-view { height: 100%; min-height: 0; overflow: hidden; }
+.search-panel { position: relative; height: 100%; min-height: 0; display: flex; flex-direction: column; gap: 8px; padding-bottom: 6px; overflow: visible; }
+/* One title and three snippet lines define a stable keyword row. Adjust this
+   height to tune density; automatic pagination reads the same value. */
+.search-panel--keyword { --keyword-result-height: 92px; }
+.global-search-input:focus-within, .search-date-field button:focus-visible, .search-result:focus-visible { outline: 2px solid var(--accent-ring); outline-offset: 2px; }
+.search-control-section { min-width: 0; flex: 0 0 auto; display: grid; gap: 6px; padding-bottom: 1px; }
+.search-mode-tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-bottom: 1px solid var(--border); }
+.search-mode-tabs button { min-width: 0; min-height: 32px; padding: 5px 8px; border: 0; border-bottom: 2px solid transparent; background: transparent; color: var(--text-secondary); font: inherit; font-size: 12px; cursor: pointer; }
+.search-mode-tabs button[aria-selected="true"] { border-bottom-color: var(--accent); color: var(--text-primary); font-weight: 600; }
+.search-date-control-group { display: grid; gap: 5px; }
+.search-control-caption { color: var(--text-secondary); font-size: 11px; line-height: 1.4; }
+.search-date-basis { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; }
+.search-date-basis button { min-width: 0; min-height: 30px; padding: 5px 6px; border: 1px solid var(--border); border-radius: 5px; background: var(--surface); color: var(--text-secondary); font: inherit; font-size: 12px; cursor: pointer; overflow-wrap: anywhere; }
+.search-date-basis button[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); }
+.search-mode-tabs button:focus-visible, .search-date-basis button:focus-visible { outline: 2px solid var(--accent-ring); outline-offset: -2px; }
+.global-search-input { height: 34px; box-sizing: border-box; display: grid; grid-template-columns: 28px minmax(0, 1fr); align-items: center; border: 1px solid #dedfe3; border-radius: 7px; background: #fff; color: #8e9096; }
+.global-search-input:focus-within { border-color: #c7c9f1; }
+.global-search-input__icon { width: 28px; height: 32px; display: grid; place-items: center; }
+.global-search-input__icon svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.55; }
+.global-search-input input { min-width: 0; height: 32px; padding: 0 9px 0 0; border: 0; outline: 0; background: transparent; color: #4a4c52; font-size: 12px; }
+.global-search-input input::placeholder { color: #a1a3a8; }
+.search-date-range { display: grid; grid-template-columns: minmax(0, 1fr) 15px minmax(0, 1fr); align-items: end; gap: 5px; }
+.search-date-field { min-width: 0; display: grid; gap: 5px; color: #85878d; font-size: 11px; }
+.search-date-field > button { width: 100%; min-width: 0; height: 32px; box-sizing: border-box; display: grid; grid-template-columns: minmax(0, 1fr) 16px; align-items: center; gap: 5px; padding: 0 7px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface); color: var(--text-secondary); font: inherit; font-size: 11px; text-align: left; cursor: pointer; }
+.search-date-field > button:hover { border-color: color-mix(in srgb, var(--accent) 40%, var(--border)); color: var(--accent); }
+/* Open is stronger than hover, and stays visible when focus moves into the calendar. */
+.search-date-field > button[aria-expanded="true"] { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, var(--surface)); color: var(--accent); box-shadow: 0 0 0 1px rgba(var(--accent-rgb), .15); }
+.search-date-field > button > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.search-date-field svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.45; }
+.search-date-range__divider { align-self: end; height: 32px; display: grid; place-items: center; color: #b0b2b7; font-size: 12px; }
+.search-overlay-layer { position: absolute; inset: 0; z-index: 70; overflow: hidden; pointer-events: none; }
+.search-calendar-layer { position: absolute; inset: 0; pointer-events: none; }
+.search-calendar { position: absolute; width: min(300px, calc(100% - 20px)); box-sizing: border-box; padding: 8px; border: 1px solid var(--border); border-radius: 9px; background: var(--surface); color: var(--text-secondary); box-shadow: 0 10px 26px rgba(34, 35, 40, .13); pointer-events: auto; }
+.search-calendar header { height: 28px; display: grid; grid-template-columns: 28px minmax(0, 1fr) 28px; align-items: center; }
+.search-calendar header button { width: 26px; height: 26px; display: grid; place-items: center; padding: 0; border: 0; border-radius: 5px; background: transparent; color: #777980; font-size: 18px; line-height: 1; cursor: pointer; }
+.search-calendar header button:hover:not(:disabled), .search-calendar header button:focus-visible { background: var(--accent-soft); color: var(--accent); }
+.search-calendar header button:disabled { color: #c4c5c9; cursor: default; }
+.search-calendar header .search-calendar__title { width: auto; padding: 0 8px; color: #5d5f66; font-size: 12px; font-weight: 600; }
+.search-calendar header .search-calendar__title:disabled { color: #5d5f66; }
+.search-calendar__weekdays, .search-calendar__days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); }
+.search-calendar__weekdays { margin: 5px 0 3px; color: #a0a2a7; font-size: 10px; text-align: center; }
+.search-calendar__weekdays span { height: 18px; line-height: 18px; }
+.search-calendar__days { row-gap: 2px; }
+.search-calendar__days button { position: relative; height: 27px; padding: 0; border: 0; border-radius: 0; background: transparent; color: var(--text-secondary); font-size: 11px; cursor: pointer; }
+.search-calendar__days button:hover:not(:disabled), .search-calendar__days button:focus-visible { z-index: 2; border-radius: 5px; background: var(--accent-soft); color: var(--accent); outline: 1px solid var(--accent-ring); }
+.search-calendar__days button.is-in-range { background: rgba(var(--accent-rgb), .08); color: var(--accent); }
+/* Keep the range band continuous across months. Only adjacent-month text fades;
+   endpoints and the edited date below remain emphasized in either theme. */
+.search-calendar__days button.is-outside { color: color-mix(in srgb, var(--text-secondary) 58%, var(--surface)); }
+.search-calendar__days button.is-range-edge { border-radius: 5px; background: rgba(var(--accent-rgb), .15); color: var(--accent); font-weight: 600; }
+.search-calendar__days button.is-selected,
+.search-calendar__days button.is-selected:hover,
+.search-calendar__days button.is-selected:focus-visible { z-index: 1; border-radius: 5px; background: var(--accent); color: var(--accent-foreground); font-weight: 600; }
+.search-calendar__days button.is-today:not(.is-selected)::after { position: absolute; left: 50%; bottom: 3px; width: 3px; height: 3px; border-radius: 50%; background: currentColor; content: ''; transform: translateX(-50%); }
+.search-calendar__days button:disabled { color: color-mix(in srgb, var(--text-secondary) 35%, var(--surface)); background: transparent; cursor: default; }
+.search-calendar__choices { min-height: 150px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-content: center; gap: 5px; padding: 7px 2px 3px; }
+.search-calendar__choices button { height: 31px; padding: 0; border: 0; border-radius: 6px; background: transparent; color: var(--text-secondary); font-size: 11px; cursor: pointer; }
+.search-calendar__choices button:hover:not(:disabled), .search-calendar__choices button:focus-visible { background: var(--accent-soft); color: var(--accent); outline: 1px solid var(--accent-ring); }
+.search-calendar__choices button.is-selected { background: rgba(var(--accent-rgb), .13); color: var(--accent); font-weight: 600; }
+.search-calendar__choices button:disabled { color: color-mix(in srgb, var(--text-secondary) 35%, var(--surface)); cursor: default; }
+.search-calendar footer { display: flex; align-items: center; justify-content: space-between; margin-top: 6px; padding-top: 6px; border-top: 1px solid #f0f0f1; }
+.search-calendar footer button { height: 25px; padding: 0 7px; border: 0; border-radius: 5px; background: transparent; color: #85878d; font-size: 11px; cursor: pointer; }
+.search-calendar footer button:hover, .search-calendar footer button:focus-visible { background: var(--accent-soft); color: var(--accent); outline: none; }
+/* Fixed in both modes, including idle/complete: progress never takes title space. */
+.search-status { position: relative; min-width: 0; height: 24px; flex: 0 0 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); font-size: 12px; line-height: 16px; text-align: center; white-space: nowrap; }

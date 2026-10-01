@@ -1,0 +1,17 @@
+Official package metadata excerpt; NOT a recovered complete author-issued license/copyright notice.
+The package has no top-level license file. Common LICENSE paths at its gitHead also return 404.
+Node-derived source copyright/permission comments are retained separately in fontkit-node-NOTICES.txt.
+
+{
+  "name": "rollup-plugin-node-builtins",
+  "version": "2.1.2",
+  "license": "ISC",
+  "author": "",
+  "repository": {
+    "url": "git+ssh://git@github.com/calvinmetcalf/rollup-plugin-node-builtins.git",
+    "type": "git"
+  },
+  "gitHead": "385b27079d74dff17eaaff87215078b407f44946"
+}
+
+Source: https://registry.npmjs.org/rollup-plugin-node-builtins/2.1.2

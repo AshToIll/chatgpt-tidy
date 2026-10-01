@@ -1,0 +1,611 @@
+{
+  "description": "公共文案：跨栏目共享概念、通用按钮、连接状态。业务触发规则不在文案文件中。",
+  "messages": {
+    "reconnect": {
+      "zh-CN": "重新连接",
+      "zh-TW": "重新連線",
+      "en": "Reconnect",
+      "ja": "再接続"
+    },
+    "checkResult": {
+      "zh-CN": "检查结果",
+      "zh-TW": "檢查結果",
+      "en": "Check result",
+      "ja": "結果を確認"
+    },
+    "libraryChangeUnknown": {
+      "zh-CN": "修改待确认，请核对",
+      "zh-TW": "修改待確認，請核對",
+      "en": "Change unconfirmed. Check the list.",
+      "ja": "変更結果を確認してください"
+    },
+    "libraryVerifyingAccount": {
+      "zh-CN": "正在连接 ChatGPT…",
+      "zh-TW": "正在連線 ChatGPT…",
+      "en": "Connecting to ChatGPT…",
+      "ja": "ChatGPT に接続中…"
+    },
+    "appName": {
+      "zh-CN": "ChatGPT Tidy",
+      "zh-TW": "ChatGPT Tidy",
+      "en": "ChatGPT Tidy",
+      "ja": "ChatGPT Tidy"
+    },
+    "close": {
+      "zh-CN": "关闭面板",
+      "zh-TW": "關閉面板",
+      "en": "Close panel",
+      "ja": "パネルを閉じる"
+    },
+    "waiting": {
+      "zh-CN": "正在读取当前会话…",
+      "zh-TW": "正在讀取目前對話…",
+      "en": "Reading the current conversation…",
+      "ja": "現在の会話を読み込んでいます…"
+    },
+    "unsupported": {
+      "zh-CN": "请先打开 ChatGPT 标签页",
+      "zh-TW": "請先開啟 ChatGPT 分頁",
+      "en": "Open a ChatGPT tab first",
+      "ja": "ChatGPT のタブを開いてください"
+    },
+    "unavailable": {
+      "zh-CN": "会话未读到，请重试",
+      "zh-TW": "會話未讀到，請重試",
+      "en": "Conversation not loaded. Retry.",
+      "ja": "会話を読み込み直してください"
+    },
+    "refreshChatgptPage": {
+      "zh-CN": "连接中断，请刷新网页",
+      "zh-TW": "連線中斷，請重新整理網頁",
+      "en": "Connection lost. Reload ChatGPT.",
+      "ja": "ChatGPTのページを再読み込みしてください"
+    },
+    "reopenTidyPanel": {
+      "zh-CN": "连接中断，请重开侧栏",
+      "zh-TW": "連線中斷，請重開側欄",
+      "en": "Connection lost. Reopen ChatGPT Tidy.",
+      "ja": "ChatGPT Tidyを開き直してください"
+    },
+    "retry": {
+      "zh-CN": "重新读取",
+      "zh-TW": "重新讀取",
+      "en": "Read again",
+      "ja": "再読み込み"
+    },
+    "title": {
+      "zh-CN": "当前会话",
+      "zh-TW": "目前對話",
+      "en": "Current conversation",
+      "ja": "現在の会話"
+    },
+    "created": {
+      "zh-CN": "创建",
+      "zh-TW": "建立",
+      "en": "Created",
+      "ja": "作成"
+    },
+    "updated": {
+      "zh-CN": "更新",
+      "zh-TW": "更新",
+      "en": "Updated",
+      "ja": "更新"
+    },
+    "range": {
+      "zh-CN": "范围",
+      "zh-TW": "範圍",
+      "en": "Range",
+      "ja": "範囲"
+    },
+    "timeRange": {
+      "zh-CN": "时间范围",
+      "zh-TW": "時間範圍",
+      "en": "Time range",
+      "ja": "時間範囲"
+    },
+    "createdTime": {
+      "zh-CN": "创建时间",
+      "zh-TW": "建立時間",
+      "en": "Created",
+      "ja": "作成日時"
+    },
+    "updatedTime": {
+      "zh-CN": "更新时间",
+      "zh-TW": "更新時間",
+      "en": "Updated",
+      "ja": "更新日時"
+    },
+    "messages": {
+      "zh-CN": "消息时间线",
+      "zh-TW": "訊息時間線",
+      "en": "Message timeline",
+      "ja": "メッセージの時系列"
+    },
+    "noTime": {
+      "zh-CN": "时间暂缺",
+      "zh-TW": "暫無時間資料",
+      "en": "Time unavailable",
+      "ja": "時刻なし"
+    },
+    "newChat": {
+      "zh-CN": "新聊天",
+      "zh-TW": "新對話",
+      "en": "New chat",
+      "ja": "新しいチャット"
+    },
+    "readingConversation": {
+      "zh-CN": "正在读取会话…",
+      "zh-TW": "正在讀取對話…",
+      "en": "Loading conversation…",
+      "ja": "会話を読み込み中…"
+    },
+    "ready": {
+      "zh-CN": "已连接",
+      "zh-TW": "已連線",
+      "en": "Connected",
+      "ja": "接続済み"
+    },
+    "stable": {
+      "zh-CN": "已稳定",
+      "zh-TW": "已穩定",
+      "en": "Stable",
+      "ja": "安定"
+    },
+    "resolving": {
+      "zh-CN": "解析中",
+      "zh-TW": "解析中",
+      "en": "Resolving",
+      "ja": "解決中"
+    },
+    "draft": {
+      "zh-CN": "草稿",
+      "zh-TW": "草稿",
+      "en": "Draft",
+      "ja": "下書き"
+    },
+    "empty": {
+      "zh-CN": "空白会话",
+      "zh-TW": "空白對話",
+      "en": "Empty chat",
+      "ja": "空のチャット"
+    },
+    "bound": {
+      "zh-CN": "已绑定",
+      "zh-TW": "已綁定",
+      "en": "Bound",
+      "ja": "関連付け済み"
+    },
+    "unbound": {
+      "zh-CN": "未绑定",
+      "zh-TW": "未綁定",
+      "en": "Unbound",
+      "ja": "未関連付け"
+    },
+    "mismatch": {
+      "zh-CN": "身份冲突",
+      "zh-TW": "身分衝突",
+      "en": "Identity mismatch",
+      "ja": "ID 不一致"
+    },
+    "preview": {
+      "zh-CN": "实时预览",
+      "zh-TW": "即時預覽",
+      "en": "Live preview",
+      "ja": "ライブプレビュー"
+    },
+    "tab": {
+      "zh-CN": "标签页",
+      "zh-TW": "分頁",
+      "en": "Tab",
+      "ja": "タブ"
+    },
+    "route": {
+      "zh-CN": "路由",
+      "zh-TW": "路由",
+      "en": "Route",
+      "ja": "ルート"
+    },
+    "identity": {
+      "zh-CN": "会话身份",
+      "zh-TW": "對話身分",
+      "en": "Conversation identity",
+      "ja": "会話 ID"
+    },
+    "project": {
+      "zh-CN": "项目",
+      "zh-TW": "專案",
+      "en": "Project",
+      "ja": "プロジェクト"
+    },
+    "source": {
+      "zh-CN": "来源",
+      "zh-TW": "來源",
+      "en": "Source",
+      "ja": "取得元"
+    },
+    "status": {
+      "zh-CN": "状态",
+      "zh-TW": "狀態",
+      "en": "Status",
+      "ja": "状態"
+    },
+    "none": {
+      "zh-CN": "无",
+      "zh-TW": "無",
+      "en": "None",
+      "ja": "なし"
+    },
+    "unknown": {
+      "zh-CN": "未知",
+      "zh-TW": "未知",
+      "en": "Unknown",
+      "ja": "不明"
+    },
+    "user": {
+      "zh-CN": "你",
+      "zh-TW": "你",
+      "en": "You",
+      "ja": "あなた"
+    },
+    "assistant": {
+      "zh-CN": "ChatGPT",
+      "zh-TW": "ChatGPT",
+      "en": "ChatGPT",
+      "ja": "ChatGPT"
+    },
+    "system": {
+      "zh-CN": "系统",
+      "zh-TW": "系統",
+      "en": "System",
+      "ja": "システム"
+    },
+    "tool": {
+      "zh-CN": "工具",
+      "zh-TW": "工具",
+      "en": "Tool",
+      "ja": "ツール"
+    },
+    "messagesCount": {
+      "zh-CN": "{count} 条消息",
+      "zh-TW": "{count} 則訊息",
+      "en": "{count} messages",
+      "ja": "{count} 件のメッセージ"
+    },
+    "groups": {
+      "zh-CN": "分组",
+      "zh-TW": "分組",
+      "en": "Groups",
+      "ja": "グループ"
+    },
+    "ungrouped": {
+      "zh-CN": "未分组",
+      "zh-TW": "未分組",
+      "en": "Ungrouped",
+      "ja": "未分類"
+    },
+    "newGroup": {
+      "zh-CN": "新建分组",
+      "zh-TW": "新增分組",
+      "en": "New group",
+      "ja": "新規グループ"
+    },
+    "newGroupDefault": {
+      "zh-CN": "新分组",
+      "zh-TW": "新分組",
+      "en": "New group",
+      "ja": "新規グループ"
+    },
+    "groupName": {
+      "zh-CN": "分组名称",
+      "zh-TW": "分組名稱",
+      "en": "Group name",
+      "ja": "グループ名"
+    },
+    "create": {
+      "zh-CN": "创建",
+      "zh-TW": "建立",
+      "en": "Create",
+      "ja": "作成"
+    },
+    "cancel": {
+      "zh-CN": "取消",
+      "zh-TW": "取消",
+      "en": "Cancel",
+      "ja": "キャンセル"
+    },
+    "rename": {
+      "zh-CN": "重命名",
+      "zh-TW": "重新命名",
+      "en": "Rename",
+      "ja": "名前を変更"
+    },
+    "changeIcon": {
+      "zh-CN": "更换图标",
+      "zh-TW": "更換圖示",
+      "en": "Change icon",
+      "ja": "アイコンを変更"
+    },
+    "doubleClickRename": {
+      "zh-CN": "双击重命名",
+      "zh-TW": "按兩下重新命名",
+      "en": "Double-click to rename",
+      "ja": "ダブルクリックで名前を変更"
+    },
+    "manageGroup": {
+      "zh-CN": "管理分组 {name}",
+      "zh-TW": "管理分組 {name}",
+      "en": "Manage group {name}",
+      "ja": "グループ {name} を管理"
+    },
+    "selectExport": {
+      "zh-CN": "选择导出",
+      "zh-TW": "選擇匯出",
+      "en": "Select to export",
+      "ja": "エクスポートを選択"
+    },
+    "deleteGroup": {
+      "zh-CN": "删除分组",
+      "zh-TW": "刪除分組",
+      "en": "Delete group",
+      "ja": "グループを削除"
+    },
+    "deleteGroupConfirm": {
+      "zh-CN": "删除“{name}”？其中的收藏会回到未分组。",
+      "zh-TW": "刪除“{name}”？其中的收藏會回到未分組。",
+      "en": "Delete “{name}”? Its favorites will move to Ungrouped.",
+      "ja": "「{name}」を削除しますか？お気に入りは未分類に移動します。"
+    },
+    "sort": {
+      "zh-CN": "排序",
+      "zh-TW": "排序",
+      "en": "Sort",
+      "ja": "並び順"
+    },
+    "savedAt": {
+      "zh-CN": "收藏时间",
+      "zh-TW": "收藏時間",
+      "en": "Date favorited",
+      "ja": "お気に入り登録日時"
+    },
+    "ascending": {
+      "zh-CN": "升序",
+      "zh-TW": "遞增",
+      "en": "Ascending",
+      "ja": "昇順"
+    },
+    "descending": {
+      "zh-CN": "降序",
+      "zh-TW": "遞減",
+      "en": "Descending",
+      "ja": "降順"
+    },
+    "itemsCount": {
+      "zh-CN": "{count} 条",
+      "zh-TW": "{count} 筆",
+      "en": "{count} items",
+      "ja": "{count} 件"
+    },
+    "pagination": {
+      "zh-CN": "分页",
+      "zh-TW": "分頁",
+      "en": "Pagination",
+      "ja": "ページ"
+    },
+    "itemsPerPage": {
+      "zh-CN": "每页数量",
+      "zh-TW": "每頁數量",
+      "en": "Items per page",
+      "ja": "1 ページの件数"
+    },
+    "previousPage": {
+      "zh-CN": "上一页",
+      "zh-TW": "上一頁",
+      "en": "Previous page",
+      "ja": "前のページ"
+    },
+    "nextPage": {
+      "zh-CN": "下一页",
+      "zh-TW": "下一頁",
+      "en": "Next page",
+      "ja": "次のページ"
+    },
+    "currentPage": {
+      "zh-CN": "当前页",
+      "zh-TW": "目前頁面",
+      "en": "Current page",
+      "ja": "現在のページ"
+    },
+    "totalPages": {
+      "zh-CN": "共 {count} 页",
+      "zh-TW": "共 {count} 頁",
+      "en": "{count} pages total",
+      "ja": "全 {count} ページ"
+    },
+    "emptyGroup": {
+      "zh-CN": "当前分组还没有收藏会话",
+      "zh-TW": "目前分組還沒有收藏對話",
+      "en": "No favorites in this group",
+      "ja": "このグループにはお気に入りがありません"
+    },
+    "note": {
+      "zh-CN": "备注",
+      "zh-TW": "備註",
+      "en": "Note",
+      "ja": "メモ"
+    },
+    "openConversation": {
+      "zh-CN": "打开会话",
+      "zh-TW": "開啟對話",
+      "en": "Open conversation",
+      "ja": "会話を開く"
+    },
+    "untitled": {
+      "zh-CN": "未命名会话",
+      "zh-TW": "未命名對話",
+      "en": "Untitled conversation",
+      "ja": "無題の会話"
+    },
+    "groupCreated": {
+      "zh-CN": "分组已创建",
+      "zh-TW": "分組已建立",
+      "en": "Group created",
+      "ja": "グループを作成しました"
+    },
+    "groupUpdated": {
+      "zh-CN": "分组已更新",
+      "zh-TW": "分組已更新",
+      "en": "Group updated",
+      "ja": "グループを更新しました"
+    },
+    "groupDeleted": {
+      "zh-CN": "分组已删除，收藏已回到未分组",
+      "zh-TW": "分組已刪除，收藏已回到未分組",
+      "en": "Group deleted; favorites moved to Ungrouped",
+      "ja": "グループを削除し、お気に入りを未分類に移動しました"
+    },
+    "contextChanged": {
+      "zh-CN": "会话已变，请重试",
+      "zh-TW": "會話已變，請重試",
+      "en": "Conversation changed. Try again.",
+      "ja": "会話が変わりました。再試行してください"
+    },
+    "actionFailed": {
+      "zh-CN": "未能完成，请重试",
+      "zh-TW": "未能完成，請重試",
+      "en": "Could not finish. Try again.",
+      "ja": "もう一度お試しください"
+    },
+    "chooseIcon": {
+      "zh-CN": "选择分组图标",
+      "zh-TW": "選擇分組圖示",
+      "en": "Choose group icon",
+      "ja": "グループアイコンを選択"
+    },
+    "folder": {
+      "zh-CN": "文件夹",
+      "zh-TW": "資料夾",
+      "en": "Folder",
+      "ja": "フォルダー"
+    },
+    "archive": {
+      "zh-CN": "归档",
+      "zh-TW": "封存",
+      "en": "Archive",
+      "ja": "アーカイブ"
+    },
+    "book": {
+      "zh-CN": "书本",
+      "zh-TW": "書本",
+      "en": "Book",
+      "ja": "本"
+    },
+    "briefcase": {
+      "zh-CN": "工作",
+      "zh-TW": "工作",
+      "en": "Work",
+      "ja": "仕事"
+    },
+    "bulb": {
+      "zh-CN": "灵感",
+      "zh-TW": "靈感",
+      "en": "Idea",
+      "ja": "アイデア"
+    },
+    "sparkle": {
+      "zh-CN": "闪光",
+      "zh-TW": "閃光",
+      "en": "Sparkle",
+      "ja": "きらめき"
+    },
+    "heart": {
+      "zh-CN": "心形",
+      "zh-TW": "心形",
+      "en": "Heart",
+      "ja": "ハート"
+    },
+    "box": {
+      "zh-CN": "收纳盒",
+      "zh-TW": "收納盒",
+      "en": "Box",
+      "ja": "ボックス"
+    },
+    "currentConversation": {
+      "zh-CN": "当前会话",
+      "zh-TW": "目前對話",
+      "en": "Current conversation",
+      "ja": "現在の会話"
+    },
+    "messageTimestamp": {
+      "zh-CN": "消息时间",
+      "zh-TW": "訊息時間",
+      "en": "Message time",
+      "ja": "メッセージ時刻"
+    },
+    "quote": {
+      "zh-CN": "摘录",
+      "zh-TW": "摘錄",
+      "en": "Quote",
+      "ja": "引用"
+    },
+    "pin": {
+      "zh-CN": "图钉",
+      "zh-TW": "圖釘",
+      "en": "Pin",
+      "ja": "ピン"
+    },
+    "highlighter": {
+      "zh-CN": "高亮",
+      "zh-TW": "醒目提示",
+      "en": "Highlight",
+      "ja": "ハイライト"
+    },
+    "flag": {
+      "zh-CN": "旗标",
+      "zh-TW": "旗標",
+      "en": "Flag",
+      "ja": "フラグ"
+    },
+    "chatBubble": {
+      "zh-CN": "对话",
+      "zh-TW": "對話",
+      "en": "Chat",
+      "ja": "会話"
+    },
+    "textMark": {
+      "zh-CN": "文字标记",
+      "zh-TW": "文字標記",
+      "en": "Text mark",
+      "ja": "テキストマーク"
+    },
+    "sortAscending": {
+      "zh-CN": "按{field}升序",
+      "zh-TW": "依{field}遞增排序",
+      "en": "{field} ascending",
+      "ja": "{field}の昇順"
+    },
+    "sortDescending": {
+      "zh-CN": "按{field}降序",
+      "zh-TW": "依{field}遞減排序",
+      "en": "{field} descending",
+      "ja": "{field}の降順"
+    },
+    "pageSessionStalled": {
+      "zh-CN": "连接暂未成功。请点击“重新连接”。",
+      "zh-TW": "連線暫未成功。請點擊「重新連線」。",
+      "en": "Could not connect to ChatGPT. Select “Reconnect” to try again.",
+      "ja": "ChatGPTに接続できませんでした。「再接続」を選択してください。"
+    },
+    "groupNameRequired": {
+      "zh-CN": "请输入分组名称",
+      "zh-TW": "請輸入分組名稱",
+      "en": "Enter a group name.",
+      "ja": "グループ名を入力してください"
+    },
+    "moveToGroup": {
+      "zh-CN": "移动到分组",
+      "zh-TW": "移動到分組",
+      "en": "Move to group",
+      "ja": "グループへ移動"
+    }
+  }
+}

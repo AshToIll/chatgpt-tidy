@@ -1,0 +1,22 @@
+/* architecture-boundary: 公共提示恢复按钮与换行：设置、搜索、标题与短提示共用；最后加载以保持既有覆盖。 */
+/* 短提示旁直接给恢复动作，长列表不把按钮挤到底部。 */
+#preferences-notice:not([hidden]),
+.search-date-error,
+.titles-catalog-notice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+#preferences-notice button,
+.titles-catalog-notice button,
+.toast button {
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: 5px;
+  padding: 3px 8px;
+  cursor: pointer;
+}
+.toast button { margin-inline-start: 10px; }

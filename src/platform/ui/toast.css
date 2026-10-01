@@ -1,0 +1,4 @@
+/* architecture-boundary: 公共短提示外观；持续时间及清除规则由提示控制器负责。 */
+.toast { position: fixed; z-index: 50; right: 60px; bottom: 14px; left: 12px; padding: 9px 11px; border: 1px solid rgba(var(--accent-rgb), .3); border-radius: 7px; background: #fff; box-shadow: 0 8px 24px rgba(0, 0, 0, .14); color: var(--text); font-size: 11px; text-align: center; }
+.toast.is-error { border-color: rgba(177, 74, 85, .4); color: var(--danger); }
+

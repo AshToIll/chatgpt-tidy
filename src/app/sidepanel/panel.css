@@ -1,0 +1,28 @@
+/* architecture-boundary: 样式装配入口：只维护加载顺序，不在此写业务样式。
+   所有区段按照原始级联顺序导入，标题和导出原有样式仍由 index.html 在本文件之后加载。
+   不要按文件夹排序这些导入；tests/architecture-styles.test.cjs 锁定选择器、声明和值完全等价。 */
+@import "../../platform/ui/sidepanel-foundation.css";
+@import "../../platform/ui/toggle-control.css";
+@import "../../platform/ui/notice-card.css";
+@import "../../features/time/ui/time.css";
+@import "../../features/settings/ui/settings.css";
+@import "../../platform/ui/dock-navigation.css";
+@import "../../platform/ui/current-context-card.css";
+@import "../../features/favorites/ui/favorites-layout.css";
+@import "../../platform/ui/library-section-headings.css";
+@import "../../features/favorites/ui/favorites.css";
+@import "../../platform/ui/result-pagination.css";
+@import "../../features/bookmarks/ui/bookmarks.css";
+@import "../../features/search/ui/search-controls.css";
+@import "../../platform/ui/loading-flower.css";
+@import "../../features/search/ui/search-results-toolbar.css";
+@import "../../platform/ui/source-export-entry.css";
+@import "../../features/search/ui/search-results.css";
+@import "../../platform/ui/toast.css";
+@import "../../platform/ui/dark-mode-overrides.css";
+@import "../../features/bookmarks/ui/bookmarks-dark.css";
+@import "../../features/search/ui/search-dark.css";
+@import "../../features/settings/ui/library-backup.css";
+@import "../../platform/ui/narrow-panel-overrides.css";
+@import "../../platform/ui/notice-actions.css";
+@import "../../platform/ui/library-interactions.css";

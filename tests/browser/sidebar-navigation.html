@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><title>TIDY navigation regression fixture</title>
+<link rel="stylesheet" href="../../src/app/sidepanel/panel.css">
+<link rel="stylesheet" href="../../src/features/titles/ui/title.css">
+<link rel="stylesheet" href="../../src/features/titles/ui/title-batch.css">
+<link rel="stylesheet" href="../../src/features/export/ui/export.css">
+<style>
+body { display:block; padding:16px; background:white; }
+#fixtures { display:grid; grid-template-columns:repeat(4, 360px); gap:20px; }
+.fixture { height:800px; overflow:auto; }
+[data-results-viewport], [data-batch-scroll="select"], [data-search-result-list] {
+  display:block !important; height:140px !important; min-height:140px !important;
+  max-height:140px !important; overflow:auto !important;
+}
+#results { white-space:pre-wrap; }
+</style>
+<h1>Local fixture only — no ChatGPT account or requests</h1>
+<pre id="results">pending</pre><div id="fixtures"></div>
+<script type="module" src="./sidebar-navigation.mjs"></script>
+</html>

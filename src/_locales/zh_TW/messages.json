@@ -1,0 +1,5 @@
+{
+  "appName": { "message": "ChatGPT Tidy" },
+  "appDescription": { "message": "為 ChatGPT 對話標題整理日期前綴，附帶時間、收藏、訊息書籤、搜尋與匯出。" },
+  "actionTitle": { "message": "開啟 ChatGPT Tidy" }
+}

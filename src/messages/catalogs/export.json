@@ -1,0 +1,1043 @@
+{
+  "description": "导出栏目：选择、预览、生成任务与生成文件中的文案。",
+  "messages": {
+    "viewDownloads": {
+      "zh-CN": "查看下载",
+      "zh-TW": "查看下載",
+      "en": "View downloads",
+      "ja": "ダウンロードを見る"
+    },
+    "exportPreviewFailed": {
+      "zh-CN": "预览未打开，请再点",
+      "zh-TW": "預覽未開啟，請再點",
+      "en": "Preview did not open. Try again.",
+      "ja": "プレビューを開き直してください"
+    },
+    "exportTooManyBookmarks": {
+      "zh-CN": "书签过多，请减少选择",
+      "zh-TW": "書籤過多，請減少選擇",
+      "en": "Too many bookmarks. Select fewer.",
+      "ja": "ブックマークの選択を減らしてください"
+    },
+    "exportFailedSelection": {
+      "zh-CN": "请重读或移除这些会话",
+      "zh-TW": "請重讀或移除這些會話",
+      "en": "Read again or remove these chats.",
+      "ja": "再読み込みするか、この会話を外してください"
+    },
+    "exportJobTitle": {
+      "zh-CN": "导出任务",
+      "zh-TW": "匯出任務",
+      "en": "Export task",
+      "ja": "エクスポートタスク"
+    },
+    "exportJobNotStarted": {
+      "zh-CN": "导出未开始，请重试",
+      "zh-TW": "匯出未開始，請重試",
+      "en": "Export did not start. Retry.",
+      "ja": "出力を再試行してください"
+    },
+    "exportJobStarting": {
+      "zh-CN": "正在准备导出…",
+      "zh-TW": "正在準備匯出…",
+      "en": "Preparing export…",
+      "ja": "エクスポートを準備中…"
+    },
+    "exportJobGenerating": {
+      "zh-CN": "正在生成文件…",
+      "zh-TW": "正在產生檔案…",
+      "en": "Generating file…",
+      "ja": "ファイルを生成中…"
+    },
+    "exportJobFiles": {
+      "zh-CN": "已生成 {done}/{total} 个文件",
+      "zh-TW": "已產生 {done}/{total} 個檔案",
+      "en": "{done}/{total} files generated",
+      "ja": "ファイル生成済み {done}/{total} 件"
+    },
+    "exportJobSaving": {
+      "zh-CN": "正在保存…",
+      "zh-TW": "正在儲存…",
+      "en": "Saving…",
+      "ja": "保存中…"
+    },
+    "exportJobCancelling": {
+      "zh-CN": "正在取消…",
+      "zh-TW": "正在取消…",
+      "en": "Cancelling…",
+      "ja": "キャンセル中…"
+    },
+    "exportJobCompleted": {
+      "zh-CN": "✓ 已保存",
+      "zh-TW": "✓ 已儲存",
+      "en": "✓ Saved",
+      "ja": "✓ 保存済み"
+    },
+    "exportJobCancelled": {
+      "zh-CN": "已取消",
+      "zh-TW": "已取消",
+      "en": "Cancelled",
+      "ja": "キャンセル済み"
+    },
+    "exportJobFailed": {
+      "zh-CN": "导出失败，请重新导出",
+      "zh-TW": "匯出失敗，請重新匯出",
+      "en": "Export failed. Please export again.",
+      "ja": "出力に失敗しました。再度出力してください"
+    },
+    "exportJobCancel": {
+      "zh-CN": "取消",
+      "zh-TW": "取消",
+      "en": "Cancel",
+      "ja": "キャンセル"
+    },
+    "exportJobShowProgress": {
+      "zh-CN": "查看导出进度",
+      "zh-TW": "查看匯出進度",
+      "en": "View export progress",
+      "ja": "進捗を確認"
+    },
+    "exportJobBusy": {
+      "zh-CN": "正在导出，请稍等",
+      "zh-TW": "正在匯出，請稍等",
+      "en": "An export is running. Please wait.",
+      "ja": "出力中です。お待ちください"
+    },
+    "exportJobUnknown": {
+      "zh-CN": "导出结果待确认",
+      "zh-TW": "匯出結果待確認",
+      "en": "Export result unconfirmed",
+      "ja": "出力結果を確認してください"
+    },
+    "exportDefaultName": {
+      "zh-CN": "ChatGPT-Tidy-导出",
+      "zh-TW": "ChatGPT-Tidy-匯出",
+      "en": "ChatGPT-Tidy-Export",
+      "ja": "ChatGPT-Tidy-エクスポート"
+    },
+    "exportMergedConversationsName": {
+      "zh-CN": "完整会话合并",
+      "zh-TW": "完整對話合併",
+      "en": "Merged conversations",
+      "ja": "会話まとめ"
+    },
+    "exportBookmarkExcerpt": {
+      "zh-CN": "书签摘录",
+      "zh-TW": "書籤摘錄",
+      "en": "Bookmark excerpts",
+      "ja": "ブックマーク抜粋"
+    },
+    "exportConversationExcerpt": {
+      "zh-CN": "{title} 书签摘录",
+      "zh-TW": "{title} 書籤摘錄",
+      "en": "{title} - Bookmark excerpts",
+      "ja": "{title} - ブックマーク抜粋"
+    },
+    "exportExcerptNotice": {
+      "zh-CN": "仅包含实际选中的书签消息。",
+      "zh-TW": "僅包含實際選取的書籤訊息。",
+      "en": "Only the selected bookmarked messages are included.",
+      "ja": "選択したブックマークのメッセージのみを含みます。"
+    },
+    "exportOpenOriginal": {
+      "zh-CN": "打开原会话",
+      "zh-TW": "開啟原對話",
+      "en": "Open original conversation",
+      "ja": "元の会話を開く"
+    },
+    "exportFromGroup": {
+      "zh-CN": "来自分组：{name}",
+      "zh-TW": "來自分組：{name}",
+      "en": "From group: {name}",
+      "ja": "グループ: {name}"
+    },
+    "exportToolLabel": {
+      "zh-CN": "工具：{name}",
+      "zh-TW": "工具：{name}",
+      "en": "Tool: {name}",
+      "ja": "ツール: {name}"
+    },
+    "exportQueryLabel": {
+      "zh-CN": "查询：{query}",
+      "zh-TW": "查詢：{query}",
+      "en": "Query: {query}",
+      "ja": "検索: {query}"
+    },
+    "exportImage": {
+      "zh-CN": "图片",
+      "zh-TW": "圖片",
+      "en": "Image",
+      "ja": "画像"
+    },
+    "exportUnnamedImage": {
+      "zh-CN": "未命名图片",
+      "zh-TW": "未命名圖片",
+      "en": "Unnamed image",
+      "ja": "無名の画像"
+    },
+    "exportAttachment": {
+      "zh-CN": "附件",
+      "zh-TW": "附件",
+      "en": "Attachment",
+      "ja": "添付ファイル"
+    },
+    "exportUnnamedAttachment": {
+      "zh-CN": "未命名附件",
+      "zh-TW": "未命名附件",
+      "en": "Unnamed attachment",
+      "ja": "無名の添付ファイル"
+    },
+    "exportImageLabel": {
+      "zh-CN": "图片：{name}",
+      "zh-TW": "圖片：{name}",
+      "en": "Image: {name}",
+      "ja": "画像: {name}"
+    },
+    "exportAttachmentLabel": {
+      "zh-CN": "附件：{name}",
+      "zh-TW": "附件：{name}",
+      "en": "Attachment: {name}",
+      "ja": "添付ファイル: {name}"
+    },
+    "exportDocumentTitle": {
+      "zh-CN": "ChatGPT 会话导出",
+      "zh-TW": "ChatGPT 對話匯出",
+      "en": "ChatGPT conversation export",
+      "ja": "ChatGPT 会話エクスポート"
+    },
+    "exportPlanFiles": {
+      "zh-CN": "{count} 个文件 · ZIP",
+      "zh-TW": "{count} 個檔案 · ZIP",
+      "en": "{count} files · ZIP",
+      "ja": "{count} ファイル · ZIP"
+    },
+    "exportImagesPreparing": {
+      "zh-CN": "正在准备图片（剩余 {count} 张）…",
+      "zh-TW": "正在準備圖片（剩餘 {count} 張）…",
+      "en": "Preparing images ({count} remaining)…",
+      "ja": "画像を準備中（残り {count} 枚）…"
+    },
+    "exportImageUnavailable": {
+      "zh-CN": "图片缺失，请刷新",
+      "zh-TW": "圖片缺失，請重新整理",
+      "en": "Missing images. Refresh content.",
+      "ja": "画像不足。内容を更新してください"
+    },
+    "exportImagePreviewFailed": {
+      "zh-CN": "图片加载失败：{name}",
+      "zh-TW": "圖片載入失敗：{name}",
+      "en": "Image could not load: {name}",
+      "ja": "画像を読み込めませんでした：{name}"
+    },
+    "exportPdfPreviewNotice": {
+      "zh-CN": "图文内容预览，分页以下载的 PDF 为准",
+      "zh-TW": "圖文內容預覽，分頁以下載的 PDF 為準",
+      "en": "Content preview; final pagination is in the downloaded PDF",
+      "ja": "内容プレビューです。改ページはダウンロードした PDF をご確認ください"
+    },
+    "exportImageNoAddress": {
+      "zh-CN": "图片无法读取：{name}",
+      "zh-TW": "圖片無法讀取：{name}",
+      "en": "Image unavailable: {name}",
+      "ja": "画像を読み込めません：{name}"
+    },
+    "exportImageEmbedFailed": {
+      "zh-CN": "图片未能嵌入：{name}",
+      "zh-TW": "圖片未能嵌入：{name}",
+      "en": "Image could not be embedded: {name}",
+      "ja": "画像を埋め込めませんでした: {name}"
+    },
+    "exportUnsupportedGlyphs": {
+      "zh-CN": "部分字符无法显示，已用方框替代",
+      "zh-TW": "部分字元無法顯示，已用方框替代",
+      "en": "Some characters could not be displayed and were replaced with boxes.",
+      "ja": "表示できない文字を四角で置き換えました"
+    },
+    "exportLinkAnnotationFailed": {
+      "zh-CN": "部分链接无法点击",
+      "zh-TW": "部分連結無法點選",
+      "en": "Some links are not clickable.",
+      "ja": "一部のリンクをクリックできません"
+    },
+    "exportInvalidDataField": {
+      "zh-CN": "内容未读全，请重读",
+      "zh-TW": "內容未讀全，請重讀",
+      "en": "Content incomplete. Read again.",
+      "ja": "内容を読み込み直してください"
+    },
+    "exportDataMissing": {
+      "zh-CN": "没有可导出的内容",
+      "zh-TW": "沒有可匯出的內容",
+      "en": "No content to export.",
+      "ja": "エクスポートする内容がありません"
+    },
+    "exportUnsupportedFormat": {
+      "zh-CN": "不支持的导出格式：{format}",
+      "zh-TW": "不支援的匯出格式：{format}",
+      "en": "Unsupported export format: {format}",
+      "ja": "未対応のエクスポート形式: {format}"
+    },
+    "exportCurrentMissing": {
+      "zh-CN": "当前会话不存在",
+      "zh-TW": "目前對話不存在",
+      "en": "The current conversation is missing.",
+      "ja": "現在の会話がありません。"
+    },
+    "exportConversationsIncomplete": {
+      "zh-CN": "选中的会话无法完整导出",
+      "zh-TW": "選取的對話無法完整匯出",
+      "en": "The selected conversations cannot be fully exported.",
+      "ja": "選択した会話を完全にエクスポートできません。"
+    },
+    "exportNoFiles": {
+      "zh-CN": "导出清单为空",
+      "zh-TW": "匯出清單沒有內容",
+      "en": "There are no files to export.",
+      "ja": "エクスポートするファイルがありません。"
+    },
+    "exportPathCollision": {
+      "zh-CN": "文件重名，请改名",
+      "zh-TW": "檔案同名，請改名",
+      "en": "Duplicate names. Rename files.",
+      "ja": "ファイル名を変更してください"
+    },
+    "exportEmptyFile": {
+      "zh-CN": "内容为空，请重新选择",
+      "zh-TW": "內容為空，請重新選擇",
+      "en": "No content. Select again.",
+      "ja": "内容を選び直してください"
+    },
+    "exportZipFailed": {
+      "zh-CN": "打包失败，请重试",
+      "zh-TW": "打包失敗，請重試",
+      "en": "Packaging failed. Try again.",
+      "ja": "ファイルの作成を再試行してください"
+    },
+    "exportDependencyEnvironment": {
+      "zh-CN": "导出异常，请重开侧栏",
+      "zh-TW": "匯出異常，請重開側欄",
+      "en": "Export unavailable. Reopen ChatGPT Tidy.",
+      "ja": "ChatGPT Tidyを開き直してください"
+    },
+    "exportDependencyNotReady": {
+      "zh-CN": "导出未就绪，请稍等",
+      "zh-TW": "匯出未就緒，請稍等",
+      "en": "Export is not ready. Please wait.",
+      "ja": "準備中です。お待ちください"
+    },
+    "exportDependencyFailed": {
+      "zh-CN": "导出异常，请重开侧栏",
+      "zh-TW": "匯出異常，請重開側欄",
+      "en": "Export unavailable. Reopen ChatGPT Tidy.",
+      "ja": "ChatGPT Tidyを開き直してください"
+    },
+    "exportPdfAssetFailed": {
+      "zh-CN": "文件生成失败，请重试",
+      "zh-TW": "檔案產生失敗，請重試",
+      "en": "File creation failed. Try again.",
+      "ja": "ファイル作成を再試行してください"
+    },
+    "exportPdfFontsInvalid": {
+      "zh-CN": "文件生成失败，请重试",
+      "zh-TW": "檔案產生失敗，請重試",
+      "en": "File creation failed. Try again.",
+      "ja": "ファイル作成を再試行してください"
+    },
+    "exportPdfNoGlyphs": {
+      "zh-CN": "此内容暂不能导出",
+      "zh-TW": "此內容暫不能匯出",
+      "en": "This content cannot be exported.",
+      "ja": "この内容は出力できません"
+    },
+    "exportAccountRequired": {
+      "zh-CN": "连接中断，请重连",
+      "zh-TW": "連線中斷，請重連",
+      "en": "Connection lost. Reconnect.",
+      "ja": "再接続してください"
+    },
+    "exportRefresh": {
+      "zh-CN": "刷新内容",
+      "zh-TW": "重新整理內容",
+      "en": "Refresh content",
+      "ja": "内容を更新"
+    },
+    "exportJobDismiss": {
+      "zh-CN": "关闭结果提示",
+      "zh-TW": "關閉結果提示",
+      "en": "Dismiss result notice",
+      "ja": "結果の通知を閉じる"
+    },
+    "exportJobDismissFailed": {
+      "zh-CN": "提示未关好，请再关闭",
+      "zh-TW": "提示未關好，請再關閉",
+      "en": "Notice not dismissed. Close again.",
+      "ja": "通知をもう一度閉じてください"
+    },
+    "exportRefreshing": {
+      "zh-CN": "更新中…",
+      "zh-TW": "更新中…",
+      "en": "Updating…",
+      "ja": "更新中…"
+    },
+    "exportWaiting": {
+      "zh-CN": "等待回复…",
+      "zh-TW": "等待回覆…",
+      "en": "Waiting for reply…",
+      "ja": "応答待ち…"
+    },
+    "exportSyncing": {
+      "zh-CN": "正在同步最新会话，预览会自动更新…",
+      "zh-TW": "正在同步最新對話，預覽會自動更新…",
+      "en": "Syncing the latest conversation. Preview will update automatically…",
+      "ja": "最新の会話を同期しています。プレビューは自動で更新されます…"
+    },
+    "exportWaitingForResponse": {
+      "zh-CN": "ChatGPT 正在回复，结束后会自动更新预览…",
+      "zh-TW": "ChatGPT 正在回覆，結束後會自動更新預覽…",
+      "en": "ChatGPT is replying. Preview will update automatically afterward…",
+      "ja": "ChatGPT が応答中です。終了後にプレビューを自動で更新します…"
+    },
+    "exportContentChanged": {
+      "zh-CN": "内容已更新，请刷新",
+      "zh-TW": "內容已更新，請重新整理",
+      "en": "Content changed. Refresh it.",
+      "ja": "内容が変わりました。更新してください"
+    },
+    "exportSourcesUnavailable": {
+      "zh-CN": "资料未读全",
+      "zh-TW": "資料未讀全",
+      "en": "Library not loaded",
+      "ja": "一覧を読み込めません"
+    },
+    "exportSelectionIncomplete": {
+      "zh-CN": "部分选中的书签无法导出",
+      "zh-TW": "部分選取的書籤無法匯出",
+      "en": "Some selected bookmarks cannot be exported",
+      "ja": "選択したブックマークの一部をエクスポートできません"
+    },
+    "exportSelectionFiltered": {
+      "zh-CN": "内容选项排除了选中的书签",
+      "zh-TW": "內容選項排除了選取的書籤",
+      "en": "Content options excluded selected bookmarks",
+      "ja": "内容の設定により選択したブックマークが除外されています"
+    },
+    "exportSelectionRecovery": {
+      "zh-CN": "请刷新或移除这些书签",
+      "zh-TW": "請重新整理或移除這些書籤",
+      "en": "Refresh or remove these bookmarks.",
+      "ja": "更新するか、このブックマークを外してください"
+    },
+    "exportSelectionFilteredRecovery": {
+      "zh-CN": "请调整选项或移除书签",
+      "zh-TW": "請調整選項或移除書籤",
+      "en": "Adjust options or remove bookmarks.",
+      "ja": "設定を変えるか、ブックマークを外してください"
+    },
+    "exportContentWarnings": {
+      "zh-CN": "部分内容可能不完整",
+      "zh-TW": "部分內容可能不完整",
+      "en": "Some content may be incomplete",
+      "ja": "一部の内容が不完全な可能性があります"
+    },
+    "export": {
+      "zh-CN": "导出",
+      "zh-TW": "匯出",
+      "en": "Export",
+      "ja": "エクスポート"
+    },
+    "exportSubtitle": {
+      "zh-CN": "整理并保存对话",
+      "zh-TW": "整理並儲存對話",
+      "en": "Organize and save conversations",
+      "ja": "会話を整理して保存"
+    },
+    "exportMode": {
+      "zh-CN": "导出模式",
+      "zh-TW": "匯出模式",
+      "en": "Export mode",
+      "ja": "エクスポートモード"
+    },
+    "exportBatch": {
+      "zh-CN": "批量导出",
+      "zh-TW": "批次匯出",
+      "en": "Batch export",
+      "ja": "一括エクスポート"
+    },
+    "exportPendingCount": {
+      "zh-CN": "已有 {count} 项待导出",
+      "zh-TW": "已有 {count} 項待匯出",
+      "en": "{count} items ready to export",
+      "ja": "{count} 件をエクスポート待ち"
+    },
+    "exportScope": {
+      "zh-CN": "导出范围",
+      "zh-TW": "匯出範圍",
+      "en": "Export scope",
+      "ja": "対象"
+    },
+    "exportFormat": {
+      "zh-CN": "格式",
+      "zh-TW": "格式",
+      "en": "Format",
+      "ja": "形式"
+    },
+    "exportContentOptions": {
+      "zh-CN": "内容选项",
+      "zh-TW": "內容選項",
+      "en": "Content options",
+      "ja": "内容オプション"
+    },
+    "exportRoleNames": {
+      "zh-CN": "角色显示名称",
+      "zh-TW": "角色顯示名稱",
+      "en": "Role display names",
+      "ja": "ロール表示名"
+    },
+    "exportPdfAppearance": {
+      "zh-CN": "PDF 外观",
+      "zh-TW": "PDF 外觀",
+      "en": "PDF appearance",
+      "ja": "PDF の外観"
+    },
+    "exportFilename": {
+      "zh-CN": "文件名",
+      "zh-TW": "檔案名稱",
+      "en": "File name",
+      "ja": "ファイル名"
+    },
+    "exportPreview": {
+      "zh-CN": "导出预览",
+      "zh-TW": "匯出預覽",
+      "en": "Export preview",
+      "ja": "エクスポートプレビュー"
+    },
+    "exportViewFullPreview": {
+      "zh-CN": "查看完整预览",
+      "zh-TW": "查看完整預覽",
+      "en": "View full preview",
+      "ja": "完全なプレビューを表示"
+    },
+    "exportFullPreview": {
+      "zh-CN": "完整预览",
+      "zh-TW": "完整預覽",
+      "en": "Full preview",
+      "ja": "完全なプレビュー"
+    },
+    "exportClosePreview": {
+      "zh-CN": "关闭完整预览",
+      "zh-TW": "關閉完整預覽",
+      "en": "Close full preview",
+      "ja": "完全なプレビューを閉じる"
+    },
+    "exportBackToSettings": {
+      "zh-CN": "返回导出设置",
+      "zh-TW": "返回匯出設定",
+      "en": "Back to export settings",
+      "ja": "エクスポート設定に戻る"
+    },
+    "exportPreviewAction": {
+      "zh-CN": "预览",
+      "zh-TW": "預覽",
+      "en": "Preview",
+      "ja": "プレビュー"
+    },
+    "exportAction": {
+      "zh-CN": "导出",
+      "zh-TW": "匯出",
+      "en": "Export",
+      "ja": "エクスポート"
+    },
+    "exportGenerationFailed": {
+      "zh-CN": "生成失败，请重试",
+      "zh-TW": "產生失敗，請重試",
+      "en": "Could not create file. Try again.",
+      "ja": "ファイル作成を再試行してください"
+    },
+    "exportUnavailable": {
+      "zh-CN": "会话未读到，请重试",
+      "zh-TW": "會話未讀到，請重試",
+      "en": "Conversation not loaded. Retry.",
+      "ja": "会話を読み込み直してください"
+    },
+    "exportReading": {
+      "zh-CN": "正在读取当前会话的完整内容…",
+      "zh-TW": "正在讀取目前對話的完整內容…",
+      "en": "Reading the full current conversation…",
+      "ja": "現在の会話の全文を読み込んでいます…"
+    },
+    "exportNeedsConversation": {
+      "zh-CN": "请先打开可导出的会话",
+      "zh-TW": "請先開啟可匯出的對話",
+      "en": "Open a conversation to export.",
+      "ja": "エクスポートする会話を開いてください"
+    },
+    "exportInvalidDocument": {
+      "zh-CN": "内容未读全，请重读",
+      "zh-TW": "內容未讀全，請重讀",
+      "en": "Content incomplete. Read again.",
+      "ja": "内容を読み込み直してください"
+    },
+    "exportMessageTimes": {
+      "zh-CN": "消息时间",
+      "zh-TW": "訊息時間",
+      "en": "Message times",
+      "ja": "メッセージ時刻"
+    },
+    "exportVisibleProcess": {
+      "zh-CN": "可见思考",
+      "zh-TW": "可見思考",
+      "en": "Visible reasoning",
+      "ja": "表示される思考"
+    },
+    "exportToolProcess": {
+      "zh-CN": "工具过程",
+      "zh-TW": "工具過程",
+      "en": "Tool process",
+      "ja": "ツール過程"
+    },
+    "exportWebProcess": {
+      "zh-CN": "网页检索过程",
+      "zh-TW": "網頁搜尋過程",
+      "en": "Web search process",
+      "ja": "ウェブ検索過程"
+    },
+    "exportFinalSources": {
+      "zh-CN": "最终引用来源",
+      "zh-TW": "最終引用來源",
+      "en": "Final cited sources",
+      "ja": "最終引用元"
+    },
+    "exportMediaAttachments": {
+      "zh-CN": "图片与附件",
+      "zh-TW": "圖片與附件",
+      "en": "Images and attachments",
+      "ja": "画像と添付ファイル"
+    },
+    "exportContentAndRoles": {
+      "zh-CN": "内容与角色",
+      "zh-TW": "內容與角色",
+      "en": "Content and roles",
+      "ja": "内容とロール"
+    },
+    "exportDisplayName": {
+      "zh-CN": "显示名称",
+      "zh-TW": "顯示名稱",
+      "en": "display name",
+      "ja": "表示名"
+    },
+    "exportPaper": {
+      "zh-CN": "纸张",
+      "zh-TW": "紙張",
+      "en": "Paper",
+      "ja": "用紙"
+    },
+    "exportOrientation": {
+      "zh-CN": "方向",
+      "zh-TW": "方向",
+      "en": "Orientation",
+      "ja": "向き"
+    },
+    "exportFontSize": {
+      "zh-CN": "字号",
+      "zh-TW": "字級",
+      "en": "Font size",
+      "ja": "文字サイズ"
+    },
+    "exportPageNumbers": {
+      "zh-CN": "页码",
+      "zh-TW": "頁碼",
+      "en": "Page numbers",
+      "ja": "ページ番号"
+    },
+    "exportLayout": {
+      "zh-CN": "版面",
+      "zh-TW": "版面",
+      "en": "Layout",
+      "ja": "レイアウト"
+    },
+    "exportPaperPreview": {
+      "zh-CN": "纸张预览",
+      "zh-TW": "紙張預覽",
+      "en": "Paper preview",
+      "ja": "用紙プレビュー"
+    },
+    "exportPortrait": {
+      "zh-CN": "纵向",
+      "zh-TW": "直向",
+      "en": "Portrait",
+      "ja": "縦"
+    },
+    "exportLandscape": {
+      "zh-CN": "横向",
+      "zh-TW": "橫向",
+      "en": "Landscape",
+      "ja": "横"
+    },
+    "exportSmall": {
+      "zh-CN": "小",
+      "zh-TW": "小",
+      "en": "Small",
+      "ja": "小"
+    },
+    "exportStandard": {
+      "zh-CN": "标准",
+      "zh-TW": "標準",
+      "en": "Standard",
+      "ja": "標準"
+    },
+    "exportLarge": {
+      "zh-CN": "大",
+      "zh-TW": "大",
+      "en": "Large",
+      "ja": "大"
+    },
+    "exportSmallFont": {
+      "zh-CN": "小字号",
+      "zh-TW": "小字級",
+      "en": "Small type",
+      "ja": "小さい文字"
+    },
+    "exportStandardFont": {
+      "zh-CN": "标准字号",
+      "zh-TW": "標準字級",
+      "en": "Standard type",
+      "ja": "標準文字"
+    },
+    "exportLargeFont": {
+      "zh-CN": "大字号",
+      "zh-TW": "大字級",
+      "en": "Large type",
+      "ja": "大きい文字"
+    },
+    "exportTimeShort": {
+      "zh-CN": "时间",
+      "zh-TW": "時間",
+      "en": "Time",
+      "ja": "時刻"
+    },
+    "exportNumberShort": {
+      "zh-CN": "编号",
+      "zh-TW": "編號",
+      "en": "Numbers",
+      "ja": "番号"
+    },
+    "exportProcessShort": {
+      "zh-CN": "思考",
+      "zh-TW": "思考",
+      "en": "Thinking",
+      "ja": "思考"
+    },
+    "exportToolShort": {
+      "zh-CN": "工具",
+      "zh-TW": "工具",
+      "en": "Tools",
+      "ja": "ツール"
+    },
+    "exportSearchShort": {
+      "zh-CN": "检索",
+      "zh-TW": "搜尋",
+      "en": "Search",
+      "ja": "検索"
+    },
+    "exportSourcesShort": {
+      "zh-CN": "来源",
+      "zh-TW": "來源",
+      "en": "Sources",
+      "ja": "出典"
+    },
+    "exportMediaShort": {
+      "zh-CN": "图片与附件",
+      "zh-TW": "圖片與附件",
+      "en": "Media",
+      "ja": "画像と添付"
+    },
+    "exportBodyOnly": {
+      "zh-CN": "仅正文",
+      "zh-TW": "僅正文",
+      "en": "Body only",
+      "ja": "本文のみ"
+    },
+    "exportSummarySeparator": {
+      "zh-CN": "、",
+      "zh-TW": "、",
+      "en": ", ",
+      "ja": "、"
+    },
+    "exportList": {
+      "zh-CN": "导出清单",
+      "zh-TW": "匯出清單",
+      "en": "Export list",
+      "ja": "エクスポート一覧"
+    },
+    "cancelExportSelection": {
+      "zh-CN": "取消选择",
+      "zh-TW": "取消選取",
+      "en": "Cancel selection",
+      "ja": "選択をキャンセル"
+    },
+    "exportBackToSelection": {
+      "zh-CN": "返回{title}",
+      "zh-TW": "返回{title}",
+      "en": "Back to {title}",
+      "ja": "{title} に戻る"
+    },
+    "exportSelectedCount": {
+      "zh-CN": "已选择 {count} {unit}",
+      "zh-TW": "已選擇 {count} {unit}",
+      "en": "{count} {unit} selected",
+      "ja": "{count} {unit}を選択"
+    },
+    "conversationItemsUnit": {
+      "zh-CN": "个会话",
+      "zh-TW": "段對話",
+      "en": "conversations",
+      "ja": "件の会話"
+    },
+    "addToExportList": {
+      "zh-CN": "加入导出清单",
+      "zh-TW": "加入匯出清單",
+      "en": "Add to export list",
+      "ja": "エクスポート一覧に追加"
+    },
+    "viewExportList": {
+      "zh-CN": "查看清单",
+      "zh-TW": "查看清單",
+      "en": "View list",
+      "ja": "一覧を見る"
+    },
+    "alreadyInExportList": {
+      "zh-CN": "已加入",
+      "zh-TW": "已加入",
+      "en": "Added",
+      "ja": "追加済み"
+    },
+    "supplementExportSource": {
+      "zh-CN": "补充来源",
+      "zh-TW": "補充來源",
+      "en": "Add source",
+      "ja": "取得元を追加"
+    },
+    "selectAllCurrentRange": {
+      "zh-CN": "全选当前范围",
+      "zh-TW": "全選目前範圍",
+      "en": "Select current range",
+      "ja": "現在の範囲をすべて選択"
+    },
+    "selectAllCurrentGroup": {
+      "zh-CN": "全选当前分组",
+      "zh-TW": "全選目前分組",
+      "en": "Select current group",
+      "ja": "現在のグループをすべて選択"
+    },
+    "selectAllCurrentPage": {
+      "zh-CN": "全选本页",
+      "zh-TW": "全選本頁",
+      "en": "Select this page",
+      "ja": "このページを全選択"
+    },
+    "clearCurrentPageSelection": {
+      "zh-CN": "取消本页选择",
+      "zh-TW": "取消本頁選擇",
+      "en": "Deselect this page",
+      "ja": "このページの選択を解除"
+    },
+    "selectAllCurrentConversation": {
+      "zh-CN": "全选当前会话",
+      "zh-TW": "全選目前對話",
+      "en": "Select all bookmarks in this conversation",
+      "ja": "現在の会話をすべて選択"
+    },
+    "cancelSelectAll": {
+      "zh-CN": "取消全选",
+      "zh-TW": "取消全選",
+      "en": "Clear selection",
+      "ja": "すべて解除"
+    },
+    "exportBatchReading": {
+      "zh-CN": "正在读取所选会话…",
+      "zh-TW": "正在讀取所選對話…",
+      "en": "Reading selected conversations…",
+      "ja": "選択した会話を読み込んでいます…"
+    },
+    "exportBatchNeedsSelection": {
+      "zh-CN": "先从收藏、书签或日期搜索添加内容",
+      "zh-TW": "先從收藏、書籤或日期搜尋新增內容",
+      "en": "Add content from Favorites, Bookmarks or Date search first",
+      "ja": "お気に入り、ブックマーク、日付検索から追加してください"
+    },
+    "exportBatchUnavailable": {
+      "zh-CN": "会话未读全",
+      "zh-TW": "會話未讀全",
+      "en": "Conversations not fully loaded",
+      "ja": "会話を読み込めません"
+    },
+    "exportBatchEmpty": {
+      "zh-CN": "添加导出内容",
+      "zh-TW": "新增匯出內容",
+      "en": "Add export content",
+      "ja": "エクスポート内容を追加"
+    },
+    "addFromFavorites": {
+      "zh-CN": "从收藏添加",
+      "zh-TW": "從收藏新增",
+      "en": "Add from Favorites",
+      "ja": "お気に入りから追加"
+    },
+    "addFromBookmarks": {
+      "zh-CN": "从书签添加",
+      "zh-TW": "從書籤新增",
+      "en": "Add from Bookmarks",
+      "ja": "ブックマークから追加"
+    },
+    "chooseFromFavorites": {
+      "zh-CN": "从收藏选择",
+      "zh-TW": "從收藏選擇",
+      "en": "Choose from Favorites",
+      "ja": "お気に入りから選択"
+    },
+    "chooseFromBookmarks": {
+      "zh-CN": "从书签选择",
+      "zh-TW": "從書籤選擇",
+      "en": "Choose from Bookmarks",
+      "ja": "ブックマークから選択"
+    },
+    "chooseFromSearch": {
+      "zh-CN": "从日期搜索选择",
+      "zh-TW": "從日期搜尋選擇",
+      "en": "Choose from Date search",
+      "ja": "日付検索から選択"
+    },
+    "addFromSearchResults": {
+      "zh-CN": "从日期搜索添加",
+      "zh-TW": "從日期搜尋新增",
+      "en": "Add from Date search",
+      "ja": "日付検索から追加"
+    },
+    "exportFromSource": {
+      "zh-CN": "来源：{source}",
+      "zh-TW": "來源：{source}",
+      "en": "Source: {source}",
+      "ja": "取得元: {source}"
+    },
+    "addExportContent": {
+      "zh-CN": "添加内容",
+      "zh-TW": "新增內容",
+      "en": "Add content",
+      "ja": "内容を追加"
+    },
+    "exportAddedCount": {
+      "zh-CN": "已加入 {count} {unit}",
+      "zh-TW": "已加入 {count} {unit}",
+      "en": "Added {count} {unit}",
+      "ja": "{count} {unit}を追加"
+    },
+    "exportSourceSupplemented": {
+      "zh-CN": "已补充 {count} 个来源",
+      "zh-TW": "已補充 {count} 個來源",
+      "en": "Added {count} additional sources",
+      "ja": "{count} 件の取得元を追加"
+    },
+    "exportAlreadyAdded": {
+      "zh-CN": "所选内容已在清单中",
+      "zh-TW": "所選內容已在清單中",
+      "en": "The selected content is already in the list",
+      "ja": "選択した内容はすでに一覧にあります"
+    },
+    "exportConversationSection": {
+      "zh-CN": "完整会话",
+      "zh-TW": "完整對話",
+      "en": "Full conversations",
+      "ja": "完全な会話"
+    },
+    "exportBookmarkSection": {
+      "zh-CN": "书签消息",
+      "zh-TW": "書籤訊息",
+      "en": "Bookmarked messages",
+      "ja": "ブックマークメッセージ"
+    },
+    "exportRemoveItem": {
+      "zh-CN": "移除",
+      "zh-TW": "移除",
+      "en": "Remove",
+      "ja": "削除"
+    },
+    "exportRemoveBookmarkGroup": {
+      "zh-CN": "移除本组",
+      "zh-TW": "移除本組",
+      "en": "Remove group",
+      "ja": "グループを削除"
+    },
+    "exportShowAll": {
+      "zh-CN": "查看全部",
+      "zh-TW": "查看全部",
+      "en": "View all",
+      "ja": "すべて表示"
+    },
+    "exportMoreItems": {
+      "zh-CN": "另外 {count} 项",
+      "zh-TW": "另外 {count} 項",
+      "en": "{count} more",
+      "ja": "あと {count} 件"
+    },
+    "exportBookmarkAlsoInConversation": {
+      "zh-CN": "该书签也包含在完整会话中",
+      "zh-TW": "該書籤也包含在完整對話中",
+      "en": "This bookmark is also included in the full conversation",
+      "ja": "このブックマークは完全な会話にも含まれます"
+    },
+    "exportOrganization": {
+      "zh-CN": "文件组织",
+      "zh-TW": "檔案安排",
+      "en": "File organization",
+      "ja": "ファイル構成"
+    },
+    "exportPerConversation": {
+      "zh-CN": "每个会话一份",
+      "zh-TW": "每段對話一份",
+      "en": "One file per conversation",
+      "ja": "会話ごとに1ファイル"
+    },
+    "exportAllConversations": {
+      "zh-CN": "全部合为一份",
+      "zh-TW": "全部合為一份",
+      "en": "Merge all conversations",
+      "ja": "すべての会話を1ファイルに統合"
+    },
+    "exportPerBookmarkGroup": {
+      "zh-CN": "每个分组一份",
+      "zh-TW": "每個分組一份",
+      "en": "One file per bookmark group",
+      "ja": "ブックマークグループごとに1ファイル"
+    },
+    "exportAllBookmarks": {
+      "zh-CN": "全部合为一份",
+      "zh-TW": "全部合為一份",
+      "en": "Merge all bookmarks",
+      "ja": "すべてのブックマークを1ファイルに統合"
+    },
+    "exportUnifiedSettings": {
+      "zh-CN": "统一导出设置",
+      "zh-TW": "統一匯出設定",
+      "en": "Unified export settings",
+      "ja": "共通エクスポート設定"
+    },
+    "exportPackageName": {
+      "zh-CN": "导出包名称",
+      "zh-TW": "匯出壓縮檔名稱",
+      "en": "Export package name",
+      "ja": "エクスポートパッケージ名"
+    },
+    "exportOneFile": {
+      "zh-CN": "1 个文件",
+      "zh-TW": "1 個檔案",
+      "en": "1 file",
+      "ja": "1 ファイル"
+    },
+    "exportMergedOneFile": {
+      "zh-CN": "合为 1 个文件",
+      "zh-TW": "合為 1 個檔案",
+      "en": "Merged into 1 file",
+      "ja": "1 ファイルに統合"
+    }
+  }
+}

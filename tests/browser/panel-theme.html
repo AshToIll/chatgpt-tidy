@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><title>TIDY 深浅主题回归</title>
+<style>
+body { margin: 0; padding: 18px; background: #e5e7eb; color: #343a45; font: 14px/1.5 system-ui; }
+h1 { margin: 0 0 12px; font-size: 17px; }
+main { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+figure { margin: 0; } figcaption { margin-bottom: 8px; }
+iframe { box-sizing: border-box; width: 100%; height: 710px; border: 1px solid #aeb4bf; border-radius: 9px; background: white; }
+#results { max-height: 100px; overflow: auto; font-size: 11px; white-space: pre-wrap; }
+</style>
+<h1>真实导出组件 · 标签栏只留一条线，菜单随深浅切换</h1><main id="frames"></main><pre id="results">pending</pre>
+<script type="module">
+const output = document.querySelector('#results');
+try {
+  const reports = await Promise.all(['empty', 'manage'].flatMap(mode => ['light', 'dark'].map(scheme => new Promise((resolve, reject) => {
+    const figure = document.createElement('figure'), caption = document.createElement('figcaption'), frame = document.createElement('iframe');
+    caption.textContent = `${scheme === 'dark' ? '深色' : '浅色'} · ${mode === 'empty' ? '空清单' : '添加内容菜单'}`;
+    figure.append(caption, frame); document.querySelector('#frames').append(figure);
+    frame.src = `panel-theme-frame.html?scheme=${scheme}&mode=${mode}`;
+    const start = Date.now();
+    const timer = setInterval(() => {
+      if (frame.contentWindow?.themeReport) { clearInterval(timer); resolve({ scheme, mode, ...frame.contentWindow.themeReport }); }
+      else if (Date.now() - start > 22000) { clearInterval(timer); reject(Error('Theme frame did not finish')); }
+    }, 50);
+  }))));
+  output.textContent = JSON.stringify({ ok: reports.every(report => report.ok), scope: 'Production HTML, CSS and export view with synthetic identity; no live account', reports }, null, 2);
+} catch (error) { output.textContent = JSON.stringify({ ok: false, error: error.message }); }
+output.dataset.complete = 'true';
+</script></html>

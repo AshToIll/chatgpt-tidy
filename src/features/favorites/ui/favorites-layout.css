@@ -1,0 +1,7 @@
+/* architecture-boundary: 收藏栏目：整体布局与操作焦点。与内容分开导入仅为保留公共标题规则的原始级联位置。 */
+/* 收藏页固定头部与操作区，只让结果区域滚动，避免翻找内容时丢失操作入口。 */
+.time-panel__body[data-active-route="favorites"] { overflow-y: hidden; }
+#favorites-view { height: 100%; min-height: 0; }
+.favorites-panel { position: relative; height: 100%; min-height: 0; display: grid; grid-template-rows: auto minmax(0, auto) auto minmax(0, 1fr); gap: 12px; overflow: hidden; }
+.favorite-current { min-height: 0; padding-bottom: 13px; border-bottom: 1px solid var(--line-soft); }
+.favorite-add-group:focus-visible, .favorite-group-select:focus-visible, .favorite-group-menu-toggle:focus-visible, .favorite-conversation:focus-visible, .favorite-icon-choice:focus-visible { outline: 2px solid var(--accent-ring); outline-offset: 2px; }

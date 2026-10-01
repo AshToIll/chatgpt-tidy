@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "amendments": [
+    {
+      "language": "zh-CN",
+      "key": "titlesBatchDateConflict",
+      "before": "日期冲突",
+      "after": "规则冲突",
+      "reason": "用户确认以规则冲突中性描述现有日期前缀与当前整理规则的差异；仅修改共享筛选/行标签，不改变分类和操作。"
+    },
+    {
+      "language": "zh-TW",
+      "key": "titlesBatchDateConflict",
+      "before": "日期衝突",
+      "after": "規則衝突",
+      "reason": "用户确认以规则冲突中性描述现有日期前缀与当前整理规则的差异；仅修改共享筛选/行标签，不改变分类和操作。"
+    },
+    {
+      "language": "ja",
+      "key": "titlesBatchDateConflict",
+      "before": "日付の競合",
+      "after": "ルール競合",
+      "reason": "用户确认以规则冲突中性描述现有日期前缀与当前整理规则的差异；仅修改共享筛选/行标签，不改变分类和操作。"
+    },
+    {
+      "language": "zh-CN",
+      "key": "exportMediaAttachments",
+      "before": "显示图片和附件",
+      "after": "图片与附件",
+      "reason": "用户确认将导出开关简化为中性的图片与附件，不承诺嵌图；仅修改名称，不添加格式限定、说明，也不改变默认值或各格式处理行为。"
+    },
+    {
+      "language": "zh-TW",
+      "key": "exportMediaAttachments",
+      "before": "顯示圖片和附件",
+      "after": "圖片與附件",
+      "reason": "用户确认将导出开关简化为中性的图片与附件，不承诺嵌图；仅修改名称，不添加格式限定、说明，也不改变默认值或各格式处理行为。"
+    },
+    {
+      "language": "en",
+      "key": "exportMediaAttachments",
+      "before": "Show images and attachments",
+      "after": "Images and attachments",
+      "reason": "用户确认将导出开关简化为中性的图片与附件，不承诺嵌图；仅修改名称，不添加格式限定、说明，也不改变默认值或各格式处理行为。"
+    },
+    {
+      "language": "ja",
+      "key": "exportMediaAttachments",
+      "before": "画像と添付ファイルを表示",
+      "after": "画像と添付ファイル",
+      "reason": "用户确认将导出开关简化为中性的图片与附件，不承诺嵌图；仅修改名称，不添加格式限定、说明，也不改变默认值或各格式处理行为。"
+    }
+  ],
+  "newKeys": [
+    {
+      "key": "pageSessionStalled",
+      "catalog": "common",
+      "reason": "连接探测预算耗尽后明确停止状态和只读重连动作，不再伪装正在连接。",
+      "translations": {
+        "zh-CN": "连接暂未成功。请点击“重新连接”。",
+        "zh-TW": "連線暫未成功。請點擊「重新連線」。",
+        "en": "Could not connect to ChatGPT. Select “Reconnect” to try again.",
+        "ja": "ChatGPTに接続できませんでした。「再接続」を選択してください。"
+      }
+    },
+    {
+      "key": "backupRestoreCheckHint",
+      "catalog": "settings",
+      "reason": "恢复回执未知时说明结果与重新导入边界，不因切换栏目丢失待核对状态。",
+      "translations": {
+        "zh-CN": "恢复结果尚未确认。请先查看收藏和书签，核对后再允许导入。",
+        "zh-TW": "還原結果尚未確認。請先查看收藏和書籤，核對後再允許匯入。",
+        "en": "Restore results are unconfirmed. Check favorites and bookmarks before allowing another import.",
+        "ja": "復元結果は未確認です。お気に入りとブックマークを確認してから、再度のインポートを許可してください。"
+      }
+    },
+    {
+      "key": "backupRestoreChecked",
+      "catalog": "settings",
+      "reason": "用户明确确认已核对后解除重新导入锁；查看资料本身不代表结果已确认。",
+      "translations": {
+        "zh-CN": "我已核对，允许再次导入",
+        "zh-TW": "我已核對，允許再次匯入",
+        "en": "I checked; allow another import",
+        "ja": "確認済み・再インポートを許可"
+      }
+    },
+    {
+      "key": "diagnosticsTitle",
+      "catalog": "settings",
+      "reason": "用户确认的设置底部排查日志：简洁名称/用途、用户主动操作与真实结果；默认无状态，清空二次确认。",
+      "translations": {
+        "zh-CN": "排查日志",
+        "zh-TW": "排查日誌",
+        "en": "Troubleshooting logs",
+        "ja": "問題調査用ログ"
+      }
+    },
+    {
+      "key": "diagnosticsScope",
+      "catalog": "settings",
+      "reason": "用户确认的设置底部排查日志：简洁名称/用途、用户主动操作与真实结果；默认无状态，清空二次确认。",
+      "translations": {
+        "zh-CN": "遇到问题时，可复制日志发给开发者排查。日志仅保存在本机，不含聊天正文。",
+        "zh-TW": "遇到問題時，可複製日誌傳給開發者排查。日誌僅儲存在本機，不含聊天正文。",
+        "en": "If you run into a problem, copy the logs and share them with the developer. Logs stay on this device and do not include chat content.",
+        "ja": "問題が起きた場合は、ログをコピーして開発者に送れます。ログはこの端末にのみ保存され、会話本文は含まれません。"
+      }
+    },
+    {
+      "key": "diagnosticsCopy",
+      "catalog": "settings",
+      "reason": "用户确认的设置底部排查日志：简洁名称/用途、用户主动操作与真实结果；默认无状态，清空二次确认。",
+      "translations": {
+        "zh-CN": "复制日志",
+        "zh-TW": "複製日誌",
+        "en": "Copy logs",
+        "ja": "ログをコピー"
+      }
+    },
+    {
+      "key": "diagnosticsClear",
+      "catalog": "settings",
+      "reason": "用户确认的设置底部排查日志：简洁名称/用途、用户主动操作与真实结果；默认无状态，清空二次确认。",
+      "translations": {
+        "zh-CN": "清空日志",
+        "zh-TW": "清空日誌",
+        "en": "Clear logs",
+        "ja": "ログを消去"
+      }
+    },
+    {
+      "key": "diagnosticsBusy",
+      "catalog": "settings",
+      "reason": "用户确认的设置底部排查日志：简洁名称/用途、用户主动操作与真实结果；默认无状态，清空二次确认。",
+      "translations": {
+        "zh-CN": "正在处理…",
+        "zh-TW": "正在處理…",
+        "en": "Working…",
+        "ja": "処理中…"
+      }
+    },
+    {
+      "key": "diagnosticsCopied",
+      "catalog": "settings",
+      "reason": "用户确认的设置底部排查日志：简洁名称/用途、用户主动操作与真实结果；默认无状态，清空二次确认。",
+      "translations": {
+        "zh-CN": "已复制",
+        "zh-TW": "已複製",
+        "en": "Copied",
+        "ja": "コピーしました"
+      }
+    },
+    {
+      "key": "diagnosticsCleared",
+      "catalog": "settings",
+      "reason": "用户确认的设置底部排查日志：简洁名称/用途、用户主动操作与真实结果；默认无状态，清空二次确认。",
+      "translations": {
+        "zh-CN": "已清空",
+        "zh-TW": "已清空",
+        "en": "Cleared",
+        "ja": "消去しました"
+      }
+    },
+    {
+      "key": "diagnosticsReadFailed",
+      "catalog": "settings",
+      "reason": "用户确认的设置底部排查日志：简洁名称/用途、用户主动操作与真实结果；默认无状态，清空二次确认。",
+      "translations": {
+        "zh-CN": "无法读取日志，请重试",
+        "zh-TW": "無法讀取日誌，請重試",
+        "en": "Could not read logs. Try again.",
+        "ja": "ログを読み込めませんでした。再試行してください"
+      }
+    },
+    {
+      "key": "diagnosticsCopyFailed",
+      "catalog": "settings",
+      "reason": "用户确认的设置底部排查日志：简洁名称/用途、用户主动操作与真实结果；默认无状态，清空二次确认。",
+      "translations": {
+        "zh-CN": "复制失败，请重试",
+        "zh-TW": "複製失敗，請重試",
+        "en": "Copy failed. Try again.",
+        "ja": "コピーできませんでした。再試行してください"
+      }
+    },
+    {
+      "key": "diagnosticsClearFailed",
+      "catalog": "settings",
+      "reason": "用户确认的设置底部排查日志：简洁名称/用途、用户主动操作与真实结果；默认无状态，清空二次确认。",
+      "translations": {
+        "zh-CN": "清空失败，请重试",
+        "zh-TW": "清空失敗，請重試",
+        "en": "Could not clear logs. Try again.",
+        "ja": "ログを消去できませんでした。再試行してください"
+      }
+    },
+    {
+      "key": "diagnosticsIncomplete",
+      "catalog": "settings",
+      "reason": "用户确认的设置底部排查日志：简洁名称/用途、用户主动操作与真实结果；默认无状态，清空二次确认。",
+      "translations": {
+        "zh-CN": "部分日志可能缺失",
+        "zh-TW": "部分日誌可能缺失",
+        "en": "Some log entries may be missing",
+        "ja": "一部のログが欠けている可能性があります"
+      }
+    },
+    {
+      "key": "diagnosticsClearConfirm",
+      "catalog": "settings",
+      "reason": "用户确认的设置底部排查日志：简洁名称/用途、用户主动操作与真实结果；默认无状态，清空二次确认。",
+      "translations": {
+        "zh-CN": "清空已有日志？清空后无法恢复。",
+        "zh-TW": "清空現有日誌？清空後無法復原。",
+        "en": "Clear saved logs? This cannot be undone.",
+        "ja": "保存されたログを消去しますか？元に戻すことはできません。"
+      }
+    },
+    {
+      "key": "diagnosticsConfirmClear",
+      "catalog": "settings",
+      "reason": "用户确认的设置底部排查日志：简洁名称/用途、用户主动操作与真实结果；默认无状态，清空二次确认。",
+      "translations": {
+        "zh-CN": "确认清空",
+        "zh-TW": "確認清空",
+        "en": "Clear saved logs",
+        "ja": "消去する"
+      }
+    },
+    {
+      "key": "groupNameRequired",
+      "catalog": "common",
+      "reason": "用户确认收藏和书签共用分组名称校验：在原输入框旁提示并保留草稿；删除收藏专属文案键，不保留旧运行时别名。",
+      "translations": {
+        "zh-CN": "请输入分组名称",
+        "zh-TW": "請輸入分組名稱",
+        "en": "Enter a group name.",
+        "ja": "グループ名を入力してください"
+      }
+    },
+    {
+      "key": "moveToGroup",
+      "catalog": "common",
+      "reason": "用户确认收藏复用书签移动分组入口；迁移原书签文案到共享键，显示文本不变，不保留旧运行时别名。",
+      "translations": {
+        "zh-CN": "移动到分组",
+        "zh-TW": "移動到分組",
+        "en": "Move to group",
+        "ja": "グループへ移動"
+      }
+    },
+    {
+      "key": "favoritesActions",
+      "catalog": "favorites",
+      "reason": "用户确认收藏列表增加与书签一致的条目操作菜单；独立按钮可访问名称。",
+      "translations": {
+        "zh-CN": "收藏操作",
+        "zh-TW": "收藏操作",
+        "en": "Favorite actions",
+        "ja": "お気に入り操作"
+      }
+    }
+  ]
+}

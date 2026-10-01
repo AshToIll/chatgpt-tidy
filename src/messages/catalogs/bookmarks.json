@@ -1,0 +1,204 @@
+{
+  "description": "书签栏目：消息书签、定位、列表，以及 ChatGPT 网页书签按钮。",
+  "messages": {
+    "bookmarksReadFailed": {
+      "zh-CN": "书签未读到",
+      "zh-TW": "書籤未讀到",
+      "en": "Bookmarks not loaded",
+      "ja": "ブックマークを読み込めません"
+    },
+    "bookmarkOpenFailed": {
+      "zh-CN": "打开未完成，请再点",
+      "zh-TW": "開啟未完成，請再點",
+      "en": "Could not confirm opening. Try again.",
+      "ja": "もう一度開いてください"
+    },
+    "bookmarksCount": {
+      "zh-CN": "{count} 个书签",
+      "zh-TW": "{count} 個書籤",
+      "en": "{count} bookmarks",
+      "ja": "{count} 件のブックマーク"
+    },
+    "searchBookmarks": {
+      "zh-CN": "搜索书签…",
+      "zh-TW": "搜尋書籤…",
+      "en": "Search bookmarks…",
+      "ja": "ブックマークを検索…"
+    },
+    "allBookmarks": {
+      "zh-CN": "全部书签",
+      "zh-TW": "全部書籤",
+      "en": "All bookmarks",
+      "ja": "すべてのブックマーク"
+    },
+    "bookmarkPresetQuote": {
+      "zh-CN": "摘录",
+      "zh-TW": "摘錄",
+      "en": "Quotes",
+      "ja": "引用"
+    },
+    "bookmarkPresetInsight": {
+      "zh-CN": "灵感",
+      "zh-TW": "靈感",
+      "en": "Insights",
+      "ja": "ひらめき"
+    },
+    "bookmarkPresetTodo": {
+      "zh-CN": "待回看",
+      "zh-TW": "稍後回顧",
+      "en": "Review later",
+      "ja": "あとで確認"
+    },
+    "bookmarkSavedAt": {
+      "zh-CN": "收藏时间",
+      "zh-TW": "收藏時間",
+      "en": "Date bookmarked",
+      "ja": "登録日時"
+    },
+    "emptyBookmarks": {
+      "zh-CN": "还没有消息书签",
+      "zh-TW": "還沒有訊息書籤",
+      "en": "No message bookmarks yet",
+      "ja": "メッセージのブックマークはまだありません"
+    },
+    "emptyBookmarksView": {
+      "zh-CN": "当前视图没有书签",
+      "zh-TW": "目前檢視沒有書籤",
+      "en": "No bookmarks in this view",
+      "ja": "この表示にはブックマークがありません"
+    },
+    "bookmarkActions": {
+      "zh-CN": "书签操作",
+      "zh-TW": "書籤操作",
+      "en": "Bookmark actions",
+      "ja": "ブックマーク操作"
+    },
+    "removeBookmark": {
+      "zh-CN": "取消书签",
+      "zh-TW": "取消書籤",
+      "en": "Remove bookmark",
+      "ja": "ブックマークを解除"
+    },
+    "bookmarkRemoved": {
+      "zh-CN": "已取消消息书签",
+      "zh-TW": "已取消訊息書籤",
+      "en": "Bookmark removed",
+      "ja": "ブックマークを解除しました"
+    },
+    "bookmarkMoved": {
+      "zh-CN": "书签分组已更新",
+      "zh-TW": "書籤分組已更新",
+      "en": "Bookmark group updated",
+      "ja": "ブックマークのグループを更新しました"
+    },
+    "bookmarkGroupDeleted": {
+      "zh-CN": "分组已删除，书签已回到未分组",
+      "zh-TW": "分組已刪除，書籤已回到未分組",
+      "en": "Group deleted; bookmarks moved to Ungrouped",
+      "ja": "グループを削除し、ブックマークを未分類に移動しました"
+    },
+    "deleteBookmarkGroupConfirm": {
+      "zh-CN": "删除“{name}”？其中的书签会回到未分组。",
+      "zh-TW": "刪除“{name}”？其中的書籤會回到未分組。",
+      "en": "Delete “{name}”? Its bookmarks will move to Ungrouped.",
+      "ja": "「{name}」を削除しますか？ブックマークは未分類に移動します。"
+    },
+    "messageMissing": {
+      "zh-CN": "原消息未找到，仍保留书签",
+      "zh-TW": "找不到原訊息，書籤仍予以保留",
+      "en": "Original message not found; bookmark retained",
+      "ja": "元のメッセージが見つかりません。ブックマークは保持されています"
+    },
+    "jumpMessage": {
+      "zh-CN": "跳转到原消息",
+      "zh-TW": "跳至原訊息",
+      "en": "Jump to original message",
+      "ja": "元のメッセージへ移動"
+    },
+    "bookmarkLocated": {
+      "zh-CN": "已定位到原消息",
+      "zh-TW": "已定位到原訊息",
+      "en": "Jumped to the original message",
+      "ja": "元のメッセージへ移動しました"
+    },
+    "bookmarkLocating": {
+      "zh-CN": "定位中…",
+      "zh-TW": "定位中…",
+      "en": "Locating…",
+      "ja": "移動中…"
+    },
+    "bookmarkOpeningConversation": {
+      "zh-CN": "正在打开书签所在会话…",
+      "zh-TW": "正在開啟書籤所在對話…",
+      "en": "Opening the bookmarked conversation…",
+      "ja": "ブックマークの会話を開いています…"
+    },
+    "bookmarkLocateFallback": {
+      "zh-CN": "消息未找到，请按摘录找",
+      "zh-TW": "訊息未找到，請按摘錄找",
+      "en": "Message not found. Look for its excerpt.",
+      "ja": "抜粋をもとにメッセージを探してください"
+    },
+    "bookmarks": {
+      "zh-CN": "书签",
+      "zh-TW": "書籤",
+      "en": "Bookmarks",
+      "ja": "ブックマーク"
+    },
+    "bookmarksSubtitle": {
+      "zh-CN": "整理消息书签",
+      "zh-TW": "整理訊息書籤",
+      "en": "Organize message bookmarks",
+      "ja": "メッセージのブックマークを整理"
+    },
+    "bookmarkItemsUnit": {
+      "zh-CN": "条书签",
+      "zh-TW": "個書籤",
+      "en": "bookmarks",
+      "ja": "件のブックマーク"
+    },
+    "bookmarkFromGroup": {
+      "zh-CN": "来自分组：{group}",
+      "zh-TW": "來自分組：{group}",
+      "en": "From group: {group}",
+      "ja": "グループ: {group}"
+    },
+    "pageBookmarkAdd": {
+      "zh-CN": "添加消息书签",
+      "zh-TW": "新增訊息書籤",
+      "en": "Bookmark message",
+      "ja": "メッセージをブックマーク"
+    },
+    "pageBookmarkRemove": {
+      "zh-CN": "取消消息书签",
+      "zh-TW": "取消訊息書籤",
+      "en": "Remove message bookmark",
+      "ja": "ブックマークを解除"
+    },
+    "pageBookmarkOpen": {
+      "zh-CN": "打开书签",
+      "zh-TW": "開啟書籤",
+      "en": "Open bookmarks",
+      "ja": "ブックマークを開く"
+    },
+    "pageBookmarkFailed": {
+      "zh-CN": "结果未明，请查书签",
+      "zh-TW": "結果未明，請查書籤",
+      "en": "Result unknown. Check your bookmarks.",
+      "ja": "ブックマークの保存結果を確認してください"
+    },
+    "pageBookmarkOpenFailed": {
+      "zh-CN": "未能打开，请再点",
+      "zh-TW": "未能開啟，請再點",
+      "en": "Could not open. Try again.",
+      "ja": "もう一度開いてください"
+    }
+  },
+  "pageBindings": {
+    "add": "pageBookmarkAdd",
+    "remove": "pageBookmarkRemove",
+    "open": "pageBookmarkOpen",
+    "failed": "pageBookmarkFailed",
+    "openFailed": "pageBookmarkOpenFailed"
+  }
+}

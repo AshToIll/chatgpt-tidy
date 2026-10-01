@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><title>TIDY theme fixture</title>
+<link rel="stylesheet" href="../../src/app/sidepanel/panel.css">
+<link rel="stylesheet" href="../../src/features/export/ui/export.css">
+<link rel="stylesheet" href="../../src/features/export/ui/export-job.css">
+<link rel="stylesheet" href="../../src/features/titles/ui/title.css">
+<link rel="stylesheet" href="../../src/features/titles/ui/title-batch.css">
+<style>.qa-fixtures { position: fixed; left: -4000px; top: 0; width: 320px; }</style>
+<script>
+const failure = error => { window.themeReport = { ok: false, error: error?.message || String(error) }; };
+addEventListener('error', event => failure(event.error || Error(event.message)));
+addEventListener('unhandledrejection', event => failure(event.reason));
+</script><script type="module" src="panel-theme-frame.mjs"></script></html>

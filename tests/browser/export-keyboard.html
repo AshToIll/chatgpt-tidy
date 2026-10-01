@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><title>TIDY export keyboard regression</title>
+<link rel="stylesheet" href="../../src/app/sidepanel/panel.css">
+<link rel="stylesheet" href="../../src/features/export/ui/export.css">
+<style>body { display:block; background:#f5f6f8; padding:16px; } #export-view { width:420px; height:720px; background:white; } #results { position:absolute; left:460px; top:0; width:760px; white-space:pre-wrap; font-size:12px; }</style>
+<button id="background">Background action</button><div id="preexisting-inert" inert><button>Already inert</button></div>
+<div id="export-view"></div><pre id="results">pending</pre>
+<script>
+globalThis.chrome = { runtime: { id: 'synthetic-extension', onMessage: {
+  addListener: listener => { globalThis.previewReceiver = listener; },
+  removeListener: listener => { if (globalThis.previewReceiver === listener) globalThis.previewReceiver = null; }
+}, sendMessage: async envelope => { globalThis.previewClosed?.(envelope); return {}; } } };
+const failure = error => {
+  const output = document.querySelector('#results');
+  output.textContent = JSON.stringify({ ok: false, error: error.message, stack: error.stack });
+  output.dataset.complete = 'true';
+};
+addEventListener('error', event => failure(event.error || Error(event.message)));
+addEventListener('unhandledrejection', event => failure(event.reason));
+</script>
+<script src="../../src/platform/session/shared/page-session.js"></script>
+<script>globalThis.TidyPageSession = TidyPageSessionContract.create({ runtime: chrome.runtime });</script>
+<script type="module" src="export-keyboard.mjs"></script></html>

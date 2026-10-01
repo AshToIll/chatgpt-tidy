@@ -1,0 +1,1100 @@
+{
+  "scope": "Versioned license evidence for all four shipped JavaScript libraries and selected embedded components; not a complete SBOM or a claim that upstream notice gaps are closed. Font evidence is in assets/fonts/SOURCES.json.",
+  "bundles": [
+    {
+      "local_file": "src/vendor/pdf-lib-1.17.1.min.js",
+      "package": "pdf-lib",
+      "version": "1.17.1",
+      "source_tarball": "https://registry.npmjs.org/pdf-lib/-/pdf-lib-1.17.1.tgz",
+      "source_member": "package/dist/pdf-lib.min.js",
+      "sha256": "0f9a5cad07941f0826586c94e089d89b918c46e5c17cf2d5a3c6f666e3bc694f",
+      "verification": "exact byte-for-byte match"
+    },
+    {
+      "local_file": "src/vendor/fontkit-1.1.1.min.js",
+      "package": "@pdf-lib/fontkit",
+      "version": "1.1.1",
+      "source_tarball": "https://registry.npmjs.org/@pdf-lib/fontkit/-/fontkit-1.1.1.tgz",
+      "source_member": "package/dist/fontkit.umd.min.js",
+      "sha256": "d8df561b9fba98e24f2e5130e40948809281bbbc55a20c412359f1a0a5eb35a6",
+      "verification": "exact byte-for-byte match"
+    },
+    {
+      "local_file": "src/vendor/jszip-3.10.1.min.js",
+      "package": "jszip",
+      "version": "3.10.1",
+      "source_tarball": "https://registry.npmjs.org/jszip/-/jszip-3.10.1.tgz",
+      "source_member": "package/dist/jszip.min.js",
+      "sha256": "acc7e41455a80765b5fd9c7ee1b8078a6d160bbbca455aeae854de65c947d59e",
+      "verification": "exact byte-for-byte match"
+    },
+    {
+      "local_file": "src/vendor/regenerator-runtime-0.14.1.js",
+      "package": "regenerator-runtime",
+      "version": "0.14.1",
+      "source_tarball": "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.14.1.tgz",
+      "source_member": "package/runtime.js",
+      "sha256": "7beda998b3fd277f3548e12b277bafc3037d243421f007032d38dffee412224c",
+      "verification": "exact byte-for-byte match"
+    }
+  ],
+  "notices": [
+    {
+      "file": "pdf-lib-1.17.1-LICENSE.md",
+      "component": "pdf-lib",
+      "version": "1.17.1",
+      "source_tarball": "https://registry.npmjs.org/pdf-lib/-/pdf-lib-1.17.1.tgz",
+      "source_member": "package/LICENSE.md",
+      "sha256": "f2c9fc00fdb66eb99ac156ba52d734af66d8d309f65753ae809ad34ee2883bcb",
+      "copy": "exact upstream bytes"
+    },
+    {
+      "file": "jszip-3.10.1-LICENSE.markdown",
+      "component": "jszip",
+      "version": "3.10.1",
+      "source_tarball": "https://registry.npmjs.org/jszip/-/jszip-3.10.1.tgz",
+      "source_member": "package/LICENSE.markdown",
+      "sha256": "566c953c6090b1218ca6217dd7359d45dde46581968586dc607d59a78af6a9c4",
+      "copy": "exact upstream bytes"
+    },
+    {
+      "file": "pdf-lib-standard-fonts-1.0.0-LICENSE.md",
+      "component": "@pdf-lib/standard-fonts",
+      "version": "1.0.0",
+      "source_tarball": "https://registry.npmjs.org/@pdf-lib/standard-fonts/-/standard-fonts-1.0.0.tgz",
+      "source_member": "package/LICENSE.md",
+      "sha256": "45cc2bb9957ed43f5c7f5eb1912f9f670730394d614079510477cae626194649",
+      "copy": "exact upstream bytes"
+    },
+    {
+      "file": "pdf-lib-upng-1.0.1-LICENSE",
+      "component": "@pdf-lib/upng",
+      "version": "1.0.1",
+      "source_tarball": "https://registry.npmjs.org/@pdf-lib/upng/-/upng-1.0.1.tgz",
+      "source_member": "package/LICENSE",
+      "sha256": "c1fb8861eca211bf5aea574358aba7039396c0c1824c2a1477cc126d398efd89",
+      "copy": "exact upstream bytes"
+    },
+    {
+      "file": "tslib-1.11.1-CopyrightNotice.txt",
+      "component": "tslib",
+      "version": "1.11.1",
+      "source_tarball": "https://registry.npmjs.org/tslib/-/tslib-1.11.1.tgz",
+      "source_member": "package/CopyrightNotice.txt",
+      "sha256": "19246466cb51e46c12b22e43b4d2703ac981cb4295d061d6e20609bd5845510b",
+      "copy": "exact upstream bytes"
+    },
+    {
+      "file": "tslib-1.11.1-LICENSE.txt",
+      "component": "tslib",
+      "version": "1.11.1",
+      "source_tarball": "https://registry.npmjs.org/tslib/-/tslib-1.11.1.tgz",
+      "source_member": "package/LICENSE.txt",
+      "sha256": "a7d00bfd54525bc694b6e32f64c7ebcf5e6b7ae3657be5cc12767bce74654a47",
+      "copy": "exact upstream bytes"
+    },
+    {
+      "file": "pako-1.0.5-LICENSE",
+      "component": "pako",
+      "version": "1.0.5",
+      "source_tarball": "https://registry.npmjs.org/pako/-/pako-1.0.5.tgz",
+      "source_member": "package/LICENSE",
+      "sha256": "a04665b3b2de56c66730c1f720f528175739e4104f79073614aa611da1e85539",
+      "copy": "exact upstream bytes"
+    },
+    {
+      "file": "pako-1.0.10-LICENSE",
+      "component": "pako",
+      "version": "1.0.10",
+      "source_tarball": "https://registry.npmjs.org/pako/-/pako-1.0.10.tgz",
+      "source_member": "package/LICENSE",
+      "sha256": "a04665b3b2de56c66730c1f720f528175739e4104f79073614aa611da1e85539",
+      "copy": "exact upstream bytes"
+    },
+    {
+      "file": "pako-1.0.11-LICENSE",
+      "component": "pako",
+      "version": "1.0.11",
+      "source_tarball": "https://registry.npmjs.org/pako/-/pako-1.0.11.tgz",
+      "source_member": "package/LICENSE",
+      "sha256": "a04665b3b2de56c66730c1f720f528175739e4104f79073614aa611da1e85539",
+      "copy": "exact upstream bytes"
+    },
+    {
+      "file": "lie-3.3.0-license.md",
+      "component": "lie",
+      "version": "3.3.0",
+      "source_tarball": "https://registry.npmjs.org/lie/-/lie-3.3.0.tgz",
+      "source_member": "package/license.md",
+      "sha256": "5c81b0caa98593408b03125efa25efe622341ed87ae55561968828cd887d64a4",
+      "copy": "exact upstream bytes"
+    },
+    {
+      "file": "immediate-3.0.6-LICENSE.txt",
+      "component": "immediate",
+      "version": "3.0.6",
+      "source_tarball": "https://registry.npmjs.org/immediate/-/immediate-3.0.6.tgz",
+      "source_member": "package/LICENSE.txt",
+      "sha256": "809e66de579fb7d92503848bbe6d1f348f4f6521a71e5d294fe7cc0c87a3b4ff",
+      "copy": "exact upstream bytes"
+    },
+    {
+      "file": "setimmediate-1.0.5-LICENSE.txt",
+      "component": "setimmediate",
+      "version": "1.0.5",
+      "source_tarball": "https://registry.npmjs.org/setimmediate/-/setimmediate-1.0.5.tgz",
+      "source_member": "package/LICENSE.txt",
+      "sha256": "c4b4ad3a5746f1f5249a6dd90396ec519264e1bb02e01e48a6522c48a3a97cb4",
+      "copy": "exact upstream bytes"
+    },
+    {
+      "file": "pdf-lib-unicode-properties-0.0.1-LICENSE",
+      "component": "@pdf-lib/unicode-properties",
+      "version": "0.0.1",
+      "source_tarball": "https://registry.npmjs.org/@pdf-lib/unicode-properties/-/unicode-properties-0.0.1.tgz",
+      "source_member": "package/LICENSE",
+      "sha256": "43439dbd4f43837aadab215cdbe5a422cc6323a50c4ea84d8d6bbc3671666a1d",
+      "copy": "exact upstream bytes"
+    },
+    {
+      "file": "buffer-5.6.0-LICENSE",
+      "component": "buffer",
+      "version": "5.6.0",
+      "source_tarball": "https://registry.npmjs.org/buffer/-/buffer-5.6.0.tgz",
+      "source_member": "package/LICENSE",
+      "sha256": "06bafa45fdad2579ba0e43b0c9b2c6290287c99c4203c300254a462b38a307f6",
+      "copy": "exact upstream bytes"
+    },
+    {
+      "file": "base64-js-1.3.0-LICENSE",
+      "component": "base64-js",
+      "version": "1.3.0",
+      "source_tarball": "https://registry.npmjs.org/base64-js/-/base64-js-1.3.0.tgz",
+      "source_member": "package/LICENSE",
+      "sha256": "136239d1783a151cdbf6fd7935dd945082b9d0ee2cbb8497cc0ae49e8a743a47",
+      "copy": "exact upstream bytes"
+    },
+    {
+      "file": "base64-js-1.3.1-LICENSE",
+      "component": "base64-js",
+      "version": "1.3.1",
+      "source_tarball": "https://registry.npmjs.org/base64-js/-/base64-js-1.3.1.tgz",
+      "source_member": "package/LICENSE",
+      "sha256": "5b37224c080cdcc97c871ada971c224e9926370fe74f11b539aa1cf9f3b1aca1",
+      "copy": "exact upstream bytes"
+    },
+    {
+      "file": "ieee754-1.1.13-LICENSE",
+      "component": "ieee754",
+      "version": "1.1.13",
+      "source_tarball": "https://registry.npmjs.org/ieee754/-/ieee754-1.1.13.tgz",
+      "source_member": "package/LICENSE",
+      "sha256": "18d45466ba3253deae04667e267a91ea8de8548f18c1125264d1c9db28194cc1",
+      "copy": "exact upstream bytes"
+    },
+    {
+      "file": "clone-1.0.4-LICENSE",
+      "component": "clone",
+      "version": "1.0.4",
+      "source_tarball": "https://registry.npmjs.org/clone/-/clone-1.0.4.tgz",
+      "source_member": "package/LICENSE",
+      "sha256": "3fb0857ef0133928cf72c88dfc464e931486e88778961eedec25585e2321507f",
+      "copy": "exact upstream bytes"
+    },
+    {
+      "file": "tiny-inflate-1.0.3-LICENSE",
+      "component": "tiny-inflate",
+      "version": "1.0.3",
+      "source_tarball": "https://registry.npmjs.org/tiny-inflate/-/tiny-inflate-1.0.3.tgz",
+      "source_member": "package/LICENSE",
+      "sha256": "c0df7f551401f8f80197ff31bf69b8cd23727d127423403282514d242a3ab132",
+      "copy": "exact upstream bytes"
+    },
+    {
+      "file": "pako-zlib-NOTICES.txt",
+      "component": "pako zlib-derived files",
+      "versions": [
+        "1.0.5",
+        "1.0.10",
+        "1.0.11"
+      ],
+      "copy": "distinct complete leading zlib copyright/permission comments, verbatim",
+      "source_members": [
+        {
+          "version": "1.0.5",
+          "member": "package/lib/zlib/constants.js"
+        },
+        {
+          "version": "1.0.5",
+          "member": "package/lib/zlib/crc32.js"
+        },
+        {
+          "version": "1.0.5",
+          "member": "package/lib/zlib/deflate.js"
+        },
+        {
+          "version": "1.0.5",
+          "member": "package/lib/zlib/gzheader.js"
+        },
+        {
+          "version": "1.0.5",
+          "member": "package/lib/zlib/adler32.js"
+        },
+        {
+          "version": "1.0.5",
+          "member": "package/lib/zlib/inflate.js"
+        },
+        {
+          "version": "1.0.5",
+          "member": "package/lib/zlib/inftrees.js"
+        },
+        {
+          "version": "1.0.5",
+          "member": "package/lib/zlib/messages.js"
+        },
+        {
+          "version": "1.0.5",
+          "member": "package/lib/zlib/trees.js"
+        },
+        {
+          "version": "1.0.5",
+          "member": "package/lib/zlib/zstream.js"
+        },
+        {
+          "version": "1.0.5",
+          "member": "package/lib/zlib/inffast.js"
+        },
+        {
+          "version": "1.0.10",
+          "member": "package/lib/zlib/adler32.js"
+        },
+        {
+          "version": "1.0.10",
+          "member": "package/lib/zlib/constants.js"
+        },
+        {
+          "version": "1.0.10",
+          "member": "package/lib/zlib/crc32.js"
+        },
+        {
+          "version": "1.0.10",
+          "member": "package/lib/zlib/deflate.js"
+        },
+        {
+          "version": "1.0.10",
+          "member": "package/lib/zlib/gzheader.js"
+        },
+        {
+          "version": "1.0.10",
+          "member": "package/lib/zlib/inffast.js"
+        },
+        {
+          "version": "1.0.10",
+          "member": "package/lib/zlib/inflate.js"
+        },
+        {
+          "version": "1.0.10",
+          "member": "package/lib/zlib/inftrees.js"
+        },
+        {
+          "version": "1.0.10",
+          "member": "package/lib/zlib/messages.js"
+        },
+        {
+          "version": "1.0.10",
+          "member": "package/lib/zlib/trees.js"
+        },
+        {
+          "version": "1.0.10",
+          "member": "package/lib/zlib/zstream.js"
+        },
+        {
+          "version": "1.0.11",
+          "member": "package/lib/zlib/adler32.js"
+        },
+        {
+          "version": "1.0.11",
+          "member": "package/lib/zlib/constants.js"
+        },
+        {
+          "version": "1.0.11",
+          "member": "package/lib/zlib/crc32.js"
+        },
+        {
+          "version": "1.0.11",
+          "member": "package/lib/zlib/deflate.js"
+        },
+        {
+          "version": "1.0.11",
+          "member": "package/lib/zlib/gzheader.js"
+        },
+        {
+          "version": "1.0.11",
+          "member": "package/lib/zlib/inffast.js"
+        },
+        {
+          "version": "1.0.11",
+          "member": "package/lib/zlib/inflate.js"
+        },
+        {
+          "version": "1.0.11",
+          "member": "package/lib/zlib/inftrees.js"
+        },
+        {
+          "version": "1.0.11",
+          "member": "package/lib/zlib/messages.js"
+        },
+        {
+          "version": "1.0.11",
+          "member": "package/lib/zlib/trees.js"
+        },
+        {
+          "version": "1.0.11",
+          "member": "package/lib/zlib/zstream.js"
+        }
+      ],
+      "sha256": "be0b3e53fac837257d0450a5c27a540bd554cff2d2f57e5b31eacb7cbede42c0",
+      "reverification": "2026-09-19: retained source comments checked against versioned archives (line endings normalized for comparison); metadata checked against package or versioned registry metadata, which expands author strings into objects."
+    },
+    {
+      "file": "pdf-lib-fontkit-1.1.1-NOTICES.txt",
+      "component": "@pdf-lib/fontkit",
+      "version": "1.1.1",
+      "source_tarball": "https://registry.npmjs.org/@pdf-lib/fontkit/-/fontkit-1.1.1.tgz",
+      "source_members": [
+        "package/package.json",
+        "package/README.md",
+        "package/dist/fontkit.umd.js"
+      ],
+      "copy": "metadata/declaration excerpts and all distinct copyright/license block comments; original comment text preserved",
+      "gap": "No package-level LICENSE/COPYING/copyright text supplied by upstream",
+      "sha256": "f55d1372e509d954727408470895d1fdcab96fe86e67010299372c61c8db6699",
+      "reverification": "2026-09-19: retained source comments checked against versioned archives (line endings normalized for comparison); metadata checked against package or versioned registry metadata, which expands author strings into objects."
+    },
+    {
+      "file": "fontkit-fork-DECLARATIONS.txt",
+      "component": "@pdf-lib/brotli and @pdf-lib/restructure",
+      "copy": "official versioned package metadata excerpts; missing texts stated explicitly",
+      "sha256": "1b6d80f3428e275fe21b8fa66b4db35752beaf0abf6777da029aaa27c041aa0c",
+      "reverification": "2026-09-19: retained source comments checked against versioned archives (line endings normalized for comparison); metadata checked against package or versioned registry metadata, which expands author strings into objects."
+    },
+    {
+      "file": "base64-arraybuffer-0.1.5-LICENSE-MIT",
+      "component": "base64-arraybuffer",
+      "version": "0.1.5",
+      "source_tarball": "https://registry.npmjs.org/base64-arraybuffer/-/base64-arraybuffer-0.1.5.tgz",
+      "source_member": "package/LICENSE-MIT",
+      "sha256": "f3eca6ff762533fa5a77caf954a143e48afa204668cf97dce758c45a9e006be3",
+      "copy": "exact upstream bytes"
+    },
+    {
+      "file": "fontkit-runtime-DECLARATIONS.txt",
+      "component": "tiny-inflate 1.0.2 and unicode-trie 0.3.1",
+      "copy": "official versioned metadata excerpts; missing texts stated explicitly",
+      "sha256": "9dea8551a1e1067c8e1eaf9459329fc994933a870276b34e7391c909e3f141e5",
+      "reverification": "2026-09-19: retained source comments checked against versioned archives (line endings normalized for comparison); metadata checked against package or versioned registry metadata, which expands author strings into objects."
+    },
+    {
+      "file": "iconv-lite-0.4.24-LICENSE.txt",
+      "component": "iconv-lite",
+      "version": "0.4.24",
+      "source_tarball": "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.4.24.tgz",
+      "source_member": "package/LICENSE",
+      "sha256": "ac779f7314c74f232ef847ea86e714abe25cf6eeb5cc97b69451b74e2af6492d",
+      "copy": "exact upstream bytes",
+      "version_evidence": "Candidate version from the pinned fork lock; observed bundle code identifies the component, not a byte-exact reconstruction.",
+      "bundle_marker": "InternalCodec"
+    },
+    {
+      "file": "safer-buffer-2.1.2-LICENSE.txt",
+      "component": "safer-buffer",
+      "version": "2.1.2",
+      "source_tarball": "https://registry.npmjs.org/safer-buffer/-/safer-buffer-2.1.2.tgz",
+      "source_member": "package/LICENSE",
+      "sha256": "4bc935e71be198c67ddf3c2b5fddb195f6edc182bfc155a96a6db61b44b494b9",
+      "copy": "exact upstream bytes",
+      "version_evidence": "Candidate version from the pinned fork lock; observed bundle code identifies the component, not a byte-exact reconstruction.",
+      "bundle_marker": "var Safer = safer.Buffer"
+    },
+    {
+      "file": "deep-equal-1.1.1-LICENSE.txt",
+      "component": "deep-equal",
+      "version": "1.1.1",
+      "source_tarball": "https://registry.npmjs.org/deep-equal/-/deep-equal-1.1.1.tgz",
+      "source_member": "package/LICENSE",
+      "sha256": "4839125439c51ef70db530780f90cfa90e3a09b7e18694fc914d5daa2e463d14",
+      "copy": "exact upstream bytes",
+      "version_evidence": "Candidate version from the pinned fork lock; observed bundle code identifies the component, not a byte-exact reconstruction.",
+      "bundle_marker": "function deepEqual"
+    },
+    {
+      "file": "is-arguments-1.0.4-LICENSE.txt",
+      "component": "is-arguments",
+      "version": "1.0.4",
+      "source_tarball": "https://registry.npmjs.org/is-arguments/-/is-arguments-1.0.4.tgz",
+      "source_member": "package/LICENSE",
+      "sha256": "dc0fe5a22d9336f345ee984f9bf56f11f22877a3aa5fd16a1db9a8ca0e23a5d1",
+      "copy": "exact upstream bytes",
+      "version_evidence": "Candidate version from the pinned fork lock; observed bundle code identifies the component, not a byte-exact reconstruction.",
+      "bundle_marker": "supportsStandardArguments"
+    },
+    {
+      "file": "is-date-object-1.0.2-LICENSE.txt",
+      "component": "is-date-object",
+      "version": "1.0.2",
+      "source_tarball": "https://registry.npmjs.org/is-date-object/-/is-date-object-1.0.2.tgz",
+      "source_member": "package/LICENSE",
+      "sha256": "c61652db3d2808f667b48af0a358f0d85fd07ad4a0d0b1a50882dec3b764c522",
+      "copy": "exact upstream bytes",
+      "version_evidence": "Candidate version from the pinned fork lock; observed bundle code identifies the component, not a byte-exact reconstruction.",
+      "bundle_marker": "tryDateGetDayCall"
+    },
+    {
+      "file": "is-regex-1.0.5-LICENSE.txt",
+      "component": "is-regex",
+      "version": "1.0.5",
+      "source_tarball": "https://registry.npmjs.org/is-regex/-/is-regex-1.0.5.tgz",
+      "source_member": "package/LICENSE",
+      "sha256": "dc0fe5a22d9336f345ee984f9bf56f11f22877a3aa5fd16a1db9a8ca0e23a5d1",
+      "copy": "exact upstream bytes",
+      "version_evidence": "Candidate version from the pinned fork lock; observed bundle code identifies the component, not a byte-exact reconstruction.",
+      "bundle_marker": "tryRegexExecCall"
+    },
+    {
+      "file": "object-is-1.1.2-LICENSE.txt",
+      "component": "object-is",
+      "version": "1.1.2",
+      "source_tarball": "https://registry.npmjs.org/object-is/-/object-is-1.1.2.tgz",
+      "source_member": "package/LICENSE",
+      "sha256": "dc0fe5a22d9336f345ee984f9bf56f11f22877a3aa5fd16a1db9a8ca0e23a5d1",
+      "copy": "exact upstream bytes",
+      "version_evidence": "Candidate version from the pinned fork lock; observed bundle code identifies the component, not a byte-exact reconstruction.",
+      "bundle_marker": "var objectIs ="
+    },
+    {
+      "file": "object-keys-1.1.1-LICENSE.txt",
+      "component": "object-keys",
+      "version": "1.1.1",
+      "source_tarball": "https://registry.npmjs.org/object-keys/-/object-keys-1.1.1.tgz",
+      "source_member": "package/LICENSE",
+      "sha256": "5640e5cbe2e9f57f6ccfdd8dbfbeadb875495bdbcb69d2666ce3177ccd0942e4",
+      "copy": "exact upstream bytes",
+      "version_evidence": "Candidate version from the pinned fork lock; observed bundle code identifies the component, not a byte-exact reconstruction.",
+      "bundle_marker": "var objectKeys ="
+    },
+    {
+      "file": "define-properties-1.1.3-LICENSE.txt",
+      "component": "define-properties",
+      "version": "1.1.3",
+      "source_tarball": "https://registry.npmjs.org/define-properties/-/define-properties-1.1.3.tgz",
+      "source_member": "package/LICENSE",
+      "sha256": "00d402c2bbe7c67369bd01ce2c16b8ed46ccc949a1ee2d6bb8f9606afa8c7434",
+      "copy": "exact upstream bytes",
+      "version_evidence": "Candidate version from the pinned fork lock; observed bundle code identifies the component, not a byte-exact reconstruction.",
+      "bundle_marker": "arePropertyDescriptorsSupported"
+    },
+    {
+      "file": "function-bind-1.1.1-LICENSE.txt",
+      "component": "function-bind",
+      "version": "1.1.1",
+      "source_tarball": "https://registry.npmjs.org/function-bind/-/function-bind-1.1.1.tgz",
+      "source_member": "package/LICENSE",
+      "sha256": "773e131a7684726005a7e4688a80b4620033bc08499bc1404dd1a1eb3bca725e",
+      "copy": "exact upstream bytes",
+      "version_evidence": "Candidate version from the pinned fork lock; observed bundle code identifies the component, not a byte-exact reconstruction.",
+      "bundle_marker": "var functionBind ="
+    },
+    {
+      "file": "has-symbols-1.0.1-LICENSE.txt",
+      "component": "has-symbols",
+      "version": "1.0.1",
+      "source_tarball": "https://registry.npmjs.org/has-symbols/-/has-symbols-1.0.1.tgz",
+      "source_member": "package/LICENSE",
+      "sha256": "206c1adcf206dc0031b11232f5b054ec5f1662407ab1ca415247921cab2068ab",
+      "copy": "exact upstream bytes",
+      "version_evidence": "Candidate version from the pinned fork lock; observed bundle code identifies the component, not a byte-exact reconstruction.",
+      "bundle_marker": "function hasNativeSymbols"
+    },
+    {
+      "file": "has-1.0.3-LICENSE.txt",
+      "component": "has",
+      "version": "1.0.3",
+      "source_tarball": "https://registry.npmjs.org/has/-/has-1.0.3.tgz",
+      "source_member": "package/LICENSE-MIT",
+      "sha256": "4fe5fd7b3318def0b74f8bf8c9276403f01da628fa8888822661519d80f237d3",
+      "copy": "exact upstream bytes",
+      "version_evidence": "Candidate version from the pinned fork lock; observed bundle code identifies the component, not a byte-exact reconstruction.",
+      "bundle_marker": "var src = functionBind.call"
+    },
+    {
+      "file": "es-abstract-1.17.5-LICENSE.txt",
+      "component": "es-abstract",
+      "version": "1.17.5",
+      "source_tarball": "https://registry.npmjs.org/es-abstract/-/es-abstract-1.17.5.tgz",
+      "source_member": "package/LICENSE",
+      "sha256": "00d402c2bbe7c67369bd01ce2c16b8ed46ccc949a1ee2d6bb8f9606afa8c7434",
+      "copy": "exact upstream bytes",
+      "version_evidence": "Candidate version from the pinned fork lock; observed bundle code identifies the component, not a byte-exact reconstruction.",
+      "bundle_marker": "var GetIntrinsic ="
+    },
+    {
+      "file": "regexp.prototype.flags-1.3.0-LICENSE.txt",
+      "component": "regexp.prototype.flags",
+      "version": "1.3.0",
+      "source_tarball": "https://registry.npmjs.org/regexp.prototype.flags/-/regexp.prototype.flags-1.3.0.tgz",
+      "source_member": "package/LICENSE",
+      "sha256": "0c3fb74dd54705869d561cb765495b64c4dada8a127e9cd3390303cd7cb8a770",
+      "copy": "exact upstream bytes",
+      "version_evidence": "Candidate version from the pinned fork lock; observed bundle code identifies the component, not a byte-exact reconstruction.",
+      "bundle_marker": "RegExp.prototype.flags getter called on non-object"
+    },
+    {
+      "file": "rollup-plugin-node-builtins-2.1.2-DECLARATIONS.txt",
+      "component": "rollup-plugin-node-builtins",
+      "version": "2.1.2",
+      "source_tarball": "https://registry.npmjs.org/rollup-plugin-node-builtins/-/rollup-plugin-node-builtins-2.1.2.tgz",
+      "source_member": "package/package.json",
+      "sha256": "3f3c082911a63264841bbffca9964a45e8114960363f83dd1fce43803da1d4c3",
+      "copy": "Introduction plus official metadata excerpt; full notice gap remains",
+      "version_evidence": "Candidate version from the pinned fork lock; observed bundle code identifies the component, not a byte-exact reconstruction.",
+      "bundle_marker": "var string_decoder ="
+    },
+    {
+      "file": "rollup-plugin-node-globals-1.4.0-DECLARATIONS.txt",
+      "component": "rollup-plugin-node-globals",
+      "version": "1.4.0",
+      "source_tarball": "https://registry.npmjs.org/rollup-plugin-node-globals/-/rollup-plugin-node-globals-1.4.0.tgz",
+      "source_member": "package/package.json",
+      "sha256": "e1c0be34d30c3161133e57d797340d0af4ff24ce9d4ff486f6160fd11c01e8dd",
+      "copy": "Introduction plus official metadata excerpt; full notice gap remains",
+      "version_evidence": "Candidate version from the pinned fork lock; observed bundle code identifies the component, not a byte-exact reconstruction.",
+      "bundle_marker": "// shim for using process in browser"
+    },
+    {
+      "file": "fontkit-node-NOTICES.txt",
+      "component": "fontkit embedded string_decoder / Node-derived code",
+      "source_tarball": "https://registry.npmjs.org/@pdf-lib/fontkit/-/fontkit-1.1.1.tgz",
+      "source_member": "package/dist/fontkit.umd.js",
+      "sha256": "bd92ee9afe81e1bd2ffdfa5bac028ecae74ff67ef9d07ef86285d3bce8f25713",
+      "copy": "Introduction plus verbatim upstream comment, not a package-level license reconstruction"
+    },
+    {
+      "file": "../REGENERATOR-RUNTIME-LICENSE.txt",
+      "component": "regenerator-runtime",
+      "version": "0.14.1",
+      "source_tarball": "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.14.1.tgz",
+      "source_member": "package/LICENSE",
+      "sha256": "51887a3d47051ac2fce1210562e5b9fe0830a8a8fabeb272c2d586eeb18a05fd",
+      "copy": "exact upstream bytes"
+    }
+  ],
+  "package_archives": [
+    {
+      "name": "pdf-lib",
+      "version": "1.17.1",
+      "metadata_url": "https://registry.npmjs.org/pdf-lib/1.17.1",
+      "tarball_url": "https://registry.npmjs.org/pdf-lib/-/pdf-lib-1.17.1.tgz",
+      "archive_sha256": "a7cc1eaf12e41e612a7be581162a63b18118aefc01e90f6a1f35347b1f324a1c",
+      "registry_sha1_verified": true
+    },
+    {
+      "name": "@pdf-lib/fontkit",
+      "version": "1.1.1",
+      "metadata_url": "https://registry.npmjs.org/@pdf-lib/fontkit/1.1.1",
+      "tarball_url": "https://registry.npmjs.org/@pdf-lib/fontkit/-/fontkit-1.1.1.tgz",
+      "archive_sha256": "6dd0ae9209fce419b2ed76c97166863167b4df56d75fbe3c7f1d1e6e49c85867",
+      "registry_sha1_verified": true
+    },
+    {
+      "name": "jszip",
+      "version": "3.10.1",
+      "metadata_url": "https://registry.npmjs.org/jszip/3.10.1",
+      "tarball_url": "https://registry.npmjs.org/jszip/-/jszip-3.10.1.tgz",
+      "archive_sha256": "5117f4a2a645aeb307bf3b829c575ad58135cc97e75291e594532ab5b5b21b23",
+      "registry_sha1_verified": true
+    },
+    {
+      "name": "@pdf-lib/standard-fonts",
+      "version": "1.0.0",
+      "metadata_url": "https://registry.npmjs.org/@pdf-lib/standard-fonts/1.0.0",
+      "tarball_url": "https://registry.npmjs.org/@pdf-lib/standard-fonts/-/standard-fonts-1.0.0.tgz",
+      "archive_sha256": "8a6b3a914d6d928840b484aa247d12702fc7b5ef00130a914929a129a5423d36",
+      "registry_sha1_verified": true
+    },
+    {
+      "name": "@pdf-lib/upng",
+      "version": "1.0.1",
+      "metadata_url": "https://registry.npmjs.org/@pdf-lib/upng/1.0.1",
+      "tarball_url": "https://registry.npmjs.org/@pdf-lib/upng/-/upng-1.0.1.tgz",
+      "archive_sha256": "737ffe924e0e207173427b7fe30a610144c93b27a1c894ac006b6ff70fc84f6c",
+      "registry_sha1_verified": true
+    },
+    {
+      "name": "tslib",
+      "version": "1.11.1",
+      "metadata_url": "https://registry.npmjs.org/tslib/1.11.1",
+      "tarball_url": "https://registry.npmjs.org/tslib/-/tslib-1.11.1.tgz",
+      "archive_sha256": "7095b4b5fe8fe827acbf6ebe53dc44129f887b56d1bf85ee99331729d36b2fed",
+      "registry_sha1_verified": true
+    },
+    {
+      "name": "pako",
+      "version": "1.0.5",
+      "metadata_url": "https://registry.npmjs.org/pako/1.0.5",
+      "tarball_url": "https://registry.npmjs.org/pako/-/pako-1.0.5.tgz",
+      "archive_sha256": "6d7efd8e218516a28d5521c8f20446045107486d93afc55eff9b7eb3042ef2be",
+      "registry_sha1_verified": true
+    },
+    {
+      "name": "pako",
+      "version": "1.0.10",
+      "metadata_url": "https://registry.npmjs.org/pako/1.0.10",
+      "tarball_url": "https://registry.npmjs.org/pako/-/pako-1.0.10.tgz",
+      "archive_sha256": "226e4f109397e7f7e634d6124607a716b0bd9c95a41348910516ba60f36bf8ff",
+      "registry_sha1_verified": true
+    },
+    {
+      "name": "pako",
+      "version": "1.0.11",
+      "metadata_url": "https://registry.npmjs.org/pako/1.0.11",
+      "tarball_url": "https://registry.npmjs.org/pako/-/pako-1.0.11.tgz",
+      "archive_sha256": "0d4028dc0352a740c30cbfd772917f2744986d42bfa0b06ec7642bffe7ad3941",
+      "registry_sha1_verified": true
+    },
+    {
+      "name": "lie",
+      "version": "3.3.0",
+      "metadata_url": "https://registry.npmjs.org/lie/3.3.0",
+      "tarball_url": "https://registry.npmjs.org/lie/-/lie-3.3.0.tgz",
+      "archive_sha256": "2db8461cd4a10e2fc3588c8c55da34d33465ff81cc19c72416bbcaec7ee6a36e",
+      "registry_sha1_verified": true
+    },
+    {
+      "name": "immediate",
+      "version": "3.0.6",
+      "metadata_url": "https://registry.npmjs.org/immediate/3.0.6",
+      "tarball_url": "https://registry.npmjs.org/immediate/-/immediate-3.0.6.tgz",
+      "archive_sha256": "98c792f39650b00818c05dcc407902034dc4092f368596b37658d44f28739d11",
+      "registry_sha1_verified": true
+    },
+    {
+      "name": "setimmediate",
+      "version": "1.0.5",
+      "metadata_url": "https://registry.npmjs.org/setimmediate/1.0.5",
+      "tarball_url": "https://registry.npmjs.org/setimmediate/-/setimmediate-1.0.5.tgz",
+      "archive_sha256": "5cb9fc22698364ed42c02d6aa3dc50ffeafa68452ae84699672e3dfd74922c9e",
+      "registry_sha1_verified": true
+    },
+    {
+      "name": "@pdf-lib/brotli",
+      "version": "0.0.0",
+      "metadata_url": "https://registry.npmjs.org/@pdf-lib/brotli/0.0.0",
+      "tarball_url": "https://registry.npmjs.org/@pdf-lib/brotli/-/brotli-0.0.0.tgz",
+      "archive_sha256": "fc847f0b854bab804004af133c790ec09fcaee56b34e2268d8ee36b7e304884b",
+      "registry_sha1_verified": true
+    },
+    {
+      "name": "@pdf-lib/restructure",
+      "version": "0.0.1",
+      "metadata_url": "https://registry.npmjs.org/@pdf-lib/restructure/0.0.1",
+      "tarball_url": "https://registry.npmjs.org/@pdf-lib/restructure/-/restructure-0.0.1.tgz",
+      "archive_sha256": "d06fee5fce6ee121ad78c5d23175f9f0507ec9dca312dedd508e9c75d1aa40c2",
+      "registry_sha1_verified": true
+    },
+    {
+      "name": "@pdf-lib/unicode-properties",
+      "version": "0.0.1",
+      "metadata_url": "https://registry.npmjs.org/@pdf-lib/unicode-properties/0.0.1",
+      "tarball_url": "https://registry.npmjs.org/@pdf-lib/unicode-properties/-/unicode-properties-0.0.1.tgz",
+      "archive_sha256": "6703a1c2dfae72c8415f65966a6ea5c8d4c0bb695eb03a57489135960146a8e5",
+      "registry_sha1_verified": true
+    },
+    {
+      "name": "base64-arraybuffer",
+      "version": "0.1.5",
+      "metadata_url": "https://registry.npmjs.org/base64-arraybuffer/0.1.5",
+      "tarball_url": "https://registry.npmjs.org/base64-arraybuffer/-/base64-arraybuffer-0.1.5.tgz",
+      "archive_sha256": "1fa54c7c3ccce10f005415b6680df8015834c9614d7556a8220fecf2b7b45a62",
+      "registry_sha1_verified": true
+    },
+    {
+      "name": "buffer",
+      "version": "5.6.0",
+      "metadata_url": "https://registry.npmjs.org/buffer/5.6.0",
+      "tarball_url": "https://registry.npmjs.org/buffer/-/buffer-5.6.0.tgz",
+      "archive_sha256": "b9ec3ea5264dc312d869ff76f68bc770cab6df117de95e7ba7e196c4220e2505",
+      "registry_sha1_verified": true
+    },
+    {
+      "name": "base64-js",
+      "version": "1.3.0",
+      "metadata_url": "https://registry.npmjs.org/base64-js/1.3.0",
+      "tarball_url": "https://registry.npmjs.org/base64-js/-/base64-js-1.3.0.tgz",
+      "archive_sha256": "a5e0f75f33aa2e502243758f8ecf86631d842ceb4f78cf82a9905d95f62916ac",
+      "registry_sha1_verified": true
+    },
+    {
+      "name": "base64-js",
+      "version": "1.3.1",
+      "metadata_url": "https://registry.npmjs.org/base64-js/1.3.1",
+      "tarball_url": "https://registry.npmjs.org/base64-js/-/base64-js-1.3.1.tgz",
+      "archive_sha256": "e07a87b3d76297252f6284c37fc2c16929a80c17886740ba2093251b82e40368",
+      "registry_sha1_verified": true
+    },
+    {
+      "name": "ieee754",
+      "version": "1.1.13",
+      "metadata_url": "https://registry.npmjs.org/ieee754/1.1.13",
+      "tarball_url": "https://registry.npmjs.org/ieee754/-/ieee754-1.1.13.tgz",
+      "archive_sha256": "603e6b4c40da1551bbaabe8aa8a4b35f62f132b0b60e99906a59f0ad04d47ae2",
+      "registry_sha1_verified": true
+    },
+    {
+      "name": "clone",
+      "version": "1.0.4",
+      "metadata_url": "https://registry.npmjs.org/clone/1.0.4",
+      "tarball_url": "https://registry.npmjs.org/clone/-/clone-1.0.4.tgz",
+      "archive_sha256": "3393d5552400ded353826ad4052a7968f61c0ff59d4b515d0a502ea150588023",
+      "registry_sha1_verified": true
+    },
+    {
+      "name": "tiny-inflate",
+      "version": "1.0.2",
+      "metadata_url": "https://registry.npmjs.org/tiny-inflate/1.0.2",
+      "tarball_url": "https://registry.npmjs.org/tiny-inflate/-/tiny-inflate-1.0.2.tgz",
+      "archive_sha256": "9d9a0912315462c9c380544ae325a2cb4d37471c0099be8444e99589213539d8",
+      "registry_sha1_verified": true
+    },
+    {
+      "name": "tiny-inflate",
+      "version": "1.0.3",
+      "metadata_url": "https://registry.npmjs.org/tiny-inflate/1.0.3",
+      "tarball_url": "https://registry.npmjs.org/tiny-inflate/-/tiny-inflate-1.0.3.tgz",
+      "archive_sha256": "73932b339424e5ffaeaf043e6481229cab407ee277b2a01fa23938dfad6a8f4e",
+      "registry_sha1_verified": true
+    },
+    {
+      "name": "unicode-trie",
+      "version": "0.3.1",
+      "metadata_url": "https://registry.npmjs.org/unicode-trie/0.3.1",
+      "tarball_url": "https://registry.npmjs.org/unicode-trie/-/unicode-trie-0.3.1.tgz",
+      "archive_sha256": "d4c160af91e358f3014ff1a316f9ab3c9cd2b89f8f522af4a33488257dd2b13d",
+      "registry_sha1_verified": true
+    },
+    {
+      "name": "iconv-lite",
+      "version": "0.4.24",
+      "metadata_url": "https://registry.npmjs.org/iconv-lite/0.4.24",
+      "tarball_url": "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.4.24.tgz",
+      "archive_sha256": "576c64f2098ed44c3d5e48d7a9dc65512700c1d6a969a71a74d474da8e734635",
+      "registry_sha1_verified": true,
+      "registry_integrity_verified": true
+    },
+    {
+      "name": "safer-buffer",
+      "version": "2.1.2",
+      "metadata_url": "https://registry.npmjs.org/safer-buffer/2.1.2",
+      "tarball_url": "https://registry.npmjs.org/safer-buffer/-/safer-buffer-2.1.2.tgz",
+      "archive_sha256": "78812f65ae3b98071ce1c9bacbe0666f4220d0b2753c2a11530eb27df440a3b3",
+      "registry_sha1_verified": true,
+      "registry_integrity_verified": true
+    },
+    {
+      "name": "deep-equal",
+      "version": "1.1.1",
+      "metadata_url": "https://registry.npmjs.org/deep-equal/1.1.1",
+      "tarball_url": "https://registry.npmjs.org/deep-equal/-/deep-equal-1.1.1.tgz",
+      "archive_sha256": "b1c1a13716e3f4c34dc6473b3321f643fe680b6e45b9bc308e183a753d0b849a",
+      "registry_sha1_verified": true,
+      "registry_integrity_verified": true
+    },
+    {
+      "name": "is-arguments",
+      "version": "1.0.4",
+      "metadata_url": "https://registry.npmjs.org/is-arguments/1.0.4",
+      "tarball_url": "https://registry.npmjs.org/is-arguments/-/is-arguments-1.0.4.tgz",
+      "archive_sha256": "8afe33ec76149bd5dd1bab1cd3f251016defc16991b0703e8e711391bae4df2a",
+      "registry_sha1_verified": true,
+      "registry_integrity_verified": true
+    },
+    {
+      "name": "is-date-object",
+      "version": "1.0.2",
+      "metadata_url": "https://registry.npmjs.org/is-date-object/1.0.2",
+      "tarball_url": "https://registry.npmjs.org/is-date-object/-/is-date-object-1.0.2.tgz",
+      "archive_sha256": "305b0f5fe94161935fe4c77df330e997f6c8b20630dc515defd0295bd1a58382",
+      "registry_sha1_verified": true,
+      "registry_integrity_verified": true
+    },
+    {
+      "name": "is-regex",
+      "version": "1.0.5",
+      "metadata_url": "https://registry.npmjs.org/is-regex/1.0.5",
+      "tarball_url": "https://registry.npmjs.org/is-regex/-/is-regex-1.0.5.tgz",
+      "archive_sha256": "ee371a4361906505d368e8e6c5ca947a73f072f07cc7fc30c6cd577d34e5a55d",
+      "registry_sha1_verified": true,
+      "registry_integrity_verified": true
+    },
+    {
+      "name": "object-is",
+      "version": "1.1.2",
+      "metadata_url": "https://registry.npmjs.org/object-is/1.1.2",
+      "tarball_url": "https://registry.npmjs.org/object-is/-/object-is-1.1.2.tgz",
+      "archive_sha256": "83ad0dc408cb3e3db1e89590db82e452a76d83af9cc55a48fb32c2323cac9d12",
+      "registry_sha1_verified": true,
+      "registry_integrity_verified": true
+    },
+    {
+      "name": "object-keys",
+      "version": "1.1.1",
+      "metadata_url": "https://registry.npmjs.org/object-keys/1.1.1",
+      "tarball_url": "https://registry.npmjs.org/object-keys/-/object-keys-1.1.1.tgz",
+      "archive_sha256": "9678d9055619767c8a134033709e88a6e0a19600f3d3f2cda40acdfd75e7f212",
+      "registry_sha1_verified": true,
+      "registry_integrity_verified": true
+    },
+    {
+      "name": "define-properties",
+      "version": "1.1.3",
+      "metadata_url": "https://registry.npmjs.org/define-properties/1.1.3",
+      "tarball_url": "https://registry.npmjs.org/define-properties/-/define-properties-1.1.3.tgz",
+      "archive_sha256": "5524f4db15bb95af92c791ba208e2fc774bd8ae17eb347865492d444f95a70a5",
+      "registry_sha1_verified": true,
+      "registry_integrity_verified": true
+    },
+    {
+      "name": "function-bind",
+      "version": "1.1.1",
+      "metadata_url": "https://registry.npmjs.org/function-bind/1.1.1",
+      "tarball_url": "https://registry.npmjs.org/function-bind/-/function-bind-1.1.1.tgz",
+      "archive_sha256": "2d552e7c98b4c3acbf6420cc2eed535e592bb987ed2b32e35795bf777dd2e082",
+      "registry_sha1_verified": true,
+      "registry_integrity_verified": true
+    },
+    {
+      "name": "has-symbols",
+      "version": "1.0.1",
+      "metadata_url": "https://registry.npmjs.org/has-symbols/1.0.1",
+      "tarball_url": "https://registry.npmjs.org/has-symbols/-/has-symbols-1.0.1.tgz",
+      "archive_sha256": "3d0af8ac4a12bcab413fd2505a33cddd8ddef0ae06e123e33a71559163e3d689",
+      "registry_sha1_verified": true,
+      "registry_integrity_verified": true
+    },
+    {
+      "name": "has",
+      "version": "1.0.3",
+      "metadata_url": "https://registry.npmjs.org/has/1.0.3",
+      "tarball_url": "https://registry.npmjs.org/has/-/has-1.0.3.tgz",
+      "archive_sha256": "c38cf9eefce04e58ec3e945bfe448b9236d64f9337f6bf6e1f62e1c5b6b05573",
+      "registry_sha1_verified": true,
+      "registry_integrity_verified": true
+    },
+    {
+      "name": "es-abstract",
+      "version": "1.17.5",
+      "metadata_url": "https://registry.npmjs.org/es-abstract/1.17.5",
+      "tarball_url": "https://registry.npmjs.org/es-abstract/-/es-abstract-1.17.5.tgz",
+      "archive_sha256": "91c554f3fdd442fc11eb1ab8f718abb966fcfaf618941c336c78282caaefc8e6",
+      "registry_sha1_verified": true,
+      "registry_integrity_verified": true
+    },
+    {
+      "name": "regexp.prototype.flags",
+      "version": "1.3.0",
+      "metadata_url": "https://registry.npmjs.org/regexp.prototype.flags/1.3.0",
+      "tarball_url": "https://registry.npmjs.org/regexp.prototype.flags/-/regexp.prototype.flags-1.3.0.tgz",
+      "archive_sha256": "a003b2b06eb982fa75d23f4effdeb9c252aa0cc897128427bb0474efcf4a2379",
+      "registry_sha1_verified": true,
+      "registry_integrity_verified": true
+    },
+    {
+      "name": "regenerator-runtime",
+      "version": "0.14.1",
+      "metadata_url": "https://registry.npmjs.org/regenerator-runtime/0.14.1",
+      "tarball_url": "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.14.1.tgz",
+      "archive_sha256": "7e8df38fb205ed668cb38d9d9b154ba3ea14786b0480c21f26f3a95b90497c20",
+      "registry_sha1_verified": true,
+      "registry_integrity_verified": true
+    },
+    {
+      "name": "rollup-plugin-node-builtins",
+      "version": "2.1.2",
+      "metadata_url": "https://registry.npmjs.org/rollup-plugin-node-builtins/2.1.2",
+      "tarball_url": "https://registry.npmjs.org/rollup-plugin-node-builtins/-/rollup-plugin-node-builtins-2.1.2.tgz",
+      "archive_sha256": "dd1bce06b58d62f852d76a20c2415ca00dada935200a68245eb336683276a910",
+      "registry_sha1_verified": true,
+      "registry_integrity_verified": true
+    },
+    {
+      "name": "rollup-plugin-node-globals",
+      "version": "1.4.0",
+      "metadata_url": "https://registry.npmjs.org/rollup-plugin-node-globals/1.4.0",
+      "tarball_url": "https://registry.npmjs.org/rollup-plugin-node-globals/-/rollup-plugin-node-globals-1.4.0.tgz",
+      "archive_sha256": "6d407bb4b040c80e43d44f48513a41e1275c7946f43f111b229055f517471a7c",
+      "registry_sha1_verified": true,
+      "registry_integrity_verified": true
+    }
+  ],
+  "dependency_evidence": {
+    "pdf_lib_sourcemap_content_matches": [
+      {
+        "package": "tslib",
+        "version": "1.11.1",
+        "matched": 1,
+        "unmatched": []
+      },
+      {
+        "package": "pako",
+        "version": "1.0.10",
+        "matched": 32,
+        "unmatched": []
+      },
+      {
+        "package": "@pdf-lib/standard-fonts",
+        "version": "1.0.0",
+        "matched": 3,
+        "unmatched": []
+      },
+      {
+        "package": "pako",
+        "version": "1.0.11",
+        "matched": 16,
+        "unmatched": []
+      },
+      {
+        "package": "@pdf-lib/upng",
+        "version": "1.0.1",
+        "matched": 1,
+        "unmatched": []
+      }
+    ],
+    "jszip": "The versioned official package-lock pins pako 1.0.5, lie 3.3.0, immediate 3.0.6, setimmediate 1.0.5. The 54-module shipped unminified bundle maps these modules and includes 13 normalized-source matching pako 1.0.5 lib files. readable-stream maps to JSZip browser stub module 16; stream maps to empty module 53. Do not treat every npm dependency as present in this browser bundle.",
+    "fontkit": "The exact 1.1.1 package ships no sourcemap or release gitHead. The official fork package-lock equivalent is yarn.lock at commit 72b8e42bd6a398d496a63a6d483eabeed43861fb; it provides candidate component versions, not proof of exact release reconstruction. Observed unminified bundle modules and preserved comments support the included selected runtime notices. This is not a complete transitive SBOM.",
+    "fontkit_supplement": {
+      "lock": "https://github.com/Hopding/fontkit/blob/72b8e42bd6a398d496a63a6d483eabeed43861fb/yarn.lock",
+      "components": [
+        {
+          "name": "iconv-lite",
+          "version": "0.4.24",
+          "license": "MIT",
+          "marker": "InternalCodec",
+          "file": "iconv-lite-0.4.24-LICENSE.txt"
+        },
+        {
+          "name": "safer-buffer",
+          "version": "2.1.2",
+          "license": "MIT",
+          "marker": "var Safer = safer.Buffer",
+          "file": "safer-buffer-2.1.2-LICENSE.txt"
+        },
+        {
+          "name": "deep-equal",
+          "version": "1.1.1",
+          "license": "MIT",
+          "marker": "function deepEqual",
+          "file": "deep-equal-1.1.1-LICENSE.txt"
+        },
+        {
+          "name": "is-arguments",
+          "version": "1.0.4",
+          "license": "MIT",
+          "marker": "supportsStandardArguments",
+          "file": "is-arguments-1.0.4-LICENSE.txt"
+        },
+        {
+          "name": "is-date-object",
+          "version": "1.0.2",
+          "license": "MIT",
+          "marker": "tryDateGetDayCall",
+          "file": "is-date-object-1.0.2-LICENSE.txt"
+        },
+        {
+          "name": "is-regex",
+          "version": "1.0.5",
+          "license": "MIT",
+          "marker": "tryRegexExecCall",
+          "file": "is-regex-1.0.5-LICENSE.txt"
+        },
+        {
+          "name": "object-is",
+          "version": "1.1.2",
+          "license": "MIT",
+          "marker": "var objectIs =",
+          "file": "object-is-1.1.2-LICENSE.txt"
+        },
+        {
+          "name": "object-keys",
+          "version": "1.1.1",
+          "license": "MIT",
+          "marker": "var objectKeys =",
+          "file": "object-keys-1.1.1-LICENSE.txt"
+        },
+        {
+          "name": "define-properties",
+          "version": "1.1.3",
+          "license": "MIT",
+          "marker": "arePropertyDescriptorsSupported",
+          "file": "define-properties-1.1.3-LICENSE.txt"
+        },
+        {
+          "name": "function-bind",
+          "version": "1.1.1",
+          "license": "MIT",
+          "marker": "var functionBind =",
+          "file": "function-bind-1.1.1-LICENSE.txt"
+        },
+        {
+          "name": "has-symbols",
+          "version": "1.0.1",
+          "license": "MIT",
+          "marker": "function hasNativeSymbols",
+          "file": "has-symbols-1.0.1-LICENSE.txt"
+        },
+        {
+          "name": "has",
+          "version": "1.0.3",
+          "license": "MIT",
+          "marker": "var src = functionBind.call",
+          "file": "has-1.0.3-LICENSE.txt"
+        },
+        {
+          "name": "es-abstract",
+          "version": "1.17.5",
+          "license": "MIT",
+          "marker": "var GetIntrinsic =",
+          "file": "es-abstract-1.17.5-LICENSE.txt"
+        },
+        {
+          "name": "regexp.prototype.flags",
+          "version": "1.3.0",
+          "license": "MIT",
+          "marker": "RegExp.prototype.flags getter called on non-object",
+          "file": "regexp.prototype.flags-1.3.0-LICENSE.txt"
+        },
+        {
+          "name": "rollup-plugin-node-builtins",
+          "version": "2.1.2",
+          "license": "ISC",
+          "marker": "var string_decoder =",
+          "file": "rollup-plugin-node-builtins-2.1.2-DECLARATIONS.txt"
+        },
+        {
+          "name": "rollup-plugin-node-globals",
+          "version": "1.4.0",
+          "license": "MIT",
+          "marker": "// shim for using process in browser",
+          "file": "rollup-plugin-node-globals-1.4.0-DECLARATIONS.txt"
+        }
+      ],
+      "scope": "Observed components and candidate-version notices. Module version identity and exhaustive transitive coverage remain unproven."
+    }
+  },
+  "open_gaps": [
+    "@pdf-lib/fontkit 1.1.1 has an MIT declaration but no author-issued package-level LICENSE/COPYING/copyright file. Official original-project issue https://github.com/foliojs/fontkit/issues/255 remains open.",
+    "@pdf-lib/brotli 0.0.0 and @pdf-lib/restructure 0.0.1 omit package-level full license/copyright text. Google Brotli Apache-2.0 source notices are retained separately.",
+    "Older fontkit runtime dependency releases tiny-inflate 1.0.2 and unicode-trie 0.3.1 omit full license/copyright files.",
+    "Fontkit full transitive coverage and exact embedded versions remain unproven. This review adds notices for observed iconv-lite, deep-equal helpers and Node shims; it does not reconstruct every module.",
+    "Observed Node shims correspond to rollup-plugin-node-builtins 2.1.2 (ISC metadata) and rollup-plugin-node-globals 1.4.0 (MIT metadata) in the fork lock. Their packages and checked gitHead LICENSE paths lack complete top-level notices; declarations and embedded Node MIT comments are preserved, not marked closed."
+  ],
+  "last_verified": "2026-09-19"
+}

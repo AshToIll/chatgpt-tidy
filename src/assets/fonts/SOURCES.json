@@ -1,0 +1,2273 @@
+{
+  "schema": "tidy.font-license-evidence.v1",
+  "checked_at": "2026-09-19",
+  "scope": "All shipped local TTF files and their embedded name records; original family OFL texts from a pinned official Google Fonts revision. This does not reconstruct the historical font-generation inputs.",
+  "modifications": "Sans fonts are local static Regular 400 / Medium 500 shards; fallback shaping/layout tables were removed by the existing generation process. No font bytes changed in this review.",
+  "attribution_note": "Embedded local copyright records are retained verbatim, in addition to upstream OFL texts. Their years sometimes differ; neither is rewritten or substituted for the other.",
+  "open_gaps": [
+    "Historical variable-font input hashes, complete generation tool versions and reproducible shard-generation recipes were not retained; local derivative hashes and names do not prove exact upstream input identity."
+  ],
+  "families": [
+    {
+      "id": "noto-sans",
+      "license": "OFL-1.1",
+      "license_file": "licenses/OFL-noto-sans.txt",
+      "license_sha256": "cee9892f9f0cc8fe882c9e9537ee6a89621d86ee7ceaf70b02e2b2b1c25c061a",
+      "license_source": "https://raw.githubusercontent.com/google/fonts/f2bd09badbc763d8757951d52deec29da27e85fb/ofl/notosans/OFL.txt",
+      "license_copy": "exact upstream bytes",
+      "local_name_records": {
+        "0": [
+          "Copyright 2022 The Noto Project Authors (https://github.com/notofonts/latin-greek-cyrillic)"
+        ],
+        "1": [
+          "Noto Sans Tidy Medium 00",
+          "Noto Sans Tidy Medium 01",
+          "Noto Sans Tidy Medium 02",
+          "Noto Sans Tidy Medium 03",
+          "Noto Sans Tidy Medium 04",
+          "Noto Sans Tidy Medium 05",
+          "Noto Sans Tidy Medium 06",
+          "Noto Sans Tidy Regular 00",
+          "Noto Sans Tidy Regular 01",
+          "Noto Sans Tidy Regular 02",
+          "Noto Sans Tidy Regular 03",
+          "Noto Sans Tidy Regular 04",
+          "Noto Sans Tidy Regular 05",
+          "Noto Sans Tidy Regular 06"
+        ],
+        "5": [
+          "Version 2.015"
+        ]
+      },
+      "files": [
+        {
+          "file": "fallback/noto-sans/medium-00.ttf",
+          "sha256": "049bcc0854ac5f0c243fcb55fb51ce5625a4ed961fcaa5db838dfdf7c115190e"
+        },
+        {
+          "file": "fallback/noto-sans/medium-01.ttf",
+          "sha256": "0b2ad2c3b0dd2f82c209a43de3228cbea76c424b44a2f834d9a706b6aac2cb37"
+        },
+        {
+          "file": "fallback/noto-sans/medium-02.ttf",
+          "sha256": "a82ee789f80b75824342179f3ead1360eeb1733c02ee0e033f1921af24807fc8"
+        },
+        {
+          "file": "fallback/noto-sans/medium-03.ttf",
+          "sha256": "deb51063584146d9c2f4e93e93f75e586fcdfb422a2a0898e7e149484422fa0c"
+        },
+        {
+          "file": "fallback/noto-sans/medium-04.ttf",
+          "sha256": "a5f9d61dded39ac181895ff8a43fb8c899903d56f9b90adee2d84d48b43472b2"
+        },
+        {
+          "file": "fallback/noto-sans/medium-05.ttf",
+          "sha256": "b89f1a421a26e54ba55048e6f3ceb11b9c79b1b07ad96cb898cbb23d74899446"
+        },
+        {
+          "file": "fallback/noto-sans/medium-06.ttf",
+          "sha256": "97c93ea2c9b33d733c8fbe1a5347bae64db390c99cc2f96389f36e97ddf7c83a"
+        },
+        {
+          "file": "fallback/noto-sans/regular-00.ttf",
+          "sha256": "e9974a8e8aec82d0ef7b20dc30c601df47d1515c626950fa582168329f530490"
+        },
+        {
+          "file": "fallback/noto-sans/regular-01.ttf",
+          "sha256": "d5960fc8d1739a60ab99101dfb10da370c2d4835fc8bf6ef77ecadb093abea0c"
+        },
+        {
+          "file": "fallback/noto-sans/regular-02.ttf",
+          "sha256": "73e913bf3fbd76ad59fcf805b4b145d03a6569aee674e057e70b91f18c103612"
+        },
+        {
+          "file": "fallback/noto-sans/regular-03.ttf",
+          "sha256": "51bb06fd6f8f8ecb1f7ba8558b6a871735a9f62d4e04b009c0946863dc0c93c8"
+        },
+        {
+          "file": "fallback/noto-sans/regular-04.ttf",
+          "sha256": "14b904974b3d8d4e9d2f5c28fd449ccb2e49ef3e2cd0209201c4cd6e319a1f97"
+        },
+        {
+          "file": "fallback/noto-sans/regular-05.ttf",
+          "sha256": "dcafa65b587fc5224679cff4212bc206092859fbfe5c9f005c46c9103aeea310"
+        },
+        {
+          "file": "fallback/noto-sans/regular-06.ttf",
+          "sha256": "56a078eee0f0064fe188a4067f56a22acb468fa303f9e775c121c05297a7a2f4"
+        }
+      ]
+    },
+    {
+      "id": "noto-sans-jp",
+      "license": "OFL-1.1",
+      "license_file": "licenses/OFL-noto-sans-jp.txt",
+      "license_sha256": "1c05c68c34f9708415aada51f17e1b0092d2cea709bf4a94cd38114f9e73d7d9",
+      "license_source": "https://raw.githubusercontent.com/google/fonts/f2bd09badbc763d8757951d52deec29da27e85fb/ofl/notosansjp/OFL.txt",
+      "license_copy": "exact upstream bytes",
+      "local_name_records": {
+        "0": [
+          "(c) 2014-2021 Adobe (http://www.adobe.com/), with Reserved Font Name 'Source'."
+        ],
+        "1": [
+          "Noto Sans JP Tidy Medium 00",
+          "Noto Sans JP Tidy Medium 01",
+          "Noto Sans JP Tidy Medium 02",
+          "Noto Sans JP Tidy Medium 03",
+          "Noto Sans JP Tidy Medium 04",
+          "Noto Sans JP Tidy Medium 05",
+          "Noto Sans JP Tidy Medium 06",
+          "Noto Sans JP Tidy Medium 07",
+          "Noto Sans JP Tidy Medium 08",
+          "Noto Sans JP Tidy Medium 09",
+          "Noto Sans JP Tidy Medium 10",
+          "Noto Sans JP Tidy Medium 11",
+          "Noto Sans JP Tidy Medium 12",
+          "Noto Sans JP Tidy Medium 13",
+          "Noto Sans JP Tidy Medium 14",
+          "Noto Sans JP Tidy Medium 15",
+          "Noto Sans JP Tidy Medium 16",
+          "Noto Sans JP Tidy Medium 17",
+          "Noto Sans JP Tidy Medium 18",
+          "Noto Sans JP Tidy Medium 19",
+          "Noto Sans JP Tidy Medium 20",
+          "Noto Sans JP Tidy Medium 21",
+          "Noto Sans JP Tidy Medium 22",
+          "Noto Sans JP Tidy Medium 23",
+          "Noto Sans JP Tidy Medium 24",
+          "Noto Sans JP Tidy Medium 25",
+          "Noto Sans JP Tidy Medium 26",
+          "Noto Sans JP Tidy Medium 27",
+          "Noto Sans JP Tidy Medium 28",
+          "Noto Sans JP Tidy Medium 29",
+          "Noto Sans JP Tidy Medium 30",
+          "Noto Sans JP Tidy Medium 31",
+          "Noto Sans JP Tidy Medium 32",
+          "Noto Sans JP Tidy Regular 00",
+          "Noto Sans JP Tidy Regular 01",
+          "Noto Sans JP Tidy Regular 02",
+          "Noto Sans JP Tidy Regular 03",
+          "Noto Sans JP Tidy Regular 04",
+          "Noto Sans JP Tidy Regular 05",
+          "Noto Sans JP Tidy Regular 06",
+          "Noto Sans JP Tidy Regular 07",
+          "Noto Sans JP Tidy Regular 08",
+          "Noto Sans JP Tidy Regular 09",
+          "Noto Sans JP Tidy Regular 10",
+          "Noto Sans JP Tidy Regular 11",
+          "Noto Sans JP Tidy Regular 12",
+          "Noto Sans JP Tidy Regular 13",
+          "Noto Sans JP Tidy Regular 14",
+          "Noto Sans JP Tidy Regular 15",
+          "Noto Sans JP Tidy Regular 16",
+          "Noto Sans JP Tidy Regular 17",
+          "Noto Sans JP Tidy Regular 18",
+          "Noto Sans JP Tidy Regular 19",
+          "Noto Sans JP Tidy Regular 20",
+          "Noto Sans JP Tidy Regular 21",
+          "Noto Sans JP Tidy Regular 22",
+          "Noto Sans JP Tidy Regular 23",
+          "Noto Sans JP Tidy Regular 24",
+          "Noto Sans JP Tidy Regular 25",
+          "Noto Sans JP Tidy Regular 26",
+          "Noto Sans JP Tidy Regular 27",
+          "Noto Sans JP Tidy Regular 28",
+          "Noto Sans JP Tidy Regular 29",
+          "Noto Sans JP Tidy Regular 30",
+          "Noto Sans JP Tidy Regular 31",
+          "Noto Sans JP Tidy Regular 32"
+        ],
+        "5": [
+          "Version 2.004-H2;hotconv 1.0.118;makeotfexe 2.5.65603"
+        ]
+      },
+      "files": [
+        {
+          "file": "fallback/noto-sans-jp/medium-00.ttf",
+          "sha256": "3ac9a2783caa37a65d94751dde7736d0407e68df827093518b792098b040a3c9"
+        },
+        {
+          "file": "fallback/noto-sans-jp/medium-01.ttf",
+          "sha256": "c1be80b10e9704985a3540178393cf16fed4cfb7a6fea406a58dda603ebb1b08"
+        },
+        {
+          "file": "fallback/noto-sans-jp/medium-02.ttf",
+          "sha256": "1614cc9f5b927aebabcb35fd6979fbdc308d45c317de76c4edce3ac71b9420f2"
+        },
+        {
+          "file": "fallback/noto-sans-jp/medium-03.ttf",
+          "sha256": "31c01732c1991017e30a9ef4917fb3ce74c7bcba290c2e54ec98d291814ce14c"
+        },
+        {
+          "file": "fallback/noto-sans-jp/medium-04.ttf",
+          "sha256": "cc20df23aab12214d6126f7213f4956c1d8be2aa070ac0932262202de5455593"
+        },
+        {
+          "file": "fallback/noto-sans-jp/medium-05.ttf",
+          "sha256": "1ee32f60959d9df3416ea791a73d82950a3835abbd14a8a19243d2b3e1754979"
+        },
+        {
+          "file": "fallback/noto-sans-jp/medium-06.ttf",
+          "sha256": "f765d2b3a37a568ba6b16a9969e478094967f4c841f17ceaad95401a8f1a4129"
+        },
+        {
+          "file": "fallback/noto-sans-jp/medium-07.ttf",
+          "sha256": "765a7a1e98b4569bcdd9403ce8015f12bfafd1a04221276dee3d2dba6519ad8d"
+        },
+        {
+          "file": "fallback/noto-sans-jp/medium-08.ttf",
+          "sha256": "fdedd50a91d27b86df13409afdce3739b5905b84642d1c561225b55763cea114"
+        },
+        {
+          "file": "fallback/noto-sans-jp/medium-09.ttf",
+          "sha256": "5cbcc887616fa42327d675c9316e40bdc0cd2d53d434e8c0ea224283eb86b748"
+        },
+        {
+          "file": "fallback/noto-sans-jp/medium-10.ttf",
+          "sha256": "a61b98c2e1483e1388a54a240f332a0c43002c3eb8c27e87fa29ec4370a6175a"
+        },
+        {
+          "file": "fallback/noto-sans-jp/medium-11.ttf",
+          "sha256": "ba0f4f27b0ef490358ed12bc78ca70638625cc3ad27245366e54111fc43f402e"
+        },
+        {
+          "file": "fallback/noto-sans-jp/medium-12.ttf",
+          "sha256": "5f5fc69a4896c898788d2637a4837d5aed42304721b730563a71f6237035c172"
+        },
+        {
+          "file": "fallback/noto-sans-jp/medium-13.ttf",
+          "sha256": "58978c8e772629880275c4546830c43cabdb173a89b1d1abbb5a5fdf1b23120f"
+        },
+        {
+          "file": "fallback/noto-sans-jp/medium-14.ttf",
+          "sha256": "c991baddb43bb16562db6eb6cf15ccc23f17dd50c9bca2c1adbd46bd4c2dac3f"
+        },
+        {
+          "file": "fallback/noto-sans-jp/medium-15.ttf",
+          "sha256": "b621b06ccbe5c4786b0a0d285a56b92e5afa34c453ffd6dc65cb41f640463832"
+        },
+        {
+          "file": "fallback/noto-sans-jp/medium-16.ttf",
+          "sha256": "34cb4748dd3a17c709036bee744c02d83391167fb1a1f0bdf52eb0b11142cdc2"
+        },
+        {
+          "file": "fallback/noto-sans-jp/medium-17.ttf",
+          "sha256": "dd8f5702b3e53aa79dfb159c14f9002b609db5929b2e5ac26d6e63624dcff00f"
+        },
+        {
+          "file": "fallback/noto-sans-jp/medium-18.ttf",
+          "sha256": "bb5f3fba9eafa3eed3f3103c0746e81c812501c5028c954b7292f67e57b365c8"
+        },
+        {
+          "file": "fallback/noto-sans-jp/medium-19.ttf",
+          "sha256": "1dddd123701f18883e634bdd34831336de5936d9bcd15638a81dd047feaf6a62"
+        },
+        {
+          "file": "fallback/noto-sans-jp/medium-20.ttf",
+          "sha256": "8078f3dc3769297302287077b16d73ed1f29fa6b60a90dcac6ac4b559cbebd5d"
+        },
+        {
+          "file": "fallback/noto-sans-jp/medium-21.ttf",
+          "sha256": "1ff11c01559e06aaae065f5b6576f6999cbd743f1b73c05b0690df02e2928471"
+        },
+        {
+          "file": "fallback/noto-sans-jp/medium-22.ttf",
+          "sha256": "df06277461f2859f4c00d81b4bcf0a8bdb94df15e4bf9f06de091f3fb709bcca"
+        },
+        {
+          "file": "fallback/noto-sans-jp/medium-23.ttf",
+          "sha256": "88267e09b3d1f6b3cbeeba8bba512969888ef506cc527650d7d7b08470444e2a"
+        },
+        {
+          "file": "fallback/noto-sans-jp/medium-24.ttf",
+          "sha256": "bcb5c3b82fdcfacda6cfcc4e4f4eae90528f7f300a64038bd6eba32ff23d72f2"
+        },
+        {
+          "file": "fallback/noto-sans-jp/medium-25.ttf",
+          "sha256": "d9dcbf2d09349b66218c505bf8c573722bf58becd4b0e357d35ea09be0cc6df0"
+        },
+        {
+          "file": "fallback/noto-sans-jp/medium-26.ttf",
+          "sha256": "aef70f1f7ffbb9fa177881f7076bc167a75dc80de120c23b893dc0dae6125ae4"
+        },
+        {
+          "file": "fallback/noto-sans-jp/medium-27.ttf",
+          "sha256": "75d593c537ac49208e3a1d3804eabafc97829c8dbfbd888755c46cb446f8b61f"
+        },
+        {
+          "file": "fallback/noto-sans-jp/medium-28.ttf",
+          "sha256": "dc3626a505d099134523a5c3fa3051d13d7b7afb8120c7f06bb56f4e99c1b458"
+        },
+        {
+          "file": "fallback/noto-sans-jp/medium-29.ttf",
+          "sha256": "2e73ca1090564db5408764b43ef2c13f5ce906b01fdd88e1a8268f3b46282625"
+        },
+        {
+          "file": "fallback/noto-sans-jp/medium-30.ttf",
+          "sha256": "8fa4d55dde1e8bceeb9b631638e3115749af1c3b001b2ac2c8d66c38f92b5212"
+        },
+        {
+          "file": "fallback/noto-sans-jp/medium-31.ttf",
+          "sha256": "314431a1475bf0cf0537724bf630f443e380a6eb4e80231c72136d39f91d1ccb"
+        },
+        {
+          "file": "fallback/noto-sans-jp/medium-32.ttf",
+          "sha256": "3ebab0c9980a210adb5decd41825e12dea1db89d572f61687df9e0e752bd95ae"
+        },
+        {
+          "file": "fallback/noto-sans-jp/regular-00.ttf",
+          "sha256": "6ecf9e3960c853f4f5a007a4897cc870c565c8d7fc373705edfcd5410d1dfc06"
+        },
+        {
+          "file": "fallback/noto-sans-jp/regular-01.ttf",
+          "sha256": "0812fcf5460fd6a9b8aaaa46e53ae7e40c78b216f0936f70744f34593db256a0"
+        },
+        {
+          "file": "fallback/noto-sans-jp/regular-02.ttf",
+          "sha256": "959529c3e54c25b8658ce99f7923608290a0aa62ba964a442816f8bd7b366049"
+        },
+        {
+          "file": "fallback/noto-sans-jp/regular-03.ttf",
+          "sha256": "5ff5b030d0e291b0e5f051151cca20f01b8190b43c4645692ca84f443965e148"
+        },
+        {
+          "file": "fallback/noto-sans-jp/regular-04.ttf",
+          "sha256": "1be3ed50c37b19c53d717cddb393a85ac6be5630c410f8bfeb6ec26e9e921127"
+        },
+        {
+          "file": "fallback/noto-sans-jp/regular-05.ttf",
+          "sha256": "a750c13972a80a96299777edc22ed002eee0984ffae3d7d924f23269b3a8d3a4"
+        },
+        {
+          "file": "fallback/noto-sans-jp/regular-06.ttf",
+          "sha256": "d95565f07c29679155c55913ec07b20e269505068c3b709d10635cf1e92910c6"
+        },
+        {
+          "file": "fallback/noto-sans-jp/regular-07.ttf",
+          "sha256": "bde3cd0c9028e535613ac2eecd81b6970667a7ff0025f29943d14c7fdb39c15d"
+        },
+        {
+          "file": "fallback/noto-sans-jp/regular-08.ttf",
+          "sha256": "ea3e174489d95e6cf6b40bf1e4f2d8349bc34fcd47ae1bbdc7f9e43aff3f5e29"
+        },
+        {
+          "file": "fallback/noto-sans-jp/regular-09.ttf",
+          "sha256": "b711b9abf926bd5b18b96e13a883450c159a2fa8f3edd6bec5247f226ce45ff7"
+        },
+        {
+          "file": "fallback/noto-sans-jp/regular-10.ttf",
+          "sha256": "3aeabc99a91584606005578b5ede9ebef2a667529bb95073f1e3a03abc775bee"
+        },
+        {
+          "file": "fallback/noto-sans-jp/regular-11.ttf",
+          "sha256": "d61e6973dfb3cee8866047b07bb7e2a1e8266d72a5c500e5b563427ecbc350e1"
+        },
+        {
+          "file": "fallback/noto-sans-jp/regular-12.ttf",
+          "sha256": "3ee16664c05189507a377d8a2d1421f65612e70cf6baf7a0e2b6bed69e366ff4"
+        },
+        {
+          "file": "fallback/noto-sans-jp/regular-13.ttf",
+          "sha256": "adcf615ee0fe5e7f10dd459382e7f3c0771e3cba0967c0f6cbca6d02ac02ede6"
+        },
+        {
+          "file": "fallback/noto-sans-jp/regular-14.ttf",
+          "sha256": "548d4f0b1dfc5a83cb607403e165c6914aff28697f273ac090c58841e648ab71"
+        },
+        {
+          "file": "fallback/noto-sans-jp/regular-15.ttf",
+          "sha256": "21498c18cd672efada06d1f41dcf04f155f8607523badad205d0b289f276be42"
+        },
+        {
+          "file": "fallback/noto-sans-jp/regular-16.ttf",
+          "sha256": "552863fc5e1a0d4f1fab3419400e8b2484498692789051d5804a81921b8339af"
+        },
+        {
+          "file": "fallback/noto-sans-jp/regular-17.ttf",
+          "sha256": "597a41e83d24e36657faa12196ed19856f89e4deeca53e1209283659800ccc82"
+        },
+        {
+          "file": "fallback/noto-sans-jp/regular-18.ttf",
+          "sha256": "f1738ce4b4da6800993af424b1ba2192a6d0b69f940b0a2198b7c5f8ead087e5"
+        },
+        {
+          "file": "fallback/noto-sans-jp/regular-19.ttf",
+          "sha256": "901d1da2e696ec651fad168664bbdb3c1236f6691cb62624fc14b7e3eded8ace"
+        },
+        {
+          "file": "fallback/noto-sans-jp/regular-20.ttf",
+          "sha256": "1d9653615158a48d14a18337f8c2cc0e56c29d8f1482a16186f4b90ab3c2558b"
+        },
+        {
+          "file": "fallback/noto-sans-jp/regular-21.ttf",
+          "sha256": "9b2cc5c1ca26dac79d7c24f1d227141bc839d1c6ba2a644e0cd13ee10b5357fb"
+        },
+        {
+          "file": "fallback/noto-sans-jp/regular-22.ttf",
+          "sha256": "d54fc0f8207b275c7f93464abf9d447f772d2ef366b6c6015eca9c8396633b01"
+        },
+        {
+          "file": "fallback/noto-sans-jp/regular-23.ttf",
+          "sha256": "b979a2f0ff6458790420851a92d3910fafd3c2275fd0bd0dbaf18cd0ffa3d97d"
+        },
+        {
+          "file": "fallback/noto-sans-jp/regular-24.ttf",
+          "sha256": "54f4c8a681bbada11814b5836c77c909f723c1ea20eaf6e5469d3436cec9b9d2"
+        },
+        {
+          "file": "fallback/noto-sans-jp/regular-25.ttf",
+          "sha256": "ac74658748c2685064be400bade5caf3cb9d60b64eaaee87a488e6d97531284f"
+        },
+        {
+          "file": "fallback/noto-sans-jp/regular-26.ttf",
+          "sha256": "0e6e68e01f5c71ff1e0cbd79fb35de1fa6a0cbc2bd8ab7a8cb57864532773803"
+        },
+        {
+          "file": "fallback/noto-sans-jp/regular-27.ttf",
+          "sha256": "3f4cf1c5d1fd35a08e0f08060147b3166b8c5a98c72b92a30656fb7e89396c73"
+        },
+        {
+          "file": "fallback/noto-sans-jp/regular-28.ttf",
+          "sha256": "000e5ecc95cf20fa9ad735d0da72d11b215a0c855d7dcc76c97506bb4ef0076e"
+        },
+        {
+          "file": "fallback/noto-sans-jp/regular-29.ttf",
+          "sha256": "696c3758943481aef229edb25a48dff031b346155ec759691f96079356a32d05"
+        },
+        {
+          "file": "fallback/noto-sans-jp/regular-30.ttf",
+          "sha256": "0098096530344c34c0d60870403dee26250fde87ef9dc9052bc3f8d732502dae"
+        },
+        {
+          "file": "fallback/noto-sans-jp/regular-31.ttf",
+          "sha256": "a80e81bf5a8b370931ae61fb3c61e7d0d802e6808ad64e01d8a380e9a1ce0d3a"
+        },
+        {
+          "file": "fallback/noto-sans-jp/regular-32.ttf",
+          "sha256": "27f67263b4ff7b8a02559cf2927e8d382d989d39233ae1b0ef90ea6d677843b6"
+        }
+      ]
+    },
+    {
+      "id": "noto-sans-kr",
+      "license": "OFL-1.1",
+      "license_file": "licenses/OFL-noto-sans-kr.txt",
+      "license_sha256": "1c05c68c34f9708415aada51f17e1b0092d2cea709bf4a94cd38114f9e73d7d9",
+      "license_source": "https://raw.githubusercontent.com/google/fonts/f2bd09badbc763d8757951d52deec29da27e85fb/ofl/notosanskr/OFL.txt",
+      "license_copy": "exact upstream bytes",
+      "local_name_records": {
+        "0": [
+          "(c) 2014-2021 Adobe (http://www.adobe.com/), with Reserved Font Name 'Source'."
+        ],
+        "1": [
+          "Noto Sans KR Tidy Medium 00",
+          "Noto Sans KR Tidy Medium 01",
+          "Noto Sans KR Tidy Medium 02",
+          "Noto Sans KR Tidy Medium 03",
+          "Noto Sans KR Tidy Medium 04",
+          "Noto Sans KR Tidy Medium 05",
+          "Noto Sans KR Tidy Medium 06",
+          "Noto Sans KR Tidy Medium 07",
+          "Noto Sans KR Tidy Medium 08",
+          "Noto Sans KR Tidy Medium 09",
+          "Noto Sans KR Tidy Medium 10",
+          "Noto Sans KR Tidy Medium 11",
+          "Noto Sans KR Tidy Medium 12",
+          "Noto Sans KR Tidy Medium 13",
+          "Noto Sans KR Tidy Medium 14",
+          "Noto Sans KR Tidy Medium 15",
+          "Noto Sans KR Tidy Medium 16",
+          "Noto Sans KR Tidy Medium 17",
+          "Noto Sans KR Tidy Medium 18",
+          "Noto Sans KR Tidy Medium 19",
+          "Noto Sans KR Tidy Medium 20",
+          "Noto Sans KR Tidy Medium 21",
+          "Noto Sans KR Tidy Medium 22",
+          "Noto Sans KR Tidy Medium 23",
+          "Noto Sans KR Tidy Medium 24",
+          "Noto Sans KR Tidy Medium 25",
+          "Noto Sans KR Tidy Medium 26",
+          "Noto Sans KR Tidy Medium 27",
+          "Noto Sans KR Tidy Medium 28",
+          "Noto Sans KR Tidy Medium 29",
+          "Noto Sans KR Tidy Medium 30",
+          "Noto Sans KR Tidy Medium 31",
+          "Noto Sans KR Tidy Medium 32",
+          "Noto Sans KR Tidy Medium 33",
+          "Noto Sans KR Tidy Medium 34",
+          "Noto Sans KR Tidy Medium 35",
+          "Noto Sans KR Tidy Medium 36",
+          "Noto Sans KR Tidy Medium 37",
+          "Noto Sans KR Tidy Medium 38",
+          "Noto Sans KR Tidy Medium 39",
+          "Noto Sans KR Tidy Medium 40",
+          "Noto Sans KR Tidy Medium 41",
+          "Noto Sans KR Tidy Medium 42",
+          "Noto Sans KR Tidy Medium 43",
+          "Noto Sans KR Tidy Medium 44",
+          "Noto Sans KR Tidy Medium 45",
+          "Noto Sans KR Tidy Regular 00",
+          "Noto Sans KR Tidy Regular 01",
+          "Noto Sans KR Tidy Regular 02",
+          "Noto Sans KR Tidy Regular 03",
+          "Noto Sans KR Tidy Regular 04",
+          "Noto Sans KR Tidy Regular 05",
+          "Noto Sans KR Tidy Regular 06",
+          "Noto Sans KR Tidy Regular 07",
+          "Noto Sans KR Tidy Regular 08",
+          "Noto Sans KR Tidy Regular 09",
+          "Noto Sans KR Tidy Regular 10",
+          "Noto Sans KR Tidy Regular 11",
+          "Noto Sans KR Tidy Regular 12",
+          "Noto Sans KR Tidy Regular 13",
+          "Noto Sans KR Tidy Regular 14",
+          "Noto Sans KR Tidy Regular 15",
+          "Noto Sans KR Tidy Regular 16",
+          "Noto Sans KR Tidy Regular 17",
+          "Noto Sans KR Tidy Regular 18",
+          "Noto Sans KR Tidy Regular 19",
+          "Noto Sans KR Tidy Regular 20",
+          "Noto Sans KR Tidy Regular 21",
+          "Noto Sans KR Tidy Regular 22",
+          "Noto Sans KR Tidy Regular 23",
+          "Noto Sans KR Tidy Regular 24",
+          "Noto Sans KR Tidy Regular 25",
+          "Noto Sans KR Tidy Regular 26",
+          "Noto Sans KR Tidy Regular 27",
+          "Noto Sans KR Tidy Regular 28",
+          "Noto Sans KR Tidy Regular 29",
+          "Noto Sans KR Tidy Regular 30",
+          "Noto Sans KR Tidy Regular 31",
+          "Noto Sans KR Tidy Regular 32",
+          "Noto Sans KR Tidy Regular 33",
+          "Noto Sans KR Tidy Regular 34",
+          "Noto Sans KR Tidy Regular 35",
+          "Noto Sans KR Tidy Regular 36",
+          "Noto Sans KR Tidy Regular 37",
+          "Noto Sans KR Tidy Regular 38",
+          "Noto Sans KR Tidy Regular 39",
+          "Noto Sans KR Tidy Regular 40",
+          "Noto Sans KR Tidy Regular 41",
+          "Noto Sans KR Tidy Regular 42",
+          "Noto Sans KR Tidy Regular 43",
+          "Noto Sans KR Tidy Regular 44",
+          "Noto Sans KR Tidy Regular 45"
+        ],
+        "5": [
+          "Version 2.004-H2;hotconv 1.0.118;makeotfexe 2.5.65603"
+        ]
+      },
+      "files": [
+        {
+          "file": "fallback/noto-sans-kr/medium-00.ttf",
+          "sha256": "673e000160f5a7f5701642e1116b626d0a743c6aebec95fcb26307ed531081a8"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-01.ttf",
+          "sha256": "d772dacf8a7924a96646d414396349efda1456a056570b8d93d876bb86a6d7a3"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-02.ttf",
+          "sha256": "13d58fbc34c3bef02b1ba64a1ba6851e6f36676d3e97ac331fec0c4dd7039ba0"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-03.ttf",
+          "sha256": "b01061b1ebe04625446183a1e320f17a24339638a4b4623f93c1a3762d9a0857"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-04.ttf",
+          "sha256": "f2646fc53a80769c60ed5fa771c437744bf28303e3ace65c77712d997bc8bf04"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-05.ttf",
+          "sha256": "da9541ee63b6dbcccd27512903cad982a24f42b22782fd1e91df8f09d0c0e4ff"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-06.ttf",
+          "sha256": "9560fe02f2768593fafbd4586fa954842502d033c99823de26ed467d3928f2f5"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-07.ttf",
+          "sha256": "8114ec991db66678ad81bfd386aba991706b555db80ed07fa7f848f0ecc19cec"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-08.ttf",
+          "sha256": "5dfc337e476347cfe58a3a627c28d5c5fef42669f6e3c007fc787a261625e9a8"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-09.ttf",
+          "sha256": "0e438111ed575c5aba293533e260f8201c27045f3a39b92e174cd894894529ee"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-10.ttf",
+          "sha256": "f956a07765099d633bcec2c2beb349ab1e3c60d7432b7c116d2ea4e8771a82e4"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-11.ttf",
+          "sha256": "39b1da55864fbf0c87b2c3bebf63843ea2e4f4b330355d57e0fbe33f92f94e8a"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-12.ttf",
+          "sha256": "5e6746abf277a62d1f0e8c3c7a4c015d26d730a48b912dbd4a4dc294e35bcbd2"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-13.ttf",
+          "sha256": "748e45be8f68bc6eade4a98bb0a9bf1b9cbdca4d631048bb79c0be022764a6dd"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-14.ttf",
+          "sha256": "57e7892a6e8340b83cb7806be00d2c4ccb4796c1e72acd8c32b63d54184817e7"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-15.ttf",
+          "sha256": "287516bdcd78885655dbd452605e60fad256fce9deed488baf804ca91d000150"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-16.ttf",
+          "sha256": "6f896682dc5b72ccb721fe644b1f2f540d9ed0739c9d9d0e935f25f0faba4d4d"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-17.ttf",
+          "sha256": "446a0b6dac717d04f493c1bd053302c74ab59cd4432e67d5b284fa58e8d5b48c"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-18.ttf",
+          "sha256": "d8a7a05861c0c4c2e1a6aef48a4ffa736243f92f248f19e4ba1fcb2624bf8073"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-19.ttf",
+          "sha256": "05993b307cc8e0463082d51c6819f871e68d1adcd360b5baa2197c1211c60fd9"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-20.ttf",
+          "sha256": "df07b54feb18627fc93bc3e915a0886aa185b562ea7be75d49e9c5daf9a993ba"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-21.ttf",
+          "sha256": "d764a176f58868ef632d920e09cd0e2dad31335184b1deb628b463af3f089243"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-22.ttf",
+          "sha256": "580237551e1e683273fe11cab22e4d4751fad3b531f1b27fe053211e63ae765e"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-23.ttf",
+          "sha256": "b66925c96f12aa9d343be6eb8d7de56bc0e186355f2993a3032e0585e64c10aa"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-24.ttf",
+          "sha256": "5cc05c413c9697b9bc40787d42fc00d2d2ce08385e94a7b73111203d7f699f73"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-25.ttf",
+          "sha256": "9979a4921bd2adc0c96b50b152d584abb7f56f90fdc639e24712d783f1331c52"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-26.ttf",
+          "sha256": "6e92632fde7d9837451bd8911c3883da840ec53dcd66f31ac927515c77ecc1fe"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-27.ttf",
+          "sha256": "8182df0c8b08550fa5e1149bbf3e1ebd1b088b0c49f5424b54b868b4ffa658bc"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-28.ttf",
+          "sha256": "962e70474d7ee176edce77b98aedc9365cfe636d1520a9d2b9a9d51e03f0917e"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-29.ttf",
+          "sha256": "1f99453fdc7886eb8534da3822f08e5d815d73bc40d973f214756baa318e6179"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-30.ttf",
+          "sha256": "528dfc6442044539d9bf87641b37e2c8d2b2e52e6ee69d39a47609948772cabf"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-31.ttf",
+          "sha256": "f7126f98a00222adf216c0fd5c7958ed0ed47cfb4283022bcd8db54ac3e52ba3"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-32.ttf",
+          "sha256": "f2891f96397107ce402cb7abfcca42df18adc766da10807ea86aeb2308862055"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-33.ttf",
+          "sha256": "4d49dddae3e6d4250b1705cc0ce8fddb4de6dfa114dce55022dd292d56bd8935"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-34.ttf",
+          "sha256": "d70060ef82ca8ba486cc02e2881684b18fe71bab460383378c1a8b5e0a1ea40a"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-35.ttf",
+          "sha256": "fbb4178f4812c2a40d2881434610a74bf22929fa9a477f1690b050526d296e7e"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-36.ttf",
+          "sha256": "61c01aa4eed269c1c9ad5485ac76c455a3932be8c150916ef5d4e3637eb2c598"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-37.ttf",
+          "sha256": "f1ebc11999e413eea9e0165add0f2cbe675a9568e28384c6542a180a841f2e7e"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-38.ttf",
+          "sha256": "d2fa8f8fd77461576ed94f28287f26942917a651e6260ef6241502fd204ae8aa"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-39.ttf",
+          "sha256": "46ca66dec4635a149fdc509270e2d7bd3f44e88b2ef3b8501df3046c0fa4c04a"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-40.ttf",
+          "sha256": "fe246b1670dd86a378f7c701928273ca84fb8befbedd5a92f0855006f0bcc8a7"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-41.ttf",
+          "sha256": "83d76124deff3e31d56140d1ab44082aaf10aabc825503a6307a6fd0b7d75f3a"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-42.ttf",
+          "sha256": "a1c26e4738b501512f44575b508156a9e36afcefdce711d7ff88985dee2b8da7"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-43.ttf",
+          "sha256": "c6ca31490bf997f5e31542864bd4ae73cad4c22fe92a9c98512360f78013ac64"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-44.ttf",
+          "sha256": "7e94679135dd194719a0069528901121d3c679e3e69e6b4f92b0b41c581a58d7"
+        },
+        {
+          "file": "fallback/noto-sans-kr/medium-45.ttf",
+          "sha256": "05ecbda3078dbb6eb126eaa9ae8998aeaa51ccd0ee25b9535d22d5512e76b160"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-00.ttf",
+          "sha256": "b95fb996ce21080f61c7a81e927747a524b595db9858360c8044772e8a054acc"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-01.ttf",
+          "sha256": "146aeade50fa8f998439aad0753c21e20782a20b380cf90c134e5d5481f7e76e"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-02.ttf",
+          "sha256": "ae8d276e5a98a3b2c83d7bf4fa93f865acca1c7a7665c20ac354bdcf6c5a96d7"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-03.ttf",
+          "sha256": "fd43f880a283c129ff7b92f88e2db85fa3b0c71b253ae92f002853d33cb4913a"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-04.ttf",
+          "sha256": "b56af78322a2f1de3a0e80ecc7a94e3f363c7240d59f304792a50a3c58f26358"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-05.ttf",
+          "sha256": "67f8b75a466e5c516287f8a1a03b458615174135a5e22c0047ae2bf9ee55e611"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-06.ttf",
+          "sha256": "b8da0dd76f3d60a6cae178944d4c75878dac6d0964b378f4e0cd8e942d031d0f"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-07.ttf",
+          "sha256": "9c0f52d55e1b443e133aa4773f5f41534d8cb9b45159f8be47fad3c0a4dd7a1e"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-08.ttf",
+          "sha256": "f0634073f3f05d9de4a98a8cc85bb1603b9c6d29b3816b7b8498985f900c20c7"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-09.ttf",
+          "sha256": "1feb9b4ecc9534fd55e8aa99f608f6661ed4d928015b962483af51f5a7eea177"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-10.ttf",
+          "sha256": "8c515ec4b5057392c3e64f2afc01c46e054e91475cdd93c89f095534e9eeed9e"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-11.ttf",
+          "sha256": "435ad9affd6615225f4700f0be4f2bbc7598bbbea6dbeb00a723ed097c5d2f08"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-12.ttf",
+          "sha256": "227a8f016a5ecd0825e84d67841427f5c017999b2f2edab4511f61c9c921567a"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-13.ttf",
+          "sha256": "af98f73a0e9ad1a75e64943a1b4c69877ad4fed4de587d92515eba6765676c7c"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-14.ttf",
+          "sha256": "9a68d63690e931839a020d8d42b2acaefa2a14dad5ac042d3896145d378359a6"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-15.ttf",
+          "sha256": "b23808620f81780a13aca8c5a7433b9b34d3ab0e234c8c63fb5486a5d1f9e1cd"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-16.ttf",
+          "sha256": "f775d0314e173f50e94487f07e12bf604dc5d8483a3e2fa81b48329eb5aa0225"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-17.ttf",
+          "sha256": "be85412835c05cf366a78226a2461065af04205d1eb0dbc09c356a2ddd00f9cf"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-18.ttf",
+          "sha256": "629bb8fdc35145489bd1764bee1723289689f9d4188f3f8d22269d7443e002f5"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-19.ttf",
+          "sha256": "bb35c21a16819b8cf65161f94d7c1e85b93a4392fe333a0ee21e4b28cbb71ce1"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-20.ttf",
+          "sha256": "cdedc8d59bad69a987dc60c4c110ebe5d6c83c83391c1381009e1eb50dca800d"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-21.ttf",
+          "sha256": "220223549c913aa9f49f354d72a2ddd3703d30301aeae54b616ef9e277ca36da"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-22.ttf",
+          "sha256": "6d34002cca808e31737dfe922f12e2d3bd1f648a4702a1fa1f5fa805c96888de"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-23.ttf",
+          "sha256": "20e549aff1cb75bd695e037480ee0d4af90dabb9a68d71ffaa420bcfc1de4757"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-24.ttf",
+          "sha256": "d8b3b0f56cb43cb32bf3ae9e5e5d49a20d7242bc30420081186a7fc8ca3713ac"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-25.ttf",
+          "sha256": "d3f6d9600f120ae40011941df5c8c5bf55e3ee8a671f06a74fe1e2b00800e836"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-26.ttf",
+          "sha256": "82a8b6999db0c18d07119ca3f7a9d54f1315f80a3283054ed33ad8aace6cf560"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-27.ttf",
+          "sha256": "eb905a3f4485d0c6046cff19eca3cdf3ecfdb538867026f57f4df03b7cf0cd00"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-28.ttf",
+          "sha256": "f94c6d8fbdc97d3e87eafec32d96b759de204c7ccdb45594f7b3a69fa709daa7"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-29.ttf",
+          "sha256": "25727368fd233c35d1218b09472337534ab8e2114aecc884edddd373d7187db7"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-30.ttf",
+          "sha256": "1227ae9b6070751164355d4894caa5dc8861d1e4346509f47fafe80ae92cbf5d"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-31.ttf",
+          "sha256": "875d98d3c2cc87f2f0fa9cb670f2bd0de475810aec2ade7691a7901921e248b1"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-32.ttf",
+          "sha256": "51d7174d591973b59feb45f99fcbb87fe2b31063f0f6879756ddba3081692490"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-33.ttf",
+          "sha256": "53ce2de5f41a7d6774787f49cb6fc5087dce03af0f6a653f44da82c1c9486dbc"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-34.ttf",
+          "sha256": "45a2cf70c7597d58b147ea7ba0335789e169832a0e22e06bd5490fa1a639d62c"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-35.ttf",
+          "sha256": "16b9c5add6e8cc53f77cc9629ca65cf019502325946ee45e63d3cf5359f76ba5"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-36.ttf",
+          "sha256": "5aa13c394ed705a6e795204df30cc1f2ade5ba2b7b3b36ad7b52b9a985b7efa2"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-37.ttf",
+          "sha256": "7cfe62b88d3899ba43c0f9160b20e980c6567e2c09082791d0ac4bb06b91f6d1"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-38.ttf",
+          "sha256": "5112b9d075962e73969719d1b67a018f67dfa6d26e2d4a22417e6f02aad5a584"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-39.ttf",
+          "sha256": "7b493be38bfd3d75cc68c924ed7faf1ac83601677e6e2c066a6e0bbca68a4128"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-40.ttf",
+          "sha256": "c40312237fef00f5a310aad210b4ce3d5839eb53478c4ca17e577aa0483f5591"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-41.ttf",
+          "sha256": "6aab6c5387c08038461a9d11c9e53af7edbfd761d4e1575191e06c0eb4757abb"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-42.ttf",
+          "sha256": "d51b579ff83ba608bb179607b68a3aa508e0b689918e740720c5fe23595b2051"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-43.ttf",
+          "sha256": "735d71bf0c79c0f066877282441e7e05a0ebdb2f6669eb826fe0b2141cbab597"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-44.ttf",
+          "sha256": "9cfe836ca6def43e5f3bbd4752dad51942de99f38b3400ecf6ff77e023118840"
+        },
+        {
+          "file": "fallback/noto-sans-kr/regular-45.ttf",
+          "sha256": "2f2e88af952a4e00c6cb081cf4b43fb31e5d7086f0134403f3643d1a05eace8f"
+        }
+      ]
+    },
+    {
+      "id": "noto-sans-arabic",
+      "license": "OFL-1.1",
+      "license_file": "licenses/OFL-noto-sans-arabic.txt",
+      "license_sha256": "07fc70bfeb985cc1a87a8587d0a0c80bab11c86c9dc3fd95b6f0cb332f983e96",
+      "license_source": "https://raw.githubusercontent.com/google/fonts/f2bd09badbc763d8757951d52deec29da27e85fb/ofl/notosansarabic/OFL.txt",
+      "license_copy": "exact upstream bytes",
+      "local_name_records": {
+        "0": [
+          "Copyright 2022 The Noto Project Authors (https://github.com/notofonts/arabic)"
+        ],
+        "1": [
+          "Noto Sans Arabic Tidy Medium 00",
+          "Noto Sans Arabic Tidy Medium 01",
+          "Noto Sans Arabic Tidy Medium 02",
+          "Noto Sans Arabic Tidy Medium 03",
+          "Noto Sans Arabic Tidy Regular 00",
+          "Noto Sans Arabic Tidy Regular 01",
+          "Noto Sans Arabic Tidy Regular 02",
+          "Noto Sans Arabic Tidy Regular 03"
+        ],
+        "5": [
+          "Version 2.012"
+        ]
+      },
+      "files": [
+        {
+          "file": "fallback/noto-sans-arabic/medium-00.ttf",
+          "sha256": "0fb6d401359cf5a82d8a5403f2a65093a6e58a4976a36f1b2f236dafaa29ab8e"
+        },
+        {
+          "file": "fallback/noto-sans-arabic/medium-01.ttf",
+          "sha256": "c7442afa9f0167e1056bc804b5cae37e6e986145b61160a47fb9f269144996b7"
+        },
+        {
+          "file": "fallback/noto-sans-arabic/medium-02.ttf",
+          "sha256": "a57ffdafb03fec762ed61e5f99753c69c62f6144ce101f8ce3b9b680f261a242"
+        },
+        {
+          "file": "fallback/noto-sans-arabic/medium-03.ttf",
+          "sha256": "ba4c50215dfcbc0b51cfc6f7ff379d64f0d206dbfe73b4e9ce29b3c2c2d6a714"
+        },
+        {
+          "file": "fallback/noto-sans-arabic/regular-00.ttf",
+          "sha256": "b7ce1cf76817b56ddf0793f2bd7496a72c3cf59425b314c24d1806c5ec98b81d"
+        },
+        {
+          "file": "fallback/noto-sans-arabic/regular-01.ttf",
+          "sha256": "7fd8e64bee1e531506ffe8fc65783cd5e60460e1b7ca8bb114486525dae12338"
+        },
+        {
+          "file": "fallback/noto-sans-arabic/regular-02.ttf",
+          "sha256": "7a252ccd30999e53fcdffd18c00580eab14c3626aec9c6b73aeafec0f784fc81"
+        },
+        {
+          "file": "fallback/noto-sans-arabic/regular-03.ttf",
+          "sha256": "1b8d1b94e4a30f702e16104be6bea6fd97199b11c98cb77f4cf583ceddba6a7b"
+        }
+      ]
+    },
+    {
+      "id": "noto-sans-hebrew",
+      "license": "OFL-1.1",
+      "license_file": "licenses/OFL-noto-sans-hebrew.txt",
+      "license_sha256": "9b9fe028b5ba74d231659a1bbaf0ed09b11e759d1ca6a070999e16d151616b47",
+      "license_source": "https://raw.githubusercontent.com/google/fonts/f2bd09badbc763d8757951d52deec29da27e85fb/ofl/notosanshebrew/OFL.txt",
+      "license_copy": "exact upstream bytes",
+      "local_name_records": {
+        "0": [
+          "Copyright 2024 The Noto Project Authors (https://github.com/notofonts/hebrew)"
+        ],
+        "1": [
+          "Noto Sans Hebrew Tidy Medium 00",
+          "Noto Sans Hebrew Tidy Regular 00"
+        ],
+        "5": [
+          "Version 3.001"
+        ]
+      },
+      "files": [
+        {
+          "file": "fallback/noto-sans-hebrew/medium-00.ttf",
+          "sha256": "17d8d76bb9080d859b26fa766bf7ac07158f2dab47c03459432e54691f097ac5"
+        },
+        {
+          "file": "fallback/noto-sans-hebrew/regular-00.ttf",
+          "sha256": "4d816ecc895c065d871219cd3e426e7536865b379cfcfe4355f4ad1e8bdf3065"
+        }
+      ]
+    },
+    {
+      "id": "noto-sans-armenian",
+      "license": "OFL-1.1",
+      "license_file": "licenses/OFL-noto-sans-armenian.txt",
+      "license_sha256": "0468358b316f69f405b55cadf8a8314e16e3610b8feaad96772bd5d968112d02",
+      "license_source": "https://raw.githubusercontent.com/google/fonts/f2bd09badbc763d8757951d52deec29da27e85fb/ofl/notosansarmenian/OFL.txt",
+      "license_copy": "exact upstream bytes",
+      "local_name_records": {
+        "0": [
+          "Copyright 2022 The Noto Project Authors (https://github.com/notofonts/armenian)"
+        ],
+        "1": [
+          "Noto Sans Armenian Tidy Medium 00",
+          "Noto Sans Armenian Tidy Regular 00"
+        ],
+        "5": [
+          "Version 2.008"
+        ]
+      },
+      "files": [
+        {
+          "file": "fallback/noto-sans-armenian/medium-00.ttf",
+          "sha256": "c1c9ce9fc23ba32c7db7c329f2309c6db18fa2e95460ceedbd7038d4ddb2cefc"
+        },
+        {
+          "file": "fallback/noto-sans-armenian/regular-00.ttf",
+          "sha256": "f70d8f37df6c9567989ec08b9e23d310bffe195e63e4303bca3d34767fbce6d9"
+        }
+      ]
+    },
+    {
+      "id": "noto-sans-georgian",
+      "license": "OFL-1.1",
+      "license_file": "licenses/OFL-noto-sans-georgian.txt",
+      "license_sha256": "8c02263c5d73d40544f9ed91e30c4e947407057a3cc430d7b786189aeceff6df",
+      "license_source": "https://raw.githubusercontent.com/google/fonts/f2bd09badbc763d8757951d52deec29da27e85fb/ofl/notosansgeorgian/OFL.txt",
+      "license_copy": "exact upstream bytes",
+      "local_name_records": {
+        "0": [
+          "Copyright 2022 The Noto Project Authors (https://github.com/notofonts/georgian)"
+        ],
+        "1": [
+          "Noto Sans Georgian Tidy Medium 00",
+          "Noto Sans Georgian Tidy Regular 00"
+        ],
+        "5": [
+          "Version 2.005"
+        ]
+      },
+      "files": [
+        {
+          "file": "fallback/noto-sans-georgian/medium-00.ttf",
+          "sha256": "c97e12ac9835daf91f359be287ebcbe44425ff779d09981e25bc116d5cf13fe3"
+        },
+        {
+          "file": "fallback/noto-sans-georgian/regular-00.ttf",
+          "sha256": "7b19ff12fa8e975ca0048d23a3d8c7576be536c98668efccc87854c7ca180783"
+        }
+      ]
+    },
+    {
+      "id": "noto-sans-devanagari",
+      "license": "OFL-1.1",
+      "license_file": "licenses/OFL-noto-sans-devanagari.txt",
+      "license_sha256": "a216f6f8d85c7228093e0ee5e258d9d377e6671f68acb4db1930b29583d0f331",
+      "license_source": "https://raw.githubusercontent.com/google/fonts/f2bd09badbc763d8757951d52deec29da27e85fb/ofl/notosansdevanagari/OFL.txt",
+      "license_copy": "exact upstream bytes",
+      "local_name_records": {
+        "0": [
+          "Copyright 2022 The Noto Project Authors (https://github.com/notofonts/devanagari)"
+        ],
+        "1": [
+          "Noto Sans Devanagari Tidy Medium 00",
+          "Noto Sans Devanagari Tidy Medium 01",
+          "Noto Sans Devanagari Tidy Regular 00",
+          "Noto Sans Devanagari Tidy Regular 01"
+        ],
+        "5": [
+          "Version 2.006"
+        ]
+      },
+      "files": [
+        {
+          "file": "fallback/noto-sans-devanagari/medium-00.ttf",
+          "sha256": "1629c10b835b6fce20c63a9745f59fb6e4e4d91dee365180ef99618c0e14e4ad"
+        },
+        {
+          "file": "fallback/noto-sans-devanagari/medium-01.ttf",
+          "sha256": "a24a68f05ee79fe1d8e60211bc024d619c0bab0169e11f36a7e004b4531c7a76"
+        },
+        {
+          "file": "fallback/noto-sans-devanagari/regular-00.ttf",
+          "sha256": "5b22933c2463c7aef944ef4f646bea50eb5e71e03f54251f939534649b028dad"
+        },
+        {
+          "file": "fallback/noto-sans-devanagari/regular-01.ttf",
+          "sha256": "c0f183a79846ae0ac0c9b9fcc72a71919eb85473ca85635cea5c9e1f16c2eb17"
+        }
+      ]
+    },
+    {
+      "id": "noto-sans-bengali",
+      "license": "OFL-1.1",
+      "license_file": "licenses/OFL-noto-sans-bengali.txt",
+      "license_sha256": "754f0e221aa7d5a915489f3bf1f20fe53ddc35ab2834a4d91656d78f9622de70",
+      "license_source": "https://raw.githubusercontent.com/google/fonts/f2bd09badbc763d8757951d52deec29da27e85fb/ofl/notosansbengali/OFL.txt",
+      "license_copy": "exact upstream bytes",
+      "local_name_records": {
+        "0": [
+          "Copyright 2025 The Noto Project Authors (https://github.com/notofonts/bengali)"
+        ],
+        "1": [
+          "Noto Sans Bengali Tidy Medium 00",
+          "Noto Sans Bengali Tidy Regular 00"
+        ],
+        "5": [
+          "Version 3.011"
+        ]
+      },
+      "files": [
+        {
+          "file": "fallback/noto-sans-bengali/medium-00.ttf",
+          "sha256": "9e31c54f10c8bd542fbba549a7c3c8fa55d6fbf9fc3e7ae113f11e8e8c2ff124"
+        },
+        {
+          "file": "fallback/noto-sans-bengali/regular-00.ttf",
+          "sha256": "f6a5e0bbf9553bb7a4746b70ae16810e67687b252a8109fa2391aa88d1746cae"
+        }
+      ]
+    },
+    {
+      "id": "noto-sans-tamil",
+      "license": "OFL-1.1",
+      "license_file": "licenses/OFL-noto-sans-tamil.txt",
+      "license_sha256": "f8ff8ce7d0a81bf8d5e121c635ef027250c531f2fd37d5988b8dd6e45f19d7f1",
+      "license_source": "https://raw.githubusercontent.com/google/fonts/f2bd09badbc763d8757951d52deec29da27e85fb/ofl/notosanstamil/OFL.txt",
+      "license_copy": "exact upstream bytes",
+      "local_name_records": {
+        "0": [
+          "Copyright 2022 The Noto Project Authors (https://github.com/notofonts/tamil)"
+        ],
+        "1": [
+          "Noto Sans Tamil Tidy Medium 00",
+          "Noto Sans Tamil Tidy Regular 00"
+        ],
+        "5": [
+          "Version 2.004"
+        ]
+      },
+      "files": [
+        {
+          "file": "fallback/noto-sans-tamil/medium-00.ttf",
+          "sha256": "730c7bb3a448eb5ddfae86d68c0f4b6358bc0eb547be2cb3b363315c73f778f9"
+        },
+        {
+          "file": "fallback/noto-sans-tamil/regular-00.ttf",
+          "sha256": "30fa1837059e41b79a17f130c4ba52544e864bb67f50b864923048b2b4d6db56"
+        }
+      ]
+    },
+    {
+      "id": "noto-sans-telugu",
+      "license": "OFL-1.1",
+      "license_file": "licenses/OFL-noto-sans-telugu.txt",
+      "license_sha256": "481c72a8f1b4f645a7e6b10326be41b2da2c15cb470ff48a07fab773eed00102",
+      "license_source": "https://raw.githubusercontent.com/google/fonts/f2bd09badbc763d8757951d52deec29da27e85fb/ofl/notosanstelugu/OFL.txt",
+      "license_copy": "exact upstream bytes",
+      "local_name_records": {
+        "0": [
+          "Copyright 2022 The Noto Project Authors (https://github.com/notofonts/telugu)"
+        ],
+        "1": [
+          "Noto Sans Telugu Tidy Medium 00",
+          "Noto Sans Telugu Tidy Regular 00"
+        ],
+        "5": [
+          "Version 2.005"
+        ]
+      },
+      "files": [
+        {
+          "file": "fallback/noto-sans-telugu/medium-00.ttf",
+          "sha256": "e718a7bb0a4c456869211d212ed91d449cb5e2332a33033b018163a087fa83a0"
+        },
+        {
+          "file": "fallback/noto-sans-telugu/regular-00.ttf",
+          "sha256": "640a2054cc8c6082104da607bd01671a60f9a49808cd14ad142ff61610e9f5d2"
+        }
+      ]
+    },
+    {
+      "id": "noto-sans-gujarati",
+      "license": "OFL-1.1",
+      "license_file": "licenses/OFL-noto-sans-gujarati.txt",
+      "license_sha256": "c0b88977aa18b5e4fd05d646d560da89fde61b6581fa4507cb00dd90bd1bf7d4",
+      "license_source": "https://raw.githubusercontent.com/google/fonts/f2bd09badbc763d8757951d52deec29da27e85fb/ofl/notosansgujarati/OFL.txt",
+      "license_copy": "exact upstream bytes",
+      "local_name_records": {
+        "0": [
+          "Copyright 2022 The Noto Project Authors (https://github.com/notofonts/gujarati)"
+        ],
+        "1": [
+          "Noto Sans Gujarati Tidy Medium 00",
+          "Noto Sans Gujarati Tidy Regular 00"
+        ],
+        "5": [
+          "Version 2.106"
+        ]
+      },
+      "files": [
+        {
+          "file": "fallback/noto-sans-gujarati/medium-00.ttf",
+          "sha256": "0d1c8849bd48199eef7247a56d9f1762f630775edfa52e18c52d60d589fa58f3"
+        },
+        {
+          "file": "fallback/noto-sans-gujarati/regular-00.ttf",
+          "sha256": "1e19d5df0e48e3dd9ed3f55840cf08a971fe031547b83b94b15703fa821f13ec"
+        }
+      ]
+    },
+    {
+      "id": "noto-sans-kannada",
+      "license": "OFL-1.1",
+      "license_file": "licenses/OFL-noto-sans-kannada.txt",
+      "license_sha256": "9d49a4e56df9b36403b139f48bf07fd87cc5e716cb3203c54b04b674adb16238",
+      "license_source": "https://raw.githubusercontent.com/google/fonts/f2bd09badbc763d8757951d52deec29da27e85fb/ofl/notosanskannada/OFL.txt",
+      "license_copy": "exact upstream bytes",
+      "local_name_records": {
+        "0": [
+          "Copyright 2022 The Noto Project Authors (https://github.com/notofonts/kannada)"
+        ],
+        "1": [
+          "Noto Sans Kannada Tidy Medium 00",
+          "Noto Sans Kannada Tidy Regular 00"
+        ],
+        "5": [
+          "Version 2.006"
+        ]
+      },
+      "files": [
+        {
+          "file": "fallback/noto-sans-kannada/medium-00.ttf",
+          "sha256": "ee0b8d9fa3c2101055d79d25c17e0275bb3b1a1e9f80c446a265e439d263e7ca"
+        },
+        {
+          "file": "fallback/noto-sans-kannada/regular-00.ttf",
+          "sha256": "807dfdad93d9d63f81bbd88143f7656a5526237be4469140c2be895d5a69a6a2"
+        }
+      ]
+    },
+    {
+      "id": "noto-sans-malayalam",
+      "license": "OFL-1.1",
+      "license_file": "licenses/OFL-noto-sans-malayalam.txt",
+      "license_sha256": "1df18163a0bf60f02131401ba1609df90051f40c4047684dda1c8a2e9586f7f2",
+      "license_source": "https://raw.githubusercontent.com/google/fonts/f2bd09badbc763d8757951d52deec29da27e85fb/ofl/notosansmalayalam/OFL.txt",
+      "license_copy": "exact upstream bytes",
+      "local_name_records": {
+        "0": [
+          "Copyright 2022 The Noto Project Authors (https://github.com/notofonts/malayalam)"
+        ],
+        "1": [
+          "Noto Sans Malayalam Tidy Medium 00",
+          "Noto Sans Malayalam Tidy Regular 00"
+        ],
+        "5": [
+          "Version 2.104"
+        ]
+      },
+      "files": [
+        {
+          "file": "fallback/noto-sans-malayalam/medium-00.ttf",
+          "sha256": "e779550e998e9e18b64ec9676f8340fd21d4f2129e3886133d13ac225706fdac"
+        },
+        {
+          "file": "fallback/noto-sans-malayalam/regular-00.ttf",
+          "sha256": "8e8f507f93c3ce7b4ae7b538f65b2317415b34519465d7e493bd5a7fe7e712d0"
+        }
+      ]
+    },
+    {
+      "id": "noto-sans-gurmukhi",
+      "license": "OFL-1.1",
+      "license_file": "licenses/OFL-noto-sans-gurmukhi.txt",
+      "license_sha256": "3f7451b7e2c8381be0c5712f7b0dd5c2d75fe787ae16a99f18b7fa45627a0fde",
+      "license_source": "https://raw.githubusercontent.com/google/fonts/f2bd09badbc763d8757951d52deec29da27e85fb/ofl/notosansgurmukhi/OFL.txt",
+      "license_copy": "exact upstream bytes",
+      "local_name_records": {
+        "0": [
+          "Copyright 2022 The Noto Project Authors (https://github.com/notofonts/gurmukhi)"
+        ],
+        "1": [
+          "Noto Sans Gurmukhi Tidy Medium 00",
+          "Noto Sans Gurmukhi Tidy Regular 00"
+        ],
+        "5": [
+          "Version 2.004"
+        ]
+      },
+      "files": [
+        {
+          "file": "fallback/noto-sans-gurmukhi/medium-00.ttf",
+          "sha256": "64e899c46f64d5d809a870dd0e018fbc6e04f9025a884e29c369eceae0a84a5e"
+        },
+        {
+          "file": "fallback/noto-sans-gurmukhi/regular-00.ttf",
+          "sha256": "772b89cce42eb35df6c22338f5beef71f850f9fc2d204793b15f56f100169b10"
+        }
+      ]
+    },
+    {
+      "id": "noto-sans-sinhala",
+      "license": "OFL-1.1",
+      "license_file": "licenses/OFL-noto-sans-sinhala.txt",
+      "license_sha256": "2d6f7c43bce61f4b1919379f901bc613484f5285f520b6d29bb7c1f31b17e841",
+      "license_source": "https://raw.githubusercontent.com/google/fonts/f2bd09badbc763d8757951d52deec29da27e85fb/ofl/notosanssinhala/OFL.txt",
+      "license_copy": "exact upstream bytes",
+      "local_name_records": {
+        "0": [
+          "Copyright 2022 The Noto Project Authors (https://github.com/notofonts/sinhala)"
+        ],
+        "1": [
+          "Noto Sans Sinhala Tidy Medium 00",
+          "Noto Sans Sinhala Tidy Regular 00"
+        ],
+        "5": [
+          "Version 2.006"
+        ]
+      },
+      "files": [
+        {
+          "file": "fallback/noto-sans-sinhala/medium-00.ttf",
+          "sha256": "b404d30f42d36fa4e93808a83d5da63370380340308e77305af88c83ac26177f"
+        },
+        {
+          "file": "fallback/noto-sans-sinhala/regular-00.ttf",
+          "sha256": "446a3ba7e4bc5c830781c97fdc7f074d1756fce521b462c66691b124816d988d"
+        }
+      ]
+    },
+    {
+      "id": "noto-sans-thai",
+      "license": "OFL-1.1",
+      "license_file": "licenses/OFL-noto-sans-thai.txt",
+      "license_sha256": "2e98fd23a52d253db8612cd5942c8f2ff4111b21d2367050fdca91d8ccc374a0",
+      "license_source": "https://raw.githubusercontent.com/google/fonts/f2bd09badbc763d8757951d52deec29da27e85fb/ofl/notosansthai/OFL.txt",
+      "license_copy": "exact upstream bytes",
+      "local_name_records": {
+        "0": [
+          "Copyright 2022 The Noto Project Authors (https://github.com/notofonts/thai)"
+        ],
+        "1": [
+          "Noto Sans Thai Tidy Medium 00",
+          "Noto Sans Thai Tidy Regular 00"
+        ],
+        "5": [
+          "Version 2.002"
+        ]
+      },
+      "files": [
+        {
+          "file": "fallback/noto-sans-thai/medium-00.ttf",
+          "sha256": "547c076e7c392df9871e9a879d5ab4fbb990b8c389c47f5d83a9b4fa80f35572"
+        },
+        {
+          "file": "fallback/noto-sans-thai/regular-00.ttf",
+          "sha256": "219df09afc1add02e236d64c29a91d4284f14cb432f373ba1ec16c6a84e9872b"
+        }
+      ]
+    },
+    {
+      "id": "noto-sans-khmer",
+      "license": "OFL-1.1",
+      "license_file": "licenses/OFL-noto-sans-khmer.txt",
+      "license_sha256": "be0407f060aea48787ff9e75d8d3aedef70aef113b3ce9aca26fdaacd10b1870",
+      "license_source": "https://raw.githubusercontent.com/google/fonts/f2bd09badbc763d8757951d52deec29da27e85fb/ofl/notosanskhmer/OFL.txt",
+      "license_copy": "exact upstream bytes",
+      "local_name_records": {
+        "0": [
+          "Copyright 2022 The Noto Project Authors (https://github.com/notofonts/khmer)"
+        ],
+        "1": [
+          "Noto Sans Khmer Tidy Medium 00",
+          "Noto Sans Khmer Tidy Regular 00"
+        ],
+        "5": [
+          "Version 2.004"
+        ]
+      },
+      "files": [
+        {
+          "file": "fallback/noto-sans-khmer/medium-00.ttf",
+          "sha256": "d258dc7857ffd5f197c420830a602571ffd7cfbdca295e211462fa1f11907f59"
+        },
+        {
+          "file": "fallback/noto-sans-khmer/regular-00.ttf",
+          "sha256": "2bdbb3c19badacb11ecdbc349bf4816063e8addfabfb9d0a145439a6167ae157"
+        }
+      ]
+    },
+    {
+      "id": "noto-sans-lao",
+      "license": "OFL-1.1",
+      "license_file": "licenses/OFL-noto-sans-lao.txt",
+      "license_sha256": "a42993999944845fb5af693ea678a372a053db1f0981d55e911dcfa9d330f279",
+      "license_source": "https://raw.githubusercontent.com/google/fonts/f2bd09badbc763d8757951d52deec29da27e85fb/ofl/notosanslao/OFL.txt",
+      "license_copy": "exact upstream bytes",
+      "local_name_records": {
+        "0": [
+          "Copyright 2022 The Noto Project Authors (https://github.com/notofonts/lao)"
+        ],
+        "1": [
+          "Noto Sans Lao Tidy Medium 00",
+          "Noto Sans Lao Tidy Regular 00"
+        ],
+        "5": [
+          "Version 2.003"
+        ]
+      },
+      "files": [
+        {
+          "file": "fallback/noto-sans-lao/medium-00.ttf",
+          "sha256": "7f961b83d48a0622fe390e3efc3d7b0bab9632f708c81591769f06d09935f6c4"
+        },
+        {
+          "file": "fallback/noto-sans-lao/regular-00.ttf",
+          "sha256": "38fd4cf3f177b1d70aeeea5dc15263f29be57802c6b50aae58893d8d5d36b022"
+        }
+      ]
+    },
+    {
+      "id": "noto-sans-myanmar",
+      "license": "OFL-1.1",
+      "license_file": "licenses/OFL-noto-sans-myanmar.txt",
+      "license_sha256": "246a75859267af7da466823969d2e2b407ed8455ee5f74f4c8d63d8783be9b57",
+      "license_source": "https://raw.githubusercontent.com/google/fonts/f2bd09badbc763d8757951d52deec29da27e85fb/ofl/notosansmyanmar/OFL.txt",
+      "license_copy": "exact upstream bytes",
+      "local_name_records": {
+        "0": [
+          "Copyright 2022 The Noto Project Authors (https://github.com/notofonts/myanmar)"
+        ],
+        "1": [
+          "Noto Sans Myanmar Tidy Medium 00",
+          "Noto Sans Myanmar Tidy Medium 01",
+          "Noto Sans Myanmar Tidy Regular 00",
+          "Noto Sans Myanmar Tidy Regular 01"
+        ],
+        "5": [
+          "Version 2.107"
+        ]
+      },
+      "files": [
+        {
+          "file": "fallback/noto-sans-myanmar/medium-00.ttf",
+          "sha256": "19c08caa8f1cbc588420fadaf86969c65559633e9e94e0b2f72ec43e5b8677fd"
+        },
+        {
+          "file": "fallback/noto-sans-myanmar/medium-01.ttf",
+          "sha256": "3949c0b9b258dcf360a27c67687562b7047533a5f7722e8f38765aa3523350f0"
+        },
+        {
+          "file": "fallback/noto-sans-myanmar/regular-00.ttf",
+          "sha256": "687115d22101d8afa4ccd39a60fa89990baf112f73ca3fbaacb30586cd44762e"
+        },
+        {
+          "file": "fallback/noto-sans-myanmar/regular-01.ttf",
+          "sha256": "7c40615521babb58429e41f702bf52b6a39a1ba31b55d5a6657ab9a664ad9041"
+        }
+      ]
+    },
+    {
+      "id": "noto-sans-ethiopic",
+      "license": "OFL-1.1",
+      "license_file": "licenses/OFL-noto-sans-ethiopic.txt",
+      "license_sha256": "72606b23f312cb25973958f2892d4d2c2012deabadbf0f763232624a9649fc69",
+      "license_source": "https://raw.githubusercontent.com/google/fonts/f2bd09badbc763d8757951d52deec29da27e85fb/ofl/notosansethiopic/OFL.txt",
+      "license_copy": "exact upstream bytes",
+      "local_name_records": {
+        "0": [
+          "Copyright 2022 The Noto Project Authors (https://github.com/notofonts/ethiopic)"
+        ],
+        "1": [
+          "Noto Sans Ethiopic Tidy Medium 00",
+          "Noto Sans Ethiopic Tidy Medium 01",
+          "Noto Sans Ethiopic Tidy Regular 00",
+          "Noto Sans Ethiopic Tidy Regular 01"
+        ],
+        "5": [
+          "Version 2.102"
+        ]
+      },
+      "files": [
+        {
+          "file": "fallback/noto-sans-ethiopic/medium-00.ttf",
+          "sha256": "c2a6e7b257a7b8c03c8e305bfb27339797f8c47820422ca7132541a7533f9cd7"
+        },
+        {
+          "file": "fallback/noto-sans-ethiopic/medium-01.ttf",
+          "sha256": "a3abc10ecd8e3b70130eb73597293764fa4ebdedc2426d2ecf033eca63b64c38"
+        },
+        {
+          "file": "fallback/noto-sans-ethiopic/regular-00.ttf",
+          "sha256": "621c158d388c549b0b841c5396a54c42caa43805d2ca309beecc99b9042c6d6b"
+        },
+        {
+          "file": "fallback/noto-sans-ethiopic/regular-01.ttf",
+          "sha256": "165dca4a64633376d968c76ec888e830dc9df8e896d73ff6b49478d8c9f8c587"
+        }
+      ]
+    },
+    {
+      "id": "noto-sans-symbols2",
+      "license": "OFL-1.1",
+      "license_file": "licenses/OFL-noto-sans-symbols2.txt",
+      "license_sha256": "b118dd41337806a5d4797052c77caf3bd096aed783e5eb21b4d11154351e1ac0",
+      "license_source": "https://raw.githubusercontent.com/google/fonts/f2bd09badbc763d8757951d52deec29da27e85fb/ofl/notosanssymbols2/OFL.txt",
+      "license_copy": "exact upstream bytes",
+      "local_name_records": {
+        "0": [
+          "Copyright 2022 The Noto Project Authors (https://github.com/notofonts/symbols)"
+        ],
+        "1": [
+          "Noto Sans Symbols 2 Tidy Medium 00",
+          "Noto Sans Symbols 2 Tidy Medium 01",
+          "Noto Sans Symbols 2 Tidy Medium 02",
+          "Noto Sans Symbols 2 Tidy Medium 03",
+          "Noto Sans Symbols 2 Tidy Medium 04",
+          "Noto Sans Symbols 2 Tidy Medium 05",
+          "Noto Sans Symbols 2 Tidy Regular 00",
+          "Noto Sans Symbols 2 Tidy Regular 01",
+          "Noto Sans Symbols 2 Tidy Regular 02",
+          "Noto Sans Symbols 2 Tidy Regular 03",
+          "Noto Sans Symbols 2 Tidy Regular 04",
+          "Noto Sans Symbols 2 Tidy Regular 05"
+        ],
+        "5": [
+          "Version 2.008; ttfautohint (v1.8.4.7-5d5b)"
+        ]
+      },
+      "files": [
+        {
+          "file": "fallback/noto-sans-symbols2/medium-00.ttf",
+          "sha256": "5956fdb22cc9340c4fd3d4ebb189f8e9f845e911150518afc322ce025eb469ff"
+        },
+        {
+          "file": "fallback/noto-sans-symbols2/medium-01.ttf",
+          "sha256": "6e5f637d7363b753a5f325d3bf0bd001b367c0ea8b2b2e74be55f6fb51e83010"
+        },
+        {
+          "file": "fallback/noto-sans-symbols2/medium-02.ttf",
+          "sha256": "e0eeaaa51c424b551e296b9679d8b269e9134d073ac89e95a8b018a4ab4cfdaa"
+        },
+        {
+          "file": "fallback/noto-sans-symbols2/medium-03.ttf",
+          "sha256": "513cc9ea10f23ac2326f4d673fd59c01b1ed64318d44185194e965f8ea70e352"
+        },
+        {
+          "file": "fallback/noto-sans-symbols2/medium-04.ttf",
+          "sha256": "71b717dd080ebd2de166396c45e65a1462f8786bb70b76a1eb179f66efd47690"
+        },
+        {
+          "file": "fallback/noto-sans-symbols2/medium-05.ttf",
+          "sha256": "2cbfe470fd0caf4415935d652c069222ffc3ddb0ecd414aa949886028f228b23"
+        },
+        {
+          "file": "fallback/noto-sans-symbols2/regular-00.ttf",
+          "sha256": "f92c0cb7080e0e656994cb887b6e4f3cfa06b368b20d2e4d16433225869d87c7"
+        },
+        {
+          "file": "fallback/noto-sans-symbols2/regular-01.ttf",
+          "sha256": "f63eef1ffb20cc6ad4347eaae13502043074dc90267625c55f3c9333dc32abaf"
+        },
+        {
+          "file": "fallback/noto-sans-symbols2/regular-02.ttf",
+          "sha256": "06c9e5681e2c3a6d335bb6ef464f6a1334111e80075b498c994bf42d025c5f81"
+        },
+        {
+          "file": "fallback/noto-sans-symbols2/regular-03.ttf",
+          "sha256": "e6e37d3afbcbaa7effe4de97110be2a9fad6d573ef499eb1b0e78c5216d72af1"
+        },
+        {
+          "file": "fallback/noto-sans-symbols2/regular-04.ttf",
+          "sha256": "3be69bca93a0763ca6c2fabfe430cbf015633534be345127eaf3a6356b568ffe"
+        },
+        {
+          "file": "fallback/noto-sans-symbols2/regular-05.ttf",
+          "sha256": "2c8ea678efcfbee6bdc4e8b9428586f3839c59e041e829ada071e692ee94c50b"
+        }
+      ]
+    },
+    {
+      "id": "noto-sans-sc",
+      "license": "OFL-1.1",
+      "license_file": "OFL-NotoSansSC.txt",
+      "license_sha256": "1c05c68c34f9708415aada51f17e1b0092d2cea709bf4a94cd38114f9e73d7d9",
+      "license_source": "https://raw.githubusercontent.com/google/fonts/f2bd09badbc763d8757951d52deec29da27e85fb/ofl/notosanssc/OFL.txt",
+      "license_copy": "exact upstream bytes",
+      "local_name_records": {
+        "0": [
+          "(c) 2014-2021 Adobe (http://www.adobe.com/), with Reserved Font Name 'Source'."
+        ],
+        "1": [
+          "Noto Sans SC Tidy Medium 00",
+          "Noto Sans SC Tidy Medium 01",
+          "Noto Sans SC Tidy Medium 02",
+          "Noto Sans SC Tidy Medium 03",
+          "Noto Sans SC Tidy Medium 04",
+          "Noto Sans SC Tidy Medium 05",
+          "Noto Sans SC Tidy Medium 06",
+          "Noto Sans SC Tidy Medium 07",
+          "Noto Sans SC Tidy Medium 08",
+          "Noto Sans SC Tidy Medium 09",
+          "Noto Sans SC Tidy Medium 10",
+          "Noto Sans SC Tidy Medium 11",
+          "Noto Sans SC Tidy Medium 12",
+          "Noto Sans SC Tidy Medium 13",
+          "Noto Sans SC Tidy Medium 14",
+          "Noto Sans SC Tidy Medium 15",
+          "Noto Sans SC Tidy Medium 16",
+          "Noto Sans SC Tidy Medium 17",
+          "Noto Sans SC Tidy Medium 18",
+          "Noto Sans SC Tidy Medium 19",
+          "Noto Sans SC Tidy Medium 20",
+          "Noto Sans SC Tidy Medium 21",
+          "Noto Sans SC Tidy Medium 22",
+          "Noto Sans SC Tidy Medium 23",
+          "Noto Sans SC Tidy Medium 24",
+          "Noto Sans SC Tidy Medium 25",
+          "Noto Sans SC Tidy Medium 26",
+          "Noto Sans SC Tidy Medium 27",
+          "Noto Sans SC Tidy Medium 28",
+          "Noto Sans SC Tidy Medium 29",
+          "Noto Sans SC Tidy Medium 30",
+          "Noto Sans SC Tidy Medium 31",
+          "Noto Sans SC Tidy Medium 32",
+          "Noto Sans SC Tidy Medium 33",
+          "Noto Sans SC Tidy Medium 34",
+          "Noto Sans SC Tidy Medium 35",
+          "Noto Sans SC Tidy Medium 36",
+          "Noto Sans SC Tidy Medium 37",
+          "Noto Sans SC Tidy Medium 38",
+          "Noto Sans SC Tidy Medium 39",
+          "Noto Sans SC Tidy Medium 40",
+          "Noto Sans SC Tidy Medium 41",
+          "Noto Sans SC Tidy Medium 42",
+          "Noto Sans SC Tidy Medium 43",
+          "Noto Sans SC Tidy Medium 44",
+          "Noto Sans SC Tidy Medium 45",
+          "Noto Sans SC Tidy Medium 46",
+          "Noto Sans SC Tidy Medium 47",
+          "Noto Sans SC Tidy Medium 48",
+          "Noto Sans SC Tidy Medium 49",
+          "Noto Sans SC Tidy Medium 50",
+          "Noto Sans SC Tidy Medium 51",
+          "Noto Sans SC Tidy Medium 52",
+          "Noto Sans SC Tidy Medium 53",
+          "Noto Sans SC Tidy Medium 54",
+          "Noto Sans SC Tidy Medium 55",
+          "Noto Sans SC Tidy Medium 56",
+          "Noto Sans SC Tidy Medium 57",
+          "Noto Sans SC Tidy Medium 58",
+          "Noto Sans SC Tidy Medium 59",
+          "Noto Sans SC Tidy Medium 60",
+          "Noto Sans SC Tidy Regular 00",
+          "Noto Sans SC Tidy Regular 01",
+          "Noto Sans SC Tidy Regular 02",
+          "Noto Sans SC Tidy Regular 03",
+          "Noto Sans SC Tidy Regular 04",
+          "Noto Sans SC Tidy Regular 05",
+          "Noto Sans SC Tidy Regular 06",
+          "Noto Sans SC Tidy Regular 07",
+          "Noto Sans SC Tidy Regular 08",
+          "Noto Sans SC Tidy Regular 09",
+          "Noto Sans SC Tidy Regular 10",
+          "Noto Sans SC Tidy Regular 11",
+          "Noto Sans SC Tidy Regular 12",
+          "Noto Sans SC Tidy Regular 13",
+          "Noto Sans SC Tidy Regular 14",
+          "Noto Sans SC Tidy Regular 15",
+          "Noto Sans SC Tidy Regular 16",
+          "Noto Sans SC Tidy Regular 17",
+          "Noto Sans SC Tidy Regular 18",
+          "Noto Sans SC Tidy Regular 19",
+          "Noto Sans SC Tidy Regular 20",
+          "Noto Sans SC Tidy Regular 21",
+          "Noto Sans SC Tidy Regular 22",
+          "Noto Sans SC Tidy Regular 23",
+          "Noto Sans SC Tidy Regular 24",
+          "Noto Sans SC Tidy Regular 25",
+          "Noto Sans SC Tidy Regular 26",
+          "Noto Sans SC Tidy Regular 27",
+          "Noto Sans SC Tidy Regular 28",
+          "Noto Sans SC Tidy Regular 29",
+          "Noto Sans SC Tidy Regular 30",
+          "Noto Sans SC Tidy Regular 31",
+          "Noto Sans SC Tidy Regular 32",
+          "Noto Sans SC Tidy Regular 33",
+          "Noto Sans SC Tidy Regular 34",
+          "Noto Sans SC Tidy Regular 35",
+          "Noto Sans SC Tidy Regular 36",
+          "Noto Sans SC Tidy Regular 37",
+          "Noto Sans SC Tidy Regular 38",
+          "Noto Sans SC Tidy Regular 39",
+          "Noto Sans SC Tidy Regular 40",
+          "Noto Sans SC Tidy Regular 41",
+          "Noto Sans SC Tidy Regular 42",
+          "Noto Sans SC Tidy Regular 43",
+          "Noto Sans SC Tidy Regular 44",
+          "Noto Sans SC Tidy Regular 45",
+          "Noto Sans SC Tidy Regular 46",
+          "Noto Sans SC Tidy Regular 47",
+          "Noto Sans SC Tidy Regular 48",
+          "Noto Sans SC Tidy Regular 49",
+          "Noto Sans SC Tidy Regular 50",
+          "Noto Sans SC Tidy Regular 51",
+          "Noto Sans SC Tidy Regular 52",
+          "Noto Sans SC Tidy Regular 53",
+          "Noto Sans SC Tidy Regular 54",
+          "Noto Sans SC Tidy Regular 55",
+          "Noto Sans SC Tidy Regular 56",
+          "Noto Sans SC Tidy Regular 57",
+          "Noto Sans SC Tidy Regular 58",
+          "Noto Sans SC Tidy Regular 59",
+          "Noto Sans SC Tidy Regular 60"
+        ],
+        "5": [
+          "Version 2.004-H2;hotconv 1.0.118;makeotfexe 2.5.65603"
+        ]
+      },
+      "files": [
+        {
+          "file": "noto-sans-sc/medium-00.ttf",
+          "sha256": "4e13ab520ba82ec1431148bc7681326995433b83f30c0e5a2a9cce4e6bc5a6f0"
+        },
+        {
+          "file": "noto-sans-sc/medium-01.ttf",
+          "sha256": "400d61294626f6850b65863e55256fa489784fd2cf39bc3d498e795e28f17962"
+        },
+        {
+          "file": "noto-sans-sc/medium-02.ttf",
+          "sha256": "53e42d25e0d30ee98197e7e307fa3f985f0a7a0837c0e489ae5824696e365a09"
+        },
+        {
+          "file": "noto-sans-sc/medium-03.ttf",
+          "sha256": "21bea37a6933ec41285074632696fce8fec9f4c467ebfa8f5ed9ecb36255bdeb"
+        },
+        {
+          "file": "noto-sans-sc/medium-04.ttf",
+          "sha256": "03d2a910ef3661f640aaa21bf8d5fbbff14975f30f095bd2932a907ea8e83cec"
+        },
+        {
+          "file": "noto-sans-sc/medium-05.ttf",
+          "sha256": "9d7f14d942c0f31384ee0017eaf1559e512b4d4bd4f3a7826adb436b1aa8ff14"
+        },
+        {
+          "file": "noto-sans-sc/medium-06.ttf",
+          "sha256": "2a7dc8f86a4ecceeeecbc430a97dbec26d750b1d7953ba7ce0a1e9fe974d8528"
+        },
+        {
+          "file": "noto-sans-sc/medium-07.ttf",
+          "sha256": "58869bb4348f21cdeaa64f4e27b5fe77d316b3856cc0f19924f4591e59314365"
+        },
+        {
+          "file": "noto-sans-sc/medium-08.ttf",
+          "sha256": "c07a4e8e10932ab17ad3d7521391d018181744c43f99dd5d4cd132510036b181"
+        },
+        {
+          "file": "noto-sans-sc/medium-09.ttf",
+          "sha256": "42479bfa602b03cfb7410b574497c98537dc3f90d142ff6ea5d03bc4ec3acda3"
+        },
+        {
+          "file": "noto-sans-sc/medium-10.ttf",
+          "sha256": "837b74988be94492fabf7a0c94cfa65908a6e82f090143b250650e452bc6a905"
+        },
+        {
+          "file": "noto-sans-sc/medium-11.ttf",
+          "sha256": "8cc17f81ff30aa6e75c5e245edff8bcb5abe36dc59e1783cf03472558c2a9d76"
+        },
+        {
+          "file": "noto-sans-sc/medium-12.ttf",
+          "sha256": "c491b07c2da3a34ad7fecfa7e8f04aeab430626c802421eee171d36e059b74db"
+        },
+        {
+          "file": "noto-sans-sc/medium-13.ttf",
+          "sha256": "c708f67296664ddd07e142a67cd67df40fc2eac9a9d1607213806e4980419ed3"
+        },
+        {
+          "file": "noto-sans-sc/medium-14.ttf",
+          "sha256": "ea1ebd080b5974c67bb91087c69f3e15d0ba1f1da4d8917c79f57fce3877748a"
+        },
+        {
+          "file": "noto-sans-sc/medium-15.ttf",
+          "sha256": "7f4cbae4cdf757bde802a9b6e24d7aea857265820c3920242f2c6406409b0e59"
+        },
+        {
+          "file": "noto-sans-sc/medium-16.ttf",
+          "sha256": "3613878a974aa94fc1e96ccd711ce25848b4b687dc8c8b67ce88ed65be1ddf14"
+        },
+        {
+          "file": "noto-sans-sc/medium-17.ttf",
+          "sha256": "98c15f58898518bea0f1a3f1223b60775fbb0c024ad273a4e831d5d152cbb11b"
+        },
+        {
+          "file": "noto-sans-sc/medium-18.ttf",
+          "sha256": "663a25ba0331121c2c855b65057090f0d19030d87479f33015500837e2ea8733"
+        },
+        {
+          "file": "noto-sans-sc/medium-19.ttf",
+          "sha256": "3de10e91c9c3696e755404bc23be719cfa1d8f2d68ab04980e8a7ecbc2e0e389"
+        },
+        {
+          "file": "noto-sans-sc/medium-20.ttf",
+          "sha256": "7f6da734cc0c855b8f385a4803c2a46dfb57a2dfdfe9c00c8bf8e109f282a6eb"
+        },
+        {
+          "file": "noto-sans-sc/medium-21.ttf",
+          "sha256": "867fcf3319bf2362150784789201db9f48d4693d4e9dafccaa57655020a36b27"
+        },
+        {
+          "file": "noto-sans-sc/medium-22.ttf",
+          "sha256": "0bb215345cb32ce8141c1d4635428cd25d0d175f102e981135d4d4a0f0d87eef"
+        },
+        {
+          "file": "noto-sans-sc/medium-23.ttf",
+          "sha256": "a42f57200f2e653df08cd272a92083da6e78a7fb26712599378cc52d64943a25"
+        },
+        {
+          "file": "noto-sans-sc/medium-24.ttf",
+          "sha256": "e4f463c1f02328175cf44827e5aadc0d0674e90b5cc8ce95aa5dc70c01a6b701"
+        },
+        {
+          "file": "noto-sans-sc/medium-25.ttf",
+          "sha256": "a8a525960989a735362f7a7533d3599654d5d1b27f4f9e6ef326b1fd0123cc1d"
+        },
+        {
+          "file": "noto-sans-sc/medium-26.ttf",
+          "sha256": "9551d66939f28843054156310b6ec04eeb53e3efb1674c50094dc5695106e566"
+        },
+        {
+          "file": "noto-sans-sc/medium-27.ttf",
+          "sha256": "1496131f668d08b600ed554d36826d7a2f9f2d0c52023ac40964eb4ef15d395e"
+        },
+        {
+          "file": "noto-sans-sc/medium-28.ttf",
+          "sha256": "fb27e4bb5b3761d6a8d645e4f62bd609a74f2f29e4d4dbb82e01a42f3c3d6708"
+        },
+        {
+          "file": "noto-sans-sc/medium-29.ttf",
+          "sha256": "007f26978aafe309d9c325957bdeef1df44202b608fee3f739cf263aa5710096"
+        },
+        {
+          "file": "noto-sans-sc/medium-30.ttf",
+          "sha256": "bac1a2f07e03a38eb3b14e6a8572860456c68aa27a3bf30700c0d0bc0a03effe"
+        },
+        {
+          "file": "noto-sans-sc/medium-31.ttf",
+          "sha256": "f7d436fa9cda507fd453ee12d067a9f8a565940d38ab222ac2f12b890aa6149f"
+        },
+        {
+          "file": "noto-sans-sc/medium-32.ttf",
+          "sha256": "5942ba0649e3bb08458085a64e5ee29fb425b0eb303e52463cf9624abcb3ed39"
+        },
+        {
+          "file": "noto-sans-sc/medium-33.ttf",
+          "sha256": "25c57c44498409f0eb64019a14953b3a5cf3c015f2e825bdf3b645e87f2121af"
+        },
+        {
+          "file": "noto-sans-sc/medium-34.ttf",
+          "sha256": "0f02477aa9618ccb26418922bb25a7c3e3c2a37287b6f1003754b87ded5c51d6"
+        },
+        {
+          "file": "noto-sans-sc/medium-35.ttf",
+          "sha256": "7911055f5a0bb0f18a690703052e05f0884407e2011875a57a896f7e898bade6"
+        },
+        {
+          "file": "noto-sans-sc/medium-36.ttf",
+          "sha256": "3dd5cceb6a9963e7ab5b5d51caa59c25c88e8c3bce0c6656458eb7817c15eade"
+        },
+        {
+          "file": "noto-sans-sc/medium-37.ttf",
+          "sha256": "0dc6bed26941a8ed5ffa904b20e004905c3de02d9c513ee811dc6af0e2a00371"
+        },
+        {
+          "file": "noto-sans-sc/medium-38.ttf",
+          "sha256": "81b67e7ea923b3c9c560f0a1a322647a36c253cf09069bfe8c4dc7bb86b151d1"
+        },
+        {
+          "file": "noto-sans-sc/medium-39.ttf",
+          "sha256": "15001b94b56bc1bb3465ed222c5883c1ae8c89c668599f574a16333a5049031b"
+        },
+        {
+          "file": "noto-sans-sc/medium-40.ttf",
+          "sha256": "c45ed21e9b3c7e98bbdb8fc2d8bb092c71c382e7d655e8848199cbb9b076e789"
+        },
+        {
+          "file": "noto-sans-sc/medium-41.ttf",
+          "sha256": "f594d27cff3af864f17cd986d91f85e1d1a9aff0336df7fca2bc192aa324c03e"
+        },
+        {
+          "file": "noto-sans-sc/medium-42.ttf",
+          "sha256": "b27a8f8c65a912e3400caee209c344a0773c0b008e83d42d1739d681188a5476"
+        },
+        {
+          "file": "noto-sans-sc/medium-43.ttf",
+          "sha256": "e84a5ecd9f05fc77db9ad5c48f8729ae047f562a6394f15a3630f8c2403c1050"
+        },
+        {
+          "file": "noto-sans-sc/medium-44.ttf",
+          "sha256": "405f78c8f275cc52bd26be4c4c5c9a06aa971932004849ecac2b101b8e84a831"
+        },
+        {
+          "file": "noto-sans-sc/medium-45.ttf",
+          "sha256": "5130f65c18e68a8aa257d1e7e2f685f9f55b7cbbbb16028e9b7b5ae11b9992a8"
+        },
+        {
+          "file": "noto-sans-sc/medium-46.ttf",
+          "sha256": "4f0ec652ffe05fb3f9b39bf0c64aa0f357e24d380eb6cbd10a0be59e5c2ff5ae"
+        },
+        {
+          "file": "noto-sans-sc/medium-47.ttf",
+          "sha256": "fcae1ce154ccdd9d13e6603eeb04928d2374c4ea5e0031d61fa5dee9f99927d3"
+        },
+        {
+          "file": "noto-sans-sc/medium-48.ttf",
+          "sha256": "fdaa67255f669c0c927ee63ddfeb07ec8139aef00713aeb814d056e7ada7abff"
+        },
+        {
+          "file": "noto-sans-sc/medium-49.ttf",
+          "sha256": "5eb341191bff3cdb083538f747c10905b1d35d40fdcb081206357d182227aad3"
+        },
+        {
+          "file": "noto-sans-sc/medium-50.ttf",
+          "sha256": "d8b792cfd3a14576a05fd39186ed3087c46e3951a756c97f9ada3cce91aad265"
+        },
+        {
+          "file": "noto-sans-sc/medium-51.ttf",
+          "sha256": "4c1f1e6dc6576095ce725497f8e94fe557fd3e594d2e982c840f8b874b46dcde"
+        },
+        {
+          "file": "noto-sans-sc/medium-52.ttf",
+          "sha256": "baa87088d3ef282004d4610e4fc61a03fa2b72de4e86d848b5a3a5cbe2c08a9b"
+        },
+        {
+          "file": "noto-sans-sc/medium-53.ttf",
+          "sha256": "9d944f8f0ec2a022ece6d3d0949bb4729d5fbf2b20fa0b51331559b391d483c6"
+        },
+        {
+          "file": "noto-sans-sc/medium-54.ttf",
+          "sha256": "3acfb3b4ee186b1605515a1e568a819433830784c2c24bd0195770edc3d22415"
+        },
+        {
+          "file": "noto-sans-sc/medium-55.ttf",
+          "sha256": "5cd7668ed5ec22b8a61159d93e06dd52a7b67fbd597b2072216d59067a0a096d"
+        },
+        {
+          "file": "noto-sans-sc/medium-56.ttf",
+          "sha256": "3e126bbb6493184f0a7c5c64552cb4bf924b307f5113b236abee3b241b3162a3"
+        },
+        {
+          "file": "noto-sans-sc/medium-57.ttf",
+          "sha256": "cdcdd9d2d5d508e734c5de58a7fe24578bd4b118196b41215b559613cf53086b"
+        },
+        {
+          "file": "noto-sans-sc/medium-58.ttf",
+          "sha256": "f9179b12ad9521593c4cac05dc812f907b6f4dfa0a3daadc29f07fff7abbc65c"
+        },
+        {
+          "file": "noto-sans-sc/medium-59.ttf",
+          "sha256": "c3337006f446ae7198db8936ec9db9f77e68ae69ca61b34d73488e0107cd61bd"
+        },
+        {
+          "file": "noto-sans-sc/medium-60.ttf",
+          "sha256": "787b906e02a9372c3e9d49d12132a461bd72c046d6a00c8d160881e487c52e8b"
+        },
+        {
+          "file": "noto-sans-sc/regular-00.ttf",
+          "sha256": "0ae42152b87a0490f3c018f584af16da9ed4e23c12731979f801696f92b1947b"
+        },
+        {
+          "file": "noto-sans-sc/regular-01.ttf",
+          "sha256": "740142160a9deea2160cc1e6b907ce569a1448782d9eb775f876e19465a5effc"
+        },
+        {
+          "file": "noto-sans-sc/regular-02.ttf",
+          "sha256": "640aad3d7bf43fab1404a66abf24b00fe8fe768d6d4c87b29d415486cee0f253"
+        },
+        {
+          "file": "noto-sans-sc/regular-03.ttf",
+          "sha256": "b1dd83c0e7cad17ad9b709f14c56515e50c5b687a0ecab0d00cd251ca43f91a4"
+        },
+        {
+          "file": "noto-sans-sc/regular-04.ttf",
+          "sha256": "2fdb81e86db46dc3d9c264dd7de4432880c5adb2632829647666b495c53691d7"
+        },
+        {
+          "file": "noto-sans-sc/regular-05.ttf",
+          "sha256": "2cf778df59ecba689fff1b8499508aa367f50b6eb69ef3b99501f643d76fcec0"
+        },
+        {
+          "file": "noto-sans-sc/regular-06.ttf",
+          "sha256": "9e56abcc45535e2f635cbada7514b633aad5a2ca3d68d688184de8e67bbe1530"
+        },
+        {
+          "file": "noto-sans-sc/regular-07.ttf",
+          "sha256": "94dd44d6c3e7ec53d1ae59bc8f4586f2dd435d075cc693053bed2902a145480c"
+        },
+        {
+          "file": "noto-sans-sc/regular-08.ttf",
+          "sha256": "8f5486052ac7e3d3fe98abca4f795bdb380c8f60b916d1b4b7124616e4fc346a"
+        },
+        {
+          "file": "noto-sans-sc/regular-09.ttf",
+          "sha256": "21501b77eaec74f2c8720656efce80e7916138a96ef4e05523b95b9305f8dee9"
+        },
+        {
+          "file": "noto-sans-sc/regular-10.ttf",
+          "sha256": "6da1312fb313dbd6bc53d5e71a67b2f48170f83aa00956cd5409793ec94454af"
+        },
+        {
+          "file": "noto-sans-sc/regular-11.ttf",
+          "sha256": "264a51f266eef213922cc475eb743b9f168526a865f022d7f7a96e06913f9d24"
+        },
+        {
+          "file": "noto-sans-sc/regular-12.ttf",
+          "sha256": "41f7b99b9bfc1767508238540731600c7433e8178da5023bf53f47d7cd836a39"
+        },
+        {
+          "file": "noto-sans-sc/regular-13.ttf",
+          "sha256": "22a20c6da02d9f0b453998293ec964a6fbca8ed665b2bb8423976bef5a3aef6d"
+        },
+        {
+          "file": "noto-sans-sc/regular-14.ttf",
+          "sha256": "6c6c536a33b7fda1be0a0f2b37649c633fc2d0ce818ddaf397b5b4229be7693e"
+        },
+        {
+          "file": "noto-sans-sc/regular-15.ttf",
+          "sha256": "9ea6ebca4f9a5284aed907229d59f4423c0a658307a8df6fabca812c98e40505"
+        },
+        {
+          "file": "noto-sans-sc/regular-16.ttf",
+          "sha256": "dcefbc555e6d1f8e84a94c77fe8455c795d0664f4f4125130fa35d41683b0523"
+        },
+        {
+          "file": "noto-sans-sc/regular-17.ttf",
+          "sha256": "e4c95aa0cd07f191c3cd2e33edde305fb8feeb712db93fe291d07f8641db20bb"
+        },
+        {
+          "file": "noto-sans-sc/regular-18.ttf",
+          "sha256": "07cef834992cab7ee67785b5f6ae6e7ead3d839df6ed81cb893c9ea6ec8de49f"
+        },
+        {
+          "file": "noto-sans-sc/regular-19.ttf",
+          "sha256": "aa5916ad72d1fade3d380e91aa5ac9bc31f992adf7a4670e8ff3b6c03253b285"
+        },
+        {
+          "file": "noto-sans-sc/regular-20.ttf",
+          "sha256": "d05b8e18bd65bfaf661620928e1a165c4fedc2f171f02cc8d1b66e135f017b3b"
+        },
+        {
+          "file": "noto-sans-sc/regular-21.ttf",
+          "sha256": "08dfa9429d284170c5d673669c8b5199977250b64f13f1940421bc3289d57789"
+        },
+        {
+          "file": "noto-sans-sc/regular-22.ttf",
+          "sha256": "38b82d563c8a1f6d33663e68b59f14c6c96c13b719f7ce808c3c443302a61681"
+        },
+        {
+          "file": "noto-sans-sc/regular-23.ttf",
+          "sha256": "0e514f7658f0e7bd1c17c0acfac6279a3ae329ff115d345dfe02d75771db466b"
+        },
+        {
+          "file": "noto-sans-sc/regular-24.ttf",
+          "sha256": "a3f6fcba9b2c0142c1ee5dfeb4404590397599a7535ec543fb1073a30d888a96"
+        },
+        {
+          "file": "noto-sans-sc/regular-25.ttf",
+          "sha256": "0bcf10ce594dea2e2353bfdbcbb7daf68fbb71fbccd98100ea1754eda2d1c4bd"
+        },
+        {
+          "file": "noto-sans-sc/regular-26.ttf",
+          "sha256": "cb6b127c75fe16bd95c0021be14d87c27c973f133f5d8d46516562082e2b59cd"
+        },
+        {
+          "file": "noto-sans-sc/regular-27.ttf",
+          "sha256": "e6cb35e21643a8a49103a67453f9dac7a57ded5f6853b3faddcbd0b1f03acd3f"
+        },
+        {
+          "file": "noto-sans-sc/regular-28.ttf",
+          "sha256": "60cd9124edae0287a1a54c8ec489e53cba06cf1aacd5b103e20eac18ddcf7018"
+        },
+        {
+          "file": "noto-sans-sc/regular-29.ttf",
+          "sha256": "fc68072da6e68b2409e32f9d92d77f6c5f330888662edea99ed7f74bee4eb9a6"
+        },
+        {
+          "file": "noto-sans-sc/regular-30.ttf",
+          "sha256": "0f68a8a9763d7bb990d2b2e11aa60a80597541496007da4f507f41cc2654885d"
+        },
+        {
+          "file": "noto-sans-sc/regular-31.ttf",
+          "sha256": "14b7666c44e636476cb32cf86921eb1df7cd3e07a495a5172945722e086a8064"
+        },
+        {
+          "file": "noto-sans-sc/regular-32.ttf",
+          "sha256": "899b75c732f7ffc61fba7ab1df11a01dc4546cf5483c6f097daa8ad82dff115e"
+        },
+        {
+          "file": "noto-sans-sc/regular-33.ttf",
+          "sha256": "129521f0bb7973a3bc8f459d04b24be5f6194ff787d64e1c26f0d4297dc1411d"
+        },
+        {
+          "file": "noto-sans-sc/regular-34.ttf",
+          "sha256": "edad3d47908700d3c155f113f9bcb395167afba6f0137e0c01f1c34d9e5f8ae3"
+        },
+        {
+          "file": "noto-sans-sc/regular-35.ttf",
+          "sha256": "7af85ac4fc8e75439a349ecc1d5a99d35ea0cde2ea6b53ba116a869f5e30db61"
+        },
+        {
+          "file": "noto-sans-sc/regular-36.ttf",
+          "sha256": "2b4a5e0572bfb495c90b72140824b960eb06a7afdfd68c87446f63eaa1ea650d"
+        },
+        {
+          "file": "noto-sans-sc/regular-37.ttf",
+          "sha256": "b1ae1b0ae18c4ce0a1a81b925dd09cd35941397c596a9759436a8794fb4177f6"
+        },
+        {
+          "file": "noto-sans-sc/regular-38.ttf",
+          "sha256": "7497f54facf21ac90e074158cb7566ad10774fbf520a2eb1429608aa2567459a"
+        },
+        {
+          "file": "noto-sans-sc/regular-39.ttf",
+          "sha256": "5874c7d60652c989dce9de55f1fbdf57853ccac63e89a4ad8f2b411d911e8a61"
+        },
+        {
+          "file": "noto-sans-sc/regular-40.ttf",
+          "sha256": "ba9cdaabba8b879f0f517c945a28ee3c1a017d2b3576c3d46ca1df546e2774c7"
+        },
+        {
+          "file": "noto-sans-sc/regular-41.ttf",
+          "sha256": "159f0b62e7701d7c6e8c29a1fea14cf9699ca22bfab50a13d81ebb03837dbbc2"
+        },
+        {
+          "file": "noto-sans-sc/regular-42.ttf",
+          "sha256": "caa2e1b8f20d4ba926e9233b9acebe6bae5b1d807e677ba650ed8506fa013fd3"
+        },
+        {
+          "file": "noto-sans-sc/regular-43.ttf",
+          "sha256": "5d53f868693a8cb06a1820d28ee67cd42da288d7619b78834520c8c8e34e5a27"
+        },
+        {
+          "file": "noto-sans-sc/regular-44.ttf",
+          "sha256": "6d46469a7f91ff4987ec51547df94126a6d0eca4c9b1b3c89c2812a0a95efc43"
+        },
+        {
+          "file": "noto-sans-sc/regular-45.ttf",
+          "sha256": "57db27fad31b306eff4b0924397c5bd15f286edd3379522f94d75fbeeb09bb78"
+        },
+        {
+          "file": "noto-sans-sc/regular-46.ttf",
+          "sha256": "1ed73ee70d212e70de6b24000858c9674418634cb69b1c4f338a9ae07eb7dee1"
+        },
+        {
+          "file": "noto-sans-sc/regular-47.ttf",
+          "sha256": "1626b517aab9d4fc52783237727d7537723a14e86c4de91b81980be322a2e471"
+        },
+        {
+          "file": "noto-sans-sc/regular-48.ttf",
+          "sha256": "4a046a18c0a32a883629da316cd802d4c415b4c0f7c084bbe47a6e86eb4855c4"
+        },
+        {
+          "file": "noto-sans-sc/regular-49.ttf",
+          "sha256": "e3af1fe1ed22673495393e7d7a44b701378b263b6c5eb4e118b25c343eea6123"
+        },
+        {
+          "file": "noto-sans-sc/regular-50.ttf",
+          "sha256": "45dfbdebb7efeccab09b6b4ed683aadce8d4983a53605c6375279e255400cbe7"
+        },
+        {
+          "file": "noto-sans-sc/regular-51.ttf",
+          "sha256": "1dce525f8e989a93406fc73b021d0ac8f084f49adb88db0090d8e65032556774"
+        },
+        {
+          "file": "noto-sans-sc/regular-52.ttf",
+          "sha256": "e716fd462ba2ded975816d7962e40939a885a36126704929a151adf619a3ce8e"
+        },
+        {
+          "file": "noto-sans-sc/regular-53.ttf",
+          "sha256": "ffec9f87a93973cc9d6371e1447dcb3a3390e57e52336adb44f4b348a9c98475"
+        },
+        {
+          "file": "noto-sans-sc/regular-54.ttf",
+          "sha256": "0191c2a97d112ae3bcebbf813343e17b2042125d6e73bb662ab2bf6da46c8be0"
+        },
+        {
+          "file": "noto-sans-sc/regular-55.ttf",
+          "sha256": "736f4d4936076c179ce6b23c94a23b9d6a95519691787dd14c51d7c8a9631a81"
+        },
+        {
+          "file": "noto-sans-sc/regular-56.ttf",
+          "sha256": "0fca38a2a5e880f3b671b7dbb46edfe4518fefb3c6d1575fb5da4eb04f6d85a7"
+        },
+        {
+          "file": "noto-sans-sc/regular-57.ttf",
+          "sha256": "b1f2da40334a79f6a1eaf639072add927ce7b6346f155ddb5d1a8fe48e7460e9"
+        },
+        {
+          "file": "noto-sans-sc/regular-58.ttf",
+          "sha256": "85531028c0ae1c6af119b16f92ea03efc2e8447d9822fae3f1f65eb3ad703685"
+        },
+        {
+          "file": "noto-sans-sc/regular-59.ttf",
+          "sha256": "9dd5c672eaf5ef89a8d458ac5410abf5ffc817ec6d951f6fa8bc64d1d415d761"
+        },
+        {
+          "file": "noto-sans-sc/regular-60.ttf",
+          "sha256": "a318746697a4b7728f1d9f4030d3ff43bc443201c76264f65ca01b7bd3fdac05"
+        }
+      ]
+    },
+    {
+      "id": "noto-emoji",
+      "license": "OFL-1.1",
+      "license_file": "OFL-NotoEmoji.txt",
+      "license_sha256": "500bb1ccf43df7bbb522112f9133a52b16e1c35e809632f5d8609b179152de5b",
+      "license_source": "https://raw.githubusercontent.com/google/fonts/f2bd09badbc763d8757951d52deec29da27e85fb/ofl/notoemoji/OFL.txt",
+      "license_copy": "exact upstream bytes",
+      "local_name_records": {
+        "0": [
+          "Copyright 2013, 2022 Google Inc. All Rights Reserved."
+        ],
+        "1": [
+          "Noto Emoji"
+        ],
+        "5": [
+          "Version 2.001"
+        ],
+        "13": [
+          "This Font Software is licensed under the SIL Open Font License, Version 1.1. This Font Software is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the SIL Open Font License for the specific language, permissions and limitations governing your use of this Font Software."
+        ],
+        "14": [
+          "http://scripts.sil.org/OFL"
+        ]
+      },
+      "files": [
+        {
+          "file": "NotoEmoji-Regular.ttf",
+          "sha256": "65fc21f6ad86acbe43c29f89ffc0dd77621709a517a50edd1370aa80230cc8fb"
+        }
+      ]
+    }
+  ]
+}

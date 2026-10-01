@@ -1,0 +1,2 @@
+/* architecture-boundary: 收藏与书签共用的分组、列表标题；在栏目局部覆盖之前加载。 */
+.favorite-section-heading, .favorite-list-heading, .bookmark-section-heading, .bookmark-list-heading { min-height: 25px; display: flex; align-items: center; justify-content: space-between; color: var(--browse-heading); font-size: 13px; font-weight: 500; }

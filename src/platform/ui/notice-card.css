@@ -1,0 +1,8 @@
+/* architecture-boundary: 公共常驻提示卡片与网页刷新提示占位；显示和清除逻辑不在 CSS 内。 */
+.status-card { margin: -3px 0 12px; padding: 8px 10px; border: 1px solid #eadadd; border-radius: 6px; background: #fcf7f8; color: var(--danger); font-size: 11px; line-height: 1.45; }
+.status-card:not([hidden]) { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.status-card button { flex: 0 0 auto; padding: 3px 7px; border: 1px solid currentColor; border-radius: 5px; background: transparent; color: inherit; font: inherit; cursor: pointer; }
+.status-card button:hover, .status-card button:focus-visible { background: color-mix(in srgb, currentColor 10%, transparent); }
+/* 与原时间页红框同样的样式和左右边距；独立占行，不挤出列表底部或随设置滚走。 */
+.page-refresh-slot:has(.status-card:not([hidden])) { padding: 12px 16px 0; }
+.page-refresh-slot .status-card { margin: 0; }

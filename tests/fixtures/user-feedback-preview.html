@@ -1,0 +1,10 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TIDY recovery feedback QA</title>
+<link rel="stylesheet" href="/src/app/sidepanel/panel.css"><link rel="stylesheet" href="/src/features/export/ui/export.css"><link rel="stylesheet" href="/src/features/export/ui/export-job.css">
+<style>body{display:flex;flex-wrap:wrap;gap:24px;padding:16px}section{width:320px;min-width:0}#export-root{height:600px}output{display:block;margin-block:12px}</style>
+<section><h1>备份连接中断</h1><div id="backup-root" class="library-backup"></div><output id="backup-check">未重连</output></section>
+<section><h1>导出结果待确认</h1><button id="job-recover">模拟后台恢复</button><output id="export-check">未检查下载</output><div id="export-root"></div></section>
+<p>仅合成数据；不连接 ChatGPT，不下载文件，不读取或修改真实收藏。</p>
+<script src="/src/features/export/model/export.js"></script><script src="/src/features/export/model/export-preview.js"></script>
+<script src="/src/features/export/engine/i18n.js"></script><script src="/src/features/export/engine/normalize.js"></script><script src="/src/features/export/engine/plan.js"></script><script src="/src/features/export/engine/inline-content.js"></script><script src="/src/features/export/engine/serializers.js"></script>
+<script src="/src/platform/library/library-hydration.js"></script><script type="module" src="/tests/fixtures/user-feedback-preview.js"></script></html>

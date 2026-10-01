@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "retiredKeys": [
+    {
+      "key": "binding",
+      "catalog": "common",
+      "reason": "当前 UI 不再呈现身份绑定标签；绑定模型与绑定枚举继续保留。",
+      "replacements": [],
+      "beforeHashes": {
+        "zh-CN": "b26f0bd8682562fa78cac0335288c5f666ae38ecb5f62e18cb4254f528183983",
+        "zh-TW": "8e695f2366f6811459236b75c2a27d04b854776b5f1b99320611de9c4c65809b",
+        "en": "ec2f778fef1ed1d4bc151b407c0c43d0b9bacf23c544a4c01f2a3b6effd0d2c7",
+        "ja": "513c21b18f87412122e0b1b2a8c5af344dbf7adfe6202be6e47c7b39132d5771"
+      }
+    },
+    {
+      "key": "diagnostics",
+      "catalog": "common",
+      "reason": "本地诊断组件已使用 diagnosticsTitle 与独立诊断状态键，不再使用旧开发诊断标题。",
+      "replacements": [
+        "diagnosticsTitle"
+      ],
+      "beforeHashes": {
+        "zh-CN": "0dfa051ee87aa36e17b844aa6453fce77790d1996bd0add12d246d9f0341d6d8",
+        "zh-TW": "0aa2f25b477e648ede906e0660d32262fbf8c03787a0af536f5a9fc8e8baf28d",
+        "en": "aab0a0a7c386b45d9ef926550c7e742dad58f9f98f7fa294a7532d80f73b870f",
+        "ja": "dcd2d1847b6d358927572c5b3f8d4e59d7ef0b9c540da7821c4b724758ccfe6a"
+      }
+    },
+    {
+      "key": "live",
+      "catalog": "common",
+      "reason": "当前侧栏没有实时同步徽标；实时预览与连接状态由各自现行键负责。",
+      "replacements": [],
+      "beforeHashes": {
+        "zh-CN": "c8bbdec8e230c4e91e487f1119d28f417e07bd00fb1fbc3eddf0e2971d46ec93",
+        "zh-TW": "a9dc93719a6e10ce9ec68741bc9ee3984f52bc84338917236dd6fcce275ea6dd",
+        "en": "cf1a4f432633b85072a0797ed13fbd4651764706eefe73e86b63c1e060c917ae",
+        "ja": "84eeae5018216c7333b1c5a3b537075846f25ac25348ea203fbee9c85791b283"
+      }
+    },
+    {
+      "key": "saved",
+      "catalog": "common",
+      "reason": "设置保存成功仅确认状态并清除失败提示，不再弹出设置已同步。",
+      "replacements": [],
+      "beforeHashes": {
+        "zh-CN": "21b5fee68d2dc705dfc56022411823775a82da43002549e2a81b019967bfdb45",
+        "zh-TW": "194e7fd4edf2f3e728655d3120b248039cacd07d682a3643c9c4a591dd700860",
+        "en": "7088da68f8b708a512320b321294a1c13885a5bbe1c49e7e2fd6e11a445319ac",
+        "ja": "1ed13a8870296e23b610fcdd4a610402344ec3fca22235dfc6a4696bf0595a88"
+      }
+    },
+    {
+      "key": "removeFavorite",
+      "catalog": "favorites",
+      "reason": "网页取消收藏按钮、收藏成功反馈和当前收藏卡已有独立现行键。",
+      "replacements": [
+        "pageFavoriteRemove",
+        "favoriteRemoved",
+        "favoritedShort"
+      ],
+      "beforeHashes": {
+        "zh-CN": "dca60869e7d26839d6bb6310e1fcf6ccbdb3dda40f284bba1cfaaf5ebcde5881",
+        "zh-TW": "dca60869e7d26839d6bb6310e1fcf6ccbdb3dda40f284bba1cfaaf5ebcde5881",
+        "en": "5bc0aa08d678c50ee80925fd9dca81ff242b3b18530320d0bb8171d68177d7a2",
+        "ja": "ca938b5b4f29ba415cafb2c40cb8742e7c51052dfd3a33b55e314487fc499d28"
+      }
+    },
+    {
+      "key": "searchResultCount",
+      "catalog": "search",
+      "reason": "日期与关键词搜索已分别使用会话数量和结果数量键；同名 DOM dataset 不是文案调用。",
+      "replacements": [
+        "searchConversationResultCount",
+        "searchKeywordResultCount"
+      ],
+      "beforeHashes": {
+        "zh-CN": "92559c8f277f30267ebe92acaef61330f51f4bf5d7c37f656c85287f7a3fb2c7",
+        "zh-TW": "afffc214dcfa35413657b3052dfa0de37e1a11e05b5408b88e7294cfcfeeaa0c",
+        "en": "d6c49c40059ea7d94d4bd550547665e02253d499f3e37055d6cb515dfb87886f",
+        "ja": "651d20d3e4d718348240352f5f5a5a53b30a9decbed1ff07ddaa06dfeb29dd08"
+      }
+    },
+    {
+      "key": "conversationPreview",
+      "catalog": "time",
+      "reason": "时间预览标题已使用 conversationList；同名 DOM 引用只承载格式化日期。",
+      "replacements": [
+        "conversationList"
+      ],
+      "beforeHashes": {
+        "zh-CN": "a63280253f17d4401f9d5b66220903ea555fbd499bd9196ee0392696d192c18f",
+        "zh-TW": "932be7091ff444bc493927453c5051137d0783630cbd6d65b8559ac3fdb24c94",
+        "en": "ccca1817575365871461752f3229dd59ede742ae69e350e20fd00a6ce3d149e3",
+        "ja": "098eb2e3728cd354d91d5ff240891cbb20e225247cda47eeb8d49686fe7bd248"
+      }
+    },
+    {
+      "key": "exportFileCitation",
+      "catalog": "export",
+      "reason": "原生引用在适配层解析为可读来源，不再将网页或文件引用的内部编号输出为文件引用文案。",
+      "replacements": [],
+      "beforeHashes": {
+        "zh-CN": "b08bdcad9503234b645ddcfa171bf900a31dbf1485524761ac7772e3e00b0032",
+        "zh-TW": "fcf05983bedf83e243370065119eebf427173a7f460e009c8898c28af30ecb79",
+        "en": "98d05a280332713319ce9d971678aaf88bb5d533dd617d6e6930083809401ddc",
+        "ja": "c966a923baaac819b967cef609c11f05f3ceaad4d257265e76b2c335c01acff0"
+      }
+    },
+    {
+      "key": "exportImagePackageFailed",
+      "catalog": "export",
+      "reason": "用户确认 Markdown/TXT 仅导出媒体说明和链接，图片下载与资源打包路径已退出；不再产生图片打包失败提示。",
+      "replacements": [],
+      "beforeHashes": {
+        "zh-CN": "99450fba136cf9e19865a83183683665675317f377db8611d5b5722af734413d",
+        "zh-TW": "516a13f6c29e594899d34df026cb0ad7aeb8d99b0e422d265de1c7d85f7d6a15",
+        "en": "a56ab9fb40985ccd0ab37a090620cd70f8e451039f5dd14c7410342a1c102aee",
+        "ja": "a17f9ac1fc3601d3908192ddb0a6da6fa4f546c1f4e0c3ee1b72ba8c77295404"
+      }
+    },
+    {
+      "key": "exportPlanAssets",
+      "catalog": "export",
+      "reason": "Markdown 不再下载或打包图片，旧图片资源目录与资源数量预览已移除。",
+      "replacements": [],
+      "beforeHashes": {
+        "zh-CN": "589ca0cc6d956ac021dfd7da85b17790d0545f514921ae1645d63efdf4503e66",
+        "zh-TW": "9e59872f84a4be1b58d5422f39a16d7e97eca285bb4a061f308ef8034cfcc38c",
+        "en": "31f55dc8da930dea90b09d8b569fcf3ad872bf21ec21d3e058d5f0bcc1904577",
+        "ja": "6d1be6642f713db71ffe66dce65359ab6dd9f0f08b8207b66977d0858afa1b42"
+      }
+    },
+    {
+      "key": "exportAssets",
+      "catalog": "export",
+      "reason": "Markdown 不再下载或打包图片，旧图片资源目录与资源数量预览已移除。",
+      "replacements": [],
+      "beforeHashes": {
+        "zh-CN": "8db5553e289e63c95aa2240573673da9231c680124951b41fe48440c8b02e78d",
+        "zh-TW": "4146b872a20490fa6e777f78a68fb73d066f156f39bb6574ca991fd61970b246",
+        "en": "bd12731d7bc9b843d8523e654ae92abe735ee95f0777e46e77ee286b17833acd",
+        "ja": "14fc3fccd11eba35eca9445c4baee92c1590ae8190200964a40ce1bdbd0cd296"
+      }
+    },
+    {
+      "key": "moveBookmark",
+      "catalog": "bookmarks",
+      "reason": "收藏和书签共同使用移动分组菜单，迁移到common.moveToGroup；不保留栏目专属运行时别名。",
+      "replacements": [
+        "moveToGroup"
+      ],
+      "beforeHashes": {
+        "zh-CN": "d36a32ff891f850011c158a9215c06194e55979ae01d2d5d5df72ada85e03a16",
+        "zh-TW": "d99091a252c543cce32b3e04b2b486173fbd11cea4835686951e26115b34616c",
+        "en": "f1c038660cfb46e0333b7e441939e841de0b82937f11356ab199c01cbdb15710",
+        "ja": "8884f24906a0f1d573a17952cfd34be6b54338f6748f54310d085ca73ebcea4d"
+      }
+    }
+  ]
+}

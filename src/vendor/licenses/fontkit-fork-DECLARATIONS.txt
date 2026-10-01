@@ -1,0 +1,50 @@
+Upstream package metadata declarations (not complete copyright notices).
+
+Both packages omit a top-level LICENSE/COPYING file in their published archive.
+Do not treat these declarations as proof that the missing author-issued text
+has been recovered. In particular, the inherited Google Brotli decoder has
+Apache-2.0 source notices, preserved in pdf-lib-fontkit-1.1.1-NOTICES.txt.
+
+{
+  "name": "@pdf-lib/brotli",
+  "version": "0.0.0",
+  "author": {
+    "name": "Andrew Dillon",
+    "email": "andrew.dillon.j@gmail.com"
+  },
+  "contributors": [
+    {
+      "url": "http://badassjs.com/",
+      "name": "Devon Govett",
+      "email": "devongovett@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/Hopding/brotli.js.git",
+    "type": "git"
+  }
+}
+Source: https://registry.npmjs.org/@pdf-lib/brotli/-/brotli-0.0.0.tgz
+
+{
+  "name": "@pdf-lib/restructure",
+  "version": "0.0.1",
+  "author": {
+    "name": "Andrew Dillon",
+    "email": "andrew.dillon.j@gmail.com"
+  },
+  "contributors": [
+    {
+      "url": "http://badassjs.com/",
+      "name": "Devon Govett",
+      "email": "devongovett@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "repository": {
+    "url": "git://github.com/Hopding/restructure.git",
+    "type": "git"
+  }
+}
+Source: https://registry.npmjs.org/@pdf-lib/restructure/-/restructure-0.0.1.tgz

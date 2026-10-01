@@ -1,0 +1,2 @@
+#!/bin/sh
+exec node tools/verify.cjs

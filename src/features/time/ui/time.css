@@ -1,0 +1,44 @@
+/* architecture-boundary: 时间栏目：日期选项、展开项、开关行与实时预览。 */
+.setting-section { padding-bottom: 14px; margin-bottom: 14px; border-bottom: 1px solid #f0f0f1; }
+.setting-section--date > .setting-label { margin-bottom: 8px; color: #4a4c52; font-size: 13px; font-weight: 500; }
+.setting-section--no-border { padding-bottom: 0; margin-bottom: 0; border-bottom: 0; }
+.setting-section--toggle { padding-top: 1px; }
+.option-stack { display: grid; gap: 5px; }
+.option, .mini-option { height: 28px; border: 0; border-radius: 5px; background: transparent; color: #777980; font-size: 12px; cursor: pointer; }
+.option--wide { width: 100%; min-width: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 10px; border: 1px solid var(--line); background: #fff; text-align: left; }
+.option--wide span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.option--wide.is-selected { border-color: rgba(var(--accent-rgb), .3); background: var(--accent-surface); color: var(--accent); font-weight: 600; }
+.option--wide i { color: var(--accent); font-size: 11px; font-style: normal; }
+.option-grid { display: grid; gap: 3px; padding: 3px; border: 1px solid var(--line); border-radius: 7px; background: var(--surface-soft); }
+.option-grid--list { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr); align-items: center; }
+.option-grid .option { min-width: 0; padding: 0 3px; white-space: nowrap; }
+.option.is-selected, .mini-option.is-selected { background: #fff; color: var(--accent); box-shadow: 0 1px 2px rgba(36, 37, 42, .08); font-weight: 600; }
+
+.setting-disclosure { width: 100%; min-height: 34px; display: flex; align-items: center; gap: 8px; padding: 0; border: 0; background: transparent; color: #4a4c52; text-align: left; cursor: pointer; }
+.setting-disclosure:hover .setting-disclosure__label, .setting-disclosure:focus-visible .setting-disclosure__label { color: var(--accent); }
+.setting-disclosure:focus-visible { border-radius: 4px; outline: 2px solid var(--accent-ring); outline-offset: 2px; }
+.setting-disclosure__label { flex: 0 0 auto; font-size: 13px; font-weight: 500; }
+.setting-disclosure__summary { min-width: 0; margin-left: auto; overflow: hidden; color: #85878d; font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+.setting-disclosure__summary--token { display: inline-flex; align-items: center; gap: 5px; overflow: visible; }
+.summary-separator { color: #c1c2c7; }
+.setting-disclosure__chevron { width: 16px; color: #9b9da2; font-size: 18px; line-height: 1; text-align: right; transition: transform .12s ease; }
+.setting-disclosure.is-open .setting-disclosure__chevron { color: var(--accent); transform: rotate(90deg); }
+.disclosure-panel { display: grid; gap: 10px; margin: 8px 0 4px 4px; }
+.disclosure-panel[hidden] { display: none; }
+.disclosure-setting-row { min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.disclosure-setting-row--list-time { display: grid; grid-template-columns: 50px minmax(0, 1fr); align-items: center; gap: 8px; }
+.disclosure-setting-label { flex: 0 0 auto; color: var(--muted); font-size: 12px; }
+.mini-options { display: grid; grid-template-columns: 43px 35px; gap: 3px; padding: 2px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface-soft); }
+.mini-options--position { grid-template-columns: 48px 48px; }
+.mini-options--conversation-precision { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.mini-option { height: 23px; font-size: 11px; }
+.setting-toggle-row { min-height: 34px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.setting-divider { height: 1px; margin: 14px 0; background: var(--line-soft); }
+.time-settings-disabled [data-time-control] { opacity: .48; }
+.time-settings-disabled [data-time-control] button { pointer-events: none; }
+
+.live-preview__label { margin-bottom: 8px; color: #85878d; font-size: 13px; font-weight: 500; }
+.preview-line { min-width: 0; min-height: 27px; display: grid; grid-template-columns: 60px minmax(0, 1fr); gap: 8px; align-items: center; color: #5c5e65; font-size: 11px; }
+.preview-line > span:last-child { min-width: 0; overflow: hidden; font-variant-numeric: tabular-nums; text-overflow: ellipsis; white-space: nowrap; }
+.preview-key { color: #9a9ca1; white-space: nowrap; }
+

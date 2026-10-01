@@ -1,0 +1,36 @@
+Additional fontkit runtime dependency declarations. These are NOT recovered
+complete author-issued copyright/permission notices. The archives have no
+LICENSE/COPYING file; both package metadata and README declare MIT.
+
+{
+  "name": "tiny-inflate",
+  "version": "1.0.2",
+  "author": {
+    "name": "Devon Govett",
+    "email": "devongovett@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "url": "git://github.com/devongovett/tiny-inflate.git",
+    "type": "git"
+  }
+}
+Source: https://registry.npmjs.org/tiny-inflate/-/tiny-inflate-1.0.2.tgz
+
+{
+  "name": "unicode-trie",
+  "version": "0.3.1",
+  "author": {
+    "name": "Devon Govett",
+    "email": "devongovett@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "url": "git://github.com/devongovett/unicode-trie.git",
+    "type": "git"
+  }
+}
+Source: https://registry.npmjs.org/unicode-trie/-/unicode-trie-0.3.1.tgz
+
+tiny-inflate 1.0.3 supplies a full LICENSE, included separately, but this
+does not retroactively prove the exact license notice of release 1.0.2.

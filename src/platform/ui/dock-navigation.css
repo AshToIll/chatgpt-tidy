@@ -1,0 +1,14 @@
+/* architecture-boundary: 公共七栏导航：图标、选中态、键盘焦点与设置入口位置。 */
+/* 导航只保留图标和选中态；名称通过 aria-label 提供，不再弹出遮挡内容的悬停说明。 */
+.time-dock { min-height: 0; display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 14px 0; border-left: 1px solid var(--line); background: rgba(250, 250, 251, .97); }
+.dock-button { position: relative; width: 32px; height: 32px; display: grid; place-items: center; padding: 0; border: 0; border-radius: 7px; background: transparent; color: #8b8d92; cursor: pointer; }
+.dock-button svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.7; shape-rendering: geometricPrecision; }
+.dock-button svg * { vector-effect: non-scaling-stroke; }
+.dock-button:hover, .dock-button:focus-visible { color: var(--accent); }
+.dock-button:focus-visible { outline: 2px solid var(--accent-ring); outline-offset: 2px; }
+.dock-button.is-active { background: var(--accent-soft); color: var(--accent); }
+.dock-button:disabled { cursor: default; opacity: .32; }
+.dock-button:disabled:hover { color: #8b8d92; }
+.dock-button--time-group-end { margin-bottom: 3px; }
+.dock-button--settings { margin-top: auto; }
+

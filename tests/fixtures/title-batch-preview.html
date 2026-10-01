@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TIDY Batch Titles QA</title>
+<link rel="stylesheet" href="/src/app/sidepanel/panel.css">
+<link rel="stylesheet" href="/src/features/titles/ui/title.css">
+<link rel="stylesheet" href="/src/features/titles/ui/title-batch.css">
+<style>.tidy-shell{width:var(--qa-width,360px);max-width:100%;height:min(780px,calc(100dvh - 100px));min-height:360px}.qa-metrics{font:12px/1.6 monospace;padding:12px}</style>
+</head><body>
+<main class="tidy-shell"><section class="time-panel">
+<header class="time-panel__header"><div><h1>标题整理</h1><p>修改 ChatGPT 原标题</p></div></header>
+<div class="time-panel__body" data-active-route="titles"><section id="titles-view" class="module-view is-active"></section></div>
+</section><nav class="time-dock" aria-label="TIDY"><button class="dock-button is-active" title="标题整理">T</button></nav></main>
+<aside class="qa-metrics">仅合成数据；不连接 ChatGPT，不改真实标题。<br>
+读取 <output id="qa-read">0</output> · 本地重算 <output id="qa-replan">0</output> · 写入 <output id="qa-write">0</output><br>
+<button id="qa-reopen">模拟关闭后重开面板</button> <button id="qa-uncertain">下次写入模拟回读中断</button>
+<button id="qa-visibility">模拟侧栏隐藏</button> <button id="qa-hide-step">下一项返回时模拟隐藏</button>
+<button id="qa-date-drift">模拟首项更新时间变化 1.752 秒</button>
+<output id="qa-visibility-state">侧栏可见</output>
+<span id="qa-state"></span></aside>
+<script src="/src/platform/snapshot.js"></script><script src="/src/platform/time-format.js"></script>
+<script src="/src/platform/catalog/date-search.js"></script>
+<script src="/src/features/titles/model/title-dates.js"></script><script type="module" src="/tests/fixtures/title-batch-preview.js"></script>
+</body></html>

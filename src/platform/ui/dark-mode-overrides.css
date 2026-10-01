@@ -1,0 +1,99 @@
+/* architecture-boundary: 公共深色模式最终覆盖：含跨栏目组合选择器，刻意集中保留顺序，不能按栏目复制或提前加载。 */
+/* The panel follows the actual ChatGPT page appearance supplied by the
+   Adapter. This is intentionally separate from Tidy's eight accent themes:
+   page light/dark controls surfaces, while the selected theme controls color. */
+:root[data-native-color-scheme="dark"] {
+  color-scheme: dark;
+  --danger: #ef8993;
+  --success: #94d6aa;
+  --warning: #dfbd8e;
+  /* 深色模式仍区分标题、正文和辅助信息，不把所有文字都提亮成白色。
+     当前会话卡、分组行和结果元信息共用这一组灰阶。 */
+  --browse-heading: color-mix(in srgb, var(--text-primary) 72%, var(--text-secondary));
+  --browse-text: var(--text-secondary);
+  --browse-subtle: color-mix(in srgb, var(--text-secondary) 66%, var(--text-tertiary));
+  --browse-list: color-mix(in srgb, var(--text-secondary) 42%, var(--text-tertiary));
+  --browse-muted: var(--text-tertiary);
+  --browse-meta: color-mix(in srgb, var(--text-tertiary) 88%, var(--surface));
+  --browse-faint: color-mix(in srgb, var(--text-tertiary) 78%, var(--surface));
+  --browse-quiet: color-mix(in srgb, var(--text-tertiary) 68%, var(--surface));
+}
+
+:root[data-native-color-scheme="dark"] .time-panel { box-shadow: -12px 0 28px rgba(0, 0, 0, .16); }
+:root[data-native-color-scheme="dark"] .time-dock { border-color: var(--border); background: color-mix(in srgb, var(--surface) 84%, #000); }
+:root[data-native-color-scheme="dark"] .panel-close:hover,
+:root[data-native-color-scheme="dark"] .panel-close:focus-visible { background: var(--surface-soft); }
+:root[data-native-color-scheme="dark"] .status-card { border-color: #633b42; background: #35272a; }
+:root[data-native-color-scheme="dark"] .setting-section,
+:root[data-native-color-scheme="dark"] .setting-divider,
+:root[data-native-color-scheme="dark"] .settings-item { border-color: var(--line); }
+:root[data-native-color-scheme="dark"] .setting-section--date > .setting-label,
+:root[data-native-color-scheme="dark"] .setting-disclosure,
+:root[data-native-color-scheme="dark"] .setting-disclosure__label,
+:root[data-native-color-scheme="dark"] .live-preview__label,
+:root[data-native-color-scheme="dark"] .settings-item > label,
+:root[data-native-color-scheme="dark"] .settings-item > legend,
+:root[data-native-color-scheme="dark"] .favorite-section-heading,
+:root[data-native-color-scheme="dark"] .bookmark-section-heading { color: var(--browse-heading); }
+:root[data-native-color-scheme="dark"] .favorite-list-heading,
+:root[data-native-color-scheme="dark"] .bookmark-list-heading { color: var(--browse-list); }
+:root[data-native-color-scheme="dark"] .favorite-conversation strong { color: var(--browse-heading); }
+:root[data-native-color-scheme="dark"] .option,
+:root[data-native-color-scheme="dark"] .mini-option,
+:root[data-native-color-scheme="dark"] .setting-disclosure__summary,
+:root[data-native-color-scheme="dark"] .preview-line { color: var(--text-secondary); }
+:root[data-native-color-scheme="dark"] .favorite-group-select,
+:root[data-native-color-scheme="dark"] .bookmark-group-select { color: var(--browse-subtle); }
+:root[data-native-color-scheme="dark"] .bookmark-entry,
+:root[data-native-color-scheme="dark"] .bookmark-entry p { color: var(--browse-text); }
+:root[data-native-color-scheme="dark"] .option--wide,
+:root[data-native-color-scheme="dark"] .option.is-selected,
+:root[data-native-color-scheme="dark"] .mini-option.is-selected,
+:root[data-native-color-scheme="dark"] .settings-select select,
+:root[data-native-color-scheme="dark"] .settings-theme-choice,
+:root[data-native-color-scheme="dark"] .favorite-group-create button,
+:root[data-native-color-scheme="dark"] .favorite-group-edit button,
+:root[data-native-color-scheme="dark"] .favorite-group-menu,
+:root[data-native-color-scheme="dark"] .favorite-icon-picker,
+:root[data-native-color-scheme="dark"] .favorite-sort-control select,
+:root[data-native-color-scheme="dark"] .favorite-sort-control button,
+:root[data-native-color-scheme="dark"] .bookmark-group-create button,
+:root[data-native-color-scheme="dark"] .bookmark-group-edit button,
+:root[data-native-color-scheme="dark"] .bookmark-group-menu,
+:root[data-native-color-scheme="dark"] .bookmark-icon-picker,
+:root[data-native-color-scheme="dark"] .bookmark-sort-control select,
+:root[data-native-color-scheme="dark"] .bookmark-sort-control button,
+:root[data-native-color-scheme="dark"] .result-page-size select,
+:root[data-native-color-scheme="dark"] .result-pagination__step,
+:root[data-native-color-scheme="dark"] .toast { border-color: var(--line); background: var(--surface-subtle); color: var(--text); }
+:root[data-native-color-scheme="dark"] .option--wide,
+:root[data-native-color-scheme="dark"] .settings-select select,
+:root[data-native-color-scheme="dark"] .settings-theme-choice { background: var(--surface); }
+:root[data-native-color-scheme="dark"] .option-grid,
+:root[data-native-color-scheme="dark"] .mini-options { border-color: var(--line); background: var(--surface-soft); }
+:root[data-native-color-scheme="dark"] .current-context-card { --current-context-card-border: var(--line); --current-context-card-surface: var(--surface-soft); }
+:root[data-native-color-scheme="dark"] .option--wide.is-selected,
+:root[data-native-color-scheme="dark"] .settings-theme-choice.is-selected,
+:root[data-native-color-scheme="dark"] .favorite-group-row.is-active { background: var(--surface-selected); color: var(--accent-ink); }
+:root[data-native-color-scheme="dark"] .settings-theme-choice__swatches i + i { box-shadow: 0 0 0 2px var(--surface); }
+:root[data-native-color-scheme="dark"] .favorite-group-menu button,
+:root[data-native-color-scheme="dark"] .bookmark-group-menu button { color: var(--text-secondary); }
+:root[data-native-color-scheme="dark"] .favorite-sort-control select,
+:root[data-native-color-scheme="dark"] .favorite-sort-control button,
+:root[data-native-color-scheme="dark"] .bookmark-sort-control select,
+:root[data-native-color-scheme="dark"] .bookmark-sort-control button,
+:root[data-native-color-scheme="dark"] .result-page-size select,
+:root[data-native-color-scheme="dark"] .result-pagination__step,
+:root[data-native-color-scheme="dark"] .result-pagination__input,
+:root[data-native-color-scheme="dark"] .result-pagination__total { color: var(--text-secondary); }
+:root[data-native-color-scheme="dark"] .favorite-group-row.is-active .favorite-group-select { color: var(--accent); }
+:root[data-native-color-scheme="dark"] .bookmark-group-row.is-active .bookmark-group-select { color: var(--accent); }
+:root[data-native-color-scheme="dark"] .favorite-group-menu button:hover,
+:root[data-native-color-scheme="dark"] .favorite-conversation:hover,
+:root[data-native-color-scheme="dark"] .favorite-add-group:hover,
+:root[data-native-color-scheme="dark"] .bookmark-group-menu button:hover,
+:root[data-native-color-scheme="dark"] .bookmark-add-group:hover { background: var(--surface-selected); }
+:root[data-native-color-scheme="dark"] .live-preview__label,
+:root[data-native-color-scheme="dark"] .preview-line,
+:root[data-native-color-scheme="dark"] .preview-key { color: var(--text-tertiary); }
+

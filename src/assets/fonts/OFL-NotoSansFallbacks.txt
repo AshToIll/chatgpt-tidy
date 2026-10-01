@@ -1,0 +1,7 @@
+Noto Sans fallback font license index
+
+Each bundled family has its own complete, unmodified upstream OFL text in licenses/.
+See SOURCES.md for the family-to-license table and SOURCES.json for fixed upstream URLs,
+local font hashes, embedded copyright notices and provenance limits.
+
+This index is not a shared copyright statement and does not replace the individual licenses.

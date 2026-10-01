@@ -1,0 +1,5 @@
+{
+  "appName": { "message": "ChatGPT Tidy" },
+  "appDescription": { "message": "ChatGPT のチャットタイトルを日付付きで整理。時刻表示、お気に入り、メッセージのブックマーク、検索、エクスポートも使えます。" },
+  "actionTitle": { "message": "ChatGPT Tidy を開く" }
+}

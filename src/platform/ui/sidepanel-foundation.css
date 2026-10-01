@@ -1,0 +1,70 @@
+/* architecture-boundary: 公共基础：主题变量、重置与侧栏外壳。time-panel 类名表示公共外壳，并非时间栏。 */
+:root {
+  color-scheme: light dark;
+  --dock-width: 48px;
+  --accent: #596274;
+  --accent-rgb: 89, 98, 116;
+  --accent-foreground: #fff;
+  --accent-ink: #41495a;
+  --accent-soft: #e7eaf0;
+  --text-primary: #242933;
+  --text-secondary: #4f5867;
+  --text-tertiary: #6d7684;
+  --surface: #fff;
+  --surface-subtle: #f5f6f8;
+  --border: #d9dde4;
+  --border-subtle: #eaecf0;
+  --surface-selected: #e7eaf0;
+  --surface-hover: #f0f2f6;
+  --accent-surface: var(--surface-selected);
+  --accent-ring: rgba(var(--accent-rgb), .24);
+  /* Transitional aliases keep the rest of the panel on the same semantic
+     system while feature styles migrate away from presentation names. */
+  --surface-soft: var(--surface-subtle);
+  --text: var(--text-primary);
+  --muted: var(--text-tertiary);
+  --line: var(--border);
+  --line-soft: var(--border-subtle);
+  --danger: #b14a55;
+  /* 提示色集中在这里调：文字随明暗切换，底色混入当前面板底色，避免深色里冒出浅色块。 */
+  --success: #2e7245;
+  --warning: #865b20;
+  --success-soft: color-mix(in srgb, var(--surface) 90%, var(--success));
+  --warning-soft: color-mix(in srgb, var(--surface) 90%, var(--warning));
+  --danger-soft: color-mix(in srgb, var(--surface) 92%, var(--danger));
+  /* Favorites and Bookmarks intentionally share one neutral hierarchy. Keep
+     these together so the two catalog views cannot drift apart again. */
+  --browse-heading: #4a4c52;
+  --browse-text: #55575d;
+  --browse-subtle: #66686f;
+  --browse-list: #777980;
+  --browse-muted: #85878d;
+  --browse-meta: #8f9197;
+  --browse-faint: #9b9da2;
+  --browse-quiet: #a0a2a7;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; letter-spacing: 0; }
+[hidden] { display: none !important; }
+html, body { width: 100%; height: 100%; min-width: 0; min-height: 0; margin: 0; overflow: hidden; }
+body { min-width: 320px; background: var(--surface); color: var(--text); font-size: 13px; }
+button, select, input, textarea { font: inherit; }
+button { color: inherit; }
+
+/* The native Side Panel owns the outer window. Inside it, the frozen product
+   shell remains a 336px-style panel plus the fixed 48px right Dock. */
+.tidy-shell { width: 100%; height: 100%; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) var(--dock-width); overflow: hidden; background: var(--surface); }
+.time-panel { min-width: 0; min-height: 0; display: grid; grid-template-rows: 58px minmax(0, 1fr); border-left: 1px solid var(--line); background: var(--surface); box-shadow: -12px 0 28px rgba(34, 35, 40, .06); }
+.time-panel:has(> .page-refresh-slot) { grid-template-rows: 58px auto minmax(0, 1fr); }
+.time-panel__header { min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 14px 0 16px; border-bottom: 1px solid var(--line); }
+.time-panel__header > div:first-child { min-width: 0; }
+.time-panel__header h1 { margin: 0; overflow: hidden; color: var(--text); font-size: 16px; font-weight: 600; line-height: 1.2; text-overflow: ellipsis; white-space: nowrap; }
+.time-panel__header p { margin: 5px 0 0; overflow: hidden; color: var(--muted); font-size: 12px; line-height: 1.2; text-overflow: ellipsis; white-space: nowrap; }
+.time-panel__header-actions { display: flex; flex: 0 0 auto; align-items: center; gap: 7px; }
+.panel-close { width: 26px; height: 26px; padding: 0; border: 0; border-radius: 6px; background: transparent; color: var(--muted); font-size: 20px; line-height: 24px; cursor: pointer; }
+.panel-close:hover, .panel-close:focus-visible { background: #f3f3f4; color: var(--text); outline: none; }
+.time-panel__body { min-height: 0; padding: 15px 16px 12px; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+.module-view { display: none; min-width: 0; min-height: 100%; }
+.module-view.is-active { display: block; }
+

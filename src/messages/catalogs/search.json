@@ -1,0 +1,293 @@
+{
+  "description": "搜索栏目：关键词、日期筛选、日历与查询状态。",
+  "messages": {
+    "searchTotalPagesUnknown": {
+      "zh-CN": "总页数尚未确定",
+      "zh-TW": "總頁數尚未確定",
+      "en": "Total pages not yet known",
+      "ja": "総ページ数は未確定"
+    },
+    "searchResults": {
+      "zh-CN": "搜索结果",
+      "zh-TW": "搜尋結果",
+      "en": "Search results",
+      "ja": "検索結果"
+    },
+    "globalSearch": {
+      "zh-CN": "搜索",
+      "zh-TW": "搜尋",
+      "en": "Search",
+      "ja": "検索"
+    },
+    "searchSubtitle": {
+      "zh-CN": "关键词与会话搜索",
+      "zh-TW": "關鍵字與對話搜尋",
+      "en": "Keyword and conversation search",
+      "ja": "キーワードと会話の検索"
+    },
+    "searchExportAccountChanged": {
+      "zh-CN": "账号或工作区已变，请重新选择",
+      "zh-TW": "帳號或工作區已變，請重新選擇",
+      "en": "Account or workspace changed. Select again.",
+      "ja": "アカウントまたはワークスペースが変わりました。選び直してください"
+    },
+    "searchMessages": {
+      "zh-CN": "搜索消息",
+      "zh-TW": "搜尋訊息",
+      "en": "Search messages",
+      "ja": "メッセージを検索"
+    },
+    "searchMessagesPlaceholder": {
+      "zh-CN": "搜索消息……",
+      "zh-TW": "搜尋訊息……",
+      "en": "Search messages…",
+      "ja": "メッセージを検索…"
+    },
+    "searchKeywordMode": {
+      "zh-CN": "关键词",
+      "zh-TW": "關鍵字",
+      "en": "Keyword",
+      "ja": "キーワード"
+    },
+    "searchDateMode": {
+      "zh-CN": "日期",
+      "zh-TW": "日期",
+      "en": "Date",
+      "ja": "日付"
+    },
+    "searchDateBasis": {
+      "zh-CN": "筛选依据",
+      "zh-TW": "篩選依據",
+      "en": "Filter by",
+      "ja": "絞り込み基準"
+    },
+    "searchDateRefresh": {
+      "zh-CN": "刷新",
+      "zh-TW": "重新整理",
+      "en": "Refresh",
+      "ja": "更新"
+    },
+    "searchKeywordRefresh": {
+      "zh-CN": "刷新",
+      "zh-TW": "重新整理",
+      "en": "Refresh",
+      "ja": "更新"
+    },
+    "searchDateRange": {
+      "zh-CN": "日期范围",
+      "zh-TW": "日期範圍",
+      "en": "Date range",
+      "ja": "日付範囲"
+    },
+    "searchStartDate": {
+      "zh-CN": "起始日期",
+      "zh-TW": "起始日期",
+      "en": "Start date",
+      "ja": "開始日"
+    },
+    "searchEndDate": {
+      "zh-CN": "结束日期",
+      "zh-TW": "結束日期",
+      "en": "End date",
+      "ja": "終了日"
+    },
+    "searchCalendarDialog": {
+      "zh-CN": "选择{target}",
+      "zh-TW": "選擇{target}",
+      "en": "Choose {target}",
+      "ja": "{target}を選択"
+    },
+    "searchCalendarWeekdays": {
+      "zh-CN": "日,一,二,三,四,五,六",
+      "zh-TW": "日,一,二,三,四,五,六",
+      "en": "Sun,Mon,Tue,Wed,Thu,Fri,Sat",
+      "ja": "日,月,火,水,木,金,土"
+    },
+    "searchCalendarMonthTitle": {
+      "zh-CN": "{year} 年 {month} 月",
+      "zh-TW": "{year} 年 {month} 月",
+      "en": "{year} / {month}",
+      "ja": "{year}年 {month}月"
+    },
+    "searchCalendarYearTitle": {
+      "zh-CN": "{year} 年",
+      "zh-TW": "{year} 年",
+      "en": "{year}",
+      "ja": "{year}年"
+    },
+    "searchCalendarYearRangeTitle": {
+      "zh-CN": "{start}–{end}",
+      "zh-TW": "{start}–{end}",
+      "en": "{start}–{end}",
+      "ja": "{start}–{end}"
+    },
+    "searchCalendarMonthChoice": {
+      "zh-CN": "{month}月",
+      "zh-TW": "{month}月",
+      "en": "Month {month}",
+      "ja": "{month}月"
+    },
+    "searchCalendarChooseMonth": {
+      "zh-CN": "选择月份",
+      "zh-TW": "選擇月份",
+      "en": "Choose month",
+      "ja": "月を選択"
+    },
+    "searchCalendarChooseYear": {
+      "zh-CN": "选择年份",
+      "zh-TW": "選擇年份",
+      "en": "Choose year",
+      "ja": "年を選択"
+    },
+    "searchCalendarYearRange": {
+      "zh-CN": "年份范围",
+      "zh-TW": "年份範圍",
+      "en": "Year range",
+      "ja": "年の範囲"
+    },
+    "searchCalendarPreviousMonth": {
+      "zh-CN": "上一个月",
+      "zh-TW": "上一個月",
+      "en": "Previous month",
+      "ja": "前の月"
+    },
+    "searchCalendarNextMonth": {
+      "zh-CN": "下一个月",
+      "zh-TW": "下一個月",
+      "en": "Next month",
+      "ja": "次の月"
+    },
+    "searchCalendarPreviousYear": {
+      "zh-CN": "上一年",
+      "zh-TW": "上一年",
+      "en": "Previous year",
+      "ja": "前年"
+    },
+    "searchCalendarNextYear": {
+      "zh-CN": "下一年",
+      "zh-TW": "下一年",
+      "en": "Next year",
+      "ja": "翌年"
+    },
+    "searchCalendarPreviousYearGroup": {
+      "zh-CN": "上一组年份",
+      "zh-TW": "上一組年份",
+      "en": "Previous years",
+      "ja": "前の年範囲"
+    },
+    "searchCalendarNextYearGroup": {
+      "zh-CN": "下一组年份",
+      "zh-TW": "下一組年份",
+      "en": "Next years",
+      "ja": "次の年範囲"
+    },
+    "searchCalendarClear": {
+      "zh-CN": "清除",
+      "zh-TW": "清除",
+      "en": "Clear",
+      "ja": "クリア"
+    },
+    "searchCalendarDone": {
+      "zh-CN": "完成",
+      "zh-TW": "完成",
+      "en": "Done",
+      "ja": "完了"
+    },
+    "searchDateRangeError": {
+      "zh-CN": "日期选反了，请重选",
+      "zh-TW": "日期選反了，請重選",
+      "en": "Dates are reversed. Select again.",
+      "ja": "日付の順序を直してください"
+    },
+    "searchDateBoundsError": {
+      "zh-CN": "可选日期：2022-11-30 至今天",
+      "zh-TW": "可選日期：2022-11-30 至今天",
+      "en": "Available dates: 2022-11-30 to today",
+      "ja": "選択可能な日付：2022-11-30 から今日まで"
+    },
+    "searchDateSearching": {
+      "zh-CN": "搜索中…",
+      "zh-TW": "搜尋中…",
+      "en": "Searching…",
+      "ja": "検索中…"
+    },
+    "searchDateComplete": {
+      "zh-CN": "搜索完成",
+      "zh-TW": "搜尋完成",
+      "en": "Search complete",
+      "ja": "検索完了"
+    },
+    "searchDateRefreshing": {
+      "zh-CN": "刷新中…",
+      "zh-TW": "重新整理中…",
+      "en": "Refreshing…",
+      "ja": "更新中…"
+    },
+    "searchDatePaused": {
+      "zh-CN": "搜索已暂停",
+      "zh-TW": "搜尋已暫停",
+      "en": "Search paused",
+      "ja": "検索を一時停止中"
+    },
+    "searchDateReadFailed": {
+      "zh-CN": "搜索未完成",
+      "zh-TW": "搜尋未完成",
+      "en": "Search incomplete",
+      "ja": "検索未完了"
+    },
+    "searchDateSortField": {
+      "zh-CN": "排序依据",
+      "zh-TW": "排序依據",
+      "en": "Sort by",
+      "ja": "並び順"
+    },
+    "searchConversationResultCount": {
+      "zh-CN": "{count} 个会话",
+      "zh-TW": "{count} 段對話",
+      "en": "{count} conversations",
+      "ja": "{count} 件の会話"
+    },
+    "searchKeywordResultCount": {
+      "zh-CN": "{count} 个结果",
+      "zh-TW": "{count} 個結果",
+      "en": "{count} results",
+      "ja": "{count} 件の結果"
+    },
+    "searchKeywordIncomplete": {
+      "zh-CN": "搜索未完成",
+      "zh-TW": "搜尋未完成",
+      "en": "Search incomplete",
+      "ja": "検索未完了"
+    },
+    "searchKeywordRetry": {
+      "zh-CN": "重试",
+      "zh-TW": "重試",
+      "en": "Retry",
+      "ja": "再試行"
+    },
+    "searchLoading": {
+      "zh-CN": "正在查找…",
+      "zh-TW": "正在搜尋…",
+      "en": "Searching…",
+      "ja": "検索中…"
+    },
+    "searchKeywordEmpty": {
+      "zh-CN": "尚无搜索结果",
+      "zh-TW": "尚無搜尋結果",
+      "en": "No search results yet",
+      "ja": "検索結果はまだありません"
+    },
+    "searchDateEmpty": {
+      "zh-CN": "尚未选择日期",
+      "zh-TW": "尚未選擇日期",
+      "en": "No date selected",
+      "ja": "日付は未選択です"
+    },
+    "searchNoResultsConversation": {
+      "zh-CN": "当前条件没有找到会话",
+      "zh-TW": "目前條件沒有找到對話",
+      "en": "No conversations match the current conditions",
+      "ja": "現在の条件に一致する会話はありません"
+    }
+  }
+}

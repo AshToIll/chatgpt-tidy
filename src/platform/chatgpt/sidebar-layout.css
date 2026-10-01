@@ -1,0 +1,93 @@
+/* Native sidebar geometry has ONE owner, loaded by the manifest at
+   document_start. Dates/stars/bookmark counts only decorate the reserved row;
+   asynchronous metadata and React class rewrites must never change its height.
+   Product tuning: keep these two values together when adjusting row density.
+   仅有效页面会话启用布局；扩展重载后撤掉标记即可还原原生尺寸，
+   不依赖无法卸载的 manifest 样式表，也不留下空白的日期占位。 */
+:root[data-tidy-page-session="active"] {
+  --tidy-sidebar-row-height: 52px;
+  --tidy-sidebar-row-bottom: 17px;
+}
+:root[data-tidy-page-session="active"] :is(a[data-sidebar-item="true"], :where(nav, aside) a):is(
+  [href^="/c/"],
+  [href^="/g/g-p-"][href*="/c/"],
+  [href^="/gg/"]
+):not([aria-hidden="true" i]):not(:where(main, [data-message-id]) *) {
+  position: relative !important;
+  min-height: var(--tidy-sidebar-row-height) !important;
+  padding-bottom: var(--tidy-sidebar-row-bottom) !important;
+}
+/* 任务时钟等辅助链接自身 aria-hidden=true，即便 href 相同也不接管行高。
+   不排除 aria-hidden/hidden 祖先，折叠项目里的主会话行仍按原尺寸预留。 */
+/* Only conversation links inside native sidebar surfaces match. New chat,
+   GPT shortcuts and project folders retain native dimensions. Lazy project
+   children can match their nav/aside before data-sidebar-item is populated.
+   Message/content links never acquire sidebar layout, even inside a nav. */
+
+/* 官方组合行由外层 .sidebar-item 控制高度，链接仅占内部内容区。
+   外框也必须预留整行高度，否则 52px 的链接会溢出原生 36px 外框。
+   只匹配带会话链接的原生侧栏行，不扩大新聊天、项目文件夹或正文链接。 */
+:root[data-tidy-page-session="active"] :where(nav, aside) .sidebar-item[role="group"]:has(a[data-interactive-row-link="true"]:not([aria-hidden="true" i]):is(
+  [href^="/c/"],
+  [href^="/g/g-p-"][href*="/c/"],
+  [href^="/gg/"]
+)):not(:where(main, [data-message-id]) *) {
+  height: var(--tidy-sidebar-row-height) !important;
+  min-height: var(--tidy-sidebar-row-height) !important;
+}
+/* 内层扣掉原生行上下留白，不重复加高。链接会被悬停操作栏挤窄，
+   因此日期、星星、书签数统一相对整行定位，不跟着链接左右移动。
+   只改变定位参照，不搬动节点；收藏点击拦截和原生链接行为保持原样。 */
+:root[data-tidy-page-session="active"] :where(nav, aside) .sidebar-item[role="group"] a[data-interactive-row-link="true"]:not([aria-hidden="true" i]):is(
+  [href^="/c/"],
+  [href^="/g/g-p-"][href*="/c/"],
+  [href^="/gg/"]
+):not(:where(main, [data-message-id]) *) {
+  position: static !important;
+  min-height: calc(var(--tidy-sidebar-row-height) - 2 * var(--padding-row-y, 6px)) !important;
+}
+/* 官方的任务时钟、菜单和图钉统一对齐标题行，不能按加高后的整行居中。
+   时钟轨道是行的直接子节点；菜单轨道位于相邻包装内，二者共用同一组布局参数。
+   仅调整轨道的纵向尺寸，不改变链接本身、显隐、横向避让和点击行为。 */
+:root[data-tidy-page-session="active"] :where(nav, aside) .sidebar-item[role="group"]:has(a[data-interactive-row-link="true"]:not([aria-hidden="true" i]):is(
+  [href^="/c/"], [href^="/g/g-p-"][href*="/c/"], [href^="/gg/"]
+)):not(:where(main, [data-message-id]) *) > [data-hover-card-open-immediately]:has(a[aria-hidden="true" i][data-interactive-row-link="true"]),
+:root[data-tidy-page-session="active"] :where(nav, aside) .sidebar-item[role="group"]:has(a[data-interactive-row-link="true"]:not([aria-hidden="true" i]):is(
+  [href^="/c/"], [href^="/g/g-p-"][href*="/c/"], [href^="/gg/"]
+)):not(:where(main, [data-message-id]) *) > [data-hover-card-open-immediately] > :has(button[aria-haspopup="menu"]) {
+  top: var(--padding-row-y, 6px) !important;
+  height: 20px !important;
+  padding-block: 0 !important;
+  align-items: center !important;
+}
+/* 官方 Work 标识是链接外壳的相邻 span，而不是链接或菜单栏的子节点。
+   链接为第二行日期加高后，标识仍被父级 flex 按 40px 内容区居中。
+   让它从顶部按原生标题的 20px 行高排版；不匹配“工作”等翻译文字，
+   也不改 display / 横向间距，保留官方仅悬停显示、标题避让及浮层行为。 */
+:root[data-tidy-page-session="active"] :where(nav, aside) .sidebar-item[role="group"]:not(:where(main, [data-message-id]) *)
+  [data-thread-title-trigger] > span > span:has(> a[data-interactive-row-link="true"]:not([aria-hidden="true" i]):is(
+    [href^="/c/"], [href^="/g/g-p-"][href*="/c/"], [href^="/gg/"]
+  )) + span {
+  align-self: flex-start !important;
+  line-height: 20px !important;
+}
+/* 错误文字显示在视窗底部；祖先按钮不能在移开鼠标后一起淡出。 */
+:root[data-tidy-page-session="active"] .tidy-sidebar-favorite:has([data-tidy-feedback]),
+:root[data-tidy-page-session="active"] .tidy-message-bookmark:has([data-tidy-feedback]) { opacity: 1 !important; }
+:root[data-tidy-page-session="active"] .tidy-action-feedback {
+  position: fixed;
+  z-index: 2147483646;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: min(360px, 85vw);
+  padding: 10px 14px;
+  border: 1px solid currentColor;
+  border-radius: 8px;
+  background: Canvas;
+  color: CanvasText;
+  font: 13px/1.5 system-ui, sans-serif;
+  white-space: normal;
+  pointer-events: auto;
+  cursor: pointer;
+}

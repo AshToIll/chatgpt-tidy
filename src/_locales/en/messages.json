@@ -1,0 +1,5 @@
+{
+  "appName": { "message": "ChatGPT Tidy" },
+  "appDescription": { "message": "Organize ChatGPT chat titles with date prefixes. Also includes timestamps, favorites, bookmarks, search and export." },
+  "actionTitle": { "message": "Open ChatGPT Tidy" }
+}

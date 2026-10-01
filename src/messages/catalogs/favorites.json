@@ -1,0 +1,130 @@
+{
+  "description": "收藏栏目：列表、收藏操作，以及 ChatGPT 网页收藏按钮。",
+  "messages": {
+    "favoritesReadFailed": {
+      "zh-CN": "收藏未读到",
+      "zh-TW": "收藏未讀到",
+      "en": "Favorites not loaded",
+      "ja": "お気に入りを読み込めません"
+    },
+    "favoriteLatestUnavailable": {
+      "zh-CN": "未找到最新消息，请重试",
+      "zh-TW": "未找到最新訊息，請重試",
+      "en": "Latest message not found. Retry.",
+      "ja": "最新のメッセージが見つかりません。もう一度お試しください"
+    },
+    "favorites": {
+      "zh-CN": "收藏",
+      "zh-TW": "收藏",
+      "en": "Favorites",
+      "ja": "お気に入り"
+    },
+    "favoriteCurrent": {
+      "zh-CN": "收藏当前会话",
+      "zh-TW": "收藏目前對話",
+      "en": "Favorite current conversation",
+      "ja": "現在の会話をお気に入りに追加"
+    },
+    "favoritedShort": {
+      "zh-CN": "已收藏",
+      "zh-TW": "已收藏",
+      "en": "Favorited",
+      "ja": "追加済み"
+    },
+    "favoriteUnavailable": {
+      "zh-CN": "当前会话暂不可收藏",
+      "zh-TW": "目前對話暫不可收藏",
+      "en": "This conversation cannot be favorited yet.",
+      "ja": "この会話はまだお気に入りに追加できません"
+    },
+    "allFavorites": {
+      "zh-CN": "全部收藏",
+      "zh-TW": "全部收藏",
+      "en": "All favorites",
+      "ja": "すべてのお気に入り"
+    },
+    "favoritePresetKeepsake": {
+      "zh-CN": "留念",
+      "zh-TW": "留念",
+      "en": "Keepsakes",
+      "ja": "思い出"
+    },
+    "favoritePresetInspiration": {
+      "zh-CN": "灵感",
+      "zh-TW": "靈感",
+      "en": "Inspiration",
+      "ja": "ひらめき"
+    },
+    "favoritePresetStudy": {
+      "zh-CN": "学习",
+      "zh-TW": "學習",
+      "en": "Study",
+      "ja": "学習"
+    },
+    "favoritePresetWork": {
+      "zh-CN": "工作",
+      "zh-TW": "工作",
+      "en": "Work",
+      "ja": "仕事"
+    },
+    "emptyFavorites": {
+      "zh-CN": "还没有收藏会话",
+      "zh-TW": "還沒有收藏對話",
+      "en": "No favorite conversations yet",
+      "ja": "お気に入りの会話はまだありません"
+    },
+    "favoriteAdded": {
+      "zh-CN": "已收藏当前会话",
+      "zh-TW": "已收藏目前對話",
+      "en": "Current conversation favorited",
+      "ja": "現在の会話をお気に入りに追加しました"
+    },
+    "favoriteRemoved": {
+      "zh-CN": "已取消收藏",
+      "zh-TW": "已取消收藏",
+      "en": "Favorite removed",
+      "ja": "お気に入りを解除しました"
+    },
+    "favoriteMoved": {
+      "zh-CN": "收藏已移动",
+      "zh-TW": "收藏已移動",
+      "en": "Favorite moved",
+      "ja": "お気に入りを移動しました"
+    },
+    "favoritesPanelSubtitle": {
+      "zh-CN": "整理已收藏的会话",
+      "zh-TW": "整理已收藏的對話",
+      "en": "Organize saved conversations",
+      "ja": "お気に入りの会話を整理"
+    },
+    "pageFavoriteAdd": {
+      "zh-CN": "收藏",
+      "zh-TW": "收藏",
+      "en": "Favorite",
+      "ja": "お気に入りに追加"
+    },
+    "pageFavoriteRemove": {
+      "zh-CN": "取消收藏",
+      "zh-TW": "取消收藏",
+      "en": "Remove favorite",
+      "ja": "お気に入りを解除"
+    },
+    "pageFavoriteFailed": {
+      "zh-CN": "结果未明，请查收藏",
+      "zh-TW": "結果未明，請查收藏",
+      "en": "Result unknown. Check your favorites.",
+      "ja": "お気に入りの保存結果を確認してください"
+    },
+    "favoritesActions": {
+      "zh-CN": "收藏操作",
+      "zh-TW": "收藏操作",
+      "en": "Favorite actions",
+      "ja": "お気に入り操作"
+    }
+  },
+  "pageBindings": {
+    "add": "pageFavoriteAdd",
+    "remove": "pageFavoriteRemove",
+    "failed": "pageFavoriteFailed"
+  }
+}

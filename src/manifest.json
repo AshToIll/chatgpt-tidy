@@ -1,0 +1,91 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_appName__",
+  "version": "0.5.0",
+  "minimum_chrome_version": "116",
+  "description": "__MSG_appDescription__",
+  "default_locale": "en",
+  "icons": {
+    "16": "assets/icons/tidy-outlined-16.png",
+    "32": "assets/icons/tidy-outlined-32.png",
+    "48": "assets/icons/tidy-outlined-48.png",
+    "128": "assets/icons/tidy-outlined-128.png"
+  },
+  "permissions": [
+    "storage",
+    "sidePanel",
+    "tabs",
+    "webNavigation",
+    "downloads",
+    "offscreen"
+  ],
+  "host_permissions": [
+    "https://chatgpt.com/*"
+  ],
+  "background": {
+    "service_worker": "app/background/service-worker.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chatgpt.com/*"
+      ],
+      "js": [
+        "app/page/main-world.bundle.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "https://chatgpt.com/*"
+      ],
+      "css": [
+        "platform/chatgpt/sidebar-layout.css"
+      ],
+      "js": [
+        "messages/build-info.js",
+        "messages/notice-registry.js",
+        "messages/notice-lifecycle.js",
+        "messages/diagnostics.js",
+        "platform/diagnostics/wire.js",
+        "platform/diagnostics/client.js",
+        "platform/diagnostics/runtime.js",
+        "messages/page-runtime.js",
+        "platform/protocol.js",
+        "platform/session/shared/page-session.js",
+        "platform/session/content/page-session.js",
+        "platform/theme/shared/toolbar-theme.js",
+        "platform/theme/content/toolbar-theme.js",
+        "platform/library/library-hydration.js",
+        "platform/snapshot.js",
+        "features/search/model/search.js",
+        "platform/catalog/date-search.js",
+        "features/export/model/export.js",
+        "features/export/model/export-preview.js",
+        "platform/time-format.js",
+        "platform/theme/theme.js",
+        "platform/ui/dom-ownership.js",
+        "app/page/isolated.js",
+        "platform/library/content/library-client.js",
+        "platform/chatgpt/message-dom.js",
+        "platform/chatgpt/sidebar-dom.js",
+        "features/export/chatgpt/export-preview-presentation.js",
+        "features/time/chatgpt/time-presentation.js",
+        "features/favorites/chatgpt/favorites-presentation.js",
+        "features/bookmarks/chatgpt/bookmarks-presentation.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "action": {
+    "default_icon": {
+      "16": "assets/icons/tidy-outlined-16.png",
+      "32": "assets/icons/tidy-outlined-32.png",
+      "48": "assets/icons/tidy-outlined-48.png",
+      "128": "assets/icons/tidy-outlined-128.png"
+    },
+    "default_title": "__MSG_actionTitle__"
+  }
+}

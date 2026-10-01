@@ -1,0 +1,14 @@
+/* architecture-boundary: 公共开关组件：尺寸、选中态和键盘焦点。 */
+.toggle-control { position: relative; width: 34px; height: 20px; display: inline-flex; flex: 0 0 auto; cursor: pointer; }
+.toggle-control input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.toggle-track { width: 34px; height: 20px; padding: 2px; border-radius: 10px; background: var(--border); transition: background-color .14s ease; }
+.toggle-track::after { content: ""; display: block; width: 16px; height: 16px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(36, 37, 42, .18); transition: transform .14s ease; }
+.toggle-control input:checked + .toggle-track { background: var(--accent); }
+.toggle-control input:checked + .toggle-track::after { transform: translateX(14px); }
+.toggle-control input:focus-visible + .toggle-track { outline: 2px solid var(--accent-ring); outline-offset: 2px; }
+
+/* 小号用于编号等次级开关：只缩小视觉，34×28 点击区仍易操作；右沿与设置选项对齐。 */
+.toggle-control--compact { width: 34px; height: 28px; align-items: center; justify-content: flex-end; }
+.toggle-control--compact .toggle-track { width: 28px; height: 16px; border-radius: 8px; }
+.toggle-control--compact .toggle-track::after { width: 12px; height: 12px; }
+.toggle-control--compact input:checked + .toggle-track::after { transform: translateX(12px); }

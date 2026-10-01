@@ -1,0 +1,56 @@
+Zlib-derived code in bundled pako copies. The original source notices below
+are copied without changing their copyright, permission, or disclaimer text.
+
+Source members:
+pako@1.0.5: package/lib/zlib/constants.js
+pako@1.0.5: package/lib/zlib/crc32.js
+pako@1.0.5: package/lib/zlib/deflate.js
+pako@1.0.5: package/lib/zlib/gzheader.js
+pako@1.0.5: package/lib/zlib/adler32.js
+pako@1.0.5: package/lib/zlib/inflate.js
+pako@1.0.5: package/lib/zlib/inftrees.js
+pako@1.0.5: package/lib/zlib/messages.js
+pako@1.0.5: package/lib/zlib/trees.js
+pako@1.0.5: package/lib/zlib/zstream.js
+pako@1.0.5: package/lib/zlib/inffast.js
+pako@1.0.10: package/lib/zlib/adler32.js
+pako@1.0.10: package/lib/zlib/constants.js
+pako@1.0.10: package/lib/zlib/crc32.js
+pako@1.0.10: package/lib/zlib/deflate.js
+pako@1.0.10: package/lib/zlib/gzheader.js
+pako@1.0.10: package/lib/zlib/inffast.js
+pako@1.0.10: package/lib/zlib/inflate.js
+pako@1.0.10: package/lib/zlib/inftrees.js
+pako@1.0.10: package/lib/zlib/messages.js
+pako@1.0.10: package/lib/zlib/trees.js
+pako@1.0.10: package/lib/zlib/zstream.js
+pako@1.0.11: package/lib/zlib/adler32.js
+pako@1.0.11: package/lib/zlib/constants.js
+pako@1.0.11: package/lib/zlib/crc32.js
+pako@1.0.11: package/lib/zlib/deflate.js
+pako@1.0.11: package/lib/zlib/gzheader.js
+pako@1.0.11: package/lib/zlib/inffast.js
+pako@1.0.11: package/lib/zlib/inflate.js
+pako@1.0.11: package/lib/zlib/inftrees.js
+pako@1.0.11: package/lib/zlib/messages.js
+pako@1.0.11: package/lib/zlib/trees.js
+pako@1.0.11: package/lib/zlib/zstream.js
+
+// (C) 1995-2013 Jean-loup Gailly and Mark Adler
+// (C) 2014-2017 Vitaly Puzrin and Andrey Tupitsin
+//
+// This software is provided 'as-is', without any express or implied
+// warranty. In no event will the authors be held liable for any damages
+// arising from the use of this software.
+//
+// Permission is granted to anyone to use this software for any purpose,
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
+//
+// 1. The origin of this software must not be misrepresented; you must not
+//   claim that you wrote the original software. If you use this software
+//   in a product, an acknowledgment in the product documentation would be
+//   appreciated but is not required.
+// 2. Altered source versions must be plainly marked as such, and must not be
+//   misrepresented as being the original software.
+// 3. This notice may not be removed or altered from any source distribution.

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><title>TIDY native sidebar layout regression</title>
+<link rel="stylesheet" href="../../src/platform/chatgpt/sidebar-layout.css">
+<style>
+body { margin:20px; font:14px/20px sans-serif; }
+nav { width:260px; }
+#native-scroll { height:300px; overflow:auto; border:1px solid #ccc; }
+.native-row { display:flex; box-sizing:border-box; align-items:center; min-height:36px; padding:8px; }
+.native-row[aria-current="page"] { background:#eee; }
+#results { white-space:pre-wrap; }
+/* 2026-09-26 observed native composition: the fixed-height row is no longer
+   the anchor. These rules are deliberately independent of TIDY decoration. */
+.wrapped-native-row { --height-token-row:36px; --padding-row-y:6px; box-sizing:border-box; height:var(--height-token-row); padding:var(--padding-row-y) 6px var(--padding-row-y) 10px; position:relative; }
+.wrapped-native-row * { box-sizing:border-box; }
+.wrapped-content { display:flex; align-items:center; width:100%; height:100%; }
+.wrapped-middle, [data-thread-title-trigger] { display:flex; align-items:center; flex:1; min-width:0; }
+[data-thread-title-trigger] { align-self:stretch; font:16px/20px sans-serif; }
+/* 2026-09-27 observed Work row: the badge is the link-shell's sibling,
+   inside the title trigger. It is not inside the anchor or the menu rail. */
+.wrapped-title-content { display:flex; align-items:center; flex:1; min-width:0; gap:8px; }
+.wrapped-link-shell { flex:1; min-width:0; }
+.wrapped-work-badge { display:none; flex-shrink:0; font:12px/16px sans-serif; color:#666; }
+.wrapped-native-row:is(:hover, .qa-hover) .wrapped-work-badge { display:inline; }
+.wrapped-native-row a { display:flex; flex:1; min-width:0; color:inherit; text-decoration:none; }
+.wrapped-title { flex:1; min-width:0; }
+.wrapped-title > span { display:block; overflow:hidden; white-space:nowrap; }
+.wrapped-spacer { margin-inline-start:3px; }
+.wrapped-native-row:is(:hover, :focus-within, .qa-hover) .wrapped-spacer { min-width:56px; }
+[data-hover-card-open-immediately] { display:contents; }
+.wrapped-actions { position:absolute; inset-inline-end:0; top:0; height:100%; display:flex; align-items:center; justify-content:end; gap:8px; padding-inline-end:6px; width:52px; z-index:10; opacity:0; pointer-events:none; }
+.wrapped-native-row:is(:hover, :focus-within, .qa-hover) .wrapped-actions { opacity:1; }
+.wrapped-menu, .wrapped-pin { flex:none; width:20px; height:20px; padding:0; pointer-events:auto; }
+.wrapped-native-row.qa-hover .tidy-sidebar-favorite { opacity:1; }
+.wrapped-native-row.is-selected { background:#eee; }
+/* Native auxiliary clock is a 16px link inside a full-height trailing rail.
+   Production CSS, not this fixture, must align that rail to the 20px title line.
+   Both links use the same native interactive marker; only the auxiliary hides itself from accessibility. */
+.wrapped-task-rail { position:absolute; inset-inline-end:8px; top:0; display:flex; align-items:center; height:100%; }
+.wrapped-native-row .wrapped-task-link { flex:none; align-items:center; }
+.wrapped-task-icon { display:block; width:16px; height:16px; }
+</style>
+<h1>Local synthetic native sidebar — no ChatGPT account</h1>
+<nav id="native-top"><a class="native-row" data-sidebar-item="true" href="/">New chat</a></nav>
+<nav id="native-scroll"><a class="native-row" data-sidebar-item="true" href="/g/g-p-fixture/project">Project folder</a><div id="native-history"></div></nav>
+<main><a class="native-row" data-sidebar-item="true" href="/c/content-link">A message link, not a sidebar row</a><nav><a class="native-row" href="/c/content-nav">Content navigation, not the sidebar</a></nav></main>
+<section data-message-id="synthetic-message"><nav id="message-nav"></nav></section>
+<pre id="results">pending</pre>
+<script type="module" src="./native-sidebar-navigation.mjs"></script>
+</html>

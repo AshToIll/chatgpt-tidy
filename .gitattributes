@@ -1,0 +1,18 @@
+###############################################################################
+# Keep project text LF on every checkout: generated files are byte-checked.
+###############################################################################
+* text=auto eol=lf
+
+# Git hooks need a portable shebang, including on Windows checkouts.
+.githooks/* text eol=lf
+
+# 运行资产使用原始字节指纹；跨平台检出也保持图片、字体及其索引原件。
+src/assets/** -text
+
+# 第三方原文件按字节核验；不转换行尾，也不修整上游许可原文中的空白。
+src/vendor/*.js -text
+src/vendor/REGENERATOR-RUNTIME-LICENSE.txt -text -whitespace
+src/vendor/licenses/* -text -whitespace
+src/assets/fonts/OFL-*.txt -text -whitespace
+src/assets/fonts/licenses/* -text -whitespace
+docs/licenses/* -text -whitespace

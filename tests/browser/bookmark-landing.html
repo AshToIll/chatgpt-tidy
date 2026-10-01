@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'unsafe-inline'; connect-src 'none'; img-src 'none'; object-src 'none'">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Isolated bookmark landing geometry fixture</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: #e8edf2; font: 16px/22px sans-serif; }
+    #scene { position: fixed; left: 25px; top: 25px; display: flex; width: 1040px; height: 480px; }
+    .sidebar { flex: none; width: 90px; background: #d2dae4; }
+    .viewport { flex: 1; min-width: 0; height: 480px; overflow-y: auto; overflow-anchor: none; background: white; }
+    article { margin: 0; padding: 18px 22px; border-bottom: 1px solid #dae1e8; }
+    article p { margin: 0; }
+    article[data-target] { background: #e0ecff; }
+    /* Diagnostics must not enlarge the page or become another scrollport in
+       the synthetic conversation. The tall-document case opts in explicitly. */
+    #qa-results { position: fixed; left: 25px; bottom: 0; width: 1040px; height: 110px; overflow: auto; white-space: pre-wrap; }
+    #scene.nested-scene { left: 100px; top: 100px; display: block; width: 800px; height: 600px; }
+    .nested-outer { width: 800px; height: 600px; overflow: auto; overflow-anchor: none; background: #c8d7e8; }
+    .nested-inner { margin-left: 50px; width: 700px; height: 600px; overflow: auto; overflow-anchor: none; background: white; }
+    article.nested-target { height: 40px; padding: 9px 22px; border: 0; }
+    #scene.window-clipped-scene { top: -300px; }
+  </style>
+  <script src="../../src/platform/navigation/navigation-identity.js"></script>
+  <script src="../../src/platform/navigation/chatgpt/navigation-intent.js"></script>
+  <script src="../../src/platform/navigation/chatgpt/message-location.js"></script>
+  <script type="module" src="./bookmark-landing.mjs"></script>
+</head>
+<body>
+  <main id="scene" aria-label="Synthetic chat geometry"></main>
+  <pre id="qa-results">Waiting for the isolated real-time runner.</pre>
+</body>
+</html>

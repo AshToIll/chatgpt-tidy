@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "description": "仅批准收藏/书签共享交互的局部规则；逆向应用后仍必须逐字命中原始 CSS 基线，不更新历史哈希。",
+  "additions": [
+    {
+      "file": "platform/ui/library-interactions.css",
+      "reason": "共享输入校验、可滚动的条目移组菜单及 Side Panel 内的删除分组确认框。",
+      "sha256": "283f39b805db341bac5ca2d4bbba1767033d73e4c236cfbaccfde2d06896ed2d"
+    }
+  ],
+  "changes": [
+    {
+      "id": "favorite-library-ui-1",
+      "file": "features/favorites/ui/favorites.css",
+      "reason": "将分组名称错误样式迁到共用层，并让条目菜单可在同一浮层定位。",
+      "before": ".favorite-group-menu-toggle:hover { background: var(--surface-soft); color: var(--accent); }\n.favorite-group-edit input { min-width: 0; height: 27px; padding: 0 6px; border: 0; border-bottom: 1px solid var(--accent); outline: 0; background: transparent; color: var(--text); font-size: 12px; }\n.favorite-group-edit button { width: 28px; height: 27px; padding: 0; border: 1px solid var(--line); border-radius: 5px; background: var(--surface); color: var(--muted); cursor: pointer; }\n/* 字段错误只在需要时占一行，和输入框对齐；不是常驻诊断卡片。 */\n.favorite-group-name-error { flex: 0 0 100%; grid-column: 2 / -1; color: var(--danger); font-size: 11px; line-height: 1.4; }\n.favorite-group-create input[aria-invalid=\"true\"], .favorite-group-edit input[aria-invalid=\"true\"] { border-color: var(--danger); }\n.favorite-group-overlay-layer { position: absolute; inset: 0; z-index: 60; pointer-events: none; }\n.favorite-group-overlay-layer > * { pointer-events: auto; }\n.favorite-group-overlay { position: absolute; top: 0; right: auto; bottom: auto; }\n.favorite-group-menu { width: 112px; display: grid; gap: 2px; padding: 4px; border: 1px solid #e0e0e4; border-radius: 6px; background: var(--surface); box-shadow: 0 7px 18px rgba(34, 35, 40, .12); }\n.favorite-group-menu button { height: 26px; padding: 0 7px; border: 0; border-radius: 4px; background: transparent; color: #5f6168; font-size: 12px; text-align: left; cursor: pointer; }\n",
+      "after": ".favorite-group-menu-toggle:hover { background: var(--surface-soft); color: var(--accent); }\n.favorite-group-edit input { min-width: 0; height: 27px; padding: 0 6px; border: 0; border-bottom: 1px solid var(--accent); outline: 0; background: transparent; color: var(--text); font-size: 12px; }\n.favorite-group-edit button { width: 28px; height: 27px; padding: 0; border: 1px solid var(--line); border-radius: 5px; background: var(--surface); color: var(--muted); cursor: pointer; }\n.favorite-group-overlay-layer { position: absolute; inset: 0; z-index: 60; pointer-events: none; }\n.favorite-group-overlay-layer > * { position: absolute; pointer-events: auto; }\n.favorite-group-overlay { position: absolute; top: 0; right: auto; bottom: auto; }\n.favorite-group-menu { width: 112px; display: grid; gap: 2px; padding: 4px; border: 1px solid #e0e0e4; border-radius: 6px; background: var(--surface); box-shadow: 0 7px 18px rgba(34, 35, 40, .12); }\n.favorite-group-menu button { height: 26px; padding: 0 7px; border: 0; border-radius: 4px; background: transparent; color: #5f6168; font-size: 12px; text-align: left; cursor: pointer; }\n"
+    },
+    {
+      "id": "favorite-library-ui-2",
+      "file": "features/favorites/ui/favorites.css",
+      "reason": "为收藏条目新增独立的会话入口及移组菜单按钮，保持元信息不可误触。",
+      "before": ".favorite-list-heading small { color: var(--browse-quiet); font-size: 11px; font-weight: 400; }\n.favorite-export-entry { margin-left: auto; padding: 0 4px; border: 0; background: transparent; color: var(--accent); font-size: 11px; cursor: default; opacity: .58; }\n.favorite-conversation-list { min-height: 0; display: grid; align-content: start; gap: 2px; margin-top: 4px; overflow-y: auto; scrollbar-width: thin; }\n.favorite-conversation { width: 100%; display: grid; gap: 5px; padding: 9px 8px; border: 0; border-radius: 7px; background: transparent; color: var(--browse-text); text-align: left; cursor: pointer; }\n.favorite-conversation:hover, .favorite-conversation:focus-visible { background: var(--surface-soft); }\n.favorite-conversation strong { overflow: hidden; color: var(--browse-heading); font-size: 12px; font-weight: 500; line-height: 1.35; text-overflow: ellipsis; white-space: nowrap; }\n.favorite-conversation-meta { min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: 8px; color: var(--browse-muted); font-size: 11px; line-height: 1.2; }\n.favorite-conversation-meta > span:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }\n",
+      "after": ".favorite-list-heading small { color: var(--browse-quiet); font-size: 11px; font-weight: 400; }\n.favorite-export-entry { margin-left: auto; padding: 0 4px; border: 0; background: transparent; color: var(--accent); font-size: 11px; cursor: default; opacity: .58; }\n.favorite-conversation-list { min-height: 0; display: grid; align-content: start; gap: 2px; margin-top: 4px; overflow-y: auto; scrollbar-width: thin; }\n.favorite-conversation { width: 100%; min-width: 0; display: grid; gap: 5px; padding: 9px 8px; border: 0; border-radius: 7px; background: transparent; color: var(--browse-text); text-align: left; cursor: pointer; }\n.favorite-conversation:hover, .favorite-conversation:focus-visible { background: var(--surface-soft); }\n/* 会话入口和分组菜单各有独立点击区；元信息与书签计数不充当管理按钮。 */\n.favorite-conversation-row { min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr) 24px; align-items: start; border-radius: 7px; }\n.favorite-conversation-row:hover { background: var(--surface-soft); }\n.favorite-entry-menu-toggle { width: 24px; height: 24px; margin-top: 6px; padding: 0; border: 0; border-radius: 5px; background: transparent; color: var(--browse-faint); font-size: 14px; line-height: 1; letter-spacing: 1px; opacity: 0; cursor: pointer; }\n.favorite-conversation-row:hover .favorite-entry-menu-toggle, .favorite-conversation-row:focus-within .favorite-entry-menu-toggle, .favorite-entry-menu-toggle[aria-expanded=\"true\"] { opacity: 1; }\n.favorite-entry-menu-toggle:hover { background: var(--surface-soft); color: var(--accent); }\n.favorite-entry-menu-toggle:focus-visible { outline: 2px solid var(--accent-ring); outline-offset: 2px; }\n.favorite-entry-overlay { position: absolute; }\n.favorite-conversation strong { overflow: hidden; color: var(--browse-heading); font-size: 12px; font-weight: 500; line-height: 1.35; text-overflow: ellipsis; white-space: nowrap; }\n.favorite-conversation-meta { min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: 8px; color: var(--browse-muted); font-size: 11px; line-height: 1.2; }\n.favorite-conversation-meta > span:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }\n"
+    },
+    {
+      "id": "bookmark-shared-group-validation",
+      "file": "features/bookmarks/ui/bookmarks.css",
+      "reason": "书签新建分组与收藏共用就近错误行；仅允许 flex 换行让提示占完整一行，改名仍沿用原 grid。",
+      "before": ".bookmark-group-create { display: flex; gap: 4px; margin-top: 5px; }",
+      "after": ".bookmark-group-create { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 5px; }"
+    },
+    {
+      "id": "bookmark-shared-entry-menu",
+      "file": "features/bookmarks/ui/bookmarks.css",
+      "reason": "条目移组菜单由公共 library-entry-menu 接管；仅移除旧混合选择器，分组菜单的声明和值不变。",
+      "before": ".bookmark-group-menu, .bookmark-entry-move-menu { width: 118px; display: grid; gap: 2px; padding: 4px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); box-shadow: 0 7px 18px rgba(34, 35, 40, .16); }\n.bookmark-group-menu button, .bookmark-entry-move-menu button { min-height: 26px; padding: 0 7px; border: 0; border-radius: 4px; background: transparent; color: #5f6168; font-size: 12px; text-align: left; cursor: pointer; }\n.bookmark-group-menu button:hover, .bookmark-entry-move-menu button:hover { background: var(--surface-soft); color: var(--accent); }\n.bookmark-group-menu button.is-danger:hover, .bookmark-entry-move-menu button.is-danger:hover { color: var(--danger); }\n",
+      "after": ".bookmark-group-menu { width: 118px; display: grid; gap: 2px; padding: 4px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); box-shadow: 0 7px 18px rgba(34, 35, 40, .16); }\n.bookmark-group-menu button { min-height: 26px; padding: 0 7px; border: 0; border-radius: 4px; background: transparent; color: #5f6168; font-size: 12px; text-align: left; cursor: pointer; }\n.bookmark-group-menu button:hover { background: var(--surface-soft); color: var(--accent); }\n.bookmark-group-menu button.is-danger:hover { color: var(--danger); }\n"
+    },
+    {
+      "id": "bookmark-shared-entry-heading",
+      "file": "features/bookmarks/ui/bookmarks.css",
+      "reason": "公共菜单已提供通用标题样式，删除无生产节点对应的旧标题规则。",
+      "before": ".bookmark-entry-menu-toggle:hover { background: var(--surface-soft); color: var(--accent); }\n.bookmark-entry-move-heading { padding: 3px 7px 4px; color: #9a9ca2; font-size: 11px; }\n.bookmark-empty { padding: 18px 8px; color: var(--browse-quiet); font-size: 12px; text-align: center; }\n",
+      "after": ".bookmark-entry-menu-toggle:hover { background: var(--surface-soft); color: var(--accent); }\n.bookmark-empty { padding: 18px 8px; color: var(--browse-quiet); font-size: 12px; text-align: center; }\n"
+    },
+    {
+      "id": "bookmark-retired-menu-dark-surface",
+      "file": "platform/ui/dark-mode-overrides.css",
+      "reason": "公共菜单使用共享主题变量；只移除已无生产节点的旧条目菜单选择器，其他暗色规则保持原值。",
+      "before": ":root[data-native-color-scheme=\"dark\"] .bookmark-group-menu,\n:root[data-native-color-scheme=\"dark\"] .bookmark-entry-move-menu,\n:root[data-native-color-scheme=\"dark\"] .bookmark-icon-picker,\n",
+      "after": ":root[data-native-color-scheme=\"dark\"] .bookmark-group-menu,\n:root[data-native-color-scheme=\"dark\"] .bookmark-icon-picker,\n"
+    },
+    {
+      "id": "bookmark-retired-menu-dark-text",
+      "file": "platform/ui/dark-mode-overrides.css",
+      "reason": "公共菜单使用共享主题变量；只移除已无生产节点的旧条目菜单选择器，其他暗色规则保持原值。",
+      "before": ":root[data-native-color-scheme=\"dark\"] .favorite-group-menu button,\n:root[data-native-color-scheme=\"dark\"] .bookmark-group-menu button,\n:root[data-native-color-scheme=\"dark\"] .bookmark-entry-move-menu button { color: var(--text-secondary); }\n",
+      "after": ":root[data-native-color-scheme=\"dark\"] .favorite-group-menu button,\n:root[data-native-color-scheme=\"dark\"] .bookmark-group-menu button { color: var(--text-secondary); }\n"
+    },
+    {
+      "id": "bookmark-retired-menu-dark-hover",
+      "file": "platform/ui/dark-mode-overrides.css",
+      "reason": "公共菜单使用共享主题变量；只移除已无生产节点的旧条目菜单选择器，其他暗色规则保持原值。",
+      "before": ":root[data-native-color-scheme=\"dark\"] .bookmark-group-menu button:hover,\n:root[data-native-color-scheme=\"dark\"] .bookmark-entry-move-menu button:hover,\n:root[data-native-color-scheme=\"dark\"] .bookmark-add-group:hover { background: var(--surface-selected); }\n",
+      "after": ":root[data-native-color-scheme=\"dark\"] .bookmark-group-menu button:hover,\n:root[data-native-color-scheme=\"dark\"] .bookmark-add-group:hover { background: var(--surface-selected); }\n"
+    }
+  ]
+}

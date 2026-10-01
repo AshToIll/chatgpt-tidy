@@ -1,0 +1,237 @@
+@pdf-lib/fontkit 1.1.1: published license declaration and embedded notices
+
+Source: https://registry.npmjs.org/@pdf-lib/fontkit/-/fontkit-1.1.1.tgz
+Members: package/package.json, package/README.md, package/dist/fontkit.umd.js
+
+The local minified bundle is byte-identical to package/dist/fontkit.umd.min.js.
+The package does not contain a LICENSE/COPYING file or a package-level copyright
+notice. Its README links to MIT and its package metadata declares MIT. The
+metadata below is attribution, not a fabricated upstream copyright notice.
+A complete author-issued package-level license/copyright text is still missing.
+
+Published package metadata excerpt:
+{
+  "name": "@pdf-lib/fontkit",
+  "version": "1.1.1",
+  "author": {
+    "name": "Andrew Dillon",
+    "email": "andrew.dillon.j@gmail.com"
+  },
+  "contributors": [
+    {
+      "url": "http://badassjs.com/",
+      "name": "Devon Govett",
+      "email": "devongovett@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "repository": {
+    "url": "git://github.com/Hopding/fontkit.git",
+    "type": "git"
+  }
+}
+
+Published README license section (verbatim):
+[MIT](https://choosealicense.com/licenses/mit/)
+
+Retained copyright/license comments in the unminified build of the same package
+(verbatim; includes Apache-2.0 Google Brotli code and MIT base64-arraybuffer).
+The full Apache-2.0 text is in tslib-1.11.1-LICENSE.txt.
+
+/*
+	   * base64-arraybuffer
+	   * https://github.com/niklasvh/base64-arraybuffer
+	   *
+	   * Copyright (c) 2012 Niklas von Hertzen
+	   * Licensed under the MIT license.
+	   */
+
+/* Copyright 2013 Google Inc. All Rights Reserved.
+
+	   Licensed under the Apache License, Version 2.0 (the "License");
+	   you may not use this file except in compliance with the License.
+	   You may obtain a copy of the License at
+
+	   http://www.apache.org/licenses/LICENSE-2.0
+
+	   Unless required by applicable law or agreed to in writing, software
+	   distributed under the License is distributed on an "AS IS" BASIS,
+	   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	   See the License for the specific language governing permissions and
+	   limitations under the License.
+
+	   Bit reading helpers
+	*/
+
+/* Copyright 2013 Google Inc. All Rights Reserved.
+	  
+	     Licensed under the Apache License, Version 2.0 (the "License");
+	     you may not use this file except in compliance with the License.
+	     You may obtain a copy of the License at
+	  
+	     http://www.apache.org/licenses/LICENSE-2.0
+	  
+	     Unless required by applicable law or agreed to in writing, software
+	     distributed under the License is distributed on an "AS IS" BASIS,
+	     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	     See the License for the specific language governing permissions and
+	     limitations under the License.
+	  
+	     Collection of static dictionary words.
+	  */
+
+/* Copyright 2013 Google Inc. All Rights Reserved.
+
+	   Licensed under the Apache License, Version 2.0 (the "License");
+	   you may not use this file except in compliance with the License.
+	   You may obtain a copy of the License at
+
+	   http://www.apache.org/licenses/LICENSE-2.0
+
+	   Unless required by applicable law or agreed to in writing, software
+	   distributed under the License is distributed on an "AS IS" BASIS,
+	   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	   See the License for the specific language governing permissions and
+	   limitations under the License.
+
+	   Lookup table to map the previous two bytes to a context id.
+
+	   There are four different context modeling modes defined here:
+	     CONTEXT_LSB6: context id is the least significant 6 bits of the last byte,
+	     CONTEXT_MSB6: context id is the most significant 6 bits of the last byte,
+	     CONTEXT_UTF8: second-order context model tuned for UTF8-encoded text,
+	     CONTEXT_SIGNED: second-order context model tuned for signed integers.
+
+	   The context id for the UTF8 context model is calculated as follows. If p1
+	   and p2 are the previous two bytes, we calcualte the context as
+
+	     context = kContextLookup[p1] | kContextLookup[p2 + 256].
+
+	   If the previous two bytes are ASCII characters (i.e. < 128), this will be
+	   equivalent to
+
+	     context = 4 * context1(p1) + context2(p2),
+
+	   where context1 is based on the previous byte in the following way:
+
+	     0  : non-ASCII control
+	     1  : \t, \n, \r
+	     2  : space
+	     3  : other punctuation
+	     4  : " '
+	     5  : %
+	     6  : ( < [ {
+	     7  : ) > ] }
+	     8  : , ; :
+	     9  : .
+	     10 : =
+	     11 : number
+	     12 : upper-case vowel
+	     13 : upper-case consonant
+	     14 : lower-case vowel
+	     15 : lower-case consonant
+
+	   and context2 is based on the second last byte:
+
+	     0 : control, space
+	     1 : punctuation
+	     2 : upper-case letter, number
+	     3 : lower-case letter
+
+	   If the last byte is ASCII, and the second last byte is not (in a valid UTF8
+	   stream it will be a continuation byte, value between 128 and 191), the
+	   context is the same as if the second last byte was an ASCII control or space.
+
+	   If the last byte is a UTF8 lead byte (value >= 192), then the next byte will
+	   be a continuation byte and the context id is 2 or 3 depending on the LSB of
+	   the last byte and to a lesser extent on the second last byte if it is ASCII.
+
+	   If the last byte is a UTF8 continuation byte, the second last byte can be:
+	     - continuation byte: the next byte is probably ASCII or lead byte (assuming
+	       4-byte UTF8 characters are rare) and the context id is 0 or 1.
+	     - lead byte (192 - 207): next byte is ASCII or lead byte, context is 0 or 1
+	     - lead byte (208 - 255): next byte is continuation byte, context is 2 or 3
+
+	   The possible value combinations of the previous two bytes, the range of
+	   context ids and the type of the next byte is summarized in the table below:
+
+	   |--------\-----------------------------------------------------------------|
+	   |         \                         Last byte                              |
+	   | Second   \---------------------------------------------------------------|
+	   | last byte \    ASCII            |   cont. byte        |   lead byte      |
+	   |            \   (0-127)          |   (128-191)         |   (192-)         |
+	   |=============|===================|=====================|==================|
+	   |  ASCII      | next: ASCII/lead  |  not valid          |  next: cont.     |
+	   |  (0-127)    | context: 4 - 63   |                     |  context: 2 - 3  |
+	   |-------------|-------------------|---------------------|------------------|
+	   |  cont. byte | next: ASCII/lead  |  next: ASCII/lead   |  next: cont.     |
+	   |  (128-191)  | context: 4 - 63   |  context: 0 - 1     |  context: 2 - 3  |
+	   |-------------|-------------------|---------------------|------------------|
+	   |  lead byte  | not valid         |  next: ASCII/lead   |  not valid       |
+	   |  (192-207)  |                   |  context: 0 - 1     |                  |
+	   |-------------|-------------------|---------------------|------------------|
+	   |  lead byte  | not valid         |  next: cont.        |  not valid       |
+	   |  (208-)     |                   |  context: 2 - 3     |                  |
+	   |-------------|-------------------|---------------------|------------------|
+
+	   The context id for the signed context mode is calculated as:
+
+	     context = (kContextLookup[512 + p1] << 3) | kContextLookup[512 + p2].
+
+	   For any context modeling modes, the context ids can be calculated by |-ing
+	   together two lookups from one table using context model dependent offsets:
+
+	     context = kContextLookup[offset1 + p1] | kContextLookup[offset2 + p2].
+
+	   where offset1 and offset2 are dependent on the context mode.
+	*/
+
+/* Copyright 2013 Google Inc. All Rights Reserved.
+
+	   Licensed under the Apache License, Version 2.0 (the "License");
+	   you may not use this file except in compliance with the License.
+	   You may obtain a copy of the License at
+
+	   http://www.apache.org/licenses/LICENSE-2.0
+
+	   Unless required by applicable law or agreed to in writing, software
+	   distributed under the License is distributed on an "AS IS" BASIS,
+	   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	   See the License for the specific language governing permissions and
+	   limitations under the License.
+
+	   Lookup tables to map prefix codes to value ranges. This is used during
+	   decoding of the block lengths, literal insertion lengths and copy lengths.
+	*/
+
+/* Copyright 2013 Google Inc. All Rights Reserved.
+
+	   Licensed under the Apache License, Version 2.0 (the "License");
+	   you may not use this file except in compliance with the License.
+	   You may obtain a copy of the License at
+
+	   http://www.apache.org/licenses/LICENSE-2.0
+
+	   Unless required by applicable law or agreed to in writing, software
+	   distributed under the License is distributed on an "AS IS" BASIS,
+	   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	   See the License for the specific language governing permissions and
+	   limitations under the License.
+
+	   Transformations on dictionary words.
+	*/
+
+/* Copyright 2013 Google Inc. All Rights Reserved.
+
+	   Licensed under the Apache License, Version 2.0 (the "License");
+	   you may not use this file except in compliance with the License.
+	   You may obtain a copy of the License at
+
+	   http://www.apache.org/licenses/LICENSE-2.0
+
+	   Unless required by applicable law or agreed to in writing, software
+	   distributed under the License is distributed on an "AS IS" BASIS,
+	   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	   See the License for the specific language governing permissions and
+	   limitations under the License.
+	*/

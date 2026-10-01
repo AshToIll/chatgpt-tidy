@@ -1,0 +1,399 @@
+{
+  "description": "设置栏目：语言、时区、主题、资料备份与排查日志。",
+  "messages": {
+    "preferenceReadFailed": {
+      "zh-CN": "设置未读到",
+      "zh-TW": "設定未讀到",
+      "en": "Settings not loaded",
+      "ja": "設定を読み込めません"
+    },
+    "preferenceSaveUnknown": {
+      "zh-CN": "设置待确认",
+      "zh-TW": "設定待確認",
+      "en": "Saved settings unconfirmed",
+      "ja": "保存設定を確認してください"
+    },
+    "backupFileReadFailed": {
+      "zh-CN": "文件未读到，请重选",
+      "zh-TW": "檔案未讀到，請重選",
+      "en": "Could not read file. Choose again.",
+      "ja": "ファイルを選び直してください"
+    },
+    "backupFileTooLarge": {
+      "zh-CN": "文件太大，请换文件",
+      "zh-TW": "檔案太大，請換檔案",
+      "en": "File too large. Choose another.",
+      "ja": "小さいファイルを選んでください"
+    },
+    "backupCheckLibrary": {
+      "zh-CN": "查看资料",
+      "zh-TW": "查看資料",
+      "en": "Check your library",
+      "ja": "データを確認"
+    },
+    "backupTitle": {
+      "zh-CN": "资料备份",
+      "zh-TW": "資料備份",
+      "en": "Library backup",
+      "ja": "ライブラリのバックアップ"
+    },
+    "backupScope": {
+      "zh-CN": "将收藏栏与书签栏资料备份为 JSON，支持换浏览器或电脑后导入。",
+      "zh-TW": "將收藏欄與書籤欄資料備份為 JSON，支援更換瀏覽器或電腦後匯入。",
+      "en": "Back up favorites and bookmarks as JSON to import in another browser or on another computer.",
+      "ja": "お気に入りとブックマークを JSON にバックアップし、別のブラウザーやパソコンで読み込めます。"
+    },
+    "backupExport": {
+      "zh-CN": "导出备份",
+      "zh-TW": "匯出備份",
+      "en": "Export backup",
+      "ja": "バックアップを保存"
+    },
+    "backupImport": {
+      "zh-CN": "导入备份",
+      "zh-TW": "匯入備份",
+      "en": "Import backup",
+      "ja": "バックアップを読み込む"
+    },
+    "backupConfirm": {
+      "zh-CN": "确认恢复",
+      "zh-TW": "確認還原",
+      "en": "Restore",
+      "ja": "復元する"
+    },
+    "backupCounts": {
+      "zh-CN": "将新增 {favorites} 个收藏，{bookmarks} 条书签。",
+      "zh-TW": "將新增 {favorites} 個收藏，{bookmarks} 則書籤。",
+      "en": "Add {favorites} favorites and {bookmarks} bookmarks.",
+      "ja": "お気に入り {favorites} 件、ブックマーク {bookmarks} 件を追加。"
+    },
+    "backupSkipped": {
+      "zh-CN": "跳过 {count} 条已有记录。",
+      "zh-TW": "略過 {count} 筆現有記錄。",
+      "en": "Skip {count} existing entries.",
+      "ja": "既存の {count} 件はスキップ。"
+    },
+    "backupPreparing": {
+      "zh-CN": "正在准备备份…",
+      "zh-TW": "正在準備備份…",
+      "en": "Preparing backup…",
+      "ja": "バックアップを準備中…"
+    },
+    "backupSaving": {
+      "zh-CN": "正在保存…",
+      "zh-TW": "正在儲存…",
+      "en": "Saving…",
+      "ja": "保存中…"
+    },
+    "backupChecking": {
+      "zh-CN": "正在检查备份…",
+      "zh-TW": "正在檢查備份…",
+      "en": "Checking backup…",
+      "ja": "バックアップを確認中…"
+    },
+    "backupRestoring": {
+      "zh-CN": "正在恢复…",
+      "zh-TW": "正在還原…",
+      "en": "Restoring…",
+      "ja": "復元中…"
+    },
+    "backupRestored": {
+      "zh-CN": "资料已恢复",
+      "zh-TW": "資料已還原",
+      "en": "Library restored",
+      "ja": "ライブラリを復元しました"
+    },
+    "backupDownloadStarted": {
+      "zh-CN": "已发起备份下载",
+      "zh-TW": "已開始下載備份",
+      "en": "Backup download started",
+      "ja": "バックアップのダウンロードを開始しました"
+    },
+    "backupInvalid": {
+      "zh-CN": "文件不对，请重选",
+      "zh-TW": "檔案不對，請重選",
+      "en": "Wrong file. Choose again.",
+      "ja": "別のファイルを選んでください"
+    },
+    "backupTooLarge": {
+      "zh-CN": "资料过多，暂不支持",
+      "zh-TW": "資料過多，暫不支援",
+      "en": "Too much data for this operation.",
+      "ja": "データが多すぎます"
+    },
+    "backupVersion": {
+      "zh-CN": "备份不支持，请换文件",
+      "zh-TW": "備份不支援，請換檔案",
+      "en": "Unsupported backup. Choose another.",
+      "ja": "別のバックアップを選んでください"
+    },
+    "backupAccountMismatch": {
+      "zh-CN": "请切回备份时的账号与工作区",
+      "zh-TW": "請切回備份時的帳號與工作區",
+      "en": "Switch to the account and workspace used for this backup.",
+      "ja": "バックアップ時のアカウントとワークスペースに切り替えてください"
+    },
+    "backupExpired": {
+      "zh-CN": "请重新选择备份",
+      "zh-TW": "請重新選擇備份",
+      "en": "Choose the backup again.",
+      "ja": "バックアップを選び直してください"
+    },
+    "backupChanged": {
+      "zh-CN": "资料已变，请重选",
+      "zh-TW": "資料已變，請重選",
+      "en": "Data changed. Choose again.",
+      "ja": "データ変更。選び直してください"
+    },
+    "backupOwnerChanged": {
+      "zh-CN": "账号或工作区已变，请重选",
+      "zh-TW": "帳號或工作區已變，請重選",
+      "en": "Account or workspace changed. Choose again.",
+      "ja": "アカウントまたはワークスペースが変わりました。選び直してください"
+    },
+    "backupFailed": {
+      "zh-CN": "备份失败，请重试",
+      "zh-TW": "備份失敗，請重試",
+      "en": "Backup failed. Try again.",
+      "ja": "バックアップを再試行してください"
+    },
+    "backupRestoreFailed": {
+      "zh-CN": "结果未明，先核对",
+      "zh-TW": "結果未明，先核對",
+      "en": "Check restored data first.",
+      "ja": "復元できたか先に確認してください"
+    },
+    "settings": {
+      "zh-CN": "设置",
+      "zh-TW": "設定",
+      "en": "Settings",
+      "ja": "設定"
+    },
+    "language": {
+      "zh-CN": "界面语言",
+      "zh-TW": "介面語言",
+      "en": "Interface language",
+      "ja": "表示言語"
+    },
+    "timeZone": {
+      "zh-CN": "全局时区",
+      "zh-TW": "全域時區",
+      "en": "Global time zone",
+      "ja": "グローバルタイムゾーン"
+    },
+    "followSystem": {
+      "zh-CN": "跟随系统",
+      "zh-TW": "跟隨系統",
+      "en": "Follow system",
+      "ja": "システムに合わせる"
+    },
+    "theme": {
+      "zh-CN": "主题",
+      "zh-TW": "主題",
+      "en": "Theme",
+      "ja": "テーマ"
+    },
+    "general": {
+      "zh-CN": "通用",
+      "zh-TW": "通用",
+      "en": "General",
+      "ja": "一般"
+    },
+    "regional": {
+      "zh-CN": "跟随地区格式",
+      "zh-TW": "跟隨地區格式",
+      "en": "Follow regional format",
+      "ja": "地域形式に合わせる"
+    },
+    "settingsSubtitle": {
+      "zh-CN": "语言、时区与主题",
+      "zh-TW": "語言、時區與主題",
+      "en": "Language, time zone, and theme",
+      "ja": "言語、タイムゾーン、テーマ"
+    },
+    "defaultLabel": {
+      "zh-CN": "默认",
+      "zh-TW": "預設",
+      "en": "Default",
+      "ja": "デフォルト"
+    },
+    "themeSets": {
+      "zh-CN": "主题色套装",
+      "zh-TW": "主題配色",
+      "en": "Theme sets",
+      "ja": "テーマセット"
+    },
+    "themeNameMistIndigo": {
+      "zh-CN": "雾靛",
+      "zh-TW": "霧靛",
+      "en": "Mist Indigo",
+      "ja": "ミストインディゴ"
+    },
+    "themeNameSage": {
+      "zh-CN": "鼠尾草",
+      "zh-TW": "鼠尾草",
+      "en": "Sage",
+      "ja": "セージ"
+    },
+    "themeNameWineberry": {
+      "zh-CN": "酒莓",
+      "zh-TW": "酒莓",
+      "en": "Wineberry",
+      "ja": "ワインベリー"
+    },
+    "themeNameSmokePurple": {
+      "zh-CN": "烟紫",
+      "zh-TW": "煙紫",
+      "en": "Smoky Violet",
+      "ja": "スモーキーバイオレット"
+    },
+    "themeNameAmber": {
+      "zh-CN": "琥珀",
+      "zh-TW": "琥珀",
+      "en": "Ochre",
+      "ja": "オーカー"
+    },
+    "themeNameTerracotta": {
+      "zh-CN": "陶土",
+      "zh-TW": "陶土",
+      "en": "Terracotta",
+      "ja": "テラコッタ"
+    },
+    "themeNameMistCyan": {
+      "zh-CN": "雾青",
+      "zh-TW": "霧青",
+      "en": "Dusty Teal",
+      "ja": "ダスティティール"
+    },
+    "themeNameGraphite": {
+      "zh-CN": "石墨",
+      "zh-TW": "石墨",
+      "en": "Graphite",
+      "ja": "グラファイト"
+    },
+    "languageNameZhCn": {
+      "zh-CN": "简体中文",
+      "zh-TW": "简体中文",
+      "en": "简体中文",
+      "ja": "简体中文"
+    },
+    "languageNameZhTw": {
+      "zh-CN": "繁體中文",
+      "zh-TW": "繁體中文",
+      "en": "繁體中文",
+      "ja": "繁體中文"
+    },
+    "languageNameEn": {
+      "zh-CN": "English",
+      "zh-TW": "English",
+      "en": "English",
+      "ja": "English"
+    },
+    "languageNameJa": {
+      "zh-CN": "日本語",
+      "zh-TW": "日本語",
+      "en": "日本語",
+      "ja": "日本語"
+    },
+    "backupRestoreCheckHint": {
+      "zh-CN": "恢复结果尚未确认。请先查看收藏和书签，核对后再允许导入。",
+      "zh-TW": "還原結果尚未確認。請先查看收藏和書籤，核對後再允許匯入。",
+      "en": "Restore results are unconfirmed. Check favorites and bookmarks before allowing another import.",
+      "ja": "復元結果は未確認です。お気に入りとブックマークを確認してから、再度のインポートを許可してください。"
+    },
+    "backupRestoreChecked": {
+      "zh-CN": "我已核对，允许再次导入",
+      "zh-TW": "我已核對，允許再次匯入",
+      "en": "I checked; allow another import",
+      "ja": "確認済み・再インポートを許可"
+    },
+    "diagnosticsTitle": {
+      "zh-CN": "排查日志",
+      "zh-TW": "排查日誌",
+      "en": "Troubleshooting logs",
+      "ja": "問題調査用ログ"
+    },
+    "diagnosticsScope": {
+      "zh-CN": "遇到问题时，可复制日志发给开发者排查。日志仅保存在本机，不含聊天正文。",
+      "zh-TW": "遇到問題時，可複製日誌傳給開發者排查。日誌僅儲存在本機，不含聊天正文。",
+      "en": "If you run into a problem, copy the logs and share them with the developer. Logs stay on this device and do not include chat content.",
+      "ja": "問題が起きた場合は、ログをコピーして開発者に送れます。ログはこの端末にのみ保存され、会話本文は含まれません。"
+    },
+    "diagnosticsCopy": {
+      "zh-CN": "复制日志",
+      "zh-TW": "複製日誌",
+      "en": "Copy logs",
+      "ja": "ログをコピー"
+    },
+    "diagnosticsClear": {
+      "zh-CN": "清空日志",
+      "zh-TW": "清空日誌",
+      "en": "Clear logs",
+      "ja": "ログを消去"
+    },
+    "diagnosticsBusy": {
+      "zh-CN": "正在处理…",
+      "zh-TW": "正在處理…",
+      "en": "Working…",
+      "ja": "処理中…"
+    },
+    "diagnosticsCopied": {
+      "zh-CN": "已复制",
+      "zh-TW": "已複製",
+      "en": "Copied",
+      "ja": "コピーしました"
+    },
+    "diagnosticsCleared": {
+      "zh-CN": "已清空",
+      "zh-TW": "已清空",
+      "en": "Cleared",
+      "ja": "消去しました"
+    },
+    "diagnosticsReadFailed": {
+      "zh-CN": "无法读取日志，请重试",
+      "zh-TW": "無法讀取日誌，請重試",
+      "en": "Could not read logs. Try again.",
+      "ja": "ログを読み込めませんでした。再試行してください"
+    },
+    "diagnosticsCopyFailed": {
+      "zh-CN": "复制失败，请重试",
+      "zh-TW": "複製失敗，請重試",
+      "en": "Copy failed. Try again.",
+      "ja": "コピーできませんでした。再試行してください"
+    },
+    "diagnosticsClearFailed": {
+      "zh-CN": "清空失败，请重试",
+      "zh-TW": "清空失敗，請重試",
+      "en": "Could not clear logs. Try again.",
+      "ja": "ログを消去できませんでした。再試行してください"
+    },
+    "diagnosticsIncomplete": {
+      "zh-CN": "部分日志可能缺失",
+      "zh-TW": "部分日誌可能缺失",
+      "en": "Some log entries may be missing",
+      "ja": "一部のログが欠けている可能性があります"
+    },
+    "diagnosticsClearConfirm": {
+      "zh-CN": "清空已有日志？清空后无法恢复。",
+      "zh-TW": "清空現有日誌？清空後無法復原。",
+      "en": "Clear saved logs? This cannot be undone.",
+      "ja": "保存されたログを消去しますか？元に戻すことはできません。"
+    },
+    "diagnosticsConfirmClear": {
+      "zh-CN": "确认清空",
+      "zh-TW": "確認清空",
+      "en": "Clear saved logs",
+      "ja": "消去する"
+    }
+  },
+  "themeBindings": {
+    "mist-indigo": "themeNameMistIndigo",
+    "sage": "themeNameSage",
+    "wineberry": "themeNameWineberry",
+    "smoke-purple": "themeNameSmokePurple",
+    "amber": "themeNameAmber",
+    "terracotta": "themeNameTerracotta",
+    "mist-cyan": "themeNameMistCyan",
+    "graphite": "themeNameGraphite"
+  }
+}

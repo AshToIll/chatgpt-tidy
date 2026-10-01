@@ -1,0 +1,27 @@
+/* architecture-boundary: 收藏与书签共用的字段反馈、条目移组菜单和侧栏内确认框。 */
+/* 错误只占输入行下方一行；创建表单的 flex 与改名表单的 grid 都用同一规则。 */
+.library-group-name-error { flex: 0 0 100%; grid-column: 2 / -1; color: var(--danger); font-size: 11px; line-height: 1.4; }
+input.library-group-name-input[aria-invalid="true"] { border-color: var(--danger); }
+
+.library-entry-menu { width: 144px; max-width: calc(100vw - 32px); display: grid; gap: 2px; padding: 4px; border: 1px solid var(--line); border-radius: 7px; background: var(--surface); box-shadow: 0 7px 18px rgba(34, 35, 40, .16); }
+.library-entry-menu__heading { padding: 3px 7px 4px; color: var(--browse-faint); font-size: 11px; }
+/* 长分组列表只滚菜单中部，标题和取消收藏/书签始终可见。 */
+.library-entry-menu__groups { max-height: min(220px, 45vh); min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+.library-entry-menu button { width: 100%; min-height: 28px; display: flex; align-items: center; gap: 6px; padding: 4px 7px; border: 0; border-radius: 4px; background: transparent; color: var(--browse-text); font-size: 12px; text-align: left; overflow-wrap: anywhere; cursor: pointer; }
+.library-entry-menu button:hover, .library-entry-menu button:focus-visible { background: var(--surface-soft); color: var(--accent); outline: none; }
+.library-entry-menu button.is-current { color: var(--accent); cursor: default; }
+.library-entry-menu button.is-current::after { content: "✓"; margin-left: auto; }
+.library-entry-menu button.is-danger { margin-top: 2px; border-top: 1px solid var(--line-soft); border-radius: 0 0 4px 4px; }
+.library-entry-menu button.is-danger:hover, .library-entry-menu button.is-danger:focus-visible { color: var(--danger); }
+
+/* dialog 在 Side Panel 自己的文档顶层，只遮住侧栏，不盖住浏览器会话。 */
+.library-confirmation { width: min(292px, calc(100% - 32px)); max-height: calc(100% - 32px); margin: auto; padding: 18px; overflow-y: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--text); box-shadow: 0 12px 32px rgba(0, 0, 0, .18); }
+.library-confirmation::backdrop { background: rgba(18, 22, 30, .24); }
+.library-confirmation__title { margin: 0; color: var(--text); font-size: 14px; font-weight: 600; line-height: 1.4; overflow-wrap: anywhere; }
+.library-confirmation__message { margin: 10px 0 18px; color: var(--text-secondary); font-size: 12px; line-height: 1.6; white-space: pre-line; overflow-wrap: anywhere; }
+.library-confirmation__actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+.library-confirmation__actions button { min-height: 30px; padding: 5px 11px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--text-secondary); font-size: 12px; cursor: pointer; }
+.library-confirmation__actions button:hover { background: var(--surface-soft); }
+.library-confirmation__actions button:focus-visible { outline: 2px solid var(--accent-ring); outline-offset: 2px; }
+.library-confirmation__actions .library-confirmation__confirm { border-color: var(--danger); background: var(--danger); color: #fff; }
+.library-confirmation__actions .library-confirmation__confirm:hover { filter: brightness(.94); }

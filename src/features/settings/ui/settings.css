@@ -1,0 +1,24 @@
+/* architecture-boundary: 设置栏目：全局语言、时区与主题选择；资料备份另见 library-backup.css。 */
+/* Settings is intentionally global-only. Feature controls live in their own
+   panel instead of expanding this page into a second time-settings form. */
+.settings-panel { height: 100%; min-height: 0; display: grid; align-content: start; overflow-y: auto; padding-right: 2px; scrollbar-width: thin; }
+.settings-item { min-width: 0; display: grid; gap: 8px; margin: 0; padding: 15px 0; border: 0; border-bottom: 1px solid #eeeef1; }
+.settings-item:first-child { padding-top: 3px; }
+.settings-item > label, .settings-item > legend { padding: 0; color: #45474e; font-size: 12px; font-weight: 650; line-height: 1.3; }
+.settings-item > small { margin-top: -3px; color: #96989e; font-size: 11px; line-height: 1.4; }
+.settings-select { position: relative; min-width: 0; }
+.settings-select select { width: 100%; min-width: 0; height: 36px; appearance: none; padding: 0 31px 0 10px; overflow: hidden; border: 1px solid #dedfe3; border-radius: 7px; outline: 0; background: #fff; color: #55575e; font-size: 12px; text-overflow: ellipsis; white-space: nowrap; cursor: pointer; }
+.settings-select:hover select { border-color: rgba(var(--accent-rgb), .3); }
+.settings-select:focus-within select { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-ring); }
+.settings-select > i { position: absolute; top: 50%; right: 12px; width: 7px; height: 7px; border-right: 1.5px solid #8d8f96; border-bottom: 1.5px solid #8d8f96; transform: translateY(-68%) rotate(45deg); pointer-events: none; }
+.settings-theme-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
+.settings-theme-choice { min-width: 0; min-height: 42px; display: flex; align-items: center; gap: 8px; padding: 7px 9px; border: 1px solid #e2e3e6; border-radius: 7px; background: #fff; color: #66686f; cursor: pointer; }
+.settings-theme-choice:hover { border-color: rgba(var(--accent-rgb), .3); }
+.settings-theme-choice.is-selected { border-color: rgba(var(--accent-rgb), .42); background: var(--accent-soft); color: var(--accent-ink); }
+.settings-theme-choice input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.settings-theme-choice:has(input:focus-visible) { outline: 2px solid var(--accent-ring); outline-offset: 2px; }
+.settings-theme-choice__swatches { display: inline-flex; flex: 0 0 auto; align-items: center; }
+.settings-theme-choice__swatches i { width: 17px; height: 17px; display: block; border: 1px solid rgba(0, 0, 0, .08); border-radius: 50%; background: var(--swatch); }
+.settings-theme-choice__swatches i + i { width: 14px; height: 14px; margin-left: -5px; box-shadow: 0 0 0 2px #fff; }
+.settings-theme-choice strong { overflow: hidden; font-size: 11px; font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }
+

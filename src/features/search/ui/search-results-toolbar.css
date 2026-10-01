@@ -1,0 +1,25 @@
+/* architecture-boundary: 搜索栏目：失败提示、结果工具栏、排序与目录刷新按钮。 */
+.search-date-error, .search-keyword-error { min-width: 0; flex: 0 0 auto; padding: 5px 7px; border: 1px solid rgba(177, 74, 85, .28); border-radius: 5px; background: color-mix(in srgb, var(--surface) 88%, #b14a55); color: var(--danger); font-size: 11px; line-height: 1.4; overflow-wrap: anywhere; }
+.search-keyword-error { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
+.search-keyword-error button { min-height: 22px; flex: 0 0 auto; padding: 2px 4px; border: 0; border-radius: 4px; background: transparent; color: var(--text-secondary); font-size: 11px; cursor: pointer; }
+.search-keyword-error button:hover, .search-keyword-error button:focus-visible { background: var(--accent-soft); color: var(--accent); }
+.search-keyword-error button:focus-visible { outline: 2px solid var(--accent-ring); outline-offset: 1px; }
+.search-results-area { min-width: 0; min-height: 0; flex: 1 1 auto; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr); }
+.search-sort-section { padding: 7px 0; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
+.search-sort-section .search-section-heading { gap: 8px; color: var(--text-secondary); font-size: 12px; }
+.search-section-heading, .search-list-heading { min-height: 25px; display: flex; align-items: center; justify-content: space-between; color: #4a4c52; font-size: 13px; font-weight: 500; }
+.search-sort-control { display: flex; align-items: center; gap: 4px; }
+.search-sort-control select { height: 27px; min-width: 0; max-width: 120px; padding: 0 5px; border: 1px solid #dedfe3; border-radius: 5px; background: #fff; color: #686a71; font: inherit; font-size: 12px; cursor: pointer; }
+.search-sort-control select:focus-visible, .search-sort-control button:focus-visible { outline: 2px solid var(--accent-ring); outline-offset: 2px; }
+.search-sort-control button { width: 27px; height: 27px; padding: 0; border: 1px solid #dedfe3; border-radius: 5px; background: #fff; color: #73757c; font: inherit; font-size: 14px; line-height: 1; white-space: nowrap; cursor: pointer; }
+.search-sort-control button:hover { border-color: #cfd2f7; color: var(--accent); }
+.search-list-section { min-width: 0; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr) auto; }
+.search-list-heading { min-width: 0; min-height: 25px; display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-start; gap: 6px; color: var(--text-secondary); font-size: 12px; font-weight: 500; }
+.search-list-heading > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.search-list-heading small { min-width: 0; flex: 0 1 auto; margin-left: auto; color: var(--text-tertiary); font-size: 11px; font-weight: 400; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.search-directory-refresh { height: 25px; flex: 0 0 auto; display: inline-flex; align-items: center; gap: 4px; padding: 0 4px; border: 0; border-radius: 4px; background: transparent; color: var(--text-secondary); font: inherit; font-size: 11px; white-space: nowrap; cursor: pointer; }
+.search-directory-refresh > span { display: inline-flex; align-items: center; }
+.search-directory-refresh svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
+.search-directory-refresh:hover:not(:disabled), .search-directory-refresh:focus-visible { background: var(--accent-soft); color: var(--accent); }
+.search-directory-refresh:focus-visible { outline: 2px solid var(--accent-ring); outline-offset: -2px; }
+.search-directory-refresh:disabled { opacity: .45; cursor: default; }

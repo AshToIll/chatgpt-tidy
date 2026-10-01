@@ -1,0 +1,173 @@
+/*
+ * Fixed, public UI regression baseline.
+ * Only declarations asserted by title-styles/export-current are retained
+ * from the approved design; no screenshots, conversation data or full prototype.
+ * Keep values independent from production CSS: change them only when a design
+ * change is explicitly approved, never to make a failing regression disappear.
+ */
+
+.title-time-panel {
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 9px;
+}
+
+.title-time-current {
+  display: grid;
+  align-content: start;
+  padding-right: 2px;
+}
+
+.title-time-scope {
+  gap: 4px;
+  padding-bottom: 9px;
+}
+
+.title-time-scope > strong {
+  font-size: 12px;
+  font-weight: 650;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.title-time-scope > small {
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.title-time-rule {
+  gap: 6px;
+  padding-bottom: 10px;
+}
+
+.title-time-rule > h3 {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.title-time-rule-controls {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+  gap: 6px;
+}
+
+.title-time-rule-select select {
+  height: 34px;
+  padding: 0 23px 0 8px;
+  font-size: 12px;
+  border-radius: 7px;
+  appearance: none;
+}
+
+.title-time-preview-card {
+  padding: 9px 10px;
+  border: 1px solid #e5e5e8;
+  border-radius: 7px;
+}
+
+.title-time-preview-card.is-clean {
+  background: #fcfcff;
+  border-color: #dfe1ef;
+}
+
+.title-time-preview-card dl {
+  gap: 5px;
+  margin: 0;
+}
+
+.title-time-preview-card dl > div {
+  grid-template-columns: 46px minmax(0, 1fr);
+  gap: 6px;
+}
+
+.title-time-preview-card dt {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.title-time-preview-card dd {
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.title-time-action-bar {
+  min-height: 42px;
+  gap: 8px;
+  padding-top: 8px;
+}
+
+.title-time-icon-action {
+  min-height: 29px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 5px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.title-time-icon-action svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.65;
+}
+
+.title-time-remove-entry {
+  padding: 4px 2px;
+  border: 0;
+  background: transparent;
+  color: #b05c64;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.export-mode-tabs button span {
+  min-width: 15px;
+  height: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  border-radius: 8px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 8px;
+}
+
+.export-format__buttons {
+  height: 31px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 3px;
+  padding: 3px;
+  border: 1px solid #e5e5e8;
+  border-radius: 8px;
+  background: #f7f7f8;
+}
+
+.export-format__buttons button {
+  min-width: 0;
+  padding: 0 4px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: #777980;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.export-format__buttons button.is-active {
+  background: #fff;
+  color: var(--accent);
+  box-shadow: 0 1px 3px rgba(34, 35, 40, .08);
+}
+
+.export-format__buttons button:focus-visible {
+  outline: 2px solid var(--accent-ring);
+  outline-offset: 2px;
+}

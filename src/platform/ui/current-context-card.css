@@ -1,0 +1,26 @@
+/* architecture-boundary: 收藏和书签共同使用的当前会话卡片，统一管理两栏视觉状态。 */
+/* Favorites and Bookmarks share one current-context surface. Variants alter
+   only alignment and affordances; interaction and color states stay unified. */
+.current-context-card { --current-context-card-border: #e5e5e8; --current-context-card-surface: #fbfbfc; width: 100%; min-width: 0; min-height: 54px; display: flex; align-items: center; gap: 6px; padding: 8px 12px; border: 1px solid var(--current-context-card-border); border-radius: 8px; appearance: none; background: var(--current-context-card-surface); color: var(--browse-text); cursor: pointer; }
+.current-context-card:hover, .current-context-card:focus-visible { border-color: rgba(var(--accent-rgb), .3); background: color-mix(in srgb, var(--accent-soft) 48%, var(--surface)); color: var(--accent); }
+.current-context-card.is-selected { border-color: rgba(var(--accent-rgb), .34); background: color-mix(in srgb, var(--accent-soft) 58%, var(--surface)); color: var(--browse-text); }
+.current-context-card:focus-visible { outline: 2px solid var(--accent-ring); outline-offset: 2px; }
+.current-context-card:disabled { cursor: not-allowed; opacity: .55; }
+.current-context-card__leading, .current-context-card__trailing { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; color: var(--accent); }
+.current-context-card__leading:empty, .current-context-card__subtitle:empty, .current-context-card__trailing:empty { display: none; }
+.current-context-card__copy { min-width: 0; display: grid; flex: 1 1 auto; align-content: center; gap: 3px; }
+.current-context-card__title, .current-context-card__subtitle { width: 100%; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.current-context-card__title { color: var(--browse-text); font-size: 13px; font-weight: 600; line-height: 1.2; }
+.current-context-card__subtitle { color: var(--browse-muted); font-size: 12px; line-height: 1.25; }
+.current-context-card--centered { justify-content: center; text-align: center; }
+.current-context-card--centered .current-context-card__leading, .current-context-card--centered .current-context-card__trailing { width: 25px; height: 25px; }
+.current-context-card--centered :is(.current-context-card__leading, .current-context-card__trailing) svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.45; transition: fill 90ms ease; }
+.current-context-card--centered:not(.is-selected):not(:disabled):hover :is(.current-context-card__leading, .current-context-card__trailing) svg, .current-context-card--centered:not(.is-selected):not(:disabled):focus-visible :is(.current-context-card__leading, .current-context-card__trailing) svg { fill: currentColor; }
+.current-context-card--centered.is-selected .current-context-card__copy { flex: 0 1 auto; }
+.current-context-card--centered.is-selected .current-context-card__leading { width: 20px; height: 20px; }
+.current-context-card--centered.is-selected .current-context-card__leading svg { width: 18px; height: 18px; fill: currentColor; }
+.current-context-card--summary { text-align: left; }
+.current-context-card--summary .current-context-card__trailing { min-width: 32px; justify-content: flex-end; gap: 4px; color: var(--browse-faint); font-size: 12px; font-variant-numeric: tabular-nums; text-align: right; }
+.current-context-card--summary .current-context-card__trailing svg { width: 13px; height: 13px; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.5; }
+.current-context-card--summary.is-selected .current-context-card__trailing { color: var(--accent); }
+

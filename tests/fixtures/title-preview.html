@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TIDY Title Preview QA</title>
+  <link rel="stylesheet" href="/src/app/sidepanel/panel.css">
+  <link rel="stylesheet" href="/src/features/titles/ui/title.css?qa=light-layout">
+  <style>
+    .tidy-shell { width: var(--qa-width, 320px); max-width: 100%; height: 620px; }
+    .qa-metrics { padding: 10px; color: var(--text-secondary); font: 12px/1.5 monospace; }
+  </style>
+</head>
+<body>
+  <main class="tidy-shell">
+    <section class="time-panel">
+      <header class="time-panel__header"><div><h1>标题整理</h1><p>修改 ChatGPT 原标题</p></div></header>
+      <div class="time-panel__body" data-active-route="titles"><section id="titles-view" class="module-view is-active"></section></div>
+    </section>
+    <nav class="time-dock" aria-label="TIDY"><button class="dock-button is-active" title="标题整理">T</button></nav>
+  </main>
+  <aside class="qa-metrics" aria-label="测试请求计数">
+    模拟读取：<output id="qa-reads">0</output> · 本地重算：<output id="qa-replans">0</output> ·
+    模拟写入：<output id="qa-writes">0</output><br>
+    选择器重建：<output id="qa-replacements">0</output> · 到下一帧最大值：<output id="qa-choice-ms">0</output> ms<br>
+    <button type="button" id="qa-publish">模拟无关页面更新</button>
+    <button type="button" id="qa-external-change">模拟外部标题变化</button>
+    <button type="button" id="qa-expire">模拟预览过期</button>
+    <button type="button" id="qa-fail-next">下次读取模拟失败</button>
+    <p>仅本地合成数据，不连接 ChatGPT，不执行真实改名。</p>
+  </aside>
+  <script src="/src/platform/snapshot.js"></script>
+  <script src="/src/platform/time-format.js"></script>
+  <script src="/src/features/titles/model/title-dates.js"></script>
+  <script type="module" src="/tests/fixtures/title-preview.js?qa=light-layout"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+/* architecture-boundary: 书签栏目专属深色覆盖；在公共深色覆盖之后加载。 */
+/* Bookmark-specific dark rules now start below the shared current-context
+   surface and apply only to bookmark group selection and message rows. */
+:root[data-native-color-scheme="dark"] .bookmark-group-select,
+:root[data-native-color-scheme="dark"] .bookmark-group-row.is-system .bookmark-group-select { color: var(--browse-subtle); }
+:root[data-native-color-scheme="dark"] .bookmark-group-row.is-active { background: color-mix(in srgb, var(--accent-soft) 58%, var(--surface)); }
+:root[data-native-color-scheme="dark"] .bookmark-group-row.is-active .bookmark-group-select,
+:root[data-native-color-scheme="dark"] .bookmark-group-row.is-active .bookmark-group-count { color: var(--accent); }
+:root[data-native-color-scheme="dark"] .bookmark-entry { color: var(--browse-text); }
+:root[data-native-color-scheme="dark"] .bookmark-entry:hover,
+:root[data-native-color-scheme="dark"] .bookmark-entry:focus-visible,
+:root[data-native-color-scheme="dark"] .bookmark-entry.is-active { background: color-mix(in srgb, var(--accent-soft) 52%, var(--surface)); }
+:root[data-native-color-scheme="dark"] .bookmark-entry p { color: var(--browse-text); }
+:root[data-native-color-scheme="dark"] .bookmark-entry-meta { color: var(--browse-muted); }
+:root[data-native-color-scheme="dark"] .bookmark-entry-meta__role { color: var(--browse-meta); }
+:root[data-native-color-scheme="dark"] .bookmark-entry-source { color: var(--accent); }

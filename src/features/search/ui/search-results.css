@@ -1,0 +1,32 @@
+/* architecture-boundary: 搜索栏目：会话及关键词结果卡片、摘要高亮和空状态。 */
+.search-result-list { min-width: 0; min-height: 0; display: grid; grid-auto-rows: max-content; align-content: start; gap: 2px; margin-top: 4px; overflow-y: auto; scrollbar-width: thin; }
+/* Shared row rhythm; only keyword height and the content layout differ. */
+.search-result { position: relative; min-width: 0; display: grid; gap: 4px; padding: 8px; border: 0; border-top: 1px solid transparent; border-radius: 0; background: transparent; color: var(--text-secondary); cursor: pointer; }
+.search-result + .search-result { border-top-color: var(--border-subtle); }
+.search-result:hover, .search-result:focus-visible, .search-result.is-active { background: var(--accent-soft); }
+.search-result__source { min-width: 0; display: block; overflow: hidden; color: var(--text-primary); font-size: 12px; font-weight: 500; line-height: 16px; text-overflow: ellipsis; white-space: nowrap; }
+.search-result--conversation { min-height: 67px; align-content: start; }
+.search-result--conversation .search-result__source { white-space: normal; overflow-wrap: anywhere; }
+.search-result__conversation-head { min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr); }
+.search-result__conversation-main { min-width: 0; min-height: 16px; display: block; padding: 0; border: 0; background: transparent; color: inherit; text-align: left; cursor: pointer; }
+.search-result__conversation-main:hover .search-result__source { color: var(--accent); }
+.search-result__conversation-summary { min-width: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 3px 7px; overflow-wrap: anywhere; }
+.search-result__conversation-time { min-width: 0; display: inline-flex; align-items: baseline; gap: 5px; white-space: nowrap; }
+.search-result__time-separator { color: var(--text-tertiary); }
+.search-result__conversation-time > span:first-child { flex: 0 0 auto; }
+.search-result__conversation-time.is-selected { color: var(--text-primary); font-weight: 600; }
+.search-result__conversation-main:focus-visible { outline: 2px solid var(--accent-ring); outline-offset: 1px; }
+/* Keyword titles open the conversation; the larger snippet opens its message. */
+.search-result--keyword { height: var(--keyword-result-height); min-height: 0; grid-template-rows: 16px minmax(0, 1fr); cursor: default; }
+.search-result__keyword-title, .search-result__keyword-message { width: 100%; min-width: 0; min-height: 0; display: block; padding: 0; border: 0; border-radius: 3px; background: transparent; color: inherit; text-align: left; cursor: pointer; }
+.search-result__keyword-title:hover .search-result__source { color: var(--accent); }
+.search-result__keyword-message { align-self: stretch; display: flex; align-items: flex-start; }
+.search-result__keyword-title:focus-visible, .search-result__keyword-message:focus-visible { outline: 2px solid var(--accent-ring); outline-offset: 2px; }
+.search-result p { min-width: 0; display: -webkit-box; overflow: hidden; overflow-wrap: anywhere; margin: 0; color: #55575d; font-size: 11px; line-height: 1.35; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.search-result__conversation-summary, .search-result--keyword p { color: var(--text-secondary); font-size: 12px; line-height: 18px; }
+.search-result--keyword p { max-height: 54px; -webkit-line-clamp: 3; }
+.search-result mark { padding: 0 1px; border-radius: 2px; background: rgba(var(--accent-rgb), .13); color: #4147a7; }
+:root[data-native-color-scheme="dark"] .search-result--keyword mark { color: var(--text-primary); }
+.search-result.is-active .search-result__source { color: var(--accent); }
+.search-empty { padding: 28px 12px; color: #a0a2a7; font-size: 12px; line-height: 1.5; text-align: center; }
+

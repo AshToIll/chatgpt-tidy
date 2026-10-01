@@ -1,0 +1,20 @@
+Official package metadata excerpt; NOT a recovered complete author-issued license/copyright notice.
+The package has no top-level license file. Common LICENSE paths at its gitHead also return 404.
+Node-derived source copyright/permission comments are retained separately in fontkit-node-NOTICES.txt.
+
+{
+  "name": "rollup-plugin-node-globals",
+  "version": "1.4.0",
+  "license": "MIT",
+  "author": {
+    "name": "Calvin Metcalf",
+    "email": "calvin.metcalf@gmail.com"
+  },
+  "repository": {
+    "url": "git+ssh://git@github.com/calvinmetcalf/rollup-plugin-node-globals.git",
+    "type": "git"
+  },
+  "gitHead": "9ef911c16e33a43e306394d19b7066fa64629403"
+}
+
+Source: https://registry.npmjs.org/rollup-plugin-node-globals/1.4.0

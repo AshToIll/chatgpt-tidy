@@ -1,0 +1,15 @@
+/* architecture-boundary: 搜索栏目专属深色覆盖；在公共深色覆盖之后加载。 */
+:root[data-native-color-scheme="dark"] .global-search-input,
+:root[data-native-color-scheme="dark"] .search-sort-control select,
+:root[data-native-color-scheme="dark"] .search-sort-control button,
+:root[data-native-color-scheme="dark"] .search-sort-field { border-color: var(--border); background: var(--surface); color: var(--text-secondary); }
+:root[data-native-color-scheme="dark"] .search-calendar header .search-calendar__title,
+:root[data-native-color-scheme="dark"] .search-calendar header .search-calendar__title:disabled { color: var(--text-secondary); }
+:root[data-native-color-scheme="dark"] .search-calendar footer { border-color: var(--line); }
+:root[data-native-color-scheme="dark"] .global-search-input input,
+:root[data-native-color-scheme="dark"] .search-section-heading,
+:root[data-native-color-scheme="dark"] .search-result__source { color: var(--text-primary); }
+:root[data-native-color-scheme="dark"] .search-result p { color: var(--text-secondary); }
+:root[data-native-color-scheme="dark"] .search-result--keyword .search-result__keyword-title:hover .search-result__source,
+:root[data-native-color-scheme="dark"] .search-result--keyword.is-active .search-result__source { color: var(--accent); }
+

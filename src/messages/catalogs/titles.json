@@ -1,0 +1,833 @@
+{
+  "description": "标题栏目：当前会话、批量整理、预览、执行和结果。",
+  "messages": {
+    "titlesMissingUpdated": {
+      "zh-CN": "缺少日期，请选创建日期",
+      "zh-TW": "缺少日期，請選建立日期",
+      "en": "Choose creation date instead.",
+      "ja": "作成日を選んでください"
+    },
+    "titlesInvalidDates": {
+      "zh-CN": "日期异常，请选创建日期",
+      "zh-TW": "日期異常，請選建立日期",
+      "en": "Dates conflict. Choose creation date.",
+      "ja": "作成日を選んでください"
+    },
+    "titlesEmptyTitle": {
+      "zh-CN": "标题为空，请先改名",
+      "zh-TW": "標題為空，請先改名",
+      "en": "Title empty. Rename the chat first.",
+      "ja": "先に会話に名前を付けてください"
+    },
+    "titlesCatalogUnsupported": {
+      "zh-CN": "此列表暂不支持",
+      "zh-TW": "此列表暫不支援",
+      "en": "This list is not supported yet.",
+      "ja": "この一覧は未対応です"
+    },
+    "titlesBatchReturnOwner": {
+      "zh-CN": "返回原会话",
+      "zh-TW": "返回原對話",
+      "en": "Return to original conversation",
+      "ja": "元の会話に戻る"
+    },
+    "titleOrganization": {
+      "zh-CN": "标题整理",
+      "zh-TW": "標題整理",
+      "en": "Title organization",
+      "ja": "タイトル整理"
+    },
+    "titleOrganizationSubtitle": {
+      "zh-CN": "修改 ChatGPT 原标题",
+      "zh-TW": "修改 ChatGPT 原標題",
+      "en": "Edit ChatGPT titles",
+      "ja": "ChatGPT のタイトルを変更"
+    },
+    "titlesNeedsConversation": {
+      "zh-CN": "请打开普通或项目会话",
+      "zh-TW": "請開啟一般或專案會話",
+      "en": "Open a regular or project chat.",
+      "ja": "通常またはプロジェクトの会話を開いてください"
+    },
+    "titlesBatch": {
+      "zh-CN": "批量处理",
+      "zh-TW": "批次處理",
+      "en": "Batch",
+      "ja": "一括処理"
+    },
+    "titlesRegional": {
+      "zh-CN": "默认地区格式",
+      "zh-TW": "預設地區格式",
+      "en": "Regional format",
+      "ja": "地域の日付形式"
+    },
+    "titlesRules": {
+      "zh-CN": "规则设置",
+      "zh-TW": "規則設定",
+      "en": "Rules",
+      "ja": "ルール設定"
+    },
+    "titlesDateBasis": {
+      "zh-CN": "日期依据",
+      "zh-TW": "日期依據",
+      "en": "Date basis",
+      "ja": "使用する日付"
+    },
+    "titlesCreatedDate": {
+      "zh-CN": "创建日期",
+      "zh-TW": "建立日期",
+      "en": "Created date",
+      "ja": "作成日"
+    },
+    "titlesRange": {
+      "zh-CN": "范围日期",
+      "zh-TW": "範圍日期",
+      "en": "Date range",
+      "ja": "日付範囲"
+    },
+    "titlesPreviewHeading": {
+      "zh-CN": "标题预览",
+      "zh-TW": "標題預覽",
+      "en": "Title preview",
+      "ja": "タイトルプレビュー"
+    },
+    "titlesRefreshPreview": {
+      "zh-CN": "重新读取",
+      "zh-TW": "重新讀取",
+      "en": "Read again",
+      "ja": "再読み込み"
+    },
+    "titlesBefore": {
+      "zh-CN": "修改前",
+      "zh-TW": "修改前",
+      "en": "Before",
+      "ja": "変更前"
+    },
+    "titlesAfter": {
+      "zh-CN": "修改后",
+      "zh-TW": "修改後",
+      "en": "After",
+      "ja": "変更後"
+    },
+    "titlesExistingDate": {
+      "zh-CN": "标题日期与当前规则冲突",
+      "zh-TW": "標題日期與目前規則衝突",
+      "en": "Title date conflicts with this rule",
+      "ja": "タイトルの日付とルールが異なります"
+    },
+    "titlesSkip": {
+      "zh-CN": "保持不变",
+      "zh-TW": "保持不變",
+      "en": "Keep",
+      "ja": "そのまま"
+    },
+    "titlesReplace": {
+      "zh-CN": "替换日期",
+      "zh-TW": "替換日期",
+      "en": "Replace date",
+      "ja": "日付を置換"
+    },
+    "titlesStack": {
+      "zh-CN": "叠加日期",
+      "zh-TW": "疊加日期",
+      "en": "Stack date",
+      "ja": "日付を重ねる"
+    },
+    "titlesConfirm": {
+      "zh-CN": "确认添加日期",
+      "zh-TW": "確認新增日期",
+      "en": "Confirm add",
+      "ja": "日付追加を確定"
+    },
+    "titlesConfirmReplace": {
+      "zh-CN": "确认替换日期",
+      "zh-TW": "確認替換日期",
+      "en": "Confirm replace",
+      "ja": "日付置換を確定"
+    },
+    "titlesConfirmStack": {
+      "zh-CN": "确认叠加日期",
+      "zh-TW": "確認疊加日期",
+      "en": "Confirm stack",
+      "ja": "日付を重ねて追加"
+    },
+    "titlesConfirmRemove": {
+      "zh-CN": "确认移除日期",
+      "zh-TW": "確認移除日期",
+      "en": "Confirm remove",
+      "ja": "日付削除を確定"
+    },
+    "titlesRemove": {
+      "zh-CN": "移除日期",
+      "zh-TW": "移除日期",
+      "en": "Remove date",
+      "ja": "日付を削除"
+    },
+    "titlesBack": {
+      "zh-CN": "返回",
+      "zh-TW": "返回",
+      "en": "Back",
+      "ja": "戻る"
+    },
+    "titlesWouldEmpty": {
+      "zh-CN": "标题会空，请先补标题",
+      "zh-TW": "標題會空，請先補標題",
+      "en": "Add title text before removing dates.",
+      "ja": "先にタイトル本文を追加してください"
+    },
+    "titlesNoChange": {
+      "zh-CN": "符合规则",
+      "zh-TW": "符合規則",
+      "en": "Matches rule",
+      "ja": "ルールに一致"
+    },
+    "titlesMissingDates": {
+      "zh-CN": "缺少日期，暂不能添加",
+      "zh-TW": "缺少日期，暫不能新增",
+      "en": "No date available to add.",
+      "ja": "日付がないため追加できません"
+    },
+    "titlesPreviewStale": {
+      "zh-CN": "会话已变，请重读",
+      "zh-TW": "會話已變，請重讀",
+      "en": "Conversation changed. Read again.",
+      "ja": "会話が変わりました。再読み込み"
+    },
+    "titlesPreviewing": {
+      "zh-CN": "正在读取…",
+      "zh-TW": "正在讀取…",
+      "en": "Reading…",
+      "ja": "読み取り中…"
+    },
+    "titlesSaving": {
+      "zh-CN": "正在保存…",
+      "zh-TW": "正在儲存…",
+      "en": "Saving…",
+      "ja": "保存中…"
+    },
+    "titlesChecking": {
+      "zh-CN": "正在检查结果…",
+      "zh-TW": "正在檢查結果…",
+      "en": "Checking result…",
+      "ja": "結果を確認中…"
+    },
+    "titlesVerified": {
+      "zh-CN": "已保存",
+      "zh-TW": "已儲存",
+      "en": "Saved",
+      "ja": "保存済み"
+    },
+    "titlesPending": {
+      "zh-CN": "保存结果待确认",
+      "zh-TW": "儲存結果待確認",
+      "en": "Save result unconfirmed",
+      "ja": "保存結果を確認してください"
+    },
+    "titlesUncertain": {
+      "zh-CN": "是否保存？请检查",
+      "zh-TW": "是否儲存？請檢查",
+      "en": "Check whether the title was saved.",
+      "ja": "保存できたか確認してください"
+    },
+    "titlesNotDispatched": {
+      "zh-CN": "修改未提交，请重读",
+      "zh-TW": "修改未送出，請重讀",
+      "en": "Change not sent. Read again.",
+      "ja": "変更は未送信です。再読み込み"
+    },
+    "titlesUnchanged": {
+      "zh-CN": "标题未变，请重读",
+      "zh-TW": "標題未變，請重讀",
+      "en": "Title unchanged. Read again.",
+      "ja": "タイトル未変更。再読み込み"
+    },
+    "titlesRecoveryReady": {
+      "zh-CN": "已核对，请重新读取",
+      "zh-TW": "已核對，請重新讀取",
+      "en": "Checked. Read again to continue.",
+      "ja": "確認済みです。再読み込み"
+    },
+    "titlesBatchReviewRequired": {
+      "zh-CN": "需重新预览",
+      "zh-TW": "需重新預覽",
+      "en": "Review again",
+      "ja": "再プレビューが必要"
+    },
+    "titlesRecoveryTarget": {
+      "zh-CN": "原计划",
+      "zh-TW": "原計畫",
+      "en": "Planned title",
+      "ja": "変更予定のタイトル"
+    },
+    "titlesRecoveryObserved": {
+      "zh-CN": "最近读到的标题",
+      "zh-TW": "最近讀到的標題",
+      "en": "Last observed title",
+      "ja": "最後に確認したタイトル"
+    },
+    "titlesPreviewAgain": {
+      "zh-CN": "重新读取",
+      "zh-TW": "重新讀取",
+      "en": "Read again",
+      "ja": "再読み込み"
+    },
+    "titlesReconcile": {
+      "zh-CN": "检查结果",
+      "zh-TW": "檢查結果",
+      "en": "Check result",
+      "ja": "結果を確認"
+    },
+    "titlesConflict": {
+      "zh-CN": "预览过期，请重读",
+      "zh-TW": "預覽過期，請重讀",
+      "en": "Preview outdated. Read again.",
+      "ja": "プレビューを読み込み直してください"
+    },
+    "titlesContextChanged": {
+      "zh-CN": "会话已变，请重读",
+      "zh-TW": "會話已變，請重讀",
+      "en": "Conversation changed. Read again.",
+      "ja": "会話が変わりました。再読み込み"
+    },
+    "titlesTitleChanged": {
+      "zh-CN": "标题已变，请重读",
+      "zh-TW": "標題已變，請重讀",
+      "en": "Title changed. Read again.",
+      "ja": "タイトル変更。再読み込み"
+    },
+    "titlesDatesChanged": {
+      "zh-CN": "日期已变，请重读",
+      "zh-TW": "日期已變，請重讀",
+      "en": "Dates changed. Read again.",
+      "ja": "日付変更。再読み込み"
+    },
+    "titlesSettingsReadFailed": {
+      "zh-CN": "设置未读到，请重读",
+      "zh-TW": "設定未讀到，請重讀",
+      "en": "Settings not loaded. Read again.",
+      "ja": "設定を読み込み直してください"
+    },
+    "titlesSettingsSaveFailed": {
+      "zh-CN": "设置未存好，请重选",
+      "zh-TW": "設定未存好，請重選",
+      "en": "Settings not saved. Select again.",
+      "ja": "設定を選び直してください"
+    },
+    "titlesSettingsUnconfirmed": {
+      "zh-CN": "设置待确认，请重读",
+      "zh-TW": "設定待確認，請重讀",
+      "en": "Check saved settings. Read again.",
+      "ja": "保存設定を読み込み直してください"
+    },
+    "titlesFailed": {
+      "zh-CN": "修改未完成，请重读",
+      "zh-TW": "修改未完成，請重讀",
+      "en": "Change incomplete. Read again.",
+      "ja": "変更未完了。再読み込み"
+    },
+    "titlesReadFailed": {
+      "zh-CN": "读取失败，请重试",
+      "zh-TW": "讀取失敗，請重試",
+      "en": "Could not load. Try again.",
+      "ja": "読み込みを再試行してください"
+    },
+    "titlesPlanExpired": {
+      "zh-CN": "预览过期，请重读",
+      "zh-TW": "預覽過期，請重讀",
+      "en": "Preview outdated. Read again.",
+      "ja": "プレビューを読み込み直してください"
+    },
+    "titlesAuthPending": {
+      "zh-CN": "账号未读到，请重试",
+      "zh-TW": "帳號未讀到，請重試",
+      "en": "Account not available. Try again.",
+      "ja": "アカウントを読み込み直してください"
+    },
+    "titlesAuthExpired": {
+      "zh-CN": "登录过期，请重新登录",
+      "zh-TW": "登入過期，請重新登入",
+      "en": "Session expired. Sign in again.",
+      "ja": "再ログインしてください"
+    },
+    "titlesAccountChanged": {
+      "zh-CN": "账号或工作区已变，请重读",
+      "zh-TW": "帳號或工作區已變，請重讀",
+      "en": "Account or workspace changed. Read again.",
+      "ja": "アカウントまたはワークスペースが変わりました。読み込み直してください"
+    },
+    "titlesRateLimited": {
+      "zh-CN": "操作太快，稍后再试",
+      "zh-TW": "操作太快，稍後再試",
+      "en": "Too many attempts. Try later.",
+      "ja": "少し待って再試行してください"
+    },
+    "titlesReceiptMissing": {
+      "zh-CN": "结果未明，请检查",
+      "zh-TW": "結果未明，請檢查",
+      "en": "Result unconfirmed. Check it.",
+      "ja": "結果を確認してください"
+    },
+    "titlesBatchAll": {
+      "zh-CN": "全部",
+      "zh-TW": "全部",
+      "en": "All",
+      "ja": "すべて"
+    },
+    "titlesBatchNoDate": {
+      "zh-CN": "无日期",
+      "zh-TW": "無日期",
+      "en": "No date",
+      "ja": "日付なし"
+    },
+    "titlesBatchHasDate": {
+      "zh-CN": "已有日期",
+      "zh-TW": "已有日期",
+      "en": "Has date",
+      "ja": "日付あり"
+    },
+    "titlesBatchDateConflict": {
+      "zh-CN": "规则冲突",
+      "zh-TW": "規則衝突",
+      "en": "Conflict",
+      "ja": "ルール競合"
+    },
+    "titlesBatchSearch": {
+      "zh-CN": "搜索会话标题…",
+      "zh-TW": "搜尋對話標題…",
+      "en": "Search chat titles…",
+      "ja": "会話タイトルを検索…"
+    },
+    "titlesBatchFilter": {
+      "zh-CN": "按标题日期筛选",
+      "zh-TW": "按標題日期篩選",
+      "en": "Filter by title date",
+      "ja": "タイトルの日付で絞り込み"
+    },
+    "titlesBatchSelectAll": {
+      "zh-CN": "全选",
+      "zh-TW": "全選",
+      "en": "Select all",
+      "ja": "全選択"
+    },
+    "titlesBatchDeselectAll": {
+      "zh-CN": "取消全选",
+      "zh-TW": "取消全選",
+      "en": "Deselect all",
+      "ja": "すべて解除"
+    },
+    "titlesBatchSelectionCount": {
+      "zh-CN": "{total} 个会话 · 已选 {selected}",
+      "zh-TW": "{total} 段對話 · 已選 {selected}",
+      "en": "{total} chats · {selected} selected",
+      "ja": "会話 {total} 件 · {selected} 件選択"
+    },
+    "titlesBatchExitRemove": {
+      "zh-CN": "退出移除",
+      "zh-TW": "結束移除",
+      "en": "Exit removal",
+      "ja": "削除を終了"
+    },
+    "titlesBatchSelectRemove": {
+      "zh-CN": "请选择要移除日期的会话",
+      "zh-TW": "請選擇要移除日期的對話",
+      "en": "Select chats to remove dates from",
+      "ja": "日付を削除する会話を選択"
+    },
+    "titlesBatchPreview": {
+      "zh-CN": "预览 {count} 项",
+      "zh-TW": "預覽 {count} 項",
+      "en": "Preview {count}",
+      "ja": "{count} 件をプレビュー"
+    },
+    "titlesBatchPreviewRemove": {
+      "zh-CN": "预览移除 {count} 项",
+      "zh-TW": "預覽移除 {count} 項",
+      "en": "Preview removal of {count}",
+      "ja": "{count} 件の削除を確認"
+    },
+    "titlesBatchEmpty": {
+      "zh-CN": "当前结果没有会话",
+      "zh-TW": "目前結果沒有對話",
+      "en": "No chats in this view",
+      "ja": "該当する会話はありません"
+    },
+    "titlesBatchCannotRemove": {
+      "zh-CN": "请先补充标题",
+      "zh-TW": "請先補充標題",
+      "en": "Add title text first",
+      "ja": "先にタイトル本文を追加"
+    },
+    "titlesBatchRetryRead": {
+      "zh-CN": "重新读取",
+      "zh-TW": "重新讀取",
+      "en": "Read again",
+      "ja": "再読み込み"
+    },
+    "titlesBatchSortField": {
+      "zh-CN": "排序依据",
+      "zh-TW": "排序依據",
+      "en": "Sort by",
+      "ja": "並び順の基準"
+    },
+    "titlesBatchCheckingStatus": {
+      "zh-CN": "检查会话状态…",
+      "zh-TW": "檢查對話狀態…",
+      "en": "Checking chat status…",
+      "ja": "会話の状態を確認中…"
+    },
+    "titlesBatchCatalogLoading": {
+      "zh-CN": "读取会话列表…",
+      "zh-TW": "讀取對話清單…",
+      "en": "Loading chats…",
+      "ja": "会話を読み込み中…"
+    },
+    "titlesBatchCatalogRefreshing": {
+      "zh-CN": "更新会话列表…",
+      "zh-TW": "更新對話清單…",
+      "en": "Refreshing chats…",
+      "ja": "会話一覧を更新中…"
+    },
+    "titlesBatchCatalogAccount": {
+      "zh-CN": "账号未读到，请重试",
+      "zh-TW": "帳號未讀到，請重試",
+      "en": "Account not available. Try again.",
+      "ja": "アカウントを読み込み直してください"
+    },
+    "titlesBatchCatalogRateLimited": {
+      "zh-CN": "操作太快，稍后再试",
+      "zh-TW": "操作太快，稍後再試",
+      "en": "Too many attempts. Try later.",
+      "ja": "少し待って再試行してください"
+    },
+    "titlesBatchCatalogPreviousRateLimit": {
+      "zh-CN": "操作太快，稍后再试",
+      "zh-TW": "操作太快，稍後再試",
+      "en": "Too many attempts. Try later.",
+      "ja": "少し待って再試行してください"
+    },
+    "titlesBatchCatalogUnconfirmed": {
+      "zh-CN": "会话列表尚未加载",
+      "zh-TW": "對話清單尚未載入",
+      "en": "Conversation list not loaded yet.",
+      "ja": "会話一覧はまだ読み込まれていません"
+    },
+    "titlesBatchCatalogReadFailed": {
+      "zh-CN": "列表未读全",
+      "zh-TW": "列表未讀全",
+      "en": "List incomplete",
+      "ja": "一覧の読み込みが未完了です"
+    },
+    "titlesBatchCatalogSuperseded": {
+      "zh-CN": "会话列表已更新，可继续加载",
+      "zh-TW": "對話清單已更新，可繼續載入",
+      "en": "Conversation list updated. More can be loaded.",
+      "ja": "会話一覧を更新しました。続きを読み込めます"
+    },
+    "titlesBatchReceiptUnconfirmed": {
+      "zh-CN": "读取失败，请重试",
+      "zh-TW": "讀取失敗，請重試",
+      "en": "Couldn't load. Try again.",
+      "ja": "読み込み失敗。再試行してください"
+    },
+    "titlesBatchRecheckStatus": {
+      "zh-CN": "重新读取",
+      "zh-TW": "重新讀取",
+      "en": "Read again",
+      "ja": "再読み込み"
+    },
+    "titlesBatchOwnerUnavailable": {
+      "zh-CN": "请先打开普通会话",
+      "zh-TW": "請先開啟一般會話",
+      "en": "Open a regular chat first.",
+      "ja": "通常の会話を開いてください"
+    },
+    "titlesBatchCatalogPreviousReadFailed": {
+      "zh-CN": "列表未读全",
+      "zh-TW": "列表未讀全",
+      "en": "List incomplete",
+      "ja": "一覧の読み込みが未完了です"
+    },
+    "titlesBatchCatalogPaused": {
+      "zh-CN": "列表尚未加载完整，可先选择已显示的会话",
+      "zh-TW": "清單尚未完整載入，可先選擇已顯示的對話",
+      "en": "List incomplete. Loaded conversations can be selected.",
+      "ja": "一覧は未完了です。表示中の会話は選択できます"
+    },
+    "titlesBatchCatalogContinue": {
+      "zh-CN": "继续加载",
+      "zh-TW": "繼續載入",
+      "en": "Load more",
+      "ja": "続きを読み込む"
+    },
+    "titlesBatchFormat": {
+      "zh-CN": "日期格式",
+      "zh-TW": "日期格式",
+      "en": "Date format",
+      "ja": "日付形式"
+    },
+    "titlesBatchBackSelection": {
+      "zh-CN": "返回会话选择",
+      "zh-TW": "返回對話選擇",
+      "en": "Back to chat selection",
+      "ja": "会話の選択に戻る"
+    },
+    "titlesBatchBackRemove": {
+      "zh-CN": "返回批量移除",
+      "zh-TW": "返回批次移除",
+      "en": "Back to batch removal",
+      "ja": "一括削除に戻る"
+    },
+    "titlesBatchReviewCount": {
+      "zh-CN": "本次处理 {count} 个",
+      "zh-TW": "本次處理 {count} 個",
+      "en": "Reviewing {count} chats",
+      "ja": "今回の対象は {count} 件"
+    },
+    "titlesBatchConflictsHeading": {
+      "zh-CN": "标题日期与当前规则冲突 · {count} 个",
+      "zh-TW": "標題日期與目前規則衝突 · {count} 個",
+      "en": "Title dates differ from this rule · {count}",
+      "ja": "タイトルの日付とルールが異なります · {count} 件"
+    },
+    "titlesBatchAdd": {
+      "zh-CN": "添加日期",
+      "zh-TW": "新增日期",
+      "en": "Add dates",
+      "ja": "日付を追加"
+    },
+    "titlesBatchUnchanged": {
+      "zh-CN": "保持不变",
+      "zh-TW": "保持不變",
+      "en": "Unchanged",
+      "ja": "変更なし"
+    },
+    "titlesBatchRemovePreview": {
+      "zh-CN": "移除日期（预览）",
+      "zh-TW": "移除日期（預覽）",
+      "en": "Remove dates (preview)",
+      "ja": "日付を削除（プレビュー）"
+    },
+    "titlesBatchSkipCount": {
+      "zh-CN": "{count} 项保持不变",
+      "zh-TW": "{count} 項保持不變",
+      "en": "{count} unchanged",
+      "ja": "{count} 件は変更なし"
+    },
+    "titlesBatchSkipRemoveCount": {
+      "zh-CN": "{count} 项不能移除",
+      "zh-TW": "{count} 項不能移除",
+      "en": "{count} cannot be removed",
+      "ja": "{count} 件は削除不可"
+    },
+    "titlesBatchApply": {
+      "zh-CN": "应用 {count} 项",
+      "zh-TW": "套用 {count} 項",
+      "en": "Apply {count}",
+      "ja": "{count} 件に適用"
+    },
+    "titlesBatchConfirmRemove": {
+      "zh-CN": "确认移除 {count} 项",
+      "zh-TW": "確認移除 {count} 項",
+      "en": "Remove {count}",
+      "ja": "{count} 件を削除"
+    },
+    "titlesBatchDone": {
+      "zh-CN": "完成",
+      "zh-TW": "完成",
+      "en": "Done",
+      "ja": "完了"
+    },
+    "titlesBatchWaiting": {
+      "zh-CN": "待处理",
+      "zh-TW": "待處理",
+      "en": "Waiting",
+      "ja": "待機中"
+    },
+    "titlesBatchWorking": {
+      "zh-CN": "处理中",
+      "zh-TW": "處理中",
+      "en": "Processing",
+      "ja": "処理中"
+    },
+    "titlesBatchSkipped": {
+      "zh-CN": "未改动",
+      "zh-TW": "未改動",
+      "en": "Unchanged",
+      "ja": "変更なし"
+    },
+    "titlesBatchAccepted": {
+      "zh-CN": "已保存",
+      "zh-TW": "已儲存",
+      "en": "Saved",
+      "ja": "保存済み"
+    },
+    "titlesBatchSaved": {
+      "zh-CN": "已保存",
+      "zh-TW": "已儲存",
+      "en": "Saved",
+      "ja": "保存済み"
+    },
+    "titlesBatchFailed": {
+      "zh-CN": "失败",
+      "zh-TW": "失敗",
+      "en": "Failed",
+      "ja": "失敗"
+    },
+    "titlesBatchUncertain": {
+      "zh-CN": "待确认",
+      "zh-TW": "待確認",
+      "en": "Unconfirmed",
+      "ja": "未確認"
+    },
+    "titlesBatchApplying": {
+      "zh-CN": "正在应用中…",
+      "zh-TW": "正在套用…",
+      "en": "Applying…",
+      "ja": "適用中…"
+    },
+    "titlesBatchRemoving": {
+      "zh-CN": "正在移除中…",
+      "zh-TW": "正在移除中…",
+      "en": "Removing…",
+      "ja": "削除中…"
+    },
+    "titlesBatchPaused": {
+      "zh-CN": "处理已暂停",
+      "zh-TW": "處理已暫停",
+      "en": "Paused",
+      "ja": "一時停止中"
+    },
+    "titlesBatchKeepOpen": {
+      "zh-CN": "处理中，关闭侧栏会暂停",
+      "zh-TW": "處理中，關閉側欄會暫停",
+      "en": "Closing the side panel will pause this operation.",
+      "ja": "処理中にサイドパネルを閉じると一時停止します"
+    },
+    "titlesBatchUpdatedResult": {
+      "zh-CN": "已更新 {count} 个会话的标题日期",
+      "zh-TW": "已更新 {count} 段對話的標題日期",
+      "en": "Updated title dates for {count} chats",
+      "ja": "{count} 件のタイトル日付を更新しました"
+    },
+    "titlesBatchRemovedResult": {
+      "zh-CN": "已移除 {count} 个会话的日期",
+      "zh-TW": "已移除 {count} 段對話的日期",
+      "en": "Removed dates from {count} chats",
+      "ja": "{count} 件の会話から日付を削除しました"
+    },
+    "titlesBatchNoChanges": {
+      "zh-CN": "没有修改标题",
+      "zh-TW": "沒有修改標題",
+      "en": "No titles changed",
+      "ja": "タイトルの変更はありません"
+    },
+    "titlesBatchFailedCount": {
+      "zh-CN": "{count} 项失败",
+      "zh-TW": "{count} 項失敗",
+      "en": "{count} failed",
+      "ja": "{count} 件失敗"
+    },
+    "titlesBatchConflictCount": {
+      "zh-CN": "{count} 项冲突",
+      "zh-TW": "{count} 項衝突",
+      "en": "{count} conflicts",
+      "ja": "{count} 件競合"
+    },
+    "titlesBatchUncertainCount": {
+      "zh-CN": "{count} 项待确认",
+      "zh-TW": "{count} 項待確認",
+      "en": "{count} unconfirmed",
+      "ja": "{count} 件未確認"
+    },
+    "titlesBatchBack": {
+      "zh-CN": "返回批量处理",
+      "zh-TW": "返回批次處理",
+      "en": "Back to batch",
+      "ja": "一括処理に戻る"
+    },
+    "titlesBatchRetryFailed": {
+      "zh-CN": "重新预览未完成项",
+      "zh-TW": "重新預覽未完成項",
+      "en": "Preview unfinished items again",
+      "ja": "未完了の項目を再プレビュー"
+    },
+    "titlesBatchPreviewRemaining": {
+      "zh-CN": "预览剩余项",
+      "zh-TW": "預覽剩餘項",
+      "en": "Preview remaining items",
+      "ja": "残りの項目をプレビュー"
+    },
+    "titlesBatchTimeChanged": {
+      "zh-CN": "日期已变化",
+      "zh-TW": "日期已變化",
+      "en": "Dates changed",
+      "ja": "日付が変わりました"
+    },
+    "titlesBatchTitleChanged": {
+      "zh-CN": "标题已变化",
+      "zh-TW": "標題已變化",
+      "en": "Title changed",
+      "ja": "タイトルが変更済み"
+    },
+    "titlesBatchMetadataChanged": {
+      "zh-CN": "信息已变化",
+      "zh-TW": "資訊已變化",
+      "en": "Metadata changed",
+      "ja": "情報が変更済み"
+    },
+    "titlesBatchTimeChangedHelp": {
+      "zh-CN": "日期已变，请重新预览",
+      "zh-TW": "日期已變，請重新預覽",
+      "en": "Dates changed. Preview again.",
+      "ja": "日付変更。再プレビュー"
+    },
+    "titlesBatchTitleChangedHelp": {
+      "zh-CN": "标题已变，请重新预览",
+      "zh-TW": "標題已變，請重新預覽",
+      "en": "Title changed. Preview again.",
+      "ja": "タイトル変更。再プレビュー"
+    },
+    "titlesBatchMetadataChangedHelp": {
+      "zh-CN": "会话已变，请重新预览",
+      "zh-TW": "會話已變，請重新預覽",
+      "en": "Conversation changed. Preview again.",
+      "ja": "会話変更。再プレビュー"
+    },
+    "titlesBatchIssueDetails": {
+      "zh-CN": "查看未完成原因",
+      "zh-TW": "查看未完成原因",
+      "en": "Why items are unfinished",
+      "ja": "未完了の理由を確認"
+    },
+    "titlesBatchPauseUnknown": {
+      "zh-CN": "结果未明，请检查",
+      "zh-TW": "結果未明，請檢查",
+      "en": "Result unconfirmed. Check it.",
+      "ja": "結果を確認してください"
+    },
+    "titlesBatchPauseHidden": {
+      "zh-CN": "已暂停，请预览剩余项",
+      "zh-TW": "已暫停，請預覽剩餘項",
+      "en": "Paused. Preview remaining items.",
+      "ja": "残りの項目をプレビューしてください"
+    },
+    "titlesBatchPauseRestarted": {
+      "zh-CN": "已暂停，请预览剩余项",
+      "zh-TW": "已暫停，請預覽剩餘項",
+      "en": "Paused. Preview remaining items.",
+      "ja": "残りの項目をプレビューしてください"
+    },
+    "titlesBatchPauseReview": {
+      "zh-CN": "未完成，请预览剩余项",
+      "zh-TW": "未完成，請預覽剩餘項",
+      "en": "Incomplete. Preview remaining items.",
+      "ja": "残りの項目をプレビューしてください"
+    },
+    "titlesBatchProgressSummary": {
+      "zh-CN": "已保存 {saved} 项 · 待处理 {waiting} 项",
+      "zh-TW": "已儲存 {saved} 項 · 待處理 {waiting} 項",
+      "en": "{saved} saved · {waiting} waiting",
+      "ja": "保存済み {saved} 件 · 待機中 {waiting} 件"
+    }
+  }
+}

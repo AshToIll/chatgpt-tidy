@@ -1,0 +1,19 @@
+{
+  "schema": "tidy.development-license-evidence.v1",
+  "checked_at": "2026-09-19",
+  "scope": "Source-only test dependency reference and original license. node_modules and the test library are excluded from the installable extension.",
+  "dependencies": [
+    {
+      "package": "fake-indexeddb",
+      "version": "6.2.5",
+      "lock_path": "node_modules/fake-indexeddb",
+      "scope": "test-only",
+      "license": "Apache-2.0",
+      "source_tarball": "https://registry.npmjs.org/fake-indexeddb/-/fake-indexeddb-6.2.5.tgz",
+      "integrity": "sha512-CGnyrvbhPlWYMngksqrSSUT1BAVP49dZocrHuK0SvtR0D5TMs5wP0o3j7jexDJW01KSadjBp1M/71o/KR3nD1w==",
+      "source_member": "package/LICENSE",
+      "license_file": "docs/licenses/fake-indexeddb-6.2.5-LICENSE.txt",
+      "license_sha256": "0c2e77addd3045b932ae0de86b7cf66aa1eeed4248d4dab37e851f9e5499d85e"
+    }
+  ]
+}

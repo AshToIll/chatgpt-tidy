@@ -1,0 +1,28 @@
+{
+  "name": "chatgpt-tidy",
+  "version": "0.5.0",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/*.test.cjs",
+    "build": "node tools/build-messages.cjs && node tools/build-message-index.cjs && node tools/build-main-world.cjs",
+    "build:icons": "node tools/build-icons.cjs",
+    "check:bundle": "node tools/build-main-world.cjs --check",
+    "package:extension": "node tools/package-extension.cjs",
+    "package:source": "node tools/package-extension.cjs --source",
+    "verify": "node tools/verify.cjs",
+    "verify:release": "node tools/verify-release.cjs",
+    "setup:hooks": "git config --local core.hooksPath .githooks",
+    "build:messages": "node tools/build-messages.cjs",
+    "check:messages": "node tools/build-messages.cjs --check",
+    "build:message-index": "node tools/build-message-index.cjs",
+    "check:architecture": "node tools/check-architecture.cjs",
+    "clean:verification": "node tools/clean-verification.cjs",
+    "verify:columns": "node tools/check-seven-columns-browser.cjs"
+  },
+  "devDependencies": {
+    "fake-indexeddb": "6.2.5"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}

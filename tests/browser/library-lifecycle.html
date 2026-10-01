@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src data:; connect-src 'none'">
+<title>TIDY local library lifecycle regression</title>
+<link rel="stylesheet" href="../../src/app/sidepanel/panel.css">
+<!-- Library styles are loaded by the production panel stylesheet. -->
+<style>
+  body { display: block; padding: 16px; background: white; }
+  #fixtures { display: grid; grid-template-columns: repeat(2, 430px); gap: 24px; }
+  .fixture { height: 850px; overflow: auto; }
+  [data-results-viewport] {
+    display: block !important; height: 120px !important; min-height: 120px !important;
+    max-height: 120px !important; overflow: auto !important;
+  }
+  #fixtures[hidden], #favorites-interactions[hidden], #shared-library-interactions[hidden] { display: none; }
+  #favorites-interactions { width: 430px; min-height: 700px; }
+  #shared-library-interactions { width: 320px; height: 700px; position: relative; }
+  #results { white-space: pre-wrap; max-height: 160px; overflow: auto; }
+</style>
+<h1>Local library lifecycle fixture</h1>
+<p>Real controller, views and content client; mock extension messages and storage. No account or network.</p>
+<pre id="results">pending</pre>
+<div id="fixtures"><section class="fixture" id="favorites"></section><section class="fixture" id="bookmarks"></section></div>
+<button id="favorites-outside" type="button">Outside control</button>
+<section id="favorites-interactions" hidden></section>
+<section id="shared-library-interactions" hidden></section>
+<script type="module" src="./library-lifecycle.mjs"></script>
+</html>

@@ -1,0 +1,23 @@
+ai-context
+.tmp/
+tmp/
+node_modules/
+dist/
+
+# 解压源码包时留下的清单只证明当时的包内容，不是持续更新的开发源码。
+/SOURCE-MANIFEST.json
+
+# Private real-device exports and local diagnostic artifacts are never source.
+/真机测试/
+*.har
+__pycache__/
+*.pyc
+
+# Local assistant state is not project source.
+/.workbuddy/
+
+# Local design drafts are kept on this machine, not shipped as public source.
+/docs/design-preview/
+
+# Compact local verification receipts; never packaged as product source.
+.artifacts/

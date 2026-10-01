@@ -1,0 +1,117 @@
+{
+  "description": "时间栏目：时间显示选项与网页时间标签。",
+  "messages": {
+    "time": {
+      "zh-CN": "时间",
+      "zh-TW": "時間",
+      "en": "Time",
+      "ja": "時間"
+    },
+    "timeDisplay": {
+      "zh-CN": "时间显示",
+      "zh-TW": "時間顯示",
+      "en": "Time display",
+      "ja": "時間表示"
+    },
+    "dateFormat": {
+      "zh-CN": "日期格式",
+      "zh-TW": "日期格式",
+      "en": "Date format",
+      "ja": "日付形式"
+    },
+    "precision": {
+      "zh-CN": "精度",
+      "zh-TW": "精度",
+      "en": "Precision",
+      "ja": "精度"
+    },
+    "datePrecision": {
+      "zh-CN": "日期",
+      "zh-TW": "日期",
+      "en": "Date",
+      "ja": "日付"
+    },
+    "hour": {
+      "zh-CN": "小时",
+      "zh-TW": "小時",
+      "en": "Hour",
+      "ja": "時"
+    },
+    "minute": {
+      "zh-CN": "分钟",
+      "zh-TW": "分鐘",
+      "en": "Minute",
+      "ja": "分"
+    },
+    "second": {
+      "zh-CN": "秒",
+      "zh-TW": "秒",
+      "en": "Second",
+      "ja": "秒"
+    },
+    "messageTime": {
+      "zh-CN": "消息时间",
+      "zh-TW": "訊息時間",
+      "en": "Message time",
+      "ja": "メッセージ時刻"
+    },
+    "position": {
+      "zh-CN": "位置",
+      "zh-TW": "位置",
+      "en": "Position",
+      "ja": "位置"
+    },
+    "before": {
+      "zh-CN": "正文前",
+      "zh-TW": "正文前",
+      "en": "Before content",
+      "ja": "本文の前"
+    },
+    "after": {
+      "zh-CN": "正文后",
+      "zh-TW": "正文後",
+      "en": "After content",
+      "ja": "本文の後"
+    },
+    "messageNumbers": {
+      "zh-CN": "消息编号",
+      "zh-TW": "訊息編號",
+      "en": "Message numbers",
+      "ja": "メッセージ番号"
+    },
+    "messagePreview": {
+      "zh-CN": "消息",
+      "zh-TW": "訊息",
+      "en": "Message",
+      "ja": "メッセージ"
+    },
+    "timeSubtitle": {
+      "zh-CN": "列表与消息时间",
+      "zh-TW": "清單與訊息時間",
+      "en": "List and message times",
+      "ja": "一覧とメッセージの時刻"
+    },
+    "conversationListTime": {
+      "zh-CN": "会话列表时间",
+      "zh-TW": "對話清單時間",
+      "en": "Conversation list time",
+      "ja": "会話一覧の時刻"
+    },
+    "displayTime": {
+      "zh-CN": "显示时间",
+      "zh-TW": "顯示時間",
+      "en": "Show",
+      "ja": "表示時刻"
+    },
+    "conversationList": {
+      "zh-CN": "会话列表",
+      "zh-TW": "對話清單",
+      "en": "Conversation list",
+      "ja": "会話一覧"
+    }
+  },
+  "pageBindings": {
+    "created": "created",
+    "updated": "updated"
+  }
+}

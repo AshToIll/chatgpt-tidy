@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><title>TIDY 书签重点色回归</title>
+<style>
+body { margin: 0; padding: 28px; background: var(--page-surface, #fff); color: var(--text-secondary); font: 14px/1.5 system-ui; }
+h1 { font-size: 19px; } h2 { font-size: 15px; }
+#scene { max-width: 760px; }
+aside a { position: relative; display: block; height: 65px; padding: 12px; color: inherit; text-decoration: none; }
+main > div { padding: 16px; border: 1px solid #8884; margin-top: 12px; border-radius: 10px; }
+/* 原生消息布局夹具：用户气泡与 hover 动作栏同列，助手操作栏位于精确 host 外。 */
+.fixture-user { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+.fixture-user > [data-content-search-unit-key] { width: 100%; }
+.fixture-user-column { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+[data-user-message-bubble] { max-width: 80%; padding: 10px 16px; border-radius: 18px; background: #eee5ff; color: #222; }
+.fixture-user-actions { display: flex; flex-direction: row-reverse; opacity: 0; }
+.fixture-message:hover .fixture-user-actions, .fixture-message:focus-within .fixture-user-actions { opacity: 1; }
+.turn-action-controls { display: flex; gap: 4px; }
+.turn-action-controls button { height: 26px; padding: 2px 8px; }
+.fixture-assistant-actions { padding: 4px 16px; }
+.fixture-attachment { padding: 6px 10px; border: 1px solid #8886; border-radius: 8px; }
+#samples { display: flex; gap: 18px; margin-top: 26px; }
+.palette { flex: 1; padding: 16px; border: 1px solid #8884; border-radius: 10px; }
+.palette.dark { background: #212121; color: #f2f2f2; }
+.palette.light { background: #fff; color: #2c2d31; }
+.sample { display: flex; align-items: center; gap: 16px; padding: 8px; }
+.sample label { flex: 1; } .sample button { position: static; margin: 0; }
+#results { max-height: 110px; overflow: auto; font-size: 11px; white-space: pre-wrap; }
+</style>
+<h1>消息书签随重点色变化，收藏星星保留原样</h1>
+<section id="scene">
+<aside><a href="/c/synthetic">本地合成会话 · 收藏星星与书签数量不染色</a></aside>
+<main><div data-message-id="user">已添加的消息书签</div><div data-message-id="assistant">未添加的消息书签</div></main>
+</section>
+<div id="samples"></div><pre id="results">pending</pre>
+<script type="module" src="bookmark-theme.mjs"></script></html>

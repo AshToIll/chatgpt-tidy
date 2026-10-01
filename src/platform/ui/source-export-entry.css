@@ -1,0 +1,5 @@
+/* architecture-boundary: 收藏、书签和搜索列表共用的加入导出入口；保持位于搜索结果规则之前。 */
+.source-export-entry { flex: 0 0 auto; margin-left: auto; margin-right: 2px; padding: 2px 6px; border: 0; border-radius: 5px; background: transparent; color: #8a8c92; font-size: 11px; font-weight: 450; cursor: pointer; }
+.source-export-entry:hover, .source-export-entry:focus-visible { background: var(--surface-hover); color: var(--accent); outline: none; }
+.source-export-entry:disabled { color: #b5b6ba; cursor: default; }
+.source-export-entry:disabled:hover { background: transparent; }

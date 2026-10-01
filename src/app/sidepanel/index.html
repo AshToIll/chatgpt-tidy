@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ChatGPT Tidy</title>
+    <link rel="stylesheet" href="panel.css" />
+    <link rel="stylesheet" href="../../features/export/ui/export.css" />
+    <link rel="stylesheet" href="../../features/export/ui/export-job.css" />
+    <link rel="stylesheet" href="../../features/titles/ui/title.css" />
+    <link rel="stylesheet" href="../../features/titles/ui/title-batch.css" />
+    <link rel="stylesheet" href="../../features/settings/ui/diagnostics.css" />
+  </head>
+  <body>
+    <main class="tidy-shell">
+      <aside class="time-panel" aria-label="时间显示" data-i18n-aria="timeDisplay">
+        <header class="time-panel__header">
+          <div><h1 id="panel-title">时间显示</h1><p id="panel-subtitle">列表与消息时间</p></div>
+          <div class="time-panel__header-actions">
+            <label class="toggle-control toggle-control--header" id="time-display-control">
+              <input id="time-enabled" type="checkbox" role="switch" />
+              <span class="toggle-track" aria-hidden="true"></span>
+            </label>
+            <button id="close-button" class="panel-close" type="button" aria-label="关闭面板">×</button>
+          </div>
+        </header>
+
+        <div class="page-refresh-slot">
+          <div id="page-refresh-notice" class="status-card" role="status" aria-live="polite" hidden></div>
+        </div>
+        <div class="time-panel__body">
+          <div id="preferences-notice" class="status-card" role="status" aria-live="polite" hidden></div>
+          <section id="time-view" class="module-view is-active" data-view="time"></section>
+
+          <section id="titles-view" class="module-view" data-view="titles" aria-label="标题整理" data-i18n-aria="titleOrganization"></section>
+          <section id="favorites-view" class="module-view" data-view="favorites"></section>
+          <section id="bookmarks-view" class="module-view" data-view="bookmarks"></section>
+          <section id="search-view" class="module-view search-view" data-view="search" aria-label="搜索" data-i18n-aria="globalSearch"></section>
+          <section id="export-view" class="module-view" data-view="export" aria-label="导出" data-i18n-aria="export"></section>
+
+          <section id="settings-view" class="module-view" data-view="settings"></section>
+        </div>
+      </aside>
+
+      <nav class="time-dock" aria-label="ChatGPT Tidy">
+        <button class="dock-button" type="button" data-route="time" aria-label="时间显示"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.25"></circle><path d="M12 7.5v4.8l3.1 1.8"></path></svg></button>
+        <button class="dock-button dock-button--time-group-end" type="button" data-route="titles" aria-label="标题整理"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.25 6.5h11.5"></path><path d="M12 6.5V18"></path></svg></button>
+        <button class="dock-button" type="button" data-route="favorites" aria-label="收藏"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.8c.3 0 .57.17.7.44l2.2 4.46 4.93.72c.3.04.55.25.64.54.1.29.02.6-.2.82l-3.56 3.47.84 4.9c.05.3-.07.6-.32.78a.8.8 0 0 1-.84.06L12 17.67l-4.39 2.32a.8.8 0 0 1-.84-.06.8.8 0 0 1-.32-.78l.84-4.9-3.56-3.47a.8.8 0 0 1-.2-.82c.09-.29.34-.5.64-.54l4.93-.72 2.2-4.46c.13-.27.4-.44.7-.44Z"></path></svg></button>
+        <button class="dock-button" type="button" data-route="bookmarks" aria-label="书签"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.75C7 3.78 7.78 3 8.75 3h6.5C16.22 3 17 3.78 17 4.75v15.1l-5-3.05-5 3.05V4.75Z"></path></svg></button>
+        <button class="dock-button" type="button" data-route="search" aria-label="搜索"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.7" cy="10.7" r="5.7"></circle><path d="m14.9 14.9 4.6 4.6"></path></svg></button>
+        <button class="dock-button" type="button" data-route="export" aria-label="导出"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5v10.2m0 0 3.2-3.2M12 13.7l-3.2-3.2"></path><path d="M5 13.25v5c0 .97.78 1.75 1.75 1.75h10.5c.97 0 1.75-.78 1.75-1.75v-5"></path></svg><span class="dock-badge" data-export-badge hidden></span></button>
+        <button class="dock-button dock-button--settings" type="button" data-route="settings" aria-label="设置"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.22 3h-.44a1.75 1.75 0 0 0-1.75 1.75v.16c0 .62-.33 1.2-.87 1.51l-.43.25c-.54.31-1.2.31-1.74 0l-.14-.08a1.75 1.75 0 0 0-2.39.64l-.22.38A1.75 1.75 0 0 0 4.88 10l.14.08c.54.31.87.89.87 1.51v.5c0 .62-.33 1.2-.87 1.51l-.14.08a1.75 1.75 0 0 0-.64 2.39l.22.38a1.75 1.75 0 0 0 2.39.64l.14-.08c.54-.31 1.2-.31 1.74 0l.43.25c.54.31.87.89.87 1.51v.16c0 .97.78 1.75 1.75 1.75h.44c.97 0 1.75-.78 1.75-1.75v-.16c0-.62.33-1.2.87-1.51l.43-.25c.54-.31 1.2-.31 1.74 0l.14.08a1.75 1.75 0 0 0 2.39-.64l.22-.38a1.75 1.75 0 0 0-.64-2.39l-.14-.08a1.75 1.75 0 0 1-.87-1.51v-.5c0-.62.33-1.2.87-1.51l.14-.08a1.75 1.75 0 0 0 .64-2.39l-.22-.38a1.75 1.75 0 0 0-2.39-.64l-.14.08c-.54.31-1.2.31-1.74 0l-.43-.25a1.75 1.75 0 0 1-.87-1.51v-.16c0-.97-.78-1.75-1.75-1.75Z"></path><circle cx="12" cy="11.84" r="2.65"></circle></svg></button>
+      </nav>
+      <div id="toast" class="toast" role="status" aria-live="polite" tabindex="0" hidden></div>
+    </main>
+    <script src="../../platform/protocol.js"></script>
+    <script src="../../platform/library/library-hydration.js"></script>
+    <script src="../../platform/snapshot.js"></script>
+    <script src="../../features/search/model/search.js"></script>
+    <script src="../../platform/catalog/date-search.js"></script>
+    <script src="../../features/export/model/export.js"></script>
+    <script src="../../features/export/model/export-preview.js"></script>
+    <script src="../../platform/time-format.js"></script>
+    <script src="../../features/titles/model/title-dates.js"></script>
+    <script src="../../platform/ui/context-state.js"></script>
+    <script src="../../features/export/engine/i18n.js"></script>
+    <script src="../../features/export/engine/normalize.js"></script>
+    <script src="../../features/export/engine/plan.js"></script>
+    <script src="../../features/export/engine/inline-content.js"></script>
+    <script src="../../features/export/engine/serializers.js"></script>
+    <script type="module" src="../../platform/theme/ui/toolbar-theme.js"></script>
+    <script type="module" src="panel.js"></script>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+/* architecture-boundary: 窄侧栏的跨栏目最终适配；整体保留媒体查询及声明顺序。 */
+@media (max-width: 359px) {
+  .time-panel__body { padding-right: 12px; padding-left: 12px; }
+  .page-refresh-slot:has(.status-card:not([hidden])) { padding-right: 12px; padding-left: 12px; }
+  .disclosure-setting-row--list-time { grid-template-columns: 1fr; }
+  .settings-theme-grid { grid-template-columns: 1fr; }
+  .search-date-range { grid-template-columns: minmax(0, 1fr) 9px minmax(0, 1fr); gap: 3px; }
+  .search-date-field > button { padding: 0 4px; font-size: 10px; }
+}

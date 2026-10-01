@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><title>TIDY image export regression</title>
+<link rel="stylesheet" href="../../src/app/sidepanel/panel.css">
+<link rel="stylesheet" href="../../src/features/export/ui/export.css">
+<style>body { display:block; background:#f5f6f8; padding:16px; } #export-view { width:420px; height:860px; background:white; } #results { white-space:pre-wrap; }</style>
+<pre id="results" data-tidy-owned="fixture-results">pending</pre><div id="export-view" data-tidy-owned="fixture-view"></div><div id="image-error-fixture" data-tidy-owned="fixture-image-error"></div>
+<script>
+globalThis.chrome = { runtime: { id: 'synthetic-extension', onMessage: {
+  addListener: listener => { globalThis.imagePreviewReceiver = listener; },
+  removeListener: listener => { if (globalThis.imagePreviewReceiver === listener) globalThis.imagePreviewReceiver = null; }
+}, sendMessage: async () => ({}) } };
+const failure = error => {
+  const output = document.querySelector('#results');
+  output.textContent = JSON.stringify({ ok: false, error: error.message, stack: error.stack });
+  output.dataset.complete = 'true';
+};
+addEventListener('error', event => failure(event.error || Error(event.message)));
+addEventListener('unhandledrejection', event => failure(event.reason));
+</script>
+<script src="../../src/platform/session/shared/page-session.js"></script>
+<script>globalThis.TidyPageSession = TidyPageSessionContract.create({ runtime: chrome.runtime });</script>
+<script type="module" src="./export-images.mjs"></script></html>
