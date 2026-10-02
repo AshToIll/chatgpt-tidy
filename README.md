@@ -16,6 +16,12 @@
 
 这是独立的个人项目，与 OpenAI 无隶属关系；ChatGPT 网页变化可能影响功能。
 
+## 使用演示
+
+约 1 分 36 秒，演示安装、打开侧栏及主要功能。
+
+https://github.com/user-attachments/assets/b4ebe07a-406b-48ff-8f92-5dfcd9c8c7ca
+
 ## 安装 0.5.1
 
 使用 Chrome / Edge 116 或更新版本。正常使用请下载 [`chatgpt-tidy-0.5.1.zip`](https://github.com/AshToIll/chatgpt-tidy/releases/download/v0.5.1/chatgpt-tidy-0.5.1.zip) 安装包，解压到固定文件夹。
