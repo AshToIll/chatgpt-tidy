@@ -574,7 +574,10 @@ test("export page tabs follow Search without changing the format segment or batc
   // Format is a setting, not a destination: retain the original segmented
   // control and its light/dark active fill rather than styling every tab alike.
   for (const suffix of ["", " button", " button.is-active", " button:focus-visible"]) {
-    assert.deepEqual(cssDeclarations(css, `.export-format__buttons${suffix}`), cssDeclarations(approvedBaseline, `.export-format__buttons${suffix}`));
+    const expected = cssDeclarations(approvedBaseline, `.export-format__buttons${suffix}`);
+    // Localization fix: only the column minimum changes; all visual tokens remain frozen.
+    if (!suffix) expected["grid-template-columns"] = "repeat(4, minmax(max-content, 1fr))";
+    assert.deepEqual(cssDeclarations(css, `.export-format__buttons${suffix}`), expected);
   }
   assert.match(css, /:root\[data-native-color-scheme="dark"\] :is\([^{]*\.export-format__buttons button\.is-active[^{]*\)\s*\{[^}]*background: var\(--surface\)/);
 });

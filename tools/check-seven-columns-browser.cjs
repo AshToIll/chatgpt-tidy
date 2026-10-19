@@ -67,6 +67,30 @@ function prepare(output) {
     ' equal(document.querySelector(".time-panel__body").dataset.activeRoute, route, "Shell route ownership");',
     ' return { language: preferences.language, route, component: specification.selector, title: document.getElementById("panel-title").textContent, childElements: active[0].querySelectorAll("*").length };',
     '},',
+    'async timeLayout() {',
+    ' dock("time"); await sleep(60);',
+    ' const view = document.getElementById("time-view"), viewRect = view.getBoundingClientRect();',
+    ' assert(view.scrollWidth <= view.clientWidth + 1, preferences.language + ": time view overflows horizontally");',
+    ' const rows = [...view.querySelectorAll(".preview-line")].map(row => {',
+    '   const key = row.querySelector(".preview-key"), value = row.querySelector("span:last-child");',
+    '   const keyRect = key.getBoundingClientRect(), valueRect = value.getBoundingClientRect();',
+    '   assert(key.scrollWidth <= key.clientWidth + 1, preferences.language + ": preview label is clipped: " + key.textContent);',
+    '   const sharesLine = Math.min(keyRect.bottom, valueRect.bottom) > Math.max(keyRect.top, valueRect.top) + 1;',
+    '   if (sharesLine) assert(keyRect.right <= valueRect.left + .5, preferences.language + ": preview label overlaps its value: " + key.textContent);',
+    '   else assert(keyRect.bottom <= valueRect.top + .5, preferences.language + ": stacked preview rows overlap: " + key.textContent);',
+    '   assert(valueRect.right <= viewRect.right + .5, preferences.language + ": preview value escapes the time view");',
+    '   return { label: key.textContent, mode: sharesLine ? "columns" : "stacked", labelWidth: keyRect.width, labelScrollWidth: key.scrollWidth, valueWidth: valueRect.width, gap: Number((valueRect.left - keyRect.right).toFixed(2)) };',
+    ' });',
+    ' for (const button of view.querySelectorAll(".setting-disclosure")) {',
+    '   const label = button.querySelector(".setting-disclosure__label"), summary = button.querySelector(".setting-disclosure__summary"), chevron = button.querySelector(".setting-disclosure__chevron");',
+    '   const labelRect = label.getBoundingClientRect(), summaryRect = summary.getBoundingClientRect(), chevronRect = chevron.getBoundingClientRect();',
+    '   const sharesLine = Math.min(labelRect.bottom, summaryRect.bottom) > Math.max(labelRect.top, summaryRect.top) + 1;',
+    '   if (sharesLine) assert(labelRect.right <= summaryRect.left + .5, preferences.language + ": disclosure label overlaps its summary: " + label.textContent);',
+    '   else assert(labelRect.bottom <= summaryRect.top + .5, preferences.language + ": wrapped disclosure rows overlap: " + label.textContent);',
+    '   assert(summaryRect.right <= chevronRect.left + .5, preferences.language + ": disclosure summary overlaps its chevron: " + label.textContent);',
+    ' }',
+    ' return { language: preferences.language, viewport: [innerWidth, innerHeight], viewWidth: viewRect.width, rows };',
+    '},',
     'report() {',
     ' assert(networkAttempts === 0, "Synthetic fixture attempted account/network request");',
     ' assert(errors.length === 0, "Uncaught errors: " + errors.join("; "));',
@@ -172,6 +196,12 @@ async function run(browser, executable, base) {
         report.checks.push({ name: 'real route visible', result: await evaluate('ArchitectureSmoke.route(' + JSON.stringify(route) + ')') });
         if (language === 'zh-CN') await screenshot(route);
       }
+      for (const width of [320, 460]) {
+        await call('Emulation.setDeviceMetricsOverride', { width, height: 960, deviceScaleFactor: 1, mobile: false });
+        report.checks.push({ name: 'localized time layout has no label/value overlap', result: await evaluate('ArchitectureSmoke.timeLayout()') });
+        if (language === 'en' || language === 'ja') await screenshot('time-' + language + '-' + width + 'x960');
+      }
+      await call('Emulation.setDeviceMetricsOverride', { width: 460, height: 960, deviceScaleFactor: 1, mobile: false });
       report.checks.push({ name: 'seven routes keep logs owned by settings only', result: await evaluate('ArchitectureDiagnosticsSmoke.routes()') });
       await layoutMatrix(language, false);
       for (const action of ['copy', 'cancelClear', 'clear']) {
@@ -231,7 +261,7 @@ async function main() {
     const report = await run(name, executable, base); results.push(report);
     console.log(JSON.stringify({ browser: name, ok: report.ok, sourceStable: report.sourceStable, checks: report.checks.length, error: report.error, evidence: path.join(base, name, 'report.json') }));
   }
-  const summary = { ok: results.every(report => report.ok), browserCount: results.length, featureLanguageCombinationsPerBrowser: 28, logLayoutCasesPerBrowser: 64, logOperationsPerBrowser: 40, results: results.map(report => ({ browser: report.browser, ok: report.ok, sourceStable: report.sourceStable, sourceFingerprint: report.sourceFingerprint, checks: report.checks.length, error: report.error })) };
+  const summary = { ok: results.every(report => report.ok), browserCount: results.length, featureLanguageCombinationsPerBrowser: 28, localizedTimeLayoutCasesPerBrowser: 8, logLayoutCasesPerBrowser: 64, logOperationsPerBrowser: 40, results: results.map(report => ({ browser: report.browser, ok: report.ok, sourceStable: report.sourceStable, sourceFingerprint: report.sourceFingerprint, checks: report.checks.length, error: report.error })) };
   fs.writeFileSync(path.join(base, 'summary.json'), JSON.stringify(summary, null, 2) + '\n');
   console.log('Evidence: ' + base); process.exitCode = summary.ok ? 0 : 1;
 }

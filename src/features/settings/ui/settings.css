@@ -20,5 +20,6 @@
 .settings-theme-choice__swatches { display: inline-flex; flex: 0 0 auto; align-items: center; }
 .settings-theme-choice__swatches i { width: 17px; height: 17px; display: block; border: 1px solid rgba(0, 0, 0, .08); border-radius: 50%; background: var(--swatch); }
 .settings-theme-choice__swatches i + i { width: 14px; height: 14px; margin-left: -5px; box-shadow: 0 0 0 2px #fff; }
-.settings-theme-choice strong { overflow: hidden; font-size: 11px; font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }
+/* 日文主题名较长：允许在卡片内换行，不省略掉用户需要辨认的名称。 */
+.settings-theme-choice strong { min-width: 0; font-size: 11px; font-weight: 600; line-height: 1.4; overflow-wrap: anywhere; }
 

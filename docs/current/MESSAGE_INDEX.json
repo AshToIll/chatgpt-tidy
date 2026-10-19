@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "version": "0.5.1",
-  "buildFingerprint": "005a4d096ca13507354a6c78",
+  "version": "0.5.2",
+  "buildFingerprint": "2fb038e868b7ecba92a3c7ca",
   "limitations": [
     "静态文字引用不是唯一触发条件；条件以列出的函数和分支为准。",
     "无静态引用不等于未使用；动态计算键另列，不自动删除任何文案。",
@@ -8533,7 +8533,7 @@
         },
         {
           "source": "src/features/export/ui/export.css",
-          "line": 382,
+          "line": 384,
           "kind": "literal-reference",
           "excerpt": ".time-panel__body[data-active-route=\"export\"] { overflow: hidden; }"
         },

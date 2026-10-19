@@ -9,6 +9,7 @@ const sourceRoot = path.join(root, "src");
 const entry = path.join(sourceRoot, "app/sidepanel/panel.css");
 const baseline = JSON.parse(fs.readFileSync(path.join(root, "docs/current/BEHAVIOR_BASELINE.json"), "utf8"));
 const digest = text => crypto.createHash("sha256").update(text).digest("hex");
+const localizationAmendments = JSON.parse(fs.readFileSync(path.join(__dirname, "fixtures/localization-style-amendments.json"), "utf8"));
 const libraryAmendments = JSON.parse(fs.readFileSync(path.join(__dirname, "fixtures/library-style-amendments.json"), "utf8"));
 
 // 仅去掉本次拆分新增的说明，不移除旧注释、不排序规则、不折叠选择器或属性。
@@ -40,7 +41,7 @@ function expandStylesheet(file, visited = new Set(), restoreLibrary = false) {
   visited.add(resolved);
   const rawCss = fs.readFileSync(resolved, "utf8").replace(/\r\n/g, "\n");
   const relativePath = path.relative(sourceRoot, resolved).split(path.sep).join("/");
-  const css = stripBoundaryNotes(restoreLibrary ? restoreLibraryAmendments(relativePath, rawCss) : rawCss);
+  const css = stripBoundaryNotes(restoreLibrary ? restoreLibraryAmendments(relativePath, restoreLocalizationAmendments(relativePath, rawCss)) : rawCss);
   return css.replace(/^@import "([^"]+)";\n/gm, (_, relative) =>
     expandStylesheet(path.resolve(path.dirname(resolved), relative), visited, restoreLibrary));
 }
@@ -70,6 +71,27 @@ test("compact toggle is an explicit additive variant and preserves the original 
   assert.equal(css.split(compactToggleRules).length, 2, 'one explicit, isolated compact variant');
   const originalCss = css.replace(compactToggleRules, '');
   assert.doesNotMatch(originalCss, /toggle-control--compact/, 'no unrelated compact overrides');
+});
+
+// 每个局部改动都有完整前后文；不放宽历史哈希，也不将整个文件排除。
+function restoreLocalizationAmendments(relative, css) {
+  for (const amendment of localizationAmendments.changes.filter(item => item.file === relative)) {
+    assert.equal(css.split(amendment.after).length, 2, "Localized CSS chunk must occur once: " + amendment.id);
+    css = css.replace(amendment.after, () => amendment.before);
+  }
+  return css;
+}
+
+test("localization styles are explicitly scoped to time, settings and export", () => {
+  assert.equal(localizationAmendments.schemaVersion, 1);
+  assert.deepEqual([...new Set(localizationAmendments.changes.map(item => item.file))],
+    ["features/time/ui/time.css", "features/settings/ui/settings.css", "features/export/ui/export.css"]);
+  assert.equal(new Set(localizationAmendments.changes.map(item => item.id)).size, localizationAmendments.changes.length);
+  for (const amendment of localizationAmendments.changes) {
+    assert.ok(amendment.reason && amendment.before && amendment.after);
+    const css = fs.readFileSync(path.join(sourceRoot, amendment.file), "utf8").replace(/\r\n/g, "\n");
+    assert.equal(css.split(amendment.after).length, 2, amendment.id);
+  }
 });
 
 // Empty group names now have one input-associated line; authorize only this local delta.

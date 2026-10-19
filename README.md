@@ -22,6 +22,8 @@
 
 https://github.com/user-attachments/assets/b4ebe07a-406b-48ff-8f92-5dfcd9c8c7ca
 
+当前源码版本为 **0.5.2**。下方 **0.5.1** 是最近一次已发布的安装包；直接加载本仓库的 `src` 文件夹时，扩展管理页会显示 0.5.2。
+
 ## 安装 0.5.1
 
 使用 Chrome / Edge 116 或更新版本。正常使用请下载 [`chatgpt-tidy-0.5.1.zip`](https://github.com/AshToIll/chatgpt-tidy/releases/download/v0.5.1/chatgpt-tidy-0.5.1.zip) 安装包，解压到固定文件夹。

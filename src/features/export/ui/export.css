@@ -41,7 +41,8 @@
 .export-fixed-scope > button:hover, .export-fixed-scope > button:focus-visible, .export-fixed-scope > button[aria-expanded="true"] { background: var(--accent-soft); color: var(--accent); outline: none; }
 .export-fixed-scope > .export-add-menu { position: absolute; }
 
-.export-format__buttons { height: 31px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 3px; padding: 3px; border: 1px solid #e5e5e8; border-radius: 8px; background: #f7f7f8; }
+/* Markdown 比其他格式名长；保留每个标签的固有宽度，再分配剩余空间。 */
+.export-format__buttons { height: 31px; display: grid; grid-template-columns: repeat(4, minmax(max-content, 1fr)); gap: 3px; padding: 3px; border: 1px solid #e5e5e8; border-radius: 8px; background: #f7f7f8; }
 .export-format__buttons button { min-width: 0; padding: 0 4px; border: 0; border-radius: 5px; background: transparent; color: #777980; font-size: 11px; font-weight: 500; cursor: pointer; }
 .export-format__buttons button:hover { color: var(--accent); }
 .export-format__buttons button.is-active { background: #fff; color: var(--accent); box-shadow: 0 1px 3px rgba(34, 35, 40, .08); }
@@ -113,8 +114,9 @@
 .export-text-field input:hover { border-color: #cfd0e9; }
 .export-text-field input:focus { border-color: #bfc3f3; box-shadow: 0 0 0 2px rgba(var(--accent-rgb), .12); }
 
-.export-choice-row { min-height: 33px; display: grid; grid-template-columns: 48px minmax(0, 1fr); align-items: center; gap: 8px; color: #777980; font-size: 11px; }
-.export-mini-segment { min-width: 0; height: 27px; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 2px; padding: 2px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface-subtle); }
+/* 6.5em 的统一标签列可容纳 Orientation / 文字サイズ；按钮按文字最小宽度分配。 */
+.export-choice-row { min-height: 33px; display: grid; grid-template-columns: 6.5em minmax(0, 1fr); align-items: center; gap: 8px; color: #777980; font-size: 11px; }
+.export-mini-segment { min-width: 0; height: 27px; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(max-content, 1fr); gap: 2px; padding: 2px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface-subtle); }
 .export-mini-segment button { min-width: 0; padding: 0 4px; border: 0; border-radius: 4px; background: transparent; color: var(--text-secondary); font-size: 11px; cursor: pointer; white-space: nowrap; }
 .export-mini-segment button:hover { color: var(--accent); }
 .export-mini-segment button.is-active { background: #fff; color: var(--accent); box-shadow: 0 1px 2px rgba(36, 37, 42, .07); }

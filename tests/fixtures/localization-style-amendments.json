@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "description": "Exact scoped localization layout changes; reverse these without changing the frozen historical CSS baseline.",
+  "changes": [
+    {
+      "file": "features/time/ui/time.css",
+      "id": "time-disclosure-wrap",
+      "reason": "Long disclosure summaries wrap as a group and preserve the arrow slot.",
+      "before": ".setting-disclosure { width: 100%; min-height: 34px; display: flex; align-items: center; gap: 8px; padding: 0; border: 0; background: transparent; color: #4a4c52; text-align: left; cursor: pointer; }\n",
+      "after": "/* 摘要放不下时整组换行；右侧箭头有独立位置，不被英文长标签挤出侧栏。 */\n.setting-disclosure { position: relative; width: 100%; min-height: 34px; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; padding: 7px 24px 7px 0; border: 0; background: transparent; color: #4a4c52; text-align: left; cursor: pointer; }\n"
+    },
+    {
+      "file": "features/time/ui/time.css",
+      "id": "time-summary-size",
+      "reason": "Keep the summary readable when its flex row wraps.",
+      "before": ".setting-disclosure__summary { min-width: 0; margin-left: auto; overflow: hidden; color: #85878d; font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }\n",
+      "after": ".setting-disclosure__summary { min-width: 0; flex: 0 0 auto; margin-left: auto; color: #85878d; font-size: 11px; white-space: nowrap; }\n"
+    },
+    {
+      "file": "features/time/ui/time.css",
+      "id": "time-chevron-slot",
+      "reason": "Reserve a stable arrow slot independent of translated label width.",
+      "before": ".setting-disclosure__chevron { width: 16px; color: #9b9da2; font-size: 18px; line-height: 1; text-align: right; transition: transform .12s ease; }\n",
+      "after": ".setting-disclosure__chevron { position: absolute; right: 0; top: calc(50% - 9px); width: 16px; color: #9b9da2; font-size: 18px; line-height: 1; text-align: right; transition: transform .12s ease; }\n"
+    },
+    {
+      "file": "features/time/ui/time.css",
+      "id": "time-setting-row-wrap",
+      "reason": "Move an option group to the next line when the label and group do not fit.",
+      "before": ".disclosure-setting-row { min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: 10px; }\n",
+      "after": ".disclosure-setting-row { min-width: 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 10px; }\n"
+    },
+    {
+      "file": "features/time/ui/time.css",
+      "id": "time-intrinsic-options",
+      "reason": "Size time option buttons by their actual localized labels instead of Chinese pixel widths.",
+      "before": ".mini-options { display: grid; grid-template-columns: 43px 35px; gap: 3px; padding: 2px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface-soft); }\n.mini-options--position { grid-template-columns: 48px 48px; }\n.mini-options--conversation-precision { grid-template-columns: repeat(3, minmax(0, 1fr)); }\n.mini-option { height: 23px; font-size: 11px; }\n",
+      "after": "/* 按译文的实际宽度分配按钮，避免 Before content、Second 和日文正文位置被截断。 */\n.mini-options { display: grid; grid-template-columns: repeat(2, minmax(max-content, 1fr)); gap: 3px; padding: 2px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface-soft); }\n.mini-options--conversation-precision { grid-template-columns: repeat(3, minmax(max-content, 1fr)); }\n.mini-option { height: 23px; padding: 0 8px; font-size: 11px; white-space: nowrap; }\n"
+    },
+    {
+      "file": "features/time/ui/time.css",
+      "id": "time-preview-columns",
+      "reason": "Share an intrinsic label column and wrap full timestamps rather than overlap or truncate them.",
+      "before": ".live-preview__label { margin-bottom: 8px; color: #85878d; font-size: 13px; font-weight: 500; }\n.preview-line { min-width: 0; min-height: 27px; display: grid; grid-template-columns: 60px minmax(0, 1fr); gap: 8px; align-items: center; color: #5c5e65; font-size: 11px; }\n.preview-line > span:last-child { min-width: 0; overflow: hidden; font-variant-numeric: tabular-nums; text-overflow: ellipsis; white-space: nowrap; }\n.preview-key { color: #9a9ca1; white-space: nowrap; }\n",
+      "after": "/* 两行共享按译文测量的标签列；display: contents 只展平无语义的行包装，不依赖 subgrid。\n   时间值空间不足时显示完整内容，不用省略号掩盖日期。 */\n.live-preview { display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: 12px; align-items: baseline; }\n.live-preview__label { grid-column: 1 / -1; margin-bottom: 8px; color: #85878d; font-size: 13px; font-weight: 500; }\n.preview-line { display: contents; color: #5c5e65; font-size: 11px; }\n.preview-line > span { min-width: 0; padding: 6px 0; }\n.preview-line > span:last-child { font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }\n.preview-key { color: #9a9ca1; white-space: nowrap; }\n"
+    },
+    {
+      "file": "features/settings/ui/settings.css",
+      "id": "theme-complete-names",
+      "reason": "Wrap long Japanese theme names within their card.",
+      "before": ".settings-theme-choice strong { overflow: hidden; font-size: 11px; font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }\n\n",
+      "after": "/* 日文主题名较长：允许在卡片内换行，不省略掉用户需要辨认的名称。 */\n.settings-theme-choice strong { min-width: 0; font-size: 11px; font-weight: 600; line-height: 1.4; overflow-wrap: anywhere; }\n\n"
+    },
+    {
+      "file": "features/export/ui/export.css",
+      "id": "export-format-labels",
+      "reason": "Keep Markdown fully inside the format button at 320px.",
+      "before": ".export-format__buttons { height: 31px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 3px; padding: 3px; border: 1px solid #e5e5e8; border-radius: 8px; background: #f7f7f8; }\n",
+      "after": "/* Markdown 比其他格式名长；保留每个标签的固有宽度，再分配剩余空间。 */\n.export-format__buttons { height: 31px; display: grid; grid-template-columns: repeat(4, minmax(max-content, 1fr)); gap: 3px; padding: 3px; border: 1px solid #e5e5e8; border-radius: 8px; background: #f7f7f8; }\n"
+    },
+    {
+      "file": "features/export/ui/export.css",
+      "id": "export-pdf-labels",
+      "reason": "Keep Orientation and Japanese font-size labels separate from complete segmented buttons.",
+      "before": ".export-choice-row { min-height: 33px; display: grid; grid-template-columns: 48px minmax(0, 1fr); align-items: center; gap: 8px; color: #777980; font-size: 11px; }\n.export-mini-segment { min-width: 0; height: 27px; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 2px; padding: 2px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface-subtle); }\n",
+      "after": "/* 6.5em 的统一标签列可容纳 Orientation / 文字サイズ；按钮按文字最小宽度分配。 */\n.export-choice-row { min-height: 33px; display: grid; grid-template-columns: 6.5em minmax(0, 1fr); align-items: center; gap: 8px; color: #777980; font-size: 11px; }\n.export-mini-segment { min-width: 0; height: 27px; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(max-content, 1fr); gap: 2px; padding: 2px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface-subtle); }\n"
+    }
+  ]
+}

@@ -16,6 +16,8 @@ It started with title organization and now includes:
 
 This is an independent personal project, not affiliated with OpenAI. Changes to the ChatGPT website may affect its features.
 
+The current source version is **0.5.2**. The **0.5.1** package below is the latest published download; loading this repository's `src` folder directly shows 0.5.2 in the extension manager.
+
 ## Install 0.5.1
 
 Use Chrome / Edge 116 or later. Download the [`chatgpt-tidy-0.5.1.zip`](https://github.com/AshToIll/chatgpt-tidy/releases/download/v0.5.1/chatgpt-tidy-0.5.1.zip) installation package and extract it to a permanent folder.

@@ -14,31 +14,36 @@
 .option-grid .option { min-width: 0; padding: 0 3px; white-space: nowrap; }
 .option.is-selected, .mini-option.is-selected { background: #fff; color: var(--accent); box-shadow: 0 1px 2px rgba(36, 37, 42, .08); font-weight: 600; }
 
-.setting-disclosure { width: 100%; min-height: 34px; display: flex; align-items: center; gap: 8px; padding: 0; border: 0; background: transparent; color: #4a4c52; text-align: left; cursor: pointer; }
+/* 摘要放不下时整组换行；右侧箭头有独立位置，不被英文长标签挤出侧栏。 */
+.setting-disclosure { position: relative; width: 100%; min-height: 34px; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; padding: 7px 24px 7px 0; border: 0; background: transparent; color: #4a4c52; text-align: left; cursor: pointer; }
 .setting-disclosure:hover .setting-disclosure__label, .setting-disclosure:focus-visible .setting-disclosure__label { color: var(--accent); }
 .setting-disclosure:focus-visible { border-radius: 4px; outline: 2px solid var(--accent-ring); outline-offset: 2px; }
 .setting-disclosure__label { flex: 0 0 auto; font-size: 13px; font-weight: 500; }
-.setting-disclosure__summary { min-width: 0; margin-left: auto; overflow: hidden; color: #85878d; font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+.setting-disclosure__summary { min-width: 0; flex: 0 0 auto; margin-left: auto; color: #85878d; font-size: 11px; white-space: nowrap; }
 .setting-disclosure__summary--token { display: inline-flex; align-items: center; gap: 5px; overflow: visible; }
 .summary-separator { color: #c1c2c7; }
-.setting-disclosure__chevron { width: 16px; color: #9b9da2; font-size: 18px; line-height: 1; text-align: right; transition: transform .12s ease; }
+.setting-disclosure__chevron { position: absolute; right: 0; top: calc(50% - 9px); width: 16px; color: #9b9da2; font-size: 18px; line-height: 1; text-align: right; transition: transform .12s ease; }
 .setting-disclosure.is-open .setting-disclosure__chevron { color: var(--accent); transform: rotate(90deg); }
 .disclosure-panel { display: grid; gap: 10px; margin: 8px 0 4px 4px; }
 .disclosure-panel[hidden] { display: none; }
-.disclosure-setting-row { min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.disclosure-setting-row { min-width: 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 10px; }
 .disclosure-setting-row--list-time { display: grid; grid-template-columns: 50px minmax(0, 1fr); align-items: center; gap: 8px; }
 .disclosure-setting-label { flex: 0 0 auto; color: var(--muted); font-size: 12px; }
-.mini-options { display: grid; grid-template-columns: 43px 35px; gap: 3px; padding: 2px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface-soft); }
-.mini-options--position { grid-template-columns: 48px 48px; }
-.mini-options--conversation-precision { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.mini-option { height: 23px; font-size: 11px; }
+/* 按译文的实际宽度分配按钮，避免 Before content、Second 和日文正文位置被截断。 */
+.mini-options { display: grid; grid-template-columns: repeat(2, minmax(max-content, 1fr)); gap: 3px; padding: 2px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface-soft); }
+.mini-options--conversation-precision { grid-template-columns: repeat(3, minmax(max-content, 1fr)); }
+.mini-option { height: 23px; padding: 0 8px; font-size: 11px; white-space: nowrap; }
 .setting-toggle-row { min-height: 34px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .setting-divider { height: 1px; margin: 14px 0; background: var(--line-soft); }
 .time-settings-disabled [data-time-control] { opacity: .48; }
 .time-settings-disabled [data-time-control] button { pointer-events: none; }
 
-.live-preview__label { margin-bottom: 8px; color: #85878d; font-size: 13px; font-weight: 500; }
-.preview-line { min-width: 0; min-height: 27px; display: grid; grid-template-columns: 60px minmax(0, 1fr); gap: 8px; align-items: center; color: #5c5e65; font-size: 11px; }
-.preview-line > span:last-child { min-width: 0; overflow: hidden; font-variant-numeric: tabular-nums; text-overflow: ellipsis; white-space: nowrap; }
+/* 两行共享按译文测量的标签列；display: contents 只展平无语义的行包装，不依赖 subgrid。
+   时间值空间不足时显示完整内容，不用省略号掩盖日期。 */
+.live-preview { display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: 12px; align-items: baseline; }
+.live-preview__label { grid-column: 1 / -1; margin-bottom: 8px; color: #85878d; font-size: 13px; font-weight: 500; }
+.preview-line { display: contents; color: #5c5e65; font-size: 11px; }
+.preview-line > span { min-width: 0; padding: 6px 0; }
+.preview-line > span:last-child { font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
 .preview-key { color: #9a9ca1; white-space: nowrap; }
 
