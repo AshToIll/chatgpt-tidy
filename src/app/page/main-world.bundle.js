@@ -5729,7 +5729,8 @@ globalThis.TidyPageSession = globalThis.TidyPageSessionContract.create();
   // Page-lifetime observations cover SPA navigation, but never survive reload
   // or an observed account/workspace switch. This is not a title history store.
   const observations = new Map();
-  const MAX_OBSERVATIONS = 16;
+  // One receipt per changed conversation, released with the page/identity.
+  // Do not evict the first rows of a batch while native queries are still stale.
   let accountKey = null;
   let observedWorkspace = null;
 
@@ -5786,15 +5787,28 @@ globalThis.TidyPageSession = globalThis.TidyPageSessionContract.create();
     return null;
   }
 
-  function links(conversationId) {
-    return [...global.document.querySelectorAll('a[data-sidebar-item="true"][href]')].filter((link) => {
-      if (link.getAttribute("data-sidebar-item") !== "true" || link.closest("main, [data-message-id]")) return false;
-      const route = savedRoute(new URL(link.getAttribute("href"), global.location.origin).href);
-      if (!route || route.conversationId !== conversationId) return false;
+  function sidebarRows() {
+    const grouped = new Map();
+    for (const link of global.TidyChatgptSidebarDom.candidates()) {
+      let href;
+      try { href = new URL(link.getAttribute("href"), global.location.origin).href; } catch { continue; }
+      const route = savedRoute(href);
+      if (!route) continue;
+      const conversationId = route.conversationId;
       const row = rowMetadata(link);
-      // Mutation requires an exact native row identity, not just a matching URL.
-      return (row?.id || row?.conversation_id) === conversationId;
-    });
+      if (!row) continue;
+      const ids = [row.id, row.conversation_id, row.conversationId].filter(value => value != null);
+      // Match the same native anchor boundary as snapshots/date/favorites,
+      // including project + Recents copies without data-sidebar-item. Id-less
+      // history props must still belong to this exact anchor and carry native
+      // title/metadata; an explicit conflicting ID is never overridden by href.
+      const bound = ids.length ? ids.every(id => id === conversationId)
+        : typeof row.title === "string" && (row.create_time != null || row.update_time != null);
+      if (!bound) continue;
+      if (!grouped.has(conversationId)) grouped.set(conversationId, []);
+      grouped.get(conversationId).push(link);
+    }
+    return grouped;
   }
 
   function savedRoute(href = global.location.href) {
@@ -5821,11 +5835,17 @@ globalThis.TidyPageSession = globalThis.TidyPageSessionContract.create();
   }
 
   function rowMetadata(link) {
-    return fiber(link, (props) => props.historyItem, 40);
+    return fiber(link, (props) => props.conversation || props.historyItem, 40);
+  }
+
+  function timestamp(value) {
+    if (value == null || value === "") return NaN;
+    const number = Number(value);
+    return Number.isFinite(number) ? Math.abs(number) < 100_000_000_000 ? number * 1000 : number : Date.parse(value);
   }
 
   function newer(value, than) {
-    return Number.isFinite(Date.parse(value)) && (!Number.isFinite(Date.parse(than)) || Date.parse(value) > Date.parse(than));
+    return Number.isFinite(timestamp(value)) && (!Number.isFinite(timestamp(than)) || timestamp(value) > timestamp(than));
   }
 
   function superseded(item, current) {
@@ -5841,14 +5861,17 @@ globalThis.TidyPageSession = globalThis.TidyPageSessionContract.create();
       || (record.nativeUpdatedAt && item?.title !== record.current.title && newer(item?.update_time, record.nativeUpdatedAt));
   }
 
-  function titleNode(element) {
+  function titleNodes(element, nodes = []) {
     for (const child of element?.childNodes || []) {
-      if (child.nodeType === 3 && child.textContent.trim()) return child;
+      if (child.nodeType === 3) { nodes.push(child); continue; }
       if (child.nodeType !== 1 || child.matches?.('[data-tidy-owned], button, svg, [aria-hidden="true"]')) continue;
-      const found = titleNode(child);
-      if (found) return found;
+      titleNodes(child, nodes);
     }
-    return null;
+    return nodes;
+  }
+
+  function titleText(element) {
+    return titleNodes(element).map(node => node.textContent).join("").trim();
   }
 
   function queryClient(rows) {
@@ -5904,10 +5927,14 @@ globalThis.TidyPageSession = globalThis.TidyPageSessionContract.create();
     global.TidyChatgptApi.checkLibraryIdentity();
     if (!pageSession.check()) return;
     if (observedWorkspace !== workspace()) revoke();
-    for (const record of observations.values()) refreshRecord(record);
+    if (!observations.size) return;
+    // A batch can cover the whole sidebar: enumerate native anchors once per
+    // refresh, rather than re-scanning the document for every saved receipt.
+    const rows = sidebarRows();
+    for (const record of observations.values()) refreshRecord(record, rows.get(record.current.conversationId) || []);
   }
 
-  function refreshRecord(record) {
+  function refreshRecord(record, rows) {
     if (active(record.current.conversationId) !== record) return;
     const route = savedRoute();
     // A move into/out of a project changes the metadata scope. Retire the old
@@ -5917,19 +5944,22 @@ globalThis.TidyPageSession = globalThis.TidyPageSessionContract.create();
       observations.delete(record.current.conversationId);
       return;
     }
-    const rows = links(record.current.conversationId);
     // A third native title is a newer external observation. Relinquish our
     // presentation instead of fighting another tab or the native rename UI.
-    const nodes = rows.map(titleNode).filter(Boolean);
-    if (nodes.some((node) => !record.titles.has(node.textContent.trim()))
+    if (rows.some((row) => !record.titles.has(titleText(row)))
       || rows.some((row) => supersededObservation(rowMetadata(row), record))) {
       observations.delete(record.current.conversationId);
       return;
     }
-    for (const node of nodes) {
-      if (node.textContent !== record.current.title) {
-        if (active(record.current.conversationId) !== record) return;
-        node.textContent = record.current.title;
+    for (const row of rows) {
+      if (titleText(row) !== record.current.title) {
+        // A native title may be split into highlight spans. Keep the React DOM
+        // nodes/handlers, but replace the whole title instead of only its prefix.
+        const nodes = titleNodes(row);
+        for (const [index, node] of nodes.entries()) {
+          if (active(record.current.conversationId) !== record) return;
+          node.textContent = index === 0 ? record.current.title : "";
+        }
       }
     }
     for (const row of rows) {
@@ -5966,34 +5996,44 @@ globalThis.TidyPageSession = globalThis.TidyPageSessionContract.create();
     // A batch result belongs to its target, never the currently open owner's
     // title/store. It may update that target's existing sidebar row and cache.
     if (nativeCurrent?.conversationId !== current.conversationId) nativeCurrent = null;
-    if (titleOnly && nativeCurrent?.title?.value && ![before, current.title].includes(nativeCurrent.title.value)) return false;
     if (accountKey !== identity.accountKey || observedWorkspace !== workspace()) observations.clear();
     accountKey = identity.accountKey;
     observedWorkspace = workspace();
-    const rows = links(current.conversationId);
+    const previous = observations.get(current.conversationId);
+    // Consecutive edits can finish before native React metadata catches up.
+    // Carry only this same target's acknowledged chain, never another owner's
+    // titles; external renames still revoke it through the API/native observer.
+    const continuing = previous?.current.title === before && previous.projectId === target.projectId;
+    const knownTitles = new Set([...(continuing ? previous.titles : []), before, current.title]);
+    if (titleOnly && nativeCurrent?.title?.value && !knownTitles.has(nativeCurrent.title.value)) return false;
+    const rows = sidebarRows().get(current.conversationId) || [];
     const changed = nativeCurrent?.title?.value !== current.title
       || newer(current.updatedAt, nativeCurrent?.updatedAt?.value)
-      || rows.some((row) => titleNode(row)?.textContent.trim() !== current.title);
+      || rows.some((row) => titleText(row) !== current.title);
     const record = {
       // A 2xx is title acceptance, not a verified metadata readback. Keep its
       // observation title-only even if an adapter supplied preflight dates.
       current: titleOnly ? { conversationId: current.conversationId, title: current.title } : { ...current },
       titleOnly,
-      nativeUpdatedAt: titleOnly ? [nativeCurrent?.updatedAt?.value, ...rows.map(row => rowMetadata(row)?.update_time)]
-        .filter(value => Number.isFinite(Date.parse(value))).sort((a, b) => Date.parse(b) - Date.parse(a))[0] || null : null,
+      // A prior verified receipt may already have patched QueryClient while
+      // React props remain stale. Its timestamp is ours, not a later external
+      // rename. This carries verified/observed dates, never preflight guesses.
+      nativeUpdatedAt: titleOnly ? [nativeCurrent?.updatedAt?.value,
+        continuing ? previous.titleOnly ? previous.nativeUpdatedAt : previous.current.updatedAt : null,
+        ...rows.map(row => rowMetadata(row)?.update_time)]
+        .filter(value => Number.isFinite(timestamp(value))).sort((a, b) => timestamp(b) - timestamp(a))[0] ?? null : null,
       projectId: target.projectId,
-      titles: new Set([before, current.title, nativeCurrent?.title?.value,
-        ...rows.map((row) => titleNode(row)?.textContent.trim())].filter((value) => typeof value === "string"
-          && (!titleOnly || value === before || value === current.title))),
-      documentTitles: new Set([...(target.isCurrent ? [global.document.title] : []), current.title,
+      titles: new Set([...knownTitles, nativeCurrent?.title?.value,
+        ...rows.map(titleText)].filter((value) => typeof value === "string"
+          && (!titleOnly || knownTitles.has(value)))),
+      documentTitles: new Set([...(continuing ? previous.documentTitles : []), ...(target.isCurrent ? [global.document.title] : []), current.title,
         before, nativeCurrent?.title?.value].filter((value) => typeof value === "string"
-          && (!titleOnly || value === before || value === current.title))),
+          && (!titleOnly || knownTitles.has(value)))),
     };
     if (!pageSession.check()) return false;
     observations.delete(current.conversationId);
     observations.set(current.conversationId, record);
-    while (observations.size > MAX_OBSERVATIONS) observations.delete(observations.keys().next().value);
-    refresh();
+    refreshRecord(record, rows);
     if (!pageSession.check()) return false;
     // ChatGPT's history cache uses the public QueryClient API. Its separate
     // thread-title store has no exposed setter, so a verified, page-scoped text
@@ -7176,6 +7216,9 @@ globalThis.TidyPageSession = globalThis.TidyPageSessionContract.create();
         responseInProgress: snapshot.adapter.responseInProgress,
         sidebar: snapshot.sidebarConversations.map((conversation) => [
           conversation.conversationId,
+          // Batch edits may change only an off-current row's title, not its
+          // timestamp. Subscribers must still receive that new sidebar DTO.
+          conversation.title.value,
           conversation.bindingStatus,
           conversation.createdAt.value,
           conversation.updatedAt.value,

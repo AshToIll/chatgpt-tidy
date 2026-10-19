@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "version": "0.5.2",
-  "buildFingerprint": "a84c5d78fb6dfc4a6400923e",
+  "buildFingerprint": "b900aaee27c2f655edbb011f",
   "limitations": [
     "静态文字引用不是唯一触发条件；条件以列出的函数和分支为准。",
     "无静态引用不等于未使用；动态计算键另列，不自动删除任何文案。",
@@ -2203,7 +2203,7 @@
         },
         {
           "source": "src/features/titles/chatgpt/title-sync.js",
-          "line": 331,
+          "line": 371,
           "kind": "literal-reference",
           "excerpt": "|| conversation.bindingStatus !== \"bound\") return conversation;"
         },
@@ -4955,13 +4955,13 @@
         },
         {
           "source": "src/features/titles/chatgpt/title-sync.js",
-          "line": 26,
+          "line": 27,
           "kind": "literal-reference",
           "excerpt": "return identity?.phase === \"ready\""
         },
         {
           "source": "src/features/titles/chatgpt/title-sync.js",
-          "line": 35,
+          "line": 36,
           "kind": "literal-reference",
           "excerpt": "if (identity.phase !== \"ready\" || (accountKey && !matchesIdentity(identity))) revoke();"
         },
@@ -6995,7 +6995,7 @@
         },
         {
           "source": "src/features/titles/chatgpt/title-sync.js",
-          "line": 240,
+          "line": 270,
           "kind": "literal-reference",
           "excerpt": "if (!(pageIdentity.phase === \"unavailable\" && pageIdentity.epoch === 0)"
         },

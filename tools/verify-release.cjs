@@ -22,6 +22,7 @@ const browserChecks = [
   ['message-landing', 'tools/check-bookmark-landing-browser.cjs'],
   ['sidebar-navigation', 'tools/check-sidebar-navigation-browser.cjs'],
   ['native-sidebar-navigation', 'tools/check-sidebar-navigation-browser.cjs', '--native'],
+  ['title-sidebar-sync', 'tools/check-title-sidebar-browser.cjs'],
 ];
 const browserDefaults = [
   'C:/Program Files/Google/Chrome/Application/chrome.exe',

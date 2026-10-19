@@ -15,7 +15,7 @@ test('release browser gate requires both successful process and explicit success
 
 test('release gate explicitly retains toolbar theme, keyboard, panel, lifecycle, physical geometry and both sidebar fixtures', () => {
   assert.deepEqual(browserChecks.map(([name]) => name), ['page-session', 'toolbar-theme', 'export-jobs', 'export-images', 'export-keyboard', 'panel-current-protocol', 'library-lifecycle',
-    'library-backup', 'panel-theme', 'bookmark-theme', 'message-landing', 'sidebar-navigation', 'native-sidebar-navigation']);
+    'library-backup', 'panel-theme', 'bookmark-theme', 'message-landing', 'sidebar-navigation', 'native-sidebar-navigation', 'title-sidebar-sync']);
 });
 
 test('release evidence fingerprints actual source-candidate inputs deterministically', () => {

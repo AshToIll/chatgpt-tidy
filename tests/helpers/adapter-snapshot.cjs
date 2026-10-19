@@ -66,7 +66,7 @@ function snapshotHarness({
       sidebarItem: item.sidebarItem === true,
       ariaLabel: item.ariaLabel || null,
       attributes: item.attributes,
-      props: item.room ? { room: item.room } : { historyItem: item.record },
+      props: item.props || (item.room ? { room: item.room } : { historyItem: item.record }),
     }),
   );
   const listeners = new Map();

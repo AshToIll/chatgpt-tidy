@@ -49,6 +49,9 @@ const sourceFiles = [
 ];
 // 显式装配依赖用于架构门禁；require 本文件只读此元数据，不会写 bundle。
 const sourceDependencies = Object.freeze({
+  "src/features/titles/chatgpt/title-sync.js": [
+    "src/platform/chatgpt/sidebar-dom.js"
+  ],
   "src/platform/chatgpt/native-snapshot-reader.js": [
     "src/platform/chatgpt/sidebar-dom.js"
   ],

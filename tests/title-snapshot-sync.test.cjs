@@ -8,6 +8,89 @@ const identity = { accountKey: "user-one", workspaceKey: "personal" };
 const createdAt = "2026-09-01T00:00:00.000Z";
 const updatedAt = "2026-09-09T00:00:00.000Z";
 
+// Current sidebar anchors can omit data-sidebar-item, and project/Recents
+// copies can expose different native row props. Exercise the real router, not
+// just a panel preview, through add -> reformat -> change date -> remove.
+for (const status of ["verified", "accepted"]) {
+  for (const offCurrent of [false, true]) {
+    test(`${status} ${offCurrent ? "batch target" : "current target"} syncs every title change to project and Recents copies`, async () => {
+      const targetProjectId = "g-p-project", targetId = "target";
+      const pathname = offCurrent ? "/c/owner" : `/g/${targetProjectId}/c/${targetId}`;
+      const ownerContext = { conversationId: offCurrent ? "owner" : targetId, pathname,
+        projectId: offCurrent ? null : targetProjectId };
+      const metadata = { id: targetId, title: original, create_time: 1788220800, update_time: 1788220800 };
+      const owner = { ...metadata, id: ownerContext.conversationId, title: offCurrent ? "Owner title" : original };
+      const h = snapshotHarness({ url: `https://chatgpt.com${pathname}`, documentTitle: owner.title, thread: owner,
+        messages: [{ id: "m", record: { id: "m", conversation_id: owner.id, author: { role: "assistant" } } }],
+        sidebar: [
+          { href: `/g/${targetProjectId}/c/${targetId}`, title: original, props: { conversation: metadata } },
+          { href: `/c/${targetId}`, title: original, record: { ...metadata, id: undefined } },
+          { href: "/c/unrelated", title: "Unrelated", record: { ...metadata, id: "unrelated" } },
+        ],
+        titleAdapter: { writeCurrent: async payload => ({ status, identity,
+          [status === "accepted" ? "accepted" : "current"]: { conversationId: targetId, title: payload.after, createdAt, updatedAt } }) },
+        returnSession: true,
+      });
+      let before = original;
+      for (const after of [renamed, "2026-09-01 | Original title", "2026-09-09 | Original title", original]) {
+        const result = await h.requestTitle("TITLE_WRITE_CURRENT", {
+          conversationId: targetId, targetProjectId, ownerContext, identity, before, after,
+        });
+        assert.equal(result.payload.status, status);
+        assert.equal(h.sidebarText(0), after, "project row updated before the saved response");
+        assert.equal(h.sidebarText(1), after, "Recents copy updated before the saved response");
+        assert.equal(h.sidebarText(2), "Unrelated");
+        assert.equal(h.documentTitle(), offCurrent ? "Owner title" : after);
+        // React may still render its pre-operation data while the directory
+        // request settles. No extra write or whole-page refresh is required.
+        h.rerenderSidebarTitle(0, original); h.rerenderSidebarTitle(1, original);
+        h.readSnapshot();
+        assert.equal(h.sidebarText(0), after); assert.equal(h.sidebarText(1), after);
+        before = after;
+      }
+      assert.equal(h.snapshotEvents().length, 4);
+      assert.equal(metadata.title, original, "do not mutate React props");
+    });
+  }
+}
+
+test("batch synchronization keeps more than sixteen successful targets through native rerenders", async () => {
+  const rows = Array.from({ length: 24 }, (_, i) => ({ href: `/c/target-${i}`, title: `Chat ${i}`, sidebarItem: true,
+    record: { id: `target-${i}`, title: `Chat ${i}`, create_time: 1788220800, update_time: 1788220800 } }));
+  const h = snapshotHarness({ url: "https://chatgpt.com/c/owner", documentTitle: "Owner", sidebar: rows,
+    titleAdapter: { writeCurrent: async payload => ({ status: "accepted", identity,
+      accepted: { conversationId: payload.conversationId, title: payload.after } }) }, returnSession: true });
+  for (let i = 0; i < rows.length; i++) {
+    await h.requestTitle("TITLE_WRITE_CURRENT", { conversationId: `target-${i}`, before: `Chat ${i}`, after: `2026/09/01 | Chat ${i}`,
+      identity, ownerContext: { conversationId: "owner", pathname: "/c/owner", projectId: null }, targetProjectId: null });
+  }
+  rows.forEach((row, i) => h.rerenderSidebarTitle(i, row.title));
+  h.readSnapshot();
+  rows.forEach((_, i) => assert.equal(h.sidebarText(i), `2026/09/01 | Chat ${i}`));
+  assert.equal(h.documentTitle(), "Owner");
+});
+
+test("a partial batch projects only successful rows, never failures or unknown outcomes", async () => {
+  const outcomes = ["accepted", "error", "uncertain", "verified"];
+  const h = snapshotHarness({ url: "https://chatgpt.com/c/owner", documentTitle: "Owner",
+    sidebar: outcomes.map((_, i) => ({ href: `/c/target-${i}`, title: `Chat ${i}`,
+      record: { id: `target-${i}`, title: `Chat ${i}`, create_time: 1788220800 } })),
+    titleAdapter: { writeCurrent: async payload => {
+      const status = outcomes[Number(payload.conversationId.split("-")[1])];
+      if (status === "error") throw new Error("Synthetic rejected write");
+      return { status, identity, [status === "accepted" ? "accepted" : "current"]: {
+        conversationId: payload.conversationId, title: payload.after, createdAt, updatedAt } };
+    } }, returnSession: true });
+  for (let i = 0; i < outcomes.length; i++) {
+    const response = await h.requestTitle("TITLE_WRITE_CURRENT", { conversationId: `target-${i}`, before: `Chat ${i}`,
+      after: `2026/09/01 | Chat ${i}`, identity, targetProjectId: null,
+      ownerContext: { conversationId: "owner", pathname: "/c/owner", projectId: null } });
+    assert.equal(response.ok, outcomes[i] !== "error");
+    assert.equal(h.sidebarText(i), ["accepted", "verified"].includes(outcomes[i]) ? `2026/09/01 | Chat ${i}` : `Chat ${i}`);
+  }
+  assert.equal(h.snapshotEvents().length, 2); assert.equal(h.documentTitle(), "Owner");
+});
+
 test("batch readback synchronizes the off-current project target without replacing its owner snapshot", async () => {
   const targetId = "project-target", targetProjectId = "g-p-project";
   const ownerRecord = { id: "owner", title: "Owner title", serverId$: () => null,

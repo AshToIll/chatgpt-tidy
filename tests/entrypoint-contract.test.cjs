@@ -14,7 +14,7 @@ const dependencies = {
   "src/platform/session/chatgpt/page-session.js": ["src/platform/session/shared/page-session.js"],
   "src/platform/chatgpt/route.js": ["src/platform/snapshot.js"],
   "src/features/titles/chatgpt/titles.js": ["src/platform/snapshot.js"],
-  "src/features/titles/chatgpt/title-sync.js": ["src/platform/snapshot.js", "src/platform/chatgpt/route.js"],
+  "src/features/titles/chatgpt/title-sync.js": ["src/platform/snapshot.js", "src/platform/chatgpt/route.js", "src/platform/chatgpt/sidebar-dom.js"],
   "src/features/titles/model/title-dates.js": ["src/platform/time-format.js"],
   "src/platform/navigation/chatgpt/navigation-intent.js": ["src/platform/navigation/navigation-identity.js"],
   "src/platform/navigation/chatgpt/message-location.js": ["src/platform/navigation/navigation-identity.js"],

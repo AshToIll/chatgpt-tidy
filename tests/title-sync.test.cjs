@@ -62,6 +62,7 @@ function harness({ withClient = true, matched = true, delayedCancel = false, url
     };
   }
   vm.runInContext(fs.readFileSync("src/platform/chatgpt/route.js", "utf8"), context);
+  vm.runInContext(fs.readFileSync("src/platform/chatgpt/sidebar-dom.js", "utf8"), context);
   vm.runInContext(fs.readFileSync("src/features/titles/chatgpt/title-sync.js", "utf8"), context);
   const current = { conversationId: "current", title: "2026/09/01 | Original", createdAt: "2026-09-01T00:00:00.000Z", updatedAt: "2026-09-09T00:00:00.000Z" };
   const native = { conversationId: "current", bindingStatus: "bound", title: { value: "Original" },
@@ -75,6 +76,57 @@ function harness({ withClient = true, matched = true, delayedCancel = false, url
 }
 
 const settle = async () => { await Promise.resolve(); await Promise.resolve(); };
+
+test("split native titles update as a whole without replacing spans, actions or TIDY decorations", () => {
+  const h = harness({ withClient: false });
+  const trailing = { nodeType: 3, textContent: "ginal" };
+  const span = { nodeType: 1, matches: () => false, childNodes: [trailing] };
+  const decoration = h.row.childNodes[0];
+  h.text.textContent = "Ori"; h.row.childNodes.push(span);
+  h.row.__reactFiber$test.memoizedProps = { conversation: { id: "current", title: "Original" } };
+  assert.equal(h.accept(), true);
+  assert.equal(h.text.textContent + trailing.textContent, h.current.title);
+  assert.equal(h.row.childNodes[2], span);
+  assert.equal(decoration.childNodes[0].textContent, "Tidy-owned");
+  h.text.textContent = "Ori"; trailing.textContent = "ginal";
+  h.sync.refresh();
+  assert.equal(h.text.textContent + trailing.textContent, h.current.title);
+});
+
+test("id-less native rows need exact title metadata and all explicit row identities must agree", () => {
+  for (const record of [{ title: "Original" }, { id: "current", conversation_id: "wrong" }, { id: "wrong", conversation_id: "current" }]) {
+    const h = harness();
+    h.row.__reactFiber$test.memoizedProps = { conversation: record };
+    h.accept(); assert.equal(h.text.textContent, "Original");
+  }
+});
+
+test("native seconds and milliseconds cannot hide a newer external rename", () => {
+  for (const update_time of [1788998400, 1788998400000, "2026-09-10T00:00:00.000Z"]) {
+    const h = harness({ withClient: false });
+    h.row.__reactFiber$test.memoizedProps.historyItem = { id: "current", title: "Original", update_time: 1788220800 };
+    h.sync.acceptTitle(h.current, { accountKey: "user", workspaceKey: "personal" }, "Original", h.native);
+    h.row.__reactFiber$test.memoizedProps.historyItem.update_time = update_time;
+    h.text.textContent = "Original";
+    h.sync.refresh();
+    assert.equal(h.text.textContent, "Original");
+    assert.equal(h.sync.project(h.native), h.native);
+  }
+});
+
+test("switching from verified single edits to accepted batch edits keeps acknowledged cache timestamps", async () => {
+  const h = harness(), identity = { accountKey: "user", workspaceKey: "personal" };
+  h.accept(); await settle();
+  let before = h.current.title;
+  for (const title of ["2026-09-01 | Original", "2026-09-09 | Original", "Original"]) {
+    assert.equal(h.sync.acceptTitle({ conversationId: "current", title }, identity, before, h.native), true);
+    await settle();
+    assert.equal(h.client.data.pages[0].items[0].title, title);
+    h.text.textContent = "Original"; h.sync.refresh();
+    assert.equal(h.text.textContent, title);
+    before = title;
+  }
+});
 
 test("named project title synchronization uses the canonical project cache without losing its owner path", async () => {
   const projectId = "g-p-0123456789abcdef0123456789abcdef";

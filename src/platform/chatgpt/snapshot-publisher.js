@@ -27,6 +27,9 @@
         responseInProgress: snapshot.adapter.responseInProgress,
         sidebar: snapshot.sidebarConversations.map((conversation) => [
           conversation.conversationId,
+          // Batch edits may change only an off-current row's title, not its
+          // timestamp. Subscribers must still receive that new sidebar DTO.
+          conversation.title.value,
           conversation.bindingStatus,
           conversation.createdAt.value,
           conversation.updatedAt.value,
