@@ -313,7 +313,6 @@ test('time panel updates only date label text and preserves the regional option 
   const toggle = eventTarget();
   const view = createTimeView({
     root, body: {}, toggle, timeFormat, effectiveTimeZone,
-    localeForLanguage: () => 'en-US',
     savePreference: () => assert.fail('date-label refresh must not write preferences'),
   });
   const preferences = { timeZone: 'Asia/Singapore' };

@@ -36,7 +36,7 @@ import { createPanelContextController } from "./context-controller.js";
 import { createPanelNavigationCoordinator } from "./navigation-coordinator.js";
 import { createLibraryPanelController } from "./library-panel-controller.js";
 import { createNoticeController } from "./notice-controller.js";
-import { createShellPresentation, PANEL_ROUTES, LANGUAGE_LOCALES } from "./shell-presentation.js";
+import { createShellPresentation, PANEL_ROUTES } from "./shell-presentation.js";
 import { createFilingContextClient } from "./filing-context-client.js";
 import { createSearchActions } from "./search-actions.js";
 import { createExportWorkflow } from "./export-workflow.js";
@@ -109,7 +109,7 @@ titleRulesController.suspend();
 const timeView = createTimeView({
   root: document.getElementById("time-view"), body: elements.body,
   toggle: document.getElementById("time-enabled"), timeFormat, effectiveTimeZone,
-  localeForLanguage: language => LANGUAGE_LOCALES[language] || "en-US", savePreference,
+  savePreference,
 });
 // 时间视图挂载自己的模板后才存在当前会话状态槽。
 elements.status = document.getElementById("status-card");
@@ -370,8 +370,9 @@ function setRoute(route) {
   syncRouteActivity(); syncExportContext(); renderAll();
 }
 function formatTimestamp(value, preferences = state.preferences) {
+  // 侧栏其他时间也走共享浏览器地区规则，避免同一设置在不同栏目显示不同顺序。
   return timeFormat.formatDateTime(value, { timeZone: effectiveTimeZone(preferences),
-    locale: LANGUAGE_LOCALES[preferences?.language] || "en-US", dateFormat: preferences?.dateFormat || "locale",
+    dateFormat: preferences?.dateFormat || "locale",
     precision: preferences?.messageTimePrecision || "second" });
 }
 function renderPageConnection() {

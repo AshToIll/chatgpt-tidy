@@ -364,7 +364,7 @@ async function createHandoffHarness(t) {
       'src/features/titles/ui/title-organization-view.js': { createTitleOrganizationView: () => ({ ...view(), canLeave: () => true }) },
       'src/features/export/ui/export-view.js': { createExportView: () => ({ ...view(), suspend: noop, updateContext: noop, hasActiveJob: () => false }) },
       'src/platform/catalog/storage/conversation-catalog.js': { createConversationCatalogRepository: () => ({}) },
-      'src/app/sidepanel/shell-presentation.js': { PANEL_ROUTES: { bookmarks: {}, time: {} }, LANGUAGE_LOCALES: {},
+      'src/app/sidepanel/shell-presentation.js': { PANEL_ROUTES: { bookmarks: {}, time: {} },
         createShellPresentation: () => ({ localize: noop, applyTheme: noop, renderModuleChrome: noop,
           currentAppearance: () => null, renderPageConnection: () => false, renderContextStatus: noop,
           renderExportDockBadge: noop, renderPreferenceNotice: noop, hasLibraryWaiting: () => false,

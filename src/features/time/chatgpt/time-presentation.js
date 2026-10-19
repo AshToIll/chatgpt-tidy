@@ -51,9 +51,7 @@
   function baseFormatOptions(precision) {
     return {
       timeZone: effectiveTimeZone(),
-      // UI language, date format and timezone are intentionally independent.
-      // Regional format follows the browser locale rather than Tidy language.
-      locale: global.navigator?.language || "en-US",
+      // 网页与侧栏预览均由共享 timeFormat 决定浏览器地区，不从界面语言推导。
       dateFormat: preferences?.dateFormat || "locale",
       precision,
     };

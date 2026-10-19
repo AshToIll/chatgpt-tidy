@@ -440,6 +440,26 @@ function createLifecycleHarness({ delayedStartup = false, ready = true, runtimeF
   );
   assert.equal(message.lastElementChild, messageMeta);
 
+  // Browser region is independent from translated UI labels. Exercise both
+  // real page outputs after language broadcasts, not only the shared formatter.
+  for (const browserLocale of ["zh-CN", "zh-TW", "en-US", "en-GB", "ja-JP"]) {
+    context.navigator.language = browserLocale;
+    const date = new Intl.DateTimeFormat(browserLocale, {
+      year: "numeric", month: "2-digit", day: "2-digit", timeZone: preferences.timeZone,
+    }).format(new Date("2026-08-18T01:12:34Z"));
+    for (const language of ["zh-CN", "zh-TW", "en", "ja"]) {
+      emitRuntime(context.TidyProtocol.event(context.TidyProtocol.Type.PREFERENCES_UPDATED, {
+        ...preferences, language, dateFormat: "locale",
+      }));
+      assert.equal(sidebarTime.textContent, `${date} 09:12\u2009~\u200910:36`, `${browserLocale}/${language}: sidebar regional date`);
+      assert.deepEqual(messageTime.children.map(node => node.textContent), ["#7", `${date} 09:20:30`],
+        `${browserLocale}/${language}: message regional date`);
+    }
+  }
+  context.navigator.language = "en-US";
+  emitRuntime(context.TidyProtocol.event(context.TidyProtocol.Type.PREFERENCES_UPDATED, preferences));
+  assert.equal(sidebarTime.textContent, "2026/08/18 09:12\u2009~\u200910:36", "explicit year/month/day remains independent of region");
+
   // 新版用户气泡与原生动作栏嵌套在一层容器内：两个 presenter 应复用同一
   // metadata 并把它放在动作栏前，而不是继续把日期追加到整个消息末尾。
   const userLayout = new FakeElement("div");

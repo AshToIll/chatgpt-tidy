@@ -67,6 +67,27 @@ function prepare(output) {
     ' equal(document.querySelector(".time-panel__body").dataset.activeRoute, route, "Shell route ownership");',
     ' return { language: preferences.language, route, component: specification.selector, title: document.getElementById("panel-title").textContent, childElements: active[0].querySelectorAll("*").length };',
     '},',
+    'async timeRegional() {',
+    ' dock("time");',
+    ' const original = preferences.dateFormat, samples = [];',
+    ' const selectFormat = async dateFormat => {',
+    '   const button = document.querySelector(`button[data-preference="dateFormat"][data-value="${dateFormat}"]`);',
+    '   button.click(); await until(() => preferences.dateFormat === dateFormat && button.getAttribute("aria-pressed") === "true", "Date format selection failed");',
+    ' };',
+    ' try {',
+    '   for (const dateFormat of ["locale", "iso", "slash", "dot", "compact"]) {',
+    '     await selectFormat(dateFormat);',
+    '     const options = { locale: navigator.language, timeZone: preferences.timeZone, dateFormat };',
+    '     const conversation = document.getElementById("conversation-preview").textContent;',
+    '     equal(conversation, TidyTimeFormat.formatConversation(currentSnapshot.conversation, { ...options, mode: preferences.conversationTimeMode, precision: preferences.conversationTimePrecision }), "Conversation preview must follow browser region, not UI language");',
+    '     const message = currentSnapshot.messages.at(-1), preview = document.getElementById("message-preview").textContent;',
+    '     equal(preview, `#${message.order.displayNumber}  ${TidyTimeFormat.formatDateTime(message.timestamp.value, { ...options, precision: preferences.messageTimePrecision })}`, "Message preview must follow browser region, not UI language");',
+    '     if (dateFormat === "slash") equal(preview, "#12  2026/09/12 00:00:00", "Explicit year/month/day must not change with language");',
+    '     samples.push({ dateFormat, conversation, message: preview });',
+    '   }',
+    ' } finally { await selectFormat(original); }',
+    ' return { language: preferences.language, browserLocale: navigator.language, browserLanguages: [...navigator.languages], samples };',
+    '},',
     'async timeLayout() {',
     ' dock("time"); await sleep(60);',
     ' const view = document.getElementById("time-view"), viewRect = view.getBoundingClientRect();',
@@ -196,6 +217,7 @@ async function run(browser, executable, base) {
         report.checks.push({ name: 'real route visible', result: await evaluate('ArchitectureSmoke.route(' + JSON.stringify(route) + ')') });
         if (language === 'zh-CN') await screenshot(route);
       }
+      report.checks.push({ name: 'time previews share browser region and retain all explicit date formats', result: await evaluate('ArchitectureSmoke.timeRegional()') });
       for (const width of [320, 460]) {
         await call('Emulation.setDeviceMetricsOverride', { width, height: 960, deviceScaleFactor: 1, mobile: false });
         report.checks.push({ name: 'localized time layout has no label/value overlap', result: await evaluate('ArchitectureSmoke.timeLayout()') });

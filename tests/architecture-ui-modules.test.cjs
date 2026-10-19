@@ -3,6 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const crypto = require('node:crypto');
+const vm = require('node:vm');
 const ROOT = path.resolve(__dirname, '..');
 
 // These hashes freeze the exact original 0.4.0 inner markup (LF normalized).
@@ -82,7 +83,7 @@ async function timeHarness() {
     formatConversation: (value, options) => { formats.push(options); return value.label || ''; },
     formatDateTime: (value, options) => { formats.push(options); return value ? 'time:' + value : ''; },
   };
-  const view = createTimeView({ ...host, timeFormat: format, effectiveTimeZone: value => value.timeZone, localeForLanguage: () => 'en-US', savePreference: patch => saves.push(patch) });
+  const view = createTimeView({ ...host, timeFormat: format, effectiveTimeZone: value => value.timeZone, savePreference: patch => saves.push(patch) });
   return { ...host, view, saves, formats };
 }
 
@@ -181,7 +182,7 @@ test('time preview preserves last timestamp selection, numbering and disabled fa
   render();
   assert.equal(h.ids.get('conversation-preview').textContent, 'conversation-time');
   assert.equal(h.ids.get('message-preview').textContent, '#2  time:last-known');
-  assert.deepEqual(h.formats.at(-1), { timeZone: 'UTC', locale: 'en-US', dateFormat: 'locale', precision: 'second' });
+  assert.deepEqual(h.formats.at(-1), { timeZone: 'UTC', dateFormat: 'locale', precision: 'second' });
   prefs.timeDisplayEnabled = false; render();
   assert.equal(h.ids.get('conversation-preview').textContent, '—');
   assert.equal(h.ids.get('message-preview').textContent, '#2');
@@ -191,6 +192,50 @@ test('time preview preserves last timestamp selection, numbering and disabled fa
   assert.equal(h.ids.get('message-preview').textContent, 'noTime', 'mounted order.index is not a global number');
   snapshot.messages = []; render(); assert.equal(h.ids.get('message-preview').textContent, '—');
 });
+
+for (const browserLocale of ['zh-CN', 'zh-TW', 'en-US', 'en-GB', 'ja-JP']) {
+  test(`${browserLocale}: time preview follows browser region independently of UI language`, async () => {
+    const { createTimeView } = await import('../src/features/time/ui/time-view.js');
+    const { effectiveTimeZone } = await import('../src/platform/preferences/preferences.js');
+    // Run the real shared formatter with a controlled browser locale, not the
+    // test machine's locale or a formatter stub that merely echoes its inputs.
+    const browser = vm.createContext({ Intl, Date, navigator: { language: browserLocale } });
+    vm.runInContext(fs.readFileSync(path.join(ROOT, 'src/platform/time-format.js'), 'utf8'), browser);
+    const timeFormat = browser.TidyTimeFormat, host = timeHost();
+    const view = createTimeView({ ...host, timeFormat, effectiveTimeZone,
+      savePreference: () => assert.fail('preview rendering must not write preferences') });
+    const snapshot = { conversation: {
+      title: { value: '2026/10/19 | Unchanged title' },
+      createdAt: { value: '2026-10-19T00:48:19Z' }, updatedAt: { value: '2026-10-20T09:30:00Z' },
+    }, messages: [{ timestamp: { value: '2026-10-19T00:48:19Z' }, order: { displayNumber: 2 } }] };
+    const before = JSON.stringify(snapshot);
+    try {
+      for (const language of ['zh-CN', 'zh-TW', 'en', 'ja']) {
+        for (const dateFormat of ['locale', 'iso', 'slash', 'dot', 'compact']) {
+          for (const timeZone of ['UTC', 'America/Los_Angeles', 'system']) {
+            for (const mode of ['range', 'created', 'updated']) {
+              const prefs = Object.freeze({ ...preferences(), language, dateFormat, timeZone, conversationTimeMode: mode });
+              const options = { locale: browserLocale, timeZone: effectiveTimeZone(prefs), dateFormat };
+              view.renderPreview({ snapshot, preferences: prefs, translator: key => key });
+              assert.equal(host.ids.get('conversation-preview').textContent,
+                timeFormat.formatConversation(snapshot.conversation, { ...options, mode, precision: 'minute' }),
+                `${language}/${dateFormat}/${timeZone}/${mode}: preview must use the webpage's regional rule`);
+              assert.equal(host.ids.get('message-preview').textContent,
+                '#2  ' + timeFormat.formatDateTime(snapshot.messages[0].timestamp.value, { ...options, precision: 'second' }),
+                `${language}/${dateFormat}/${timeZone}: message preview must use the webpage's regional rule`);
+              if (dateFormat === 'slash' && timeZone === 'UTC') {
+                assert.equal(host.ids.get('message-preview').textContent, '#2  2026/10/19 00:48:19',
+                  'explicit year/month/day remains fixed across every language and region');
+              }
+            }
+          }
+        }
+      }
+      assert.equal(host.root.htmlWrites, 1, 'language and date changes never remount the preview');
+      assert.equal(JSON.stringify(snapshot), before, 'display changes never rewrite titles or timestamps');
+    } finally { view.dispose(); }
+  });
+}
 
 function settingsHost() {
   const root = node(), language = node(), timeZone = node(), themes = node(), backup = node();

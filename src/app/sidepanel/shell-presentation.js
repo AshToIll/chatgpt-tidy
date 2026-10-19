@@ -10,10 +10,6 @@ export const PANEL_ROUTES = Object.freeze({
   export: { title: "export", subtitle: "exportSubtitle" },
   settings: { title: "settings", subtitle: "settingsSubtitle" },
 });
-export const LANGUAGE_LOCALES = Object.freeze({
-  "zh-CN": "zh-CN", "zh-TW": "zh-TW", en: "en-US", ja: "ja-JP",
-});
-
 function hexRgb(hex) {
   const value = String(hex || "").replace("#", "");
   if (!/^[0-9a-f]{6}$/i.test(value)) return "89, 98, 116";

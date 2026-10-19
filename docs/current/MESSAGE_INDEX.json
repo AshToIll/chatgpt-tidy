@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "version": "0.5.2",
-  "buildFingerprint": "81e804571e9cd5fa7a93ec08",
+  "buildFingerprint": "a84c5d78fb6dfc4a6400923e",
   "limitations": [
     "静态文字引用不是唯一触发条件；条件以列出的函数和分支为准。",
     "无静态引用不等于未使用；动态计算键另列，不自动删除任何文案。",
@@ -350,11 +350,11 @@
       "observationSites": [
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 211
+          "line": 207
         },
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 212
+          "line": 208
         }
       ]
     },
@@ -371,15 +371,15 @@
       "observationSites": [
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 147
+          "line": 143
         },
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 152
+          "line": 148
         },
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 154
+          "line": 150
         }
       ]
     },
@@ -1079,13 +1079,13 @@
         },
         {
           "source": "src/app/sidepanel/panel.js",
-          "line": 436,
+          "line": 437,
           "kind": "literal-reference",
           "excerpt": "notice.dismissOwnedToast(\"favorites\"); notice.dismissOwnedToast(\"bookmarks\");"
         },
         {
           "source": "src/app/sidepanel/panel.js",
-          "line": 490,
+          "line": 491,
           "kind": "literal-reference",
           "excerpt": "library.observeRevision(envelope.type === protocol.Type.FAVORITES_UPDATED ? \"favorites\" : \"bookmarks\", payload);"
         },
@@ -1097,13 +1097,13 @@
         },
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 91,
+          "line": 87,
           "kind": "literal-reference",
           "excerpt": "for (const owner of [\"favorites\", \"bookmarks\"]) {"
         },
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 132,
+          "line": 128,
           "kind": "literal-reference",
           "excerpt": "if (required) for (const owner of [\"favorites\", \"bookmarks\"]) clearLibraryNotice(owner);"
         },
@@ -1493,7 +1493,7 @@
       "references": [
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 166,
+          "line": 162,
           "kind": "literal-reference",
           "excerpt": "const presentation = hydration.errorPresentation(error, owner === \"favorites\" ? \"favoritesReadFailed\" : \"bookmarksReadFailed\");"
         }
@@ -1895,7 +1895,7 @@
       "references": [
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 87,
+          "line": 83,
           "kind": "direct-call",
           "excerpt": "document.title = translate(\"appName\");"
         }
@@ -2191,13 +2191,13 @@
         },
         {
           "source": "src/features/time/chatgpt/time-presentation.js",
-          "line": 153,
+          "line": 151,
           "kind": "literal-reference",
           "excerpt": "if (item.bindingStatus !== \"bound\") continue;"
         },
         {
           "source": "src/features/time/chatgpt/time-presentation.js",
-          "line": 192,
+          "line": 190,
           "kind": "literal-reference",
           "excerpt": "if (snapshot.conversation.bindingStatus !== \"bound\") return;"
         },
@@ -2557,13 +2557,13 @@
       "references": [
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 85,
+          "line": 81,
           "kind": "direct-call",
           "excerpt": "elements.close.setAttribute(\"aria-label\", translate(\"close\"));"
         },
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 86,
+          "line": 82,
           "kind": "direct-call",
           "excerpt": "elements.close.title = translate(\"close\");"
         },
@@ -2695,7 +2695,7 @@
         },
         {
           "source": "src/features/time/chatgpt/time-presentation.js",
-          "line": 143,
+          "line": 141,
           "kind": "literal-reference",
           "excerpt": "if (preferences.conversationTimeMode === \"created\") return `${labels.created} ${text}`;"
         },
@@ -2825,7 +2825,7 @@
         },
         {
           "source": "src/features/time/ui/time-view.js",
-          "line": 70,
+          "line": 71,
           "kind": "literal-reference",
           "excerpt": "const listParts = [summaryLabel({ range: \"timeRange\", created: \"createdTime\", updated: \"updatedTime\" }[preferences.conversationTimeMode])];"
         },
@@ -4053,13 +4053,13 @@
         },
         {
           "source": "src/features/time/ui/time-view.js",
-          "line": 39,
+          "line": 40,
           "kind": "direct-call",
           "excerpt": ") || t(\"noTime\");"
         },
         {
           "source": "src/features/time/ui/time-view.js",
-          "line": 95,
+          "line": 96,
           "kind": "direct-call",
           "excerpt": "}) || t(\"noTime\")"
         }
@@ -5517,7 +5517,7 @@
       "references": [
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 137,
+          "line": 133,
           "kind": "literal-reference",
           "excerpt": "if (error?.code === errorCode?.TAB_UNAVAILABLE) return { messageKey: \"reopenTidyPanel\", retryable: false };"
         },
@@ -5585,19 +5585,19 @@
       "references": [
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 161,
+          "line": 157,
           "kind": "direct-call",
           "excerpt": "retry.textContent = translate(\"retry\");"
         },
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 180,
+          "line": 176,
           "kind": "direct-call",
           "excerpt": "retry.textContent = translate(\"retry\");"
         },
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 219,
+          "line": 215,
           "kind": "direct-call",
           "excerpt": "retry.textContent = translate(\"retry\");"
         },
@@ -5771,7 +5771,7 @@
       "references": [
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 97,
+          "line": 93,
           "kind": "direct-call",
           "excerpt": "? `${translate(meta.title)} · ${translate(\"selectExport\")}` : translate(meta.title);"
         },
@@ -6309,13 +6309,13 @@
         },
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 169,
+          "line": 165,
           "kind": "literal-reference",
           "excerpt": "status.setAttribute(\"role\", \"status\");"
         },
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 195,
+          "line": 191,
           "kind": "literal-reference",
           "excerpt": "status.setAttribute(\"role\", \"status\");"
         },
@@ -6775,7 +6775,7 @@
         },
         {
           "source": "src/features/time/ui/time-view.js",
-          "line": 70,
+          "line": 71,
           "kind": "literal-reference",
           "excerpt": "const listParts = [summaryLabel({ range: \"timeRange\", created: \"createdTime\", updated: \"updatedTime\" }[preferences.conversationTimeMode])];"
         }
@@ -6989,7 +6989,7 @@
       "references": [
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 139,
+          "line": 135,
           "kind": "literal-reference",
           "excerpt": "return hydration.errorPresentation(error, \"unavailable\");"
         },
@@ -7521,7 +7521,7 @@
       "references": [
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 138,
+          "line": 134,
           "kind": "literal-reference",
           "excerpt": "if (error?.code === errorCode?.UNSUPPORTED_PAGE) return { messageKey: \"unsupported\", retryable: true };"
         },
@@ -7739,7 +7739,7 @@
         },
         {
           "source": "src/features/time/chatgpt/time-presentation.js",
-          "line": 144,
+          "line": 142,
           "kind": "literal-reference",
           "excerpt": "if (preferences.conversationTimeMode === \"updated\") return `${labels.updated} ${text}`;"
         },
@@ -7827,7 +7827,7 @@
         },
         {
           "source": "src/features/time/ui/time-view.js",
-          "line": 70,
+          "line": 71,
           "kind": "literal-reference",
           "excerpt": "const listParts = [summaryLabel({ range: \"timeRange\", created: \"createdTime\", updated: \"updatedTime\" }[preferences.conversationTimeMode])];"
         },
@@ -7945,7 +7945,7 @@
         },
         {
           "source": "src/features/time/chatgpt/time-presentation.js",
-          "line": 128,
+          "line": 126,
           "kind": "literal-reference",
           "excerpt": "if (role === \"user\") {"
         },
@@ -8021,13 +8021,13 @@
       "references": [
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 185,
+          "line": 181,
           "kind": "literal-reference",
           "excerpt": "return Boolean(root.dataset.moduleState === \"waiting\" && root.childElementCount === 1"
         },
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 197,
+          "line": 193,
           "kind": "literal-reference",
           "excerpt": "root.dataset.moduleState = \"waiting\";"
         },
@@ -8521,7 +8521,7 @@
         },
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 103,
+          "line": 99,
           "kind": "literal-reference",
           "excerpt": "const dockRoute = selection && [\"manage\", \"batch-main\"].includes(selection.returnTarget) ? \"export\" : route;"
         },
@@ -10815,7 +10815,7 @@
       "references": [
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 232,
+          "line": 228,
           "kind": "direct-call",
           "excerpt": "badge.setAttribute(\"aria-label\", busy ? translate(\"exportJobShowProgress\") : translate(\"exportPendingCount\", { count }));"
         },
@@ -11773,7 +11773,7 @@
       "references": [
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 232,
+          "line": 228,
           "kind": "direct-call",
           "excerpt": "badge.setAttribute(\"aria-label\", busy ? translate(\"exportJobShowProgress\") : translate(\"exportPendingCount\", { count }));"
         }
@@ -13793,13 +13793,13 @@
         },
         {
           "source": "src/app/sidepanel/panel.js",
-          "line": 436,
+          "line": 437,
           "kind": "literal-reference",
           "excerpt": "notice.dismissOwnedToast(\"favorites\"); notice.dismissOwnedToast(\"bookmarks\");"
         },
         {
           "source": "src/app/sidepanel/panel.js",
-          "line": 490,
+          "line": 491,
           "kind": "literal-reference",
           "excerpt": "library.observeRevision(envelope.type === protocol.Type.FAVORITES_UPDATED ? \"favorites\" : \"bookmarks\", payload);"
         },
@@ -13811,19 +13811,19 @@
         },
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 91,
+          "line": 87,
           "kind": "literal-reference",
           "excerpt": "for (const owner of [\"favorites\", \"bookmarks\"]) {"
         },
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 132,
+          "line": 128,
           "kind": "literal-reference",
           "excerpt": "if (required) for (const owner of [\"favorites\", \"bookmarks\"]) clearLibraryNotice(owner);"
         },
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 166,
+          "line": 162,
           "kind": "literal-reference",
           "excerpt": "const presentation = hydration.errorPresentation(error, owner === \"favorites\" ? \"favoritesReadFailed\" : \"bookmarksReadFailed\");"
         },
@@ -14159,7 +14159,7 @@
       "references": [
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 166,
+          "line": 162,
           "kind": "literal-reference",
           "excerpt": "const presentation = hydration.errorPresentation(error, owner === \"favorites\" ? \"favoritesReadFailed\" : \"bookmarksReadFailed\");"
         }
@@ -16627,13 +16627,13 @@
         },
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 83,
+          "line": 79,
           "kind": "literal-reference",
           "excerpt": "button.setAttribute(\"aria-label\", translate(PANEL_ROUTES[button.dataset.route]?.title || \"settings\"));"
         },
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 122,
+          "line": 118,
           "kind": "literal-reference",
           "excerpt": "if (view.dataset.view !== \"settings\") return true;"
         },
@@ -16713,7 +16713,7 @@
       "references": [
         {
           "source": "src/app/sidepanel/panel.js",
-          "line": 413,
+          "line": 414,
           "kind": "literal-reference",
           "excerpt": "if (changed.length === 1 && changed[0] === \"theme\") {"
         }
@@ -17049,7 +17049,7 @@
       "references": [
         {
           "source": "src/features/time/chatgpt/time-presentation.js",
-          "line": 288,
+          "line": 286,
           "kind": "literal-reference",
           "excerpt": ".tidy-message-meta[data-position=\"before\"] { margin: 0 auto 7px; }"
         },
@@ -17217,7 +17217,7 @@
         },
         {
           "source": "src/features/time/ui/time-view.js",
-          "line": 48,
+          "line": 49,
           "kind": "literal-reference",
           "excerpt": "root.querySelectorAll('button[data-preference=\"dateFormat\"]').forEach(button => {"
         },
@@ -17281,7 +17281,7 @@
         },
         {
           "source": "src/features/time/ui/time-view.js",
-          "line": 72,
+          "line": 73,
           "kind": "literal-reference",
           "excerpt": "date: \"datePrecision\","
         }
@@ -17337,7 +17337,7 @@
         },
         {
           "source": "src/features/time/ui/time-view.js",
-          "line": 73,
+          "line": 74,
           "kind": "literal-reference",
           "excerpt": "hour: \"hour\","
         },
@@ -17473,7 +17473,7 @@
         },
         {
           "source": "src/features/time/ui/time-view.js",
-          "line": 74,
+          "line": 75,
           "kind": "literal-reference",
           "excerpt": "minute: \"minute\","
         },
@@ -17563,7 +17563,7 @@
       "references": [
         {
           "source": "src/app/sidepanel/panel.js",
-          "line": 375,
+          "line": 376,
           "kind": "literal-reference",
           "excerpt": "precision: preferences?.messageTimePrecision || \"second\" });"
         },
@@ -17645,19 +17645,19 @@
         },
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 100,
+          "line": 96,
           "kind": "literal-reference",
           "excerpt": "elements.timeControl.hidden = !ready || route !== \"time\";"
         },
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 131,
+          "line": 127,
           "kind": "literal-reference",
           "excerpt": "elements.timeControl.hidden = required || route !== \"time\";"
         },
         {
           "source": "src/app/sidepanel/shell-presentation.js",
-          "line": 151,
+          "line": 147,
           "kind": "literal-reference",
           "excerpt": "diagnostics?.notice(route === \"time\""
         },
@@ -21341,70 +21341,70 @@
     },
     {
       "source": "src/app/sidepanel/shell-presentation.js",
-      "line": 77,
+      "line": 73,
       "callee": "translate",
       "expression": "element.dataset.i18n",
       "excerpt": "element.textContent = translate(element.dataset.i18n);"
     },
     {
       "source": "src/app/sidepanel/shell-presentation.js",
-      "line": 80,
+      "line": 76,
       "callee": "translate",
       "expression": "element.dataset.i18nAria",
       "excerpt": "element.setAttribute(\"aria-label\", translate(element.dataset.i18nAria));"
     },
     {
       "source": "src/app/sidepanel/shell-presentation.js",
-      "line": 83,
+      "line": 79,
       "callee": "translate",
       "expression": "PANEL_ROUTES[button.dataset.route]?.title || \"settings\"",
       "excerpt": "button.setAttribute(\"aria-label\", translate(PANEL_ROUTES[button.dataset.route]?.title || \"settings\"));"
     },
     {
       "source": "src/app/sidepanel/shell-presentation.js",
-      "line": 97,
+      "line": 93,
       "callee": "translate",
       "expression": "meta.title",
       "excerpt": "? `${translate(meta.title)} · ${translate(\"selectExport\")}` : translate(meta.title);"
     },
     {
       "source": "src/app/sidepanel/shell-presentation.js",
-      "line": 97,
+      "line": 93,
       "callee": "translate",
       "expression": "meta.title",
       "excerpt": "? `${translate(meta.title)} · ${translate(\"selectExport\")}` : translate(meta.title);"
     },
     {
       "source": "src/app/sidepanel/shell-presentation.js",
-      "line": 98,
+      "line": 94,
       "callee": "translate",
       "expression": "meta.subtitle",
       "excerpt": "elements.subtitle.textContent = translate(meta.subtitle);"
     },
     {
       "source": "src/app/sidepanel/shell-presentation.js",
-      "line": 156,
+      "line": 152,
       "callee": "translate",
       "expression": "presentation.messageKey",
       "excerpt": "message.textContent = translate(presentation.messageKey);"
     },
     {
       "source": "src/app/sidepanel/shell-presentation.js",
-      "line": 170,
+      "line": 166,
       "callee": "translate",
       "expression": "presentation.messageKey",
       "excerpt": "status.textContent = translate(presentation.messageKey);"
     },
     {
       "source": "src/app/sidepanel/shell-presentation.js",
-      "line": 202,
+      "line": 198,
       "callee": "translate",
       "expression": "key",
       "excerpt": "const text = translate(key);"
     },
     {
       "source": "src/app/sidepanel/shell-presentation.js",
-      "line": 215,
+      "line": 211,
       "callee": "translate",
       "expression": "error.messageKey",
       "excerpt": "label.textContent = translate(error.messageKey);"
@@ -22139,21 +22139,21 @@
     },
     {
       "source": "src/features/time/ui/time-view.js",
-      "line": 43,
+      "line": 44,
       "callee": "t",
       "expression": "key",
       "excerpt": "return t(key);"
     },
     {
       "source": "src/features/time/ui/time-view.js",
-      "line": 77,
+      "line": 78,
       "callee": "t",
       "expression": "preferences.messageTimePosition",
       "excerpt": "elements.messageSummary.textContent = `${t(preferences.messageTimePosition)} · ${t(preferences.messageTimePrecision)}`;"
     },
     {
       "source": "src/features/time/ui/time-view.js",
-      "line": 77,
+      "line": 78,
       "callee": "t",
       "expression": "preferences.messageTimePrecision",
       "excerpt": "elements.messageSummary.textContent = `${t(preferences.messageTimePosition)} · ${t(preferences.messageTimePrecision)}`;"

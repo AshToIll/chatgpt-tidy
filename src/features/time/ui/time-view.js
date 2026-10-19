@@ -2,7 +2,7 @@ import { TIME_VIEW_TEMPLATE } from "./time-template.js";
 
 // 时间栏只拥有自己的表单、折叠状态和实时预览；偏好写入与页面准入由壳注入。
 // 模板仅挂载一次，后续更新保持按钮节点、焦点和折叠行为不变。
-export function createTimeView({ root, body, toggle, timeFormat, effectiveTimeZone, localeForLanguage, savePreference }) {
+export function createTimeView({ root, body, toggle, timeFormat, effectiveTimeZone, savePreference }) {
   root.innerHTML = TIME_VIEW_TEMPLATE;
   const elements = {
     body, timeEnabled: toggle,
@@ -17,7 +17,8 @@ export function createTimeView({ root, body, toggle, timeFormat, effectiveTimeZo
   function formatOptions(precision = preferences.conversationTimePrecision) {
     return {
       timeZone: effectiveTimeZone(preferences),
-      locale: localeForLanguage(preferences.language),
+      // 与网页共用 timeFormat 的浏览器地区规则；界面语言只翻译文案。
+      // 不传语言映射，手动选择的年月日格式仍由 dateFormat 独立决定。
       dateFormat: preferences.dateFormat,
       precision,
     };
