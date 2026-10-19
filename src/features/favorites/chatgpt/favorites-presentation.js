@@ -115,9 +115,9 @@
       const current = Boolean(favorites?.items?.[conversationId]);
       const operation = { lease, value: !current };
       pending.set(conversationId, operation);
-      button.disabled = true;
-      button.setAttribute("aria-busy", "true");
-      updateButton(button, conversationId, !current);
+      // 一个会话只有一次保存，但项目目录和最近列表都可能有按钮。
+      // 同步投影同一 pending 状态，不让另一副本仍可点击或停留在旧颜色。
+      render();
       libraryClient.request(protocol.Type.FAVORITES_TOGGLE_SIDEBAR, {
         conversationId,
         locator,
@@ -149,28 +149,33 @@
       clearMarkers();
       return;
     }
-    const activeKeys = new Set();
+    const activeNodes = new Set();
     for (const item of snapshot.sidebarConversations) {
       if (!snapshotContract.isSidebarPersistenceEligible(item)) continue;
-      const host = sidebarDom.find(item.locator);
-      if (!host) continue;
       const conversationId = item.conversationId;
-      activeKeys.add(conversationId);
-      host.classList.add("tidy-sidebar-favorite-host");
-      const button = ensureButton(host);
-      button.dataset.tidyKey = conversationId;
-      button.dataset.tidyConversationId = conversationId;
-      button.dataset.tidyLocator = item.locator.value;
-      const starred = pending.has(conversationId)
-        ? pending.get(conversationId).value
+      const operation = pending.get(conversationId);
+      const starred = operation
+        ? operation.value
         : Boolean(favorites.items?.[conversationId]);
-      button.disabled = pending.has(conversationId);
-      if (!button.disabled) button.removeAttribute("aria-busy");
-      updateButton(button, conversationId, starred);
+      // DTO 只保留一份；每个精确 href 的原生副本（包括折叠项目）都要
+      // 从同一状态刷新。只更新首个匹配会让最近列表的按钮永久残留 busy。
+      for (const host of sidebarDom.findAll(item.locator)) {
+        host.classList.add("tidy-sidebar-favorite-host");
+        const button = ensureButton(host);
+        activeNodes.add(button);
+        button.dataset.tidyKey = conversationId;
+        button.dataset.tidyConversationId = conversationId;
+        button.dataset.tidyLocator = item.locator.value;
+        button.disabled = Boolean(operation);
+        if (button.disabled) button.setAttribute("aria-busy", "true");
+        else button.removeAttribute("aria-busy");
+        updateButton(button, conversationId, starred);
+      }
     }
 
     for (const button of document.querySelectorAll(`[data-tidy-owned="${OWNER}"]`)) {
-      if (activeKeys.has(button.dataset.tidyKey)) continue;
+      // 按本轮实际绑定的节点清理；不能让别处仍存在的同 ID 保住已复用行的旧按钮。
+      if (activeNodes.has(button)) continue;
       const host = button.parentElement;
       observeFeedback(button);
       button.remove();

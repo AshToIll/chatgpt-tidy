@@ -24,6 +24,9 @@ nav { width:260px; }
 .wrapped-native-row a { display:flex; flex:1; min-width:0; color:inherit; text-decoration:none; }
 .wrapped-title { flex:1; min-width:0; }
 .wrapped-title > span { display:block; overflow:hidden; white-space:nowrap; }
+.wrapped-title > span > span { display:inline; }
+/* Project conversations are indented by native layout outside their link. */
+.wrapped-project-content { padding-inline-start:24px; }
 .wrapped-spacer { margin-inline-start:3px; }
 .wrapped-native-row:is(:hover, :focus-within, .qa-hover) .wrapped-spacer { min-width:56px; }
 [data-hover-card-open-immediately] { display:contents; }

@@ -138,7 +138,18 @@ sidebarLink.rect = { left: 100, right: 300, top: 0, width: 200, height: 52 };
 const sidebarTitle = new FakeElement("span");
 sidebarTitle.textContent = "Current";
 sidebarTitle.rect = { left: 128, right: 210, top: 4, width: 82, height: 18 };
-sidebarLink.append(sidebarTitle);
+// Native project titles may be composed from multiple inner spans; the common
+// visible title container, not only a leaf, owns the alignment geometry.
+const sidebarTitleFirst = new FakeElement("span");
+sidebarTitleFirst.textContent = "Cur";
+const sidebarTitleLast = new FakeElement("span");
+sidebarTitleLast.textContent = "rent";
+sidebarTitle.append(sidebarTitleFirst, sidebarTitleLast);
+const sidebarTitleContainer = new FakeElement("span");
+sidebarTitleContainer.textContent = "Current";
+sidebarTitleContainer.rect = { left: 110, right: 290, top: 4, width: 180, height: 18 };
+sidebarTitleContainer.append(sidebarTitle);
+sidebarLink.append(sidebarTitleContainer);
 const message = new FakeElement("div", { "data-message-id": "message-1" });
 body.append(sidebarLink, message);
 
@@ -404,6 +415,18 @@ function createLifecycleHarness({ delayedStartup = false, ready = true, runtimeF
   assert.equal(sidebarTime.style.insetInlineStart, "0px", "zero native title inset must stay zero");
   sidebarTitle.rect.left = 128;
   emitSnapshot(makeSnapshot(), "native-indented-title-restored");
+  assert.equal(sidebarTime.style.insetInlineStart, "28px", "choose the deepest title container, not its wider wrapper");
+  // If native text changes before its DTO, retain the exact link's nesting
+  // relative to the outer positioning row rather than falling back to 10px.
+  const outerRow = new FakeElement("div");
+  outerRow.rect = { left: 76, right: 320, top: 0, width: 244, height: 52 };
+  sidebarTime.offsetParent = outerRow;
+  sidebarTitleContainer.textContent = sidebarTitle.textContent = "Renamed title";
+  emitSnapshot(makeSnapshot(), "native-title-ahead-of-snapshot");
+  assert.equal(sidebarTime.style.insetInlineStart, "24px", "fallback retains the exact project link indentation");
+  sidebarTitleContainer.textContent = sidebarTitle.textContent = "Current";
+  sidebarTime.offsetParent = null;
+  emitSnapshot(makeSnapshot(), "native-title-restored");
   assert.equal(sidebarTime.title, "2026/08/18 09:12\u2009~\u200910:36");
   const messageMeta = message.children.find((node) => node.dataset.tidyOwned === "message-meta");
   let messageTime = messageMeta.children.find((node) => node.dataset.tidyOwned === "message-time");

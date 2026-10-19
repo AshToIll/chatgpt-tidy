@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "version": "0.5.2",
-  "buildFingerprint": "2fb038e868b7ecba92a3c7ca",
+  "buildFingerprint": "81e804571e9cd5fa7a93ec08",
   "limitations": [
     "静态文字引用不是唯一触发条件；条件以列出的函数和分支为准。",
     "无静态引用不等于未使用；动态计算键另列，不自动删除任何文案。",
@@ -2191,13 +2191,13 @@
         },
         {
           "source": "src/features/time/chatgpt/time-presentation.js",
-          "line": 146,
+          "line": 153,
           "kind": "literal-reference",
           "excerpt": "if (item.bindingStatus !== \"bound\") continue;"
         },
         {
           "source": "src/features/time/chatgpt/time-presentation.js",
-          "line": 185,
+          "line": 192,
           "kind": "literal-reference",
           "excerpt": "if (snapshot.conversation.bindingStatus !== \"bound\") return;"
         },
@@ -2695,7 +2695,7 @@
         },
         {
           "source": "src/features/time/chatgpt/time-presentation.js",
-          "line": 136,
+          "line": 143,
           "kind": "literal-reference",
           "excerpt": "if (preferences.conversationTimeMode === \"created\") return `${labels.created} ${text}`;"
         },
@@ -7739,7 +7739,7 @@
         },
         {
           "source": "src/features/time/chatgpt/time-presentation.js",
-          "line": 137,
+          "line": 144,
           "kind": "literal-reference",
           "excerpt": "if (preferences.conversationTimeMode === \"updated\") return `${labels.updated} ${text}`;"
         },
@@ -7945,7 +7945,7 @@
         },
         {
           "source": "src/features/time/chatgpt/time-presentation.js",
-          "line": 121,
+          "line": 128,
           "kind": "literal-reference",
           "excerpt": "if (role === \"user\") {"
         },
@@ -17049,7 +17049,7 @@
       "references": [
         {
           "source": "src/features/time/chatgpt/time-presentation.js",
-          "line": 281,
+          "line": 288,
           "kind": "literal-reference",
           "excerpt": ".tidy-message-meta[data-position=\"before\"] { margin: 0 auto 7px; }"
         },

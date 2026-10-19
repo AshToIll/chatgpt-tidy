@@ -81,16 +81,23 @@
     if (!title || !hostRect?.width) return 10;
 
     // Alignment is presentation geometry only: use the DTO title to identify
-    // ChatGPT's rendered title leaf, without opening another data-reading path
-    // or depending on a fixed project DOM hierarchy.
-    const titleNode = elementDescendants(host).find((candidate) => {
-      if (candidate.dataset?.tidyOwned || candidate.children?.length) return false;
-      if (normalizedText(candidate.textContent) !== title) return false;
+    // ChatGPT's rendered title container without depending on a fixed project
+    // DOM hierarchy. Native titles may be split across multiple child spans,
+    // so select the deepest visible exact match rather than requiring a leaf.
+    let titleMatch = null;
+    for (const candidate of elementDescendants(host)) {
+      if (candidate.dataset?.tidyOwned || normalizedText(candidate.textContent) !== title) continue;
       const rect = candidate.getBoundingClientRect?.();
-      return Boolean(rect?.width && rect?.height);
-    });
-    const titleRect = titleNode?.getBoundingClientRect?.();
-    if (!titleRect) return 10;
+      if (!rect?.width || !rect?.height) continue;
+      let depth = 0;
+      for (let cursor = candidate; cursor && cursor !== host; cursor = cursor.parentElement) depth += 1;
+      if (!titleMatch || depth > titleMatch.depth) titleMatch = { depth, rect };
+    }
+    // The exact conversation link is the clean geometry fallback when native
+    // markup has no dedicated title container. This preserves project nesting
+    // instead of reverting to a row-wide hard-coded inset.
+    const titleRect = titleMatch?.rect || host.getBoundingClientRect?.();
+    if (!titleRect?.width) return 10;
 
     const direction = global.getComputedStyle?.(host)?.direction || "ltr";
     const rawInset = direction === "rtl"

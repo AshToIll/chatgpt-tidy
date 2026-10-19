@@ -176,7 +176,7 @@ function harness({ sharedTime = true, nestedUserActions = false, messageTimePosi
     assert.ok(request, `pending ${type}`); request.resolved = true;
     request.resolve(context.TidyProtocol.response(request.envelope, value));
   }
-  return { requests, resolve, type: context.TidyProtocol.Type, link, user, assistant, meta, time,
+  return { requests, resolve, type: context.TidyProtocol.Type, snapshot, link, user, assistant, meta, time,
     userContent, userBubbleBranch, userBubble, userActionBranch, userActions, messageDom: context.TidyChatgptMessageDom,
     preferences(value) { currentPreferences = { ...currentPreferences, ...value };
       for (const callback of runtimeListeners) callback(context.TidyProtocol.event(
@@ -201,6 +201,83 @@ function harness({ sharedTime = true, nestedUserActions = false, messageTimePosi
   };
 }
 const flush = () => new Promise(setImmediate);
+
+function projectCopies(h) {
+  const href = "/g/g-p-synthetic/c/shared";
+  h.link.setAttribute("href", href);
+  Object.assign(h.snapshot.sidebarConversations[0], {
+    kind: "project-conversation", locator: { strategy: "href", value: href },
+  });
+  // Project expansion mounts a second copy before the already rendered Recents
+  // row; no second DTO or second persistence operation should be necessary.
+  const project = new Element("section");
+  const link = new Element("a", { href }); project.append(link);
+  return { project, link, mount() { h.link.parentElement.prepend(project); h.stream(); } };
+}
+
+test("a late project copy cannot strand the clicked Recents favorite in its busy state", async () => {
+  const h = harness(); await flush();
+  const copy = projectCopies(h); h.stream();
+  h.resolve(h.type.LIBRARY_GET, libraryFor("owner-a", { populated: false })); await flush();
+  const recent = h.link.querySelector('[data-tidy-owned="sidebar-favorite"]');
+  recent.click(); await flush();
+  assert.equal(recent.disabled, true);
+  copy.mount(); await flush();
+  h.resolve(h.type.FAVORITES_TOGGLE_SIDEBAR, libraryFor("owner-a", { revision: 2 }).favorites); await flush();
+  assert.equal(recent.disabled, false, "Recents copy must be unlocked even when the project copy is now first");
+  const buttons = h.owned("sidebar-favorite");
+  assert.equal(buttons.length, 2);
+  for (const button of buttons) {
+    assert.equal(button.getAttribute("aria-busy"), null);
+    assert.equal(button.classList.contains("is-starred"), true);
+  }
+  assert.equal(h.link.querySelector('[data-tidy-owned="sidebar-favorite"]'), recent, "normal repaint preserves the original node");
+});
+
+test("project and Recents favorites share pending state and settle together after success or failure", async () => {
+  const h = harness(); await flush(); const copy = projectCopies(h); copy.mount();
+  h.resolve(h.type.LIBRARY_GET, libraryFor("owner-a", { populated: false })); await flush();
+  const buttons = h.owned("sidebar-favorite"); assert.equal(buttons.length, 2);
+  const mutationCount = () => h.requests.filter(item => item.envelope.type === h.type.FAVORITES_TOGGLE_SIDEBAR).length;
+  for (const [index, fail] of [[1, false], [0, true]]) {
+    const before = mutationCount();
+    buttons[index].click(); await flush();
+    for (const button of buttons) {
+      assert.equal(button.disabled, true, "one pending operation locks every native copy");
+      assert.equal(button.getAttribute("aria-busy"), "true");
+      assert.equal(button.classList.contains("is-starred"), !fail);
+    }
+    // The test sends the event even to a disabled button to prove that the
+    // shared pending guard also prevents a duplicate persistence request.
+    buttons[1 - index].click(); await flush(); assert.equal(mutationCount(), before + 1);
+    if (fail) {
+      const request = h.requests.find(item => !item.resolved && item.envelope.type === h.type.FAVORITES_TOGGLE_SIDEBAR);
+      request.resolved = true; request.reject(Error("synthetic write failure"));
+    } else h.resolve(h.type.FAVORITES_TOGGLE_SIDEBAR, libraryFor("owner-a", { revision: 2 }).favorites);
+    await flush();
+    for (const button of buttons) {
+      assert.equal(button.disabled, false); assert.equal(button.getAttribute("aria-busy"), null);
+      assert.equal(button.classList.contains("is-starred"), true, "failure restores the canonical saved state in both copies");
+    }
+  }
+  copy.project.setAttribute("hidden", ""); h.stream(); await flush();
+  assert.deepEqual(h.owned("sidebar-favorite"), buttons, "collapse retains both exact native copies without remounting");
+  const before = mutationCount(); h.stream(); h.language("ja"); await flush();
+  assert.equal(mutationCount(), before, "repainting duplicate copies never writes");
+});
+
+test("recycled duplicate favorite nodes lose ownership even while their conversation remains elsewhere", async () => {
+  const h = harness(); await flush(); const copy = projectCopies(h); copy.mount();
+  h.resolve(h.type.LIBRARY_GET, libraryFor("owner-a")); await flush();
+  assert.equal(h.owned("sidebar-favorite").length, 2);
+  const recent = h.link.querySelector('[data-tidy-owned="sidebar-favorite"]');
+  const unrelated = new Element("span"); unrelated.dataset.tidyOwned = "another-feature"; copy.link.append(unrelated);
+  copy.link.setAttribute("href", "/c/recycled"); h.stream(); await flush();
+  assert.deepEqual(h.owned("sidebar-favorite"), [recent], "cleanup is by live node, not a conversation ID shared by another row");
+  assert.equal(copy.link.classList.contains("tidy-sidebar-favorite-host"), false);
+  assert.equal(unrelated.parentElement, copy.link, "cleanup touches only favorite-owned decoration");
+  h.identity(null, 1); await flush(); assert.equal(h.owned("sidebar-favorite").length, 0);
+});
 
 const failureCases = [
   ["sidebar-favorite", "FAVORITES_TOGGLE_SIDEBAR", "failed", {

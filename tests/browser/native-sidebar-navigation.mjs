@@ -1,4 +1,4 @@
-import { results, sleep, assert, equal, check, history, viewport, items, row, publish, height, field, currentSnapshot, runtimeCalls } from "./native-sidebar-fixture.mjs";
+import { results, sleep, assert, equal, check, history, viewport, items, row, publish, height, field, currentSnapshot, runtimeCalls, settleFavoriteToggle } from "./native-sidebar-fixture.mjs";
 import "../../src/features/time/chatgpt/time-presentation.js";
 import "../../src/features/favorites/chatgpt/favorites-presentation.js";
 import "../../src/features/bookmarks/chatgpt/bookmarks-presentation.js";
@@ -124,7 +124,17 @@ function wrappedRow(item, options = {}) {
   const anchor = document.createElement('a'); anchor.dataset.interactiveRowLink = 'true'; anchor.setAttribute('href', item.locator.value);
   const title = document.createElement('span'); title.className = 'wrapped-title'; title.dataset.threadTitle = 'true';
   const leaf = document.createElement('span');
-  leaf.textContent = item.conversationId === 'fixture-4' ? 'A long synthetic conversation title that must remain truncated beside Work' : item.title.value;
+  const displayTitle = item.conversationId === 'fixture-4' ? 'A long synthetic conversation title that must remain truncated beside Work' : item.title.value;
+  if (item.kind === 'project-conversation') {
+    // Current project rows can split one visible title across nested spans.
+    // Neither inner leaf contains the complete title, so the presenter must
+    // measure their common title container and retain the project indentation.
+    const separator = displayTitle.indexOf(' ');
+    const first = document.createElement('span'); first.textContent = displayTitle.slice(0, separator);
+    const second = document.createElement('span'); second.textContent = displayTitle.slice(separator);
+    leaf.append(first, second);
+    content.classList.add('wrapped-project-content');
+  } else leaf.textContent = displayTitle;
   title.append(leaf);
   // Reproduce the observed span nesting; all labels and IDs remain synthetic.
   const badgeLabel = options.badgeLabel ?? ({ 'fixture-3': 'Work', 'fixture-4': '\u5de5\u4f5c' }[item.conversationId]);
@@ -162,6 +172,56 @@ function assertWrappedGeometry() {
   }
 }
 await check('nested ordinary, project and group conversation dates stay within their own row', assertWrappedGeometry);
+await check('a split project title keeps its date aligned to the indented title', () => {
+  const row = history.children[1];
+  const title = row.querySelector('.wrapped-title > span');
+  const date = row.querySelector('[data-tidy-owned="sidebar-time"]');
+  equal(title.children.length, 2, 'project fixture must split the visible title across child spans');
+  equal(date.getBoundingClientRect().left, title.getBoundingClientRect().left,
+    'split project title lost its native indentation');
+});
+await check('project and Recents favorite copies both regain pointer cursors after completion', async () => {
+  const recentRow = history.children[1], recent = recentRow.querySelector('.tidy-sidebar-favorite');
+  const projectRow = wrappedRow(items[1]);
+  const contentLink = row(items[1], 1); document.querySelector('main').append(contentLink);
+  const callsBefore = runtimeCalls.length;
+  try {
+    equal(getComputedStyle(recent).cursor, 'pointer', 'idle Recents favorite must be clickable');
+    recent.click();
+    equal(getComputedStyle(recent).cursor, 'wait', 'pending write should use the genuine busy cursor');
+    // Expansion inserts the first DOM match while the Recents write is pending.
+    history.before(projectRow); publish(currentSnapshot()); await sleep(90);
+    const project = projectRow.querySelector('.tidy-sidebar-favorite');
+    assert(project, 'expanded project copy needs its own favorite control');
+    const buttons = [project, recent];
+    for (const button of buttons) {
+      equal(button.disabled, true, 'both copies must share the single pending write');
+      equal(button.getAttribute('aria-busy'), 'true', 'busy semantics must match both visible controls');
+    }
+    project.click(); equal(runtimeCalls.length, callsBefore + 1, 'pending duplicate dispatched another write');
+    assert(settleFavoriteToggle(), 'synthetic favorite request must be pending'); await sleep(90);
+    for (const button of buttons) {
+      equal(button.disabled, false, 'successful completion must unlock every copy');
+      equal(button.getAttribute('aria-busy'), null, 'successful completion left stale busy semantics');
+      equal(getComputedStyle(button).cursor, 'pointer', 'successful completion left a permanent spinning cursor');
+      equal(button.classList.contains('is-starred'), true, 'copies disagree about the saved favorite');
+    }
+    project.click(); equal(runtimeCalls.length, callsBefore + 2, 'clicking the project copy must issue one write');
+    recent.click(); equal(runtimeCalls.length, callsBefore + 2, 'disabled Recents copy must not duplicate the write');
+    assert(settleFavoriteToggle(true), 'synthetic failure must settle a real pending request'); await sleep(90);
+    for (const button of buttons) {
+      equal(button.disabled, false, 'failure must also unlock every copy');
+      equal(button.getAttribute('aria-busy'), null, 'failure left stale busy semantics');
+      equal(getComputedStyle(button).cursor, 'pointer', 'failure left a permanent spinning cursor');
+      equal(button.classList.contains('is-starred'), true, 'failed removal must retain canonical favorite state');
+    }
+    assert(!contentLink.querySelector('.tidy-sidebar-favorite'), 'same-href message link acquired a favorite');
+    assert(recentRow.querySelector('.tidy-sidebar-favorite') === recent, 'completion replaced the original Recents control');
+  } finally {
+    settleFavoriteToggle(true); projectRow.remove(); contentLink.remove();
+    publish(currentSnapshot()); await sleep(90);
+  }
+});
 function assertWorkBadge(row, visible) {
   const badge = row.querySelector('.wrapped-work-badge');
   assert(badge, 'synthetic Work row must include the observed native badge');

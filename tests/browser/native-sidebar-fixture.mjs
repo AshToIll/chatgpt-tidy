@@ -59,9 +59,30 @@ globalThis.TidyContentBridge = { onSnapshot: fn => { subscribers.push(fn); retur
 // 真实收藏/书签渲染器需要已读取的资料；只替换资料传输，不伪造按钮或布局。
 const library = { favorites: { items: { "fixture-0": { conversationId: "fixture-0" } } },
   bookmarks: { items: Object.fromEntries(items.map(item => [item.conversationId, { conversationId: item.conversationId }])) } };
-globalThis.TidyLibraryClient = { subscribe(fn) { fn(library); return () => {}; },
+const librarySubscribers = new Set();
+let pendingFavorite = null;
+globalThis.TidyLibraryClient = { subscribe(fn) { librarySubscribers.add(fn); fn(library); return () => librarySubscribers.delete(fn); },
   capture: () => ({ accountKey: "fixture" }), owns: () => true,
-  request(type) { calls.push(type); return Promise.resolve({}); } };
+  request(type, payload) {
+    calls.push(type);
+    if (type !== TidyProtocol.Type.FAVORITES_TOGGLE_SIDEBAR) return Promise.resolve({});
+    assert(!pendingFavorite, "duplicate favorite writes must not be dispatched");
+    return new Promise((resolve, reject) => { pendingFavorite = { payload, resolve, reject }; });
+  } };
+// Only the synthetic persistence boundary is deferred. The real presenter owns
+// node creation, busy state, cursor CSS and completion in the browser fixture.
+export function settleFavoriteToggle(fail = false) {
+  if (!pendingFavorite) return false;
+  const { payload, resolve, reject } = pendingFavorite; pendingFavorite = null;
+  if (fail) reject(new Error("Synthetic favorite failure"));
+  else {
+    const id = payload.conversationId;
+    if (library.favorites.items[id]) delete library.favorites.items[id];
+    else library.favorites.items[id] = { conversationId: id };
+    librarySubscribers.forEach(fn => fn(library)); resolve(library.favorites);
+  }
+  return true;
+}
 function publish(next) {
   assert(TidySnapshot.validate(next).valid, "fixture snapshot must obey production contract");
   snapshot = next; subscribers.forEach(fn => fn(next));
