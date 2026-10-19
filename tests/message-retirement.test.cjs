@@ -12,6 +12,21 @@ const plain = value => JSON.parse(JSON.stringify(value));
 // This explicit list is the scope of the approved retirement, not a generic
 // permission to drop baseline entries or any key without a literal reference.
 const EXPECTED = Object.freeze({
+  note: "common",
+  messages: "common",
+  stable: "common",
+  resolving: "common",
+  draft: "common",
+  empty: "common",
+  bound: "common",
+  unbound: "common",
+  mismatch: "common",
+  route: "common",
+  unknown: "common",
+  source: "common",
+  identity: "common",
+  tab: "common",
+  ready: "common",
   binding: "common",
   diagnostics: "common",
   live: "common",
@@ -182,6 +197,8 @@ function scannedIndex(extraSource = "") {
 test("the message index flags retired literal translator calls without banning unrelated field names", () => {
   const baseline = scannedIndex();
   for (const key of retiredNames) assert.ok(!baseline.messages.some(entry => entry.key === key));
+  assert.deepEqual(baseline.unknownLiteralCalls.filter(call => retiredNames.includes(call.key)), [],
+    'Retired labels cannot survive as translator calls to now-missing keys');
   const bareFields = "\nconst auditFields = { binding: null, diagnostics: null, live: true, saved: 1, "
     + "removeFavorite() {}, searchResultCount: 2, conversationPreview: null };\n";
   const fieldsOnly = scannedIndex(bareFields);

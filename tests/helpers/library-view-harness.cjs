@@ -115,7 +115,7 @@ function createLibraryViewHarness(kind = "favorites", runtimeGlobals = {}) {
   function seedFavorites() {
     const now = "2026-10-01T00:00:00.000Z";
     const item = id => ({ conversationId: id, title: id, routePath: "/c/" + id,
-      groupId: "study", savedAt: now, createdAt: now, updatedAt: now, metadataRefreshedAt: now, note: "keep note" });
+      groupId: "study", savedAt: now, createdAt: now, updatedAt: now, metadataRefreshedAt: now });
     render({ store: { ...model.store, items: { "favorite-a": item("favorite-a"), "favorite-b": item("favorite-b") } }, bookmarkCounts: { "favorite-a": 2 } });
   }
   function seedBookmarks() {

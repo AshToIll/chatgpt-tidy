@@ -15,7 +15,7 @@
 
 修改字符串值即可；`{count}`、`{title}` 等占位符是运行时参数，不可随意删除。键名是稳定身份，不随措辞改名。`pageBindings` 和 `themeBindings` 只是映射，不是第二份文案。
 
-旧版 2268 条翻译仍由原 `BEHAVIOR_BASELINE.json` 指纹锁定。经批准的新键或修改必须逐键登记 `tests/fixtures/message-copy-amendments.json`；修改记录明确四语言的 before/after 和理由。不能批量重录历史基线。这轮只增加已确认缺失的恢复动作和诊断文案，不改其余标签或英文回退规则。
+原翻译由 `BEHAVIOR_BASELINE.json` 指纹锁定。经批准的新键或修改必须逐键登记 `tests/fixtures/message-copy-amendments.json`；修改记录明确四语言的 before/after 和理由。不能批量重录历史基线；退役按下述清单核对，不保留已经没有展示消费者的词条。
 
 ## 已确认无生产调用的文案退役
 

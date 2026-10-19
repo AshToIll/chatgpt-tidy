@@ -1,9 +1,8 @@
 import "../../../platform/snapshot.js";
 import { canonicalConversationPath } from "../../../platform/navigation/conversation-route.js";
 
-export const BOOKMARKS_SCHEMA_VERSION = 1;
+export const BOOKMARKS_SCHEMA_VERSION = 2;
 export const MAX_BOOKMARK_GROUP_NAME_LENGTH = 24;
-export const MAX_BOOKMARK_NOTE_LENGTH = 2000;
 export const BOOKMARK_SYSTEM_GROUP_IDS = Object.freeze(["current", "all", "ungrouped"]);
 export const BOOKMARK_GROUP_ICONS = Object.freeze([
   "quote", "pin", "highlighter", "note", "flag", "chat-bubble", "text-mark", "sparkle",
@@ -97,8 +96,6 @@ function normalizeBookmark(value, fallbackId, validGroupIds) {
     bookmarkedAt: cleanInstant(value?.bookmarkedAt) || new Date(0).toISOString(),
     metadataRefreshedAt: cleanInstant(value?.metadataRefreshedAt),
     groupId,
-    // 删除编辑入口不删除已存备注；查询和备份仍使用这个字段。
-    note: cleanNullableString(value?.note, MAX_BOOKMARK_NOTE_LENGTH) || "",
   };
 }
 
@@ -201,7 +198,6 @@ function recordFromSnapshot(snapshot, message, existing, groupId, timestamp) {
     bookmarkedAt: existing?.bookmarkedAt || timestamp,
     metadataRefreshedAt: timestamp,
     groupId,
-    note: existing?.note || "",
   };
 }
 
@@ -382,7 +378,7 @@ export function selectBookmarks(state, { currentConversationId = null, ...view }
     if (groupId === "ungrouped" && item.groupId !== null) return false;
     if (!BOOKMARK_SYSTEM_GROUP_IDS.includes(groupId) && item.groupId !== groupId) return false;
     if (!terms.length) return true;
-    const searchable = `${item.excerpt} ${item.conversationTitle || ""} ${item.note}`.toLocaleLowerCase();
+    const searchable = `${item.excerpt} ${item.conversationTitle || ""}`.toLocaleLowerCase();
     return terms.every((term) => searchable.includes(term));
   });
   const timestamp = (item) => Date.parse(item[sortField] || "") || 0;

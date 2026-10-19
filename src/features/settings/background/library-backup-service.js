@@ -59,7 +59,7 @@ export function createLibraryBackupService({ repository, assertCurrent, notify,
       summary = merged.summary;
       return merged.libraries;
     });
-    // 只在完整事务成功后通知列表刷新；通知不携带任何摘录或备注。
+    // 只在完整事务成功后通知列表刷新；通知不携带标题或摘录。
     for (const kind of LIBRARY_KINDS) if (libraries[kind].revision !== entry.revisions[kind]) notify(kind, libraries[kind]);
     assertCurrent(context);
     return { summary, ...libraries };

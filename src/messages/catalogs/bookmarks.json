@@ -192,6 +192,12 @@
       "zh-TW": "未能開啟，請再點",
       "en": "Could not open. Try again.",
       "ja": "もう一度開いてください"
+    },
+    "bookmarkIconPaper": {
+      "zh-CN": "纸张",
+      "zh-TW": "紙張",
+      "en": "Paper",
+      "ja": "用紙"
     }
   },
   "pageBindings": {

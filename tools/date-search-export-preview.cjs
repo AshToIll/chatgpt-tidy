@@ -54,7 +54,7 @@ async function panelBootstrap() {
   for (const row of conversations.slice(0, 2)) favorites.items[row.conversationId] = {
     conversationId: row.conversationId, title: row.title, routePath: `/c/${row.conversationId}`,
     createdAt: new Date(row.directoryBounds.createdAt).toISOString(), updatedAt: new Date(row.updatedAt).toISOString(),
-    savedAt: "2026-09-08T04:00:00.000Z", groupId: null, note: "",
+    savedAt: "2026-09-08T04:00:00.000Z", groupId: null,
   };
   const bookmarks = { accountKey: libraryAccountKey, revision: 1, groups: [], view: { groupId: "all", query: "", sortField: "bookmarkedAt", sortDirection: "desc", page: 1, pageSize: 8 }, items: {} };
   for (const row of conversations.slice(0, 2)) {
@@ -63,7 +63,7 @@ async function panelBootstrap() {
       bookmarkId, conversationId: row.conversationId, conversationTitle: row.title,
       messageId: `${row.conversationId}-assistant`, messageTimestamp: "2026-09-08T04:00:00.000Z",
       orderNumber: 2, orderIndex: 1, role: "assistant", bookmarkedAt: "2026-09-08T05:00:00.000Z",
-      groupId: null, note: "", excerpt: "Synthetic bookmarked answer for export QA.", routePath: `/c/${row.conversationId}`,
+      groupId: null, excerpt: "Synthetic bookmarked answer for export QA.", routePath: `/c/${row.conversationId}`,
     };
   }
   function documentFor(id) {

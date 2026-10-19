@@ -1,6 +1,6 @@
 # ChatGPT Tidy 文档入口
 
-这里说明 **0.5.0 架构候选**的当前源码与契约；产品 manifest/package 已同步为 0.5.0。本地构建不等于已对外发布，验收范围以 [本次验证记录](current/VALIDATION.md) 为准。
+这里说明当前源码与契约；产品版本以 `src/manifest.json` 与 `package.json` 为准。本地构建不等于已对外发布，[验证记录](current/VALIDATION.md) 中的历史结果只适用于各自注明的版本与范围。
 
 ## 产品经理先看
 

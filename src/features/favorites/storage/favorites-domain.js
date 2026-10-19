@@ -1,9 +1,8 @@
 import "../../../platform/snapshot.js";
 import { canonicalConversationPath } from "../../../platform/navigation/conversation-route.js";
 
-export const FAVORITES_SCHEMA_VERSION = 1;
+export const FAVORITES_SCHEMA_VERSION = 2;
 export const MAX_GROUP_NAME_LENGTH = 24;
-export const MAX_NOTE_LENGTH = 2000;
 export const SYSTEM_GROUP_IDS = Object.freeze(["all", "ungrouped"]);
 export const GROUP_ICONS = Object.freeze([
   "folder", "archive", "book", "briefcase", "bulb", "sparkle", "heart", "box",
@@ -82,8 +81,6 @@ function normalizeFavorite(value, validGroupIds) {
     savedAt: cleanInstant(value?.savedAt) || new Date(0).toISOString(),
     metadataRefreshedAt: cleanInstant(value?.metadataRefreshedAt),
     groupId,
-    // 备注无编辑入口，但已存资料和备份中的备注仍需原样保留。
-    note: cleanNullableString(value?.note, MAX_NOTE_LENGTH) || "",
   };
 }
 
@@ -188,7 +185,6 @@ function snapshotRecord(snapshot, existing, groupId, timestamp) {
     savedAt: existing?.savedAt || timestamp,
     metadataRefreshedAt: timestamp,
     groupId,
-    note: existing?.note || "",
   };
 }
 
@@ -206,7 +202,6 @@ function sidebarRecord(conversation, existing, groupId, timestamp) {
     savedAt: existing?.savedAt || timestamp,
     metadataRefreshedAt: timestamp,
     groupId,
-    note: existing?.note || "",
   };
 }
 

@@ -157,6 +157,186 @@
         "en": "f1c038660cfb46e0333b7e441939e841de0b82937f11356ab199c01cbdb15710",
         "ja": "8884f24906a0f1d573a17952cfd34be6b54338f6748f54310d085ca73ebcea4d"
       }
+    },
+    {
+      "key": "note",
+      "catalog": "common",
+      "reason": "备注功能的数据链路已删除；纸张形状的分组图标使用独立标签，不再复用功能名称。",
+      "replacements": [],
+      "beforeHashes": {
+        "zh-CN": "daede9881787abe74c94e686be78a4eabc85a09688433027ea55ac583919bc1e",
+        "zh-TW": "85914d54439f4ddfb65152e4698f857ac0274fe6ef4eea5dd60559846a7cdd93",
+        "en": "d8da2c49df39d91df7ecd199b92da7bf264f026242ccc69b08daeadfe587c45b",
+        "ja": "99fa5c96e07ec49d52fb7da88d13cbe24a791fbc26775be2549708d75c4a3fa1"
+      }
+    },
+    {
+      "key": "messages",
+      "catalog": "common",
+      "reason": "旧会话检查面板的展示标签已无 UI 消费者；源码同名引用仅为状态枚举、结构字段或 ARIA role，不是翻译调用。保留业务身份/状态校验，删除无用运行词条。",
+      "replacements": [],
+      "beforeHashes": {
+        "zh-CN": "3c2b8ddebde2214268c62ea4d2de8298aa5b37b608416d92981a9fa5ac1c25e3",
+        "zh-TW": "84117143777713fd20b3bc4c7dd85eb1f40b9a27bacdcf27af9b81984905774d",
+        "en": "51b877e1fc74597af3a5f6c6943a8a7cd2ab04e8b0294f3fbd0ce0bcb5bcd76d",
+        "ja": "616f9a26582f81dbb0a0b360f4f7664dc6bc504a9980d080bfe5851fa442022c"
+      }
+    },
+    {
+      "key": "stable",
+      "catalog": "common",
+      "reason": "旧会话检查面板的展示标签已无 UI 消费者；源码同名引用仅为状态枚举、结构字段或 ARIA role，不是翻译调用。保留业务身份/状态校验，删除无用运行词条。",
+      "replacements": [],
+      "beforeHashes": {
+        "zh-CN": "44068ff6b2eed15818e639a3027443d5bcf46ae8ad8bcdee49633d9e0d1d8e71",
+        "zh-TW": "fce66a667b368e17ab85e3f92d08ea843f0d81c61d2ddbd8c08f85230242f7b1",
+        "en": "90ee305714d7103317705bfffd734c654b78807e5a0f51fcc61bc1d81105ebd1",
+        "ja": "176c2761f312f87c22652706da7c42e16cc92c1aa6e5859a6d24ddb2b44ee3eb"
+      }
+    },
+    {
+      "key": "resolving",
+      "catalog": "common",
+      "reason": "旧会话检查面板的展示标签已无 UI 消费者；源码同名引用仅为状态枚举、结构字段或 ARIA role，不是翻译调用。保留业务身份/状态校验，删除无用运行词条。",
+      "replacements": [],
+      "beforeHashes": {
+        "zh-CN": "d6b9b28de2c8b06cddf867740826cd323eb42f5335fba08cac64e4a58b78c3ee",
+        "zh-TW": "d6b9b28de2c8b06cddf867740826cd323eb42f5335fba08cac64e4a58b78c3ee",
+        "en": "3287a034a4b73de843738ec17eb6d6d5ca8acdc9f9d5eaee9a318a520b08cc15",
+        "ja": "a0915ce4b7be7d748ffc6a38d0fa708a0c012cb33472ccfc86fb890426374d0c"
+      }
+    },
+    {
+      "key": "draft",
+      "catalog": "common",
+      "reason": "旧会话检查面板的展示标签已无 UI 消费者；源码同名引用仅为状态枚举、结构字段或 ARIA role，不是翻译调用。保留业务身份/状态校验，删除无用运行词条。",
+      "replacements": [],
+      "beforeHashes": {
+        "zh-CN": "2a2fd29bd27a6eb9e68d0dcd19ce04c97dc8d8d925ff06123416dee3b036d6a2",
+        "zh-TW": "2a2fd29bd27a6eb9e68d0dcd19ce04c97dc8d8d925ff06123416dee3b036d6a2",
+        "en": "ebf12ef47cf575b3ba9a3cc019c5310146fdac88f6d1be6618d6e91158c2f174",
+        "ja": "11082165a9e9a13daa80fdf46e131b17a8e1adaa6ea2c71118fbea297cb28311"
+      }
+    },
+    {
+      "key": "empty",
+      "catalog": "common",
+      "reason": "旧会话检查面板的展示标签已无 UI 消费者；源码同名引用仅为状态枚举、结构字段或 ARIA role，不是翻译调用。保留业务身份/状态校验，删除无用运行词条。",
+      "replacements": [],
+      "beforeHashes": {
+        "zh-CN": "b3d1db151f35c77e806dd4c150a7d47b10fb817c64a7b3d0be2cd25a1faa94d5",
+        "zh-TW": "176b40d0fe3bac1fedcacbbdb232886bffec384b83fc4630de35320eafc279ac",
+        "en": "4c57b8f0b8d8f054e29a536ae165774c2f55c5de76c95293b3bf4e05e149328e",
+        "ja": "467cb0e36e840609deb791a6e507f7c58bbb852b3c4b3ba5b37c1ae8338bdfa3"
+      }
+    },
+    {
+      "key": "bound",
+      "catalog": "common",
+      "reason": "旧会话检查面板的展示标签已无 UI 消费者；源码同名引用仅为状态枚举、结构字段或 ARIA role，不是翻译调用。保留业务身份/状态校验，删除无用运行词条。",
+      "replacements": [],
+      "beforeHashes": {
+        "zh-CN": "f70c0007f30ff7396a5b60b3f97f808c3d87df7a00d975fe3d32518a629a5847",
+        "zh-TW": "c6f3a918f79421258d27a2635c9563f654980380786313801d3e1afdee8e5b6f",
+        "en": "d06cc9afdf7a5bed54ca95ffc93b8d83f5334dd4ae4607a3ca83e00883ebbc84",
+        "ja": "4085f0ba0c3e31fa47ce6016cae506456bf3d7db82820203d9d5148592867906"
+      }
+    },
+    {
+      "key": "unbound",
+      "catalog": "common",
+      "reason": "旧会话检查面板的展示标签已无 UI 消费者；源码同名引用仅为状态枚举、结构字段或 ARIA role，不是翻译调用。保留业务身份/状态校验，删除无用运行词条。",
+      "replacements": [],
+      "beforeHashes": {
+        "zh-CN": "e026c6693dc517e4a600f2bf2c608a8aba4b0526a481a6ec7c93843ede7bdc5a",
+        "zh-TW": "6e621d5714283f07732f0877435f14bd561e60f3077dc6da15eae5a5001cfed6",
+        "en": "6c9fa4e7961ea18064615efdabb4ea377a35f348b4c70853cc347492749ac73a",
+        "ja": "1bd78606fc2b89f857028209adebea29ae32e34f824ebbf745dffe74a8705b00"
+      }
+    },
+    {
+      "key": "mismatch",
+      "catalog": "common",
+      "reason": "旧会话检查面板的展示标签已无 UI 消费者；源码同名引用仅为状态枚举、结构字段或 ARIA role，不是翻译调用。保留业务身份/状态校验，删除无用运行词条。",
+      "replacements": [],
+      "beforeHashes": {
+        "zh-CN": "0ac0ba0bc6d0c72e0c16633a975560ab0e8cb19bf0b1a6835946ec7affa89462",
+        "zh-TW": "78a9b079562dcfd6db305deada840a0f82960a814694b709f54381aed065ca1b",
+        "en": "a6292d7e1b5e34cd25b848830d955b516a5f41417d905068b21fdaa886603592",
+        "ja": "2ccd6d627971e5376c987db23f7a9d2aa67ba01994407f5747aed07bc7fd2367"
+      }
+    },
+    {
+      "key": "route",
+      "catalog": "common",
+      "reason": "旧会话检查面板的展示标签已无 UI 消费者；源码同名引用仅为状态枚举、结构字段或 ARIA role，不是翻译调用。保留业务身份/状态校验，删除无用运行词条。",
+      "replacements": [],
+      "beforeHashes": {
+        "zh-CN": "b9670c85a4ab939eebef4821f4f6dad33dd7bc541eea594653d1fdd2ba1ee733",
+        "zh-TW": "b9670c85a4ab939eebef4821f4f6dad33dd7bc541eea594653d1fdd2ba1ee733",
+        "en": "adc74704d65d5cc96612c15b073209d3de7e93c93b8fdc3362ee50596d18587f",
+        "ja": "1bfbc8de312268ea875257cd8e9706d6f43bfbf778408066f3dde4b2934f596b"
+      }
+    },
+    {
+      "key": "unknown",
+      "catalog": "common",
+      "reason": "旧会话检查面板的展示标签已无 UI 消费者；源码同名引用仅为状态枚举、结构字段或 ARIA role，不是翻译调用。保留业务身份/状态校验，删除无用运行词条。",
+      "replacements": [],
+      "beforeHashes": {
+        "zh-CN": "4d8c1c5b42830791a4ce99f630fb9f02ba08c67c5299d46d6cf76661bfd03584",
+        "zh-TW": "4d8c1c5b42830791a4ce99f630fb9f02ba08c67c5299d46d6cf76661bfd03584",
+        "en": "b764cdc0eab7137467211272fa539f1260d1bf2e71bcf6ff3bdc960f5c16aa14",
+        "ja": "bd5a8814a3635ecb4ebc9785cbc8223ae32444a5a07329a811526c29cd45f77c"
+      }
+    },
+    {
+      "key": "source",
+      "catalog": "common",
+      "reason": "旧会话检查面板的展示标签已无 UI 消费者；源码同名引用仅为状态枚举、结构字段或 ARIA role，不是翻译调用。保留业务身份/状态校验，删除无用运行词条。",
+      "replacements": [],
+      "beforeHashes": {
+        "zh-CN": "a488e93d69cc12961ea26e97b7d246d03a9af7334d2d84881dd7f702e801bf74",
+        "zh-TW": "c21db84c06536abcb38a72002035bcd2a55e8c7f04b5de73a545566cff908ede",
+        "en": "0e570ca6fabe24f94e52c1833f3ffd25567022beb826fa16891f3322051bc221",
+        "ja": "3e84ddf16d620bc530cf9022f486fc95dd10be7e62e8297f5bc2791809b238ce"
+      }
+    },
+    {
+      "key": "identity",
+      "catalog": "common",
+      "reason": "旧会话检查面板的展示标签已无 UI 消费者；源码同名引用仅为状态枚举、结构字段或 ARIA role，不是翻译调用。保留业务身份/状态校验，删除无用运行词条。",
+      "replacements": [],
+      "beforeHashes": {
+        "zh-CN": "7fc31ffa68c178bc80f297259ea3b405c08ac5238f51e723ffe7a1efc7a1b94e",
+        "zh-TW": "6ab7cfe3a42c5b266628447d3ee97dce3bbfd073f7de103c53e47c25d4fcf792",
+        "en": "eeca5de67514ab3ec155ae9b8d25b066c25057683168fbcda2f838cfcacce2c2",
+        "ja": "2c15fa19a5f33e3e1042c2d2580e6e2694532b63005b7efdf55732d6e5b69f19"
+      }
+    },
+    {
+      "key": "tab",
+      "catalog": "common",
+      "reason": "旧会话检查面板的展示标签已无 UI 消费者；源码同名引用仅为状态枚举、结构字段或 ARIA role，不是翻译调用。保留业务身份/状态校验，删除无用运行词条。",
+      "replacements": [],
+      "beforeHashes": {
+        "zh-CN": "a626aad412b751f1ba84c4c8d8229c1b05ba25bc407a0448c38d429bb159a827",
+        "zh-TW": "842433f0a42502d61a5e1905b8e074271ec56fdf6fdd7ea2736e3e9a1ccb5c9a",
+        "en": "90ddf1963abb36c9921ce7f1ac9cbd94c9176d13e57c418d3d3c20ce44291c1c",
+        "ja": "8a130ef457e00d3e0cb07884d67e1a6d686e857a9e5e3502a4adfed690fb3d87"
+      }
+    },
+    {
+      "key": "ready",
+      "catalog": "common",
+      "reason": "旧会话检查面板的展示标签已无 UI 消费者；源码同名引用仅为状态枚举、结构字段或 ARIA role，不是翻译调用。保留业务身份/状态校验，删除无用运行词条。",
+      "replacements": [],
+      "beforeHashes": {
+        "zh-CN": "5be0323e8adcaeae8a644b6e8e4ad05864ec03c7b841504f91c911ff06dabd6d",
+        "zh-TW": "866cb506850cee2ea317935ea5e21ba7e0d4c1a603bb867584e31913121480b8",
+        "en": "22965568d22a14ee17af055d2870b50afcfe9fd94a83eec3196e266932297bb2",
+        "ja": "5f22f0bb58682b4a9bdee8646968d2895f6911055599d5f26cd1d931e78d37ba"
+      }
     }
   ]
 }

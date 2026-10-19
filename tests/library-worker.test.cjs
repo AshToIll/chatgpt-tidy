@@ -56,12 +56,12 @@ async function setup(t, options = {}) {
   for (const accountKey of [OWNER, OTHER]) {
     await raw.favorites.transact(accountKey, (state) => ({ ...state, revision: 1, items: {
       shared: { conversationId: "shared", title: accountKey === OWNER ? "A title" : "B private title",
-        routePath: "/c/shared", savedAt: NOW, note: accountKey === OWNER ? "A note" : "B private note" },
+        routePath: "/c/shared", savedAt: accountKey === OWNER ? NOW : "2026-01-01T00:00:00.000Z" },
     } }));
     await raw.bookmarks.transact(accountKey, (state) => ({ ...state, revision: 1, items: {
       "shared::message": { bookmarkId: "shared::message", conversationId: "shared", messageId: "message", role: "assistant",
         conversationTitle: "Old bookmark title", excerpt: accountKey === OWNER ? "A excerpt" : "B private excerpt",
-        note: "Keep my bookmark note", routePath: "/c/shared", bookmarkedAt: NOW },
+        routePath: "/c/shared", bookmarkedAt: NOW },
     } }));
   }
   const calls = [], broadcasts = [];
@@ -272,13 +272,13 @@ test("backup worker round-trip never sends files to the page and notifies only r
   const exported = await f.request('library.backup-export', { expectedAccountKey: OWNER });
   assert.equal(exported.ok, true); assert.doesNotMatch(exported.payload.text, /B private/);
   const value = JSON.parse(exported.payload.text);
-  value.favorites.items.push({ ...value.favorites.items[0], conversationId: 'new-conv', routePath: '/c/new-conv', note: 'imported note' });
+  value.favorites.items.push({ ...value.favorites.items[0], conversationId: 'new-conv', routePath: '/c/new-conv', title: 'Imported conversation' });
   value.bookmarks.items.push({ ...value.bookmarks.items[0], conversationId: 'new-conv', bookmarkId: 'new-conv::message', routePath: '/c/new-conv' });
   const preview = await f.request('library.backup-preview', { expectedAccountKey: OWNER, text: JSON.stringify(value) });
   assert.equal(preview.ok, true); assert.equal(preview.payload.summary.favorites.added, 1);
   assert.equal(Object.hasOwn((await f.raw.favorites.get(OWNER)).items, 'new-conv'), false);
   const result = await f.request('library.backup-restore', { expectedAccountKey: OWNER, previewId: preview.payload.id });
-  assert.equal(result.ok, true); assert.equal(result.payload.favorites.items['new-conv'].note, 'imported note');
+  assert.equal(result.ok, true); assert.equal(result.payload.favorites.items['new-conv'].title, 'Imported conversation');
   assert.equal(Object.hasOwn((await f.raw.favorites.get(OTHER)).items, 'new-conv'), false);
   assert.equal(f.calls.slice(beforeCalls).some(call => /library\.backup|snapshot\.get|library\.account/.test(call.type)), false,
     'backup reads local storage; it does not forward payloads or fetch a new snapshot');
@@ -303,7 +303,7 @@ test("LIBRARY_GET returns only the authenticated account libraries", async (t) =
   const result = await fixture.request("library.get");
   assert.equal(result.ok, true);
   assert.equal(result.payload.accountKey, OWNER);
-  assert.equal(result.payload.favorites.items.shared.note, "A note");
+  assert.equal(result.payload.favorites.items.shared.savedAt, NOW);
   assert.equal(result.payload.bookmarks.items["shared::message"].excerpt, "A excerpt");
   assert.equal(JSON.stringify(result).includes("B private"), false);
   assert.deepEqual(Object.keys(result.payload).sort(), ["accountKey", "bookmarks", "errors", "favorites", "identity"]);
@@ -427,7 +427,7 @@ test("shared navigation dispatch preserves ordinary preference writes and favori
   assert.equal(fixture.calls.length, 0, 'A preference write must not acquire a navigation or account owner');
   const favorite = await fixture.request('favorites.get');
   assert.equal(favorite.ok, true);
-  assert.equal(favorite.payload.items.shared.note, 'A note');
+  assert.equal(favorite.payload.items.shared.savedAt, NOW);
   assert.equal(JSON.stringify(favorite).includes('B private'), false);
 });
 
@@ -507,7 +507,7 @@ for (const readyFirst of [true, false]) test(`extension reload: replacement read
   assert.equal(requests.length, 2, "Exactly one ordinary recovery read");
   assert.ok(requests.every(r => !r.payload.retryIdentity), "No forced authentication retry");
   assert.equal(fixture.calls.filter(c => c.type === "library.account").length, 1, "Recovery uses the new worker's already-ready identity");
-  assert.equal(controller.getState().bookmarks.items["shared::message"].note, "Keep my bookmark note");
+  assert.equal(controller.getState().bookmarks.items["shared::message"].bookmarkedAt, NOW);
   for (let i = 0; i < 20; i++) controller.observeIdentity({ documentId: "reloaded-document", epoch: 1, phase: "ready", accountKey: OWNER });
   await flush(); assert.equal(requests.length, 2);
 });
@@ -568,7 +568,7 @@ for (const consumer of ["panel", "content"]) test(`${consumer}: ready overtaking
   assert.equal(current().identity.epoch, 4);
   assert.equal(requests.length, 1, "The initial read consumes worker ready without another IPC or auth read");
   assert.ok(requests.every(r => !r.payload?.retryIdentity));
-  assert.equal(current().bookmarks.items["shared::message"].note, "Keep my bookmark note");
+  assert.equal(current().bookmarks.items["shared::message"].bookmarkedAt, NOW);
 });
 
 for (const boundary of ["soft", "context-changed", "session-revoked", "unknown", "A-B-A", "new-document", "ready-gap", "unavailable-gap"]) {
@@ -628,7 +628,7 @@ test("converged initialization never renews an old mutation lease", async t => {
   assert.equal(result.ok, false); assert.equal(result.error.code, "CONTEXT_MISMATCH");
   assert.equal(fixture.calls.filter(c => c.type === "transact").length, 0);
   assert.equal((await fixture.raw.favorites.get(OWNER)).items.shared.groupId, null);
-  assert.equal((await fixture.raw.favorites.get(OWNER)).items.shared.note, "A note");
+  assert.equal((await fixture.raw.favorites.get(OWNER)).items.shared.savedAt, NOW);
 });
 
 test("a reply older than initialization ingress cannot converge to a later ready", async t => {
@@ -654,10 +654,10 @@ test("wrong senders, conflicting tabs and missing expected mutation owner fail b
   const noOwner = await fixture.request("favorites.move", { conversationId: "shared", groupId: "work" });
   assert.equal(noOwner.ok, false);
   assert.equal(fixture.calls.some((call) => call.type === "transact"), false);
-  assert.equal((await fixture.raw.favorites.get(OWNER)).items.shared.note, "A note");
+  assert.equal((await fixture.raw.favorites.get(OWNER)).items.shared.savedAt, NOW);
 });
 
-for (const kind of ['favorites', 'bookmarks']) test(`${kind}: removed note-edit messages cannot write, and saved notes remain readable`, async t => {
+for (const kind of ['favorites', 'bookmarks']) test(`${kind}: removed note-edit messages cannot write or expose retired fields`, async t => {
   const fixture = await setup(t), before = await fixture.raw[kind].get(OWNER);
   const result = await fixture.request(`${kind}.note-update`, { expectedAccountKey: OWNER,
     conversationId: 'shared', bookmarkId: 'shared::message', note: 'Must not write' });
@@ -666,8 +666,7 @@ for (const kind of ['favorites', 'bookmarks']) test(`${kind}: removed note-edit 
   assert.deepEqual(await fixture.raw[kind].get(OWNER), before);
   const read = await fixture.request('library.get');
   assert.equal(read.ok, true);
-  assert.equal(read.payload[kind].items[kind === 'favorites' ? 'shared' : 'shared::message'].note,
-    kind === 'favorites' ? 'A note' : 'Keep my bookmark note');
+  assert.equal(Object.hasOwn(read.payload[kind].items[kind === 'favorites' ? 'shared' : 'shared::message'], 'note'), false);
 });
 
 test("noncanonical account responses fail closed, including account-only probes", async (t) => {
@@ -686,7 +685,7 @@ test("an owner flip after repository reads suppresses the entire account payload
   assert.equal(result.ok, false);
   assert.equal(result.error.code, "CONTEXT_MISMATCH");
   assert.equal(result.payload, undefined);
-  assert.equal(JSON.stringify(result).includes("A note"), false);
+  assert.equal(JSON.stringify(result).includes("A title"), false);
 });
 
 test("owner flips before mutation reject writes; flips after commit never leak state or mutate the new account", async (t) => {
@@ -703,8 +702,8 @@ test("owner flips before mutation reject writes; flips after commit never leak s
   assert.equal(committed.payload, undefined);
   assert.equal((await after.raw.favorites.get(OWNER)).items.shared.groupId, "work");
   assert.equal((await after.raw.favorites.get(OTHER)).items.shared.groupId, null);
-  assert.equal((await after.raw.favorites.get(OWNER)).items.shared.note, "A note");
-  assert.equal((await after.raw.favorites.get(OTHER)).items.shared.note, "B private note");
+  assert.equal((await after.raw.favorites.get(OWNER)).items.shared.savedAt, NOW);
+  assert.equal((await after.raw.favorites.get(OTHER)).items.shared.savedAt, "2026-01-01T00:00:00.000Z");
 });
 
 test("library changes broadcast metadata only and unchanged mutations produce no invalidation loop", async (t) => {
@@ -716,7 +715,6 @@ test("library changes broadcast metadata only and unchanged mutations produce no
   for (const event of fixture.broadcasts) {
     assert.equal(event.envelope.type, "favorites.updated");
     assert.deepEqual(Object.keys(event.envelope.payload).sort(), ["accountKey", "revision"]);
-    assert.equal(JSON.stringify(event).includes("A note"), false);
     assert.equal(JSON.stringify(event).includes("A title"), false);
   }
   await fixture.request("favorites.move", { expectedAccountKey: OWNER, conversationId: "shared", groupId: "work" });
@@ -741,10 +739,10 @@ test("explicit library reads refresh one current snapshot, preserve user content
   const first = await fixture.request("library.get");
   assert.equal(first.ok, true);
   assert.equal(first.payload.favorites.items.shared.title, "Fresh current title");
-  assert.equal(first.payload.favorites.items.shared.note, "A note");
+  assert.equal(first.payload.favorites.items.shared.savedAt, NOW);
   assert.equal(first.payload.bookmarks.items["shared::message"].conversationTitle, "Fresh current title");
   assert.equal(first.payload.bookmarks.items["shared::message"].excerpt, "A excerpt");
-  assert.equal(first.payload.bookmarks.items["shared::message"].note, "Keep my bookmark note");
+  assert.equal(first.payload.bookmarks.items["shared::message"].bookmarkedAt, NOW);
   assert.equal(fixture.calls.filter((call) => call.type === "snapshot.get").length, 1);
   await flush();
   const events = fixture.broadcasts.length;
@@ -833,8 +831,8 @@ test("a queued IndexedDB mutation checks its epoch inside the transaction before
   assert.equal(result.ok, false);
   assert.equal((await fixture.raw.favorites.get(OWNER)).items.shared.groupId, null);
   assert.equal((await fixture.raw.favorites.get(OTHER)).items.shared.groupId, null);
-  assert.equal((await fixture.raw.favorites.get(OWNER)).items.shared.note, "A note");
-  assert.equal((await fixture.raw.favorites.get(OTHER)).items.shared.note, "B private note");
+  assert.equal((await fixture.raw.favorites.get(OWNER)).items.shared.savedAt, NOW);
+  assert.equal((await fixture.raw.favorites.get(OTHER)).items.shared.savedAt, "2026-01-01T00:00:00.000Z");
 });
 
 test("identity events are monotonic, document-targeted and reject old documents, subframes and extension senders", async (t) => {

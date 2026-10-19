@@ -115,12 +115,6 @@
       "en": "Updated",
       "ja": "更新日時"
     },
-    "messages": {
-      "zh-CN": "消息时间线",
-      "zh-TW": "訊息時間線",
-      "en": "Message timeline",
-      "ja": "メッセージの時系列"
-    },
     "noTime": {
       "zh-CN": "时间暂缺",
       "zh-TW": "暫無時間資料",
@@ -139,89 +133,17 @@
       "en": "Loading conversation…",
       "ja": "会話を読み込み中…"
     },
-    "ready": {
-      "zh-CN": "已连接",
-      "zh-TW": "已連線",
-      "en": "Connected",
-      "ja": "接続済み"
-    },
-    "stable": {
-      "zh-CN": "已稳定",
-      "zh-TW": "已穩定",
-      "en": "Stable",
-      "ja": "安定"
-    },
-    "resolving": {
-      "zh-CN": "解析中",
-      "zh-TW": "解析中",
-      "en": "Resolving",
-      "ja": "解決中"
-    },
-    "draft": {
-      "zh-CN": "草稿",
-      "zh-TW": "草稿",
-      "en": "Draft",
-      "ja": "下書き"
-    },
-    "empty": {
-      "zh-CN": "空白会话",
-      "zh-TW": "空白對話",
-      "en": "Empty chat",
-      "ja": "空のチャット"
-    },
-    "bound": {
-      "zh-CN": "已绑定",
-      "zh-TW": "已綁定",
-      "en": "Bound",
-      "ja": "関連付け済み"
-    },
-    "unbound": {
-      "zh-CN": "未绑定",
-      "zh-TW": "未綁定",
-      "en": "Unbound",
-      "ja": "未関連付け"
-    },
-    "mismatch": {
-      "zh-CN": "身份冲突",
-      "zh-TW": "身分衝突",
-      "en": "Identity mismatch",
-      "ja": "ID 不一致"
-    },
     "preview": {
       "zh-CN": "实时预览",
       "zh-TW": "即時預覽",
       "en": "Live preview",
       "ja": "ライブプレビュー"
     },
-    "tab": {
-      "zh-CN": "标签页",
-      "zh-TW": "分頁",
-      "en": "Tab",
-      "ja": "タブ"
-    },
-    "route": {
-      "zh-CN": "路由",
-      "zh-TW": "路由",
-      "en": "Route",
-      "ja": "ルート"
-    },
-    "identity": {
-      "zh-CN": "会话身份",
-      "zh-TW": "對話身分",
-      "en": "Conversation identity",
-      "ja": "会話 ID"
-    },
     "project": {
       "zh-CN": "项目",
       "zh-TW": "專案",
       "en": "Project",
       "ja": "プロジェクト"
-    },
-    "source": {
-      "zh-CN": "来源",
-      "zh-TW": "來源",
-      "en": "Source",
-      "ja": "取得元"
     },
     "status": {
       "zh-CN": "状态",
@@ -234,12 +156,6 @@
       "zh-TW": "無",
       "en": "None",
       "ja": "なし"
-    },
-    "unknown": {
-      "zh-CN": "未知",
-      "zh-TW": "未知",
-      "en": "Unknown",
-      "ja": "不明"
     },
     "user": {
       "zh-CN": "你",
@@ -426,12 +342,6 @@
       "zh-TW": "目前分組還沒有收藏對話",
       "en": "No favorites in this group",
       "ja": "このグループにはお気に入りがありません"
-    },
-    "note": {
-      "zh-CN": "备注",
-      "zh-TW": "備註",
-      "en": "Note",
-      "ja": "メモ"
     },
     "openConversation": {
       "zh-CN": "打开会话",

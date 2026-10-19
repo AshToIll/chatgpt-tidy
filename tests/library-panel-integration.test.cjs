@@ -232,7 +232,7 @@ function harness() {
         return [bookmarkId, { bookmarkId, conversationId: id, routePath: "/c/" + id, messageId: "message", excerpt: owner + " private " + id, conversationTitle: id }];
       })) });
     const favorites = normalizeFavoritesState({ revision, groups: [],
-      items: { "chat-a": { conversationId: "chat-a", routePath: "/c/chat-a", title: owner + " private favorite", note: owner + " private note" } } });
+      items: { "chat-a": { conversationId: "chat-a", routePath: "/c/chat-a", title: owner + " private favorite" } } });
     return { accountKey: owner, identity: { documentId: "document", epoch: owner === "owner-b" ? 1 : 0 },
       favorites: { ...favorites, accountKey: owner }, bookmarks: { ...bookmarks, accountKey: owner }, errors: {} };
   }

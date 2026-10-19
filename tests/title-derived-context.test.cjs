@@ -39,7 +39,6 @@ function savedBookmarks() {
   let state = bookmarks.createEmptyBookmarksState();
   for (const message of initial.messages) {
     state = bookmarks.addBookmarkFromSnapshot(state, initial, message.messageId, { groupId: "bookmark-insight", now: firstTime });
-    state.items[bookmarks.bookmarkKey("conversation-a", message.messageId)].note = `Note ${message.messageId}`;
   }
   return bookmarks.addBookmarkFromSnapshot(state, snapshot({ id: "conversation-b" }), "message-1", { now: firstTime });
 }
@@ -70,7 +69,6 @@ test("mounted messages retain their normal metadata refresh while unmounted book
   assert.equal(after.items[visibleId].conversationTitle, "New title");
   assert.equal(after.items[visibleId].excerpt, "New visible excerpt");
   assert.equal(after.items[visibleId].orderIndex, 7);
-  assert.equal(after.items[visibleId].note, before.items[visibleId].note);
   assert.equal(after.items[visibleId].groupId, before.items[visibleId].groupId);
   assert.equal(after.items[visibleId].bookmarkedAt, firstTime);
 });
@@ -117,13 +115,11 @@ test("bounded unmounted titles do not create a repeated normalization write loop
 
 test("existing favorite title propagation preserves user filing when dates are removed", () => {
   const before = favorites.upsertFavoriteFromSnapshot(favorites.createEmptyFavoritesState(), snapshot(), { groupId: "inspiration", now: firstTime });
-  before.items["conversation-a"].note = "Keep my note";
   const after = favorites.refreshFavoriteFromSnapshot(before, snapshot({ title: "Dated", messageIds: [] }), { now: nextTime });
   assert.deepEqual(plain(after.items["conversation-a"]), plain({ ...before.items["conversation-a"], title: "Dated", metadataRefreshedAt: nextTime }));
   assert.deepEqual(plain(favorites.refreshFavoriteFromSnapshot(after, snapshot({ title: "Dated", messageIds: [] }), { now: nextTime })), plain(after));
   const restored = favorites.refreshFavoriteFromSnapshot(after, snapshot({ title: "Original", messageIds: [] }), { now: nextTime });
   assert.equal(restored.items["conversation-a"].title, "Original");
-  assert.equal(restored.items["conversation-a"].note, "Keep my note");
   assert.equal(restored.items["conversation-a"].savedAt, firstTime);
   assert.equal(restored.items["conversation-a"].groupId, "inspiration");
 });

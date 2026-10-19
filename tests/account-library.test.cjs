@@ -14,11 +14,11 @@ const NOW = "2026-09-11T12:00:00.000Z";
 
 function favorite(id, overrides = {}) {
   return { conversationId: id, title: `Favorite ${id}`, routePath: `/c/${id}`,
-    savedAt: NOW, note: `Note ${id}`, groupId: "old-group", ...overrides };
+    savedAt: NOW, projectTitle: `Project ${id}`, groupId: "old-group", ...overrides };
 }
 function bookmark(id, overrides = {}) {
   return { bookmarkId: `${id}::message`, conversationId: id, messageId: "message",
-    conversationTitle: `Bookmark ${id}`, excerpt: `Excerpt ${id}`, note: `Note ${id}`,
+    conversationTitle: `Bookmark ${id}`, excerpt: `Excerpt ${id}`, projectTitle: `Project ${id}`,
     role: "assistant", routePath: `/c/${id}`, bookmarkedAt: NOW, groupId: "old-group", ...overrides };
 }
 async function setup(t) {
@@ -46,10 +46,10 @@ test("libraries reject missing or noncanonical owners before opening storage", a
 test("same conversation/message IDs and groups remain isolated across accounts and reads never write", async (t) => {
   const { db, bookmarks, favorites } = await setup(t);
   for (const [repository, item, id] of [[favorites, favorite("same"), "same"], [bookmarks, bookmark("same"), "same::message"]]) {
-    await repository.transact("owner-a", (state) => ({ ...state, items: { [id]: { ...item, note: "private A" } } }));
-    await repository.transact("owner-b", (state) => ({ ...state, items: { [id]: { ...item, note: "private B" } } }));
-    assert.equal((await repository.get("owner-a")).items[id].note, "private A");
-    assert.equal((await repository.get("owner-b")).items[id].note, "private B");
+    await repository.transact("owner-a", (state) => ({ ...state, items: { [id]: { ...item, projectTitle: "private A" } } }));
+    await repository.transact("owner-b", (state) => ({ ...state, items: { [id]: { ...item, projectTitle: "private B" } } }));
+    assert.equal((await repository.get("owner-a")).items[id].projectTitle, "private A");
+    assert.equal((await repository.get("owner-b")).items[id].projectTitle, "private B");
     assert.equal((await repository.get("owner-a")).accountKey, "owner-a");
     await assert.rejects(repository.transact("owner-a", (state) => ({ ...state, accountKey: "owner-b" })),
       (error) => error.code === "VALIDATION_ERROR");

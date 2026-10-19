@@ -17,7 +17,7 @@ const same = (a, b) => {
   return Object.keys(a).length === Object.keys(b).length && Object.keys(a).every(key => Object.hasOwn(b, key) && same(a[key], b[key]));
 };
 
-// 正常存储读取可以整理字段；导入则必须逐项无损匹配，不能截断备注或默默丢弃坏记录。
+// 导入必须逐项匹配当前数据契约；未知字段、截断和坏记录均拒绝，不保留已下线功能。
 export function validateBackupLibrary(kind, value) {
   if (!exactKeys(value, ["groups", "items"]) || !Array.isArray(value.groups) || !Array.isArray(value.items)) invalid();
   if (value.groups.length > LIBRARY_BACKUP_LIMITS.groups) throw backupError("BACKUP_TOO_LARGE");

@@ -27,17 +27,47 @@ test('note editing has no protocol, dispatcher, domain or panel entrypoint', asy
   }
   for (const file of files) {
     const source = fs.readFileSync(path.join(root, file), 'utf8');
-    assert.doesNotMatch(source, /NOTE_UPDATE|note-update|updateFavoriteNote|updateBookmarkNote/, file);
+    assert.doesNotMatch(source, /NOTE_UPDATE|note-update|updateFavoriteNote|updateBookmarkNote|MAX_(?:BOOKMARK_)?NOTE_LENGTH/, file);
+    // The paper-shaped group icon is not a data field. Only the one-time
+    // database purge may access a retired record property, and only to delete it.
+    if (file !== 'src/platform/storage/database.js') {
+      assert.doesNotMatch(source.replaceAll('GROUP_ICON_MARKUP.note', ''), /(?:\?\.)?\.note\b|\[\s*["']note["']\s*\]/, file);
+    }
     if (file.startsWith('src/app/sidepanel/')) assert.doesNotMatch(source, /searchActionEpoch/, file);
   }
 });
 
-test('saved bookmark notes remain searchable without an editing API', async () => {
+test('retired bookmark data is stripped, never searched, and active excerpts remain searchable', async () => {
   const bookmarks = await import('../src/features/bookmarks/storage/bookmarks-domain.js');
   const saved = bookmarks.normalizeBookmarksState({ ...bookmarks.createEmptyBookmarksState(), items: {
     'saved::message': { bookmarkId: 'saved::message', conversationId: 'saved', messageId: 'message',
-      routePath: '/c/saved', excerpt: 'Unrelated excerpt', conversationTitle: 'Unrelated title', note: '保留的备注 unique-note' },
+      routePath: '/c/saved', excerpt: 'Active excerpt', conversationTitle: 'Active title', note: 'retired-only-keyword' },
   } });
-  assert.equal(bookmarks.selectBookmarks(saved, { groupId: 'all', query: 'unique-note' }).length, 1);
-  assert.equal(bookmarks.selectBookmarks(saved, { groupId: 'all', query: 'missing-note' }).length, 0);
+  assert.equal(Object.hasOwn(saved.items['saved::message'], 'note'), false);
+  assert.equal(bookmarks.selectBookmarks(saved, { groupId: 'all', query: 'retired-only-keyword' }).length, 0);
+  for (const query of ['excerpt', 'title']) assert.equal(bookmarks.selectBookmarks(saved, { groupId: 'all', query }).length, 1);
+});
+
+for (const kind of ['favorites', 'bookmarks']) test(`${kind}: normal writes and backups cannot retain or restore retired fields`, async t => {
+  const { IDBFactory } = require('fake-indexeddb');
+  const { openTidyDatabase } = await import('../src/platform/storage/database.js');
+  const module = await import(`../src/features/${kind}/storage/${kind}.js`);
+  const backup = await import('../src/features/settings/storage/library-backup-domain.js');
+  const db = await openTidyDatabase(new IDBFactory()); t.after(() => db.close());
+  const repository = module[kind === 'favorites' ? 'createFavoritesRepository' : 'createBookmarksRepository']({ openDatabase: async () => db });
+  const id = kind === 'favorites' ? 'saved' : 'saved::message';
+  const item = { conversationId: 'saved', routePath: '/c/saved', title: 'Saved title',
+    bookmarkId: id, messageId: 'message', conversationTitle: 'Saved title', excerpt: 'Saved excerpt', note: 'retired-only-keyword' };
+  const saved = await repository.transact('owner', state => ({ ...state, items: { [id]: item } }));
+  assert.equal(Object.hasOwn(saved.items[id], 'note'), false);
+  assert.equal(Object.hasOwn((await repository.get('owner')).items[id], 'note'), false);
+  const stored = await new Promise((resolve, reject) => {
+    const request = db.transaction(kind).objectStore(kind).get(['owner', id]);
+    request.onsuccess = () => resolve(request.result); request.onerror = () => reject(request.error);
+  });
+  assert.equal(Object.hasOwn(stored, 'note'), false, 'The field must be absent on disk, not only in the UI');
+  const active = { groups: saved.groups, items: Object.values(saved.items) };
+  assert.doesNotThrow(() => backup.validateBackupLibrary(kind, active));
+  assert.throws(() => backup.validateBackupLibrary(kind, { ...active, items: [{ ...active.items[0], note: '' }] }),
+    error => error.code === 'BACKUP_INVALID', 'Even an empty retired field is outside the current format');
 });

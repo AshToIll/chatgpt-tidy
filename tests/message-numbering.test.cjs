@@ -113,12 +113,10 @@ test("new bookmarks keep unproven numbers null and a metadata refresh preserves 
   assert.equal(store.items["numbering::unknown"].orderNumber, null);
   // Synthetic old record only: this test never reads or migrates saved data.
   store.items["numbering::known"].orderNumber = 13;
-  store.items["numbering::known"].note = "Preserve the saved note";
   const unavailable = plain(observed);
   unavailable.messages[0].order = { index: 8, displayNumber: null, source: null };
   const refreshed = domain.refreshBookmarksFromSnapshot(store, unavailable);
   assert.equal(refreshed.items["numbering::known"].orderNumber, null);
-  assert.equal(refreshed.items["numbering::known"].note, "Preserve the saved note");
   assert.equal(refreshed.items["numbering::known"].messageId, "known");
   for (const orderNumber of [0, -1, Number.MAX_SAFE_INTEGER + 1, "13"]) {
     const malformed = plain(store); malformed.items["numbering::unknown"].orderNumber = orderNumber;

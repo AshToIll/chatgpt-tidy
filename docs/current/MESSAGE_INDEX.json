@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "version": "0.5.2",
-  "buildFingerprint": "b900aaee27c2f655edbb011f",
+  "buildFingerprint": "15b37e66efc48d38ee9942da",
   "limitations": [
     "静态文字引用不是唯一触发条件；条件以列出的函数和分支为准。",
     "无静态引用不等于未使用；动态计算键另列，不自动删除任何文案。",
@@ -596,6 +596,28 @@
           "line": 50,
           "kind": "literal-reference",
           "excerpt": "\"group-delete\": \"bookmarkGroupDeleted\", \"group-reorder\": \"groupUpdated\","
+        }
+      ]
+    },
+    {
+      "key": "bookmarkIconPaper",
+      "owner": "bookmarks",
+      "translations": {
+        "zh-CN": "纸张",
+        "zh-TW": "紙張",
+        "en": "Paper",
+        "ja": "用紙"
+      },
+      "definition": {
+        "source": "src/messages/catalogs/bookmarks.json",
+        "line": 196
+      },
+      "references": [
+        {
+          "source": "src/features/bookmarks/ui/bookmarks-view.js",
+          "line": 176,
+          "kind": "literal-reference",
+          "excerpt": "return `<div class=\"bookmark-group-overlay bookmark-icon-picker\" data-bookmark-group-overlay=\"${escapeHtml(groupId)}\" role=\"group\" aria-label=\"${escapeHtml(t(\"chooseIcon\"))}\">${BOOKMARK_GROUP_ICONS.map((icon) => `<button class=\"bookmark-icon-choice${group.icon"
         }
       ]
     },
@@ -1426,6 +1448,12 @@
           "excerpt": "createAccountStores(database, \"bookmarks\");"
         },
         {
+          "source": "src/platform/storage/database.js",
+          "line": 76,
+          "kind": "literal-reference",
+          "excerpt": "if ([\"favorites\", \"bookmarks\"].some(kind => record.key === `library:${kind}:${record.accountKey}`)) {"
+        },
+        {
           "source": "src/platform/storage/schema.js",
           "line": 12,
           "kind": "literal-reference",
@@ -1677,7 +1705,7 @@
       "references": [
         {
           "source": "src/messages/catalogs/bookmarks.json",
-          "line": 198,
+          "line": 204,
           "kind": "runtime-binding",
           "excerpt": "\"add\": \"pageBookmarkAdd\","
         }
@@ -1705,7 +1733,7 @@
         },
         {
           "source": "src/messages/catalogs/bookmarks.json",
-          "line": 201,
+          "line": 207,
           "kind": "runtime-binding",
           "excerpt": "\"failed\": \"pageBookmarkFailed\","
         }
@@ -1727,7 +1755,7 @@
       "references": [
         {
           "source": "src/messages/catalogs/bookmarks.json",
-          "line": 200,
+          "line": 206,
           "kind": "runtime-binding",
           "excerpt": "\"open\": \"pageBookmarkOpen\","
         }
@@ -1755,7 +1783,7 @@
         },
         {
           "source": "src/messages/catalogs/bookmarks.json",
-          "line": 202,
+          "line": 208,
           "kind": "runtime-binding",
           "excerpt": "\"openFailed\": \"pageBookmarkOpenFailed\""
         }
@@ -1777,7 +1805,7 @@
       "references": [
         {
           "source": "src/messages/catalogs/bookmarks.json",
-          "line": 199,
+          "line": 205,
           "kind": "runtime-binding",
           "excerpt": "\"remove\": \"pageBookmarkRemove\","
         }
@@ -1844,7 +1872,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 472
+        "line": 382
       },
       "references": [
         {
@@ -1912,12 +1940,12 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 490
+        "line": 400
       },
       "references": [
         {
           "source": "src/features/favorites/storage/favorites-domain.js",
-          "line": 9,
+          "line": 8,
           "kind": "literal-reference",
           "excerpt": "\"folder\", \"archive\", \"book\", \"briefcase\", \"bulb\", \"sparkle\", \"heart\", \"box\","
         }
@@ -1934,7 +1962,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 370
+        "line": 286
       },
       "references": [
         {
@@ -1962,12 +1990,12 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 250
+        "line": 166
       },
       "references": [
         {
           "source": "src/features/bookmarks/storage/bookmarks-domain.js",
-          "line": 86,
+          "line": 85,
           "kind": "literal-reference",
           "excerpt": "role: [\"user\", \"assistant\", \"system\", \"tool\", \"unknown\"].includes(value?.role) ? value.role : \"unknown\","
         },
@@ -2134,120 +2162,20 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 496
+        "line": 406
       },
       "references": [
         {
           "source": "src/features/favorites/storage/favorites-domain.js",
-          "line": 9,
+          "line": 8,
           "kind": "literal-reference",
           "excerpt": "\"folder\", \"archive\", \"book\", \"briefcase\", \"bulb\", \"sparkle\", \"heart\", \"box\","
         },
         {
           "source": "src/features/favorites/storage/favorites-domain.js",
-          "line": 14,
+          "line": 13,
           "kind": "literal-reference",
           "excerpt": "Object.freeze({ id: \"study\", preset: \"study\", name: \"学习\", icon: \"book\" }),"
-        }
-      ]
-    },
-    {
-      "key": "bound",
-      "owner": "common",
-      "translations": {
-        "zh-CN": "已绑定",
-        "zh-TW": "已綁定",
-        "en": "Bound",
-        "ja": "関連付け済み"
-      },
-      "definition": {
-        "source": "src/messages/catalogs/common.json",
-        "line": 172
-      },
-      "references": [
-        {
-          "source": "src/app/background/handlers/export.js",
-          "line": 77,
-          "kind": "literal-reference",
-          "excerpt": "snapshot.conversation.bindingStatus !== \"bound\""
-        },
-        {
-          "source": "src/features/bookmarks/chatgpt/bookmarks-presentation.js",
-          "line": 237,
-          "kind": "literal-reference",
-          "excerpt": "if (snapshot.conversation.bindingStatus !== \"bound\") return;"
-        },
-        {
-          "source": "src/features/export/ui/export-context-controller.js",
-          "line": 16,
-          "kind": "literal-reference",
-          "excerpt": "return Boolean(conversationId(snapshot) && snapshot?.conversation?.bindingStatus === \"bound\""
-        },
-        {
-          "source": "src/features/export/ui/export-view.js",
-          "line": 10,
-          "kind": "literal-reference",
-          "excerpt": "&& snapshot.conversation.bindingStatus === \"bound\" && snapshot.conversation.identityStatus === \"stable\");"
-        },
-        {
-          "source": "src/features/time/chatgpt/time-presentation.js",
-          "line": 151,
-          "kind": "literal-reference",
-          "excerpt": "if (item.bindingStatus !== \"bound\") continue;"
-        },
-        {
-          "source": "src/features/time/chatgpt/time-presentation.js",
-          "line": 190,
-          "kind": "literal-reference",
-          "excerpt": "if (snapshot.conversation.bindingStatus !== \"bound\") return;"
-        },
-        {
-          "source": "src/features/titles/chatgpt/title-sync.js",
-          "line": 371,
-          "kind": "literal-reference",
-          "excerpt": "|| conversation.bindingStatus !== \"bound\") return conversation;"
-        },
-        {
-          "source": "src/features/titles/model/title-context.js",
-          "line": 11,
-          "kind": "literal-reference",
-          "excerpt": "|| conversation?.bindingStatus !== \"bound\" || conversation.identityStatus !== \"stable\""
-        },
-        {
-          "source": "src/platform/chatgpt/binding.js",
-          "line": 9,
-          "kind": "literal-reference",
-          "excerpt": "BOUND: \"bound\","
-        },
-        {
-          "source": "src/platform/snapshot.js",
-          "line": 10,
-          "kind": "literal-reference",
-          "excerpt": "const BINDING_STATUS = Object.freeze([\"unbound\", \"route-only\", \"bound\", \"mismatch\"]);"
-        },
-        {
-          "source": "src/platform/snapshot.js",
-          "line": 91,
-          "kind": "literal-reference",
-          "excerpt": "if (conversation?.bindingStatus !== \"bound\") {"
-        },
-        {
-          "source": "src/platform/snapshot.js",
-          "line": 159,
-          "kind": "literal-reference",
-          "excerpt": "if (snapshot?.conversation?.bindingStatus !== \"bound\") {"
-        },
-        {
-          "source": "src/platform/snapshot.js",
-          "line": 173,
-          "kind": "literal-reference",
-          "excerpt": "snapshot.conversation.bindingStatus === \"bound\" &&"
-        },
-        {
-          "source": "src/platform/snapshot.js",
-          "line": 189,
-          "kind": "literal-reference",
-          "excerpt": "conversation.bindingStatus === \"bound\" &&"
         }
       ]
     },
@@ -2262,12 +2190,12 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 526
+        "line": 436
       },
       "references": [
         {
           "source": "src/features/favorites/storage/favorites-domain.js",
-          "line": 9,
+          "line": 8,
           "kind": "literal-reference",
           "excerpt": "\"folder\", \"archive\", \"book\", \"briefcase\", \"bulb\", \"sparkle\", \"heart\", \"box\","
         }
@@ -2284,18 +2212,18 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 502
+        "line": 412
       },
       "references": [
         {
           "source": "src/features/favorites/storage/favorites-domain.js",
-          "line": 9,
+          "line": 8,
           "kind": "literal-reference",
           "excerpt": "\"folder\", \"archive\", \"book\", \"briefcase\", \"bulb\", \"sparkle\", \"heart\", \"box\","
         },
         {
           "source": "src/features/favorites/storage/favorites-domain.js",
-          "line": 15,
+          "line": 14,
           "kind": "literal-reference",
           "excerpt": "Object.freeze({ id: \"work\", preset: \"work\", name: \"工作\", icon: \"briefcase\" }),"
         }
@@ -2312,12 +2240,12 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 508
+        "line": 418
       },
       "references": [
         {
           "source": "src/features/favorites/storage/favorites-domain.js",
-          "line": 9,
+          "line": 8,
           "kind": "literal-reference",
           "excerpt": "\"folder\", \"archive\", \"book\", \"briefcase\", \"bulb\", \"sparkle\", \"heart\", \"box\","
         }
@@ -2334,7 +2262,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 310
+        "line": 226
       },
       "references": [
         {
@@ -2452,7 +2380,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 322
+        "line": 238
       },
       "references": [
         {
@@ -2480,7 +2408,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 568
+        "line": 478
       },
       "references": [
         {
@@ -2524,7 +2452,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 478
+        "line": 388
       },
       "references": [
         {
@@ -2586,7 +2514,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 466
+        "line": 376
       },
       "references": [
         {
@@ -2650,7 +2578,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 304
+        "line": 220
       },
       "references": [
         {
@@ -2854,7 +2782,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 532
+        "line": 442
       },
       "references": [
         {
@@ -2906,7 +2834,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 412
+        "line": 328
       },
       "references": [
         {
@@ -2934,7 +2862,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 346
+        "line": 262
       },
       "references": [
         {
@@ -2986,7 +2914,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 352
+        "line": 268
       },
       "references": [
         {
@@ -3008,7 +2936,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 376
+        "line": 292
       },
       "references": [
         {
@@ -3036,7 +2964,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 328
+        "line": 244
       },
       "references": [
         {
@@ -3054,80 +2982,6 @@
       ]
     },
     {
-      "key": "draft",
-      "owner": "common",
-      "translations": {
-        "zh-CN": "草稿",
-        "zh-TW": "草稿",
-        "en": "Draft",
-        "ja": "下書き"
-      },
-      "definition": {
-        "source": "src/messages/catalogs/common.json",
-        "line": 160
-      },
-      "references": [
-        {
-          "source": "src/features/export/ui/export-selection.js",
-          "line": 104,
-          "kind": "literal-reference",
-          "excerpt": "draft = basketModel.toggleDraft(draft, id); emit(\"draft\"); return true;"
-        },
-        {
-          "source": "src/features/export/ui/export-selection.js",
-          "line": 108,
-          "kind": "literal-reference",
-          "excerpt": "draft = basketModel.selectDraftRange(basket, draft, ids, candidates); emit(\"draft\"); return true;"
-        },
-        {
-          "source": "src/platform/chatgpt/route.js",
-          "line": 65,
-          "kind": "literal-reference",
-          "excerpt": "? \"draft\""
-        },
-        {
-          "source": "src/platform/snapshot.js",
-          "line": 8,
-          "kind": "literal-reference",
-          "excerpt": "const IDENTITY_STATUS = Object.freeze([\"stable\", \"resolving\", \"draft\", \"empty\", \"unavailable\"]);"
-        }
-      ]
-    },
-    {
-      "key": "empty",
-      "owner": "common",
-      "translations": {
-        "zh-CN": "空白会话",
-        "zh-TW": "空白對話",
-        "en": "Empty chat",
-        "ja": "空のチャット"
-      },
-      "definition": {
-        "source": "src/messages/catalogs/common.json",
-        "line": 166
-      },
-      "references": [
-        {
-          "source": "src/platform/chatgpt/route.js",
-          "line": 68,
-          "kind": "literal-reference",
-          "excerpt": "? \"empty\""
-        },
-        {
-          "source": "src/platform/chatgpt/snapshot-projection.js",
-          "line": 87,
-          "kind": "literal-reference",
-          "excerpt": "? \"empty\""
-        },
-        {
-          "source": "src/platform/snapshot.js",
-          "line": 8,
-          "kind": "literal-reference",
-          "excerpt": "const IDENTITY_STATUS = Object.freeze([\"stable\", \"resolving\", \"draft\", \"empty\", \"unavailable\"]);"
-        }
-      ]
-    },
-    {
       "key": "emptyGroup",
       "owner": "common",
       "translations": {
@@ -3138,7 +2992,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 424
+        "line": 340
       },
       "references": [
         {
@@ -3160,12 +3014,12 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 562
+        "line": 472
       },
       "references": [
         {
           "source": "src/features/bookmarks/storage/bookmarks-domain.js",
-          "line": 9,
+          "line": 8,
           "kind": "literal-reference",
           "excerpt": "\"quote\", \"pin\", \"highlighter\", \"note\", \"flag\", \"chat-bubble\", \"text-mark\", \"sparkle\","
         }
@@ -3182,24 +3036,24 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 484
+        "line": 394
       },
       "references": [
         {
           "source": "src/features/favorites/storage/favorites-domain.js",
-          "line": 9,
+          "line": 8,
           "kind": "literal-reference",
           "excerpt": "\"folder\", \"archive\", \"book\", \"briefcase\", \"bulb\", \"sparkle\", \"heart\", \"box\","
         },
         {
           "source": "src/features/favorites/storage/favorites-domain.js",
-          "line": 59,
+          "line": 58,
           "kind": "literal-reference",
           "excerpt": "icon: GROUP_ICONS.includes(value.icon) ? value.icon : \"folder\","
         },
         {
           "source": "src/features/favorites/storage/favorites-domain.js",
-          "line": 301,
+          "line": 296,
           "kind": "literal-reference",
           "excerpt": "next.groups.push({ id, name: cleanName, icon: \"folder\", preset: null, order: next.groups.length, createdAt: timestamp, updatedAt: timestamp });"
         }
@@ -3216,7 +3070,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 448
+        "line": 358
       },
       "references": [
         {
@@ -3244,7 +3098,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 460
+        "line": 370
       },
       "references": [
         {
@@ -3266,7 +3120,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 298
+        "line": 214
       },
       "references": [
         {
@@ -3306,7 +3160,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 598
+        "line": 508
       },
       "references": [
         {
@@ -3358,7 +3212,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 274
+        "line": 190
       },
       "references": [
         {
@@ -3404,7 +3258,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 454
+        "line": 364
       },
       "references": [
         {
@@ -3444,18 +3298,18 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 520
+        "line": 430
       },
       "references": [
         {
           "source": "src/features/favorites/storage/favorites-domain.js",
-          "line": 9,
+          "line": 8,
           "kind": "literal-reference",
           "excerpt": "\"folder\", \"archive\", \"book\", \"briefcase\", \"bulb\", \"sparkle\", \"heart\", \"box\","
         },
         {
           "source": "src/features/favorites/storage/favorites-domain.js",
-          "line": 12,
+          "line": 11,
           "kind": "literal-reference",
           "excerpt": "Object.freeze({ id: \"keepsake\", preset: \"keepsake\", name: \"留念\", icon: \"heart\" }),"
         }
@@ -3472,48 +3326,14 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 556
+        "line": 466
       },
       "references": [
         {
           "source": "src/features/bookmarks/storage/bookmarks-domain.js",
-          "line": 9,
+          "line": 8,
           "kind": "literal-reference",
           "excerpt": "\"quote\", \"pin\", \"highlighter\", \"note\", \"flag\", \"chat-bubble\", \"text-mark\", \"sparkle\","
-        }
-      ]
-    },
-    {
-      "key": "identity",
-      "owner": "common",
-      "translations": {
-        "zh-CN": "会话身份",
-        "zh-TW": "對話身分",
-        "en": "Conversation identity",
-        "ja": "会話 ID"
-      },
-      "definition": {
-        "source": "src/messages/catalogs/common.json",
-        "line": 208
-      },
-      "references": [
-        {
-          "source": "src/features/titles/background/title-service.js",
-          "line": 77,
-          "kind": "literal-reference",
-          "excerpt": "\"id\", \"kind\", \"conversationId\", \"ownerTabId\", \"ownershipKey\", \"identity\", \"createdAtMs\", \"previewContextId\","
-        },
-        {
-          "source": "src/platform/library/content/library-client.js",
-          "line": 220,
-          "kind": "literal-reference",
-          "excerpt": "diagnostic.record(\"identity\", null, observedIdentity);"
-        },
-        {
-          "source": "src/platform/library/ui/library-controller.js",
-          "line": 253,
-          "kind": "literal-reference",
-          "excerpt": "diagnostic.record(\"identity\", null, observedIdentity);"
         }
       ]
     },
@@ -3528,7 +3348,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 382
+        "line": 298
       },
       "references": [
         {
@@ -3556,7 +3376,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 394
+        "line": 310
       },
       "references": [
         {
@@ -3670,7 +3490,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 334
+        "line": 250
       },
       "references": [
         {
@@ -3688,28 +3508,6 @@
       ]
     },
     {
-      "key": "messages",
-      "owner": "common",
-      "translations": {
-        "zh-CN": "消息时间线",
-        "zh-TW": "訊息時間線",
-        "en": "Message timeline",
-        "ja": "メッセージの時系列"
-      },
-      "definition": {
-        "source": "src/messages/catalogs/common.json",
-        "line": 3
-      },
-      "references": [
-        {
-          "source": "src/platform/snapshot.js",
-          "line": 141,
-          "kind": "literal-reference",
-          "excerpt": "if (!Array.isArray(snapshot?.messages)) errors.push(\"messages\");"
-        }
-      ]
-    },
-    {
       "key": "messagesCount",
       "owner": "common",
       "translations": {
@@ -3720,7 +3518,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 268
+        "line": 184
       },
       "references": [
         {
@@ -3748,12 +3546,12 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 538
+        "line": 448
       },
       "references": [
         {
           "source": "src/features/bookmarks/storage/bookmarks-domain.js",
-          "line": 18,
+          "line": 17,
           "kind": "literal-reference",
           "excerpt": "export const BOOKMARK_SORT_FIELDS = Object.freeze([\"bookmarkedAt\", \"messageTimestamp\"]);"
         },
@@ -3778,34 +3576,6 @@
       ]
     },
     {
-      "key": "mismatch",
-      "owner": "common",
-      "translations": {
-        "zh-CN": "身份冲突",
-        "zh-TW": "身分衝突",
-        "en": "Identity mismatch",
-        "ja": "ID 不一致"
-      },
-      "definition": {
-        "source": "src/messages/catalogs/common.json",
-        "line": 184
-      },
-      "references": [
-        {
-          "source": "src/platform/chatgpt/binding.js",
-          "line": 10,
-          "kind": "literal-reference",
-          "excerpt": "MISMATCH: \"mismatch\","
-        },
-        {
-          "source": "src/platform/snapshot.js",
-          "line": 10,
-          "kind": "literal-reference",
-          "excerpt": "const BINDING_STATUS = Object.freeze([\"unbound\", \"route-only\", \"bound\", \"mismatch\"]);"
-        }
-      ]
-    },
-    {
       "key": "moveToGroup",
       "owner": "common",
       "translations": {
@@ -3816,7 +3586,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 604
+        "line": 514
       },
       "references": [
         {
@@ -3850,7 +3620,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 130
+        "line": 124
       },
       "references": [
         {
@@ -3872,7 +3642,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 286
+        "line": 202
       },
       "references": [
         {
@@ -3906,7 +3676,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 292
+        "line": 208
       },
       "references": [
         {
@@ -3934,7 +3704,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 406
+        "line": 322
       },
       "references": [
         {
@@ -3962,7 +3732,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 232
+        "line": 154
       },
       "references": [
         {
@@ -4010,28 +3780,6 @@
       ]
     },
     {
-      "key": "note",
-      "owner": "common",
-      "translations": {
-        "zh-CN": "备注",
-        "zh-TW": "備註",
-        "en": "Note",
-        "ja": "メモ"
-      },
-      "definition": {
-        "source": "src/messages/catalogs/common.json",
-        "line": 430
-      },
-      "references": [
-        {
-          "source": "src/features/bookmarks/storage/bookmarks-domain.js",
-          "line": 9,
-          "kind": "literal-reference",
-          "excerpt": "\"quote\", \"pin\", \"highlighter\", \"note\", \"flag\", \"chat-bubble\", \"text-mark\", \"sparkle\","
-        }
-      ]
-    },
-    {
       "key": "noTime",
       "owner": "common",
       "translations": {
@@ -4042,7 +3790,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 124
+        "line": 118
       },
       "references": [
         {
@@ -4076,7 +3824,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 436
+        "line": 346
       },
       "references": [
         {
@@ -4116,7 +3864,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 592
+        "line": 502
       },
       "references": [
         {
@@ -4138,7 +3886,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 388
+        "line": 304
       },
       "references": [
         {
@@ -4172,18 +3920,18 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 550
+        "line": 460
       },
       "references": [
         {
           "source": "src/features/bookmarks/storage/bookmarks-domain.js",
-          "line": 9,
+          "line": 8,
           "kind": "literal-reference",
           "excerpt": "\"quote\", \"pin\", \"highlighter\", \"note\", \"flag\", \"chat-bubble\", \"text-mark\", \"sparkle\","
         },
         {
           "source": "src/features/bookmarks/storage/bookmarks-domain.js",
-          "line": 16,
+          "line": 15,
           "kind": "literal-reference",
           "excerpt": "Object.freeze({ id: \"bookmark-todo\", preset: \"bookmark-todo\", name: \"待回看\", icon: \"pin\" }),"
         }
@@ -4200,7 +3948,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 190
+        "line": 136
       },
       "references": [
         {
@@ -4534,7 +4282,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 400
+        "line": 316
       },
       "references": [
         {
@@ -4562,7 +4310,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 214
+        "line": 142
       },
       "references": [
         {
@@ -4650,30 +4398,30 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 544
+        "line": 454
       },
       "references": [
         {
           "source": "src/features/bookmarks/storage/bookmarks-domain.js",
-          "line": 9,
+          "line": 8,
           "kind": "literal-reference",
           "excerpt": "\"quote\", \"pin\", \"highlighter\", \"note\", \"flag\", \"chat-bubble\", \"text-mark\", \"sparkle\","
         },
         {
           "source": "src/features/bookmarks/storage/bookmarks-domain.js",
-          "line": 14,
+          "line": 13,
           "kind": "literal-reference",
           "excerpt": "Object.freeze({ id: \"bookmark-quote\", preset: \"bookmark-quote\", name: \"摘录\", icon: \"quote\" }),"
         },
         {
           "source": "src/features/bookmarks/storage/bookmarks-domain.js",
-          "line": 63,
+          "line": 62,
           "kind": "literal-reference",
           "excerpt": "icon: BOOKMARK_GROUP_ICONS.includes(value.icon) ? value.icon : \"quote\","
         },
         {
           "source": "src/features/bookmarks/storage/bookmarks-domain.js",
-          "line": 300,
+          "line": 296,
           "kind": "literal-reference",
           "excerpt": "next.groups.push({ id, name: cleanName, icon: \"quote\", preset: null, order: next.groups.length, createdAt: timestamp, updatedAt: timestamp });"
         }
@@ -4778,7 +4526,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 136
+        "line": 130
       },
       "references": [
         {
@@ -4786,592 +4534,6 @@
           "line": 77,
           "kind": "literal-reference",
           "excerpt": "waiting(\"bookmarks\", model.accountKey ? \"readingConversation\" : \"libraryVerifyingAccount\"); return;"
-        }
-      ]
-    },
-    {
-      "key": "ready",
-      "owner": "common",
-      "translations": {
-        "zh-CN": "已连接",
-        "zh-TW": "已連線",
-        "en": "Connected",
-        "ja": "接続済み"
-      },
-      "definition": {
-        "source": "src/messages/catalogs/common.json",
-        "line": 142
-      },
-      "references": [
-        {
-          "source": "src/app/background/title-catalog-observer.js",
-          "line": 19,
-          "kind": "literal-reference",
-          "excerpt": "await identity.acceptEvent({ accountKey: change.ownerAccountKey, epoch: change.epoch, phase: \"ready\" }, sender);"
-        },
-        {
-          "source": "src/app/background/title-catalog-observer.js",
-          "line": 22,
-          "kind": "literal-reference",
-          "excerpt": "return current?.phase === \"ready\" && current.documentId === sender.documentId"
-        },
-        {
-          "source": "src/app/page/isolated.js",
-          "line": 23,
-          "kind": "literal-reference",
-          "excerpt": "document.documentElement.dataset.tidyIsolated = \"ready\";"
-        },
-        {
-          "source": "src/app/page/main-world.js",
-          "line": 19,
-          "kind": "literal-reference",
-          "excerpt": "global.document.documentElement.dataset.tidyMainWorld = \"ready\";"
-        },
-        {
-          "source": "src/app/page/request-router.js",
-          "line": 32,
-          "kind": "literal-reference",
-          "excerpt": "|| identity.phase !== \"ready\" || identity.accountKey !== expected.accountKey || identity.epoch !== expected.epoch) {"
-        },
-        {
-          "source": "src/app/sidepanel/navigation-coordinator.js",
-          "line": 13,
-          "kind": "literal-reference",
-          "excerpt": "if (phase() !== \"ready\") {"
-        },
-        {
-          "source": "src/app/sidepanel/panel.js",
-          "line": 311,
-          "kind": "literal-reference",
-          "excerpt": "const wasReady = state.pageSession.phase === \"ready\";"
-        },
-        {
-          "source": "src/app/sidepanel/panel.js",
-          "line": 313,
-          "kind": "literal-reference",
-          "excerpt": "if (next.phase !== \"ready\") {"
-        },
-        {
-          "source": "src/features/export/background/export-job-service.js",
-          "line": 91,
-          "kind": "literal-reference",
-          "excerpt": "if (running.state === 'ready') scheduleDownload(record.id, running);"
-        },
-        {
-          "source": "src/features/export/background/export-job-service.js",
-          "line": 191,
-          "kind": "literal-reference",
-          "excerpt": "if (message.type === 'ready') scheduleDownload(record.id, message);"
-        },
-        {
-          "source": "src/features/export/background/export-job-service.js",
-          "line": 226,
-          "kind": "literal-reference",
-          "excerpt": "if (record?.owner.tabId === tabId && (identity?.phase !== 'ready' || identity.accountKey !== record.owner.accountKey"
-        },
-        {
-          "source": "src/features/export/engine/job-worker.js",
-          "line": 37,
-          "kind": "literal-reference",
-          "excerpt": "postMessage({ type: 'ready', result: { bytes: result.bytes, outputName: result.outputName, mimeType: result.mimeType,"
-        },
-        {
-          "source": "src/features/export/engine/offscreen.js",
-          "line": 13,
-          "kind": "literal-reference",
-          "excerpt": "if (current && ['generating', 'ready'].includes(current.state)) throw new Error('Export host is busy');"
-        },
-        {
-          "source": "src/features/export/engine/offscreen.js",
-          "line": 29,
-          "kind": "literal-reference",
-          "excerpt": "} else if (data.type === 'ready') {"
-        },
-        {
-          "source": "src/features/export/engine/offscreen.js",
-          "line": 33,
-          "kind": "literal-reference",
-          "excerpt": "current = { id, state: 'ready', blobUrl, warnings };"
-        },
-        {
-          "source": "src/features/export/engine/offscreen.js",
-          "line": 34,
-          "kind": "literal-reference",
-          "excerpt": "void publish({ type: 'ready', blobUrl, warnings });"
-        },
-        {
-          "source": "src/features/titles/background/title-batch-service.js",
-          "line": 14,
-          "kind": "literal-reference",
-          "excerpt": "const RETIRED_READ_ONLY_STATUSES = new Set([\"unread\", \"ready\", \"skipped\"]);"
-        },
-        {
-          "source": "src/features/titles/background/title-batch-service.js",
-          "line": 219,
-          "kind": "literal-reference",
-          "excerpt": "item.status = item.plan.canApply && !item.plan.noOp ? \"ready\" : \"skipped\";"
-        },
-        {
-          "source": "src/features/titles/background/title-batch-service.js",
-          "line": 278,
-          "kind": "literal-reference",
-          "excerpt": "if (job.items.some(item => !item.settled && [\"ready\", \"skipped\"].includes(item.status)"
-        },
-        {
-          "source": "src/features/titles/background/title-batch-service.js",
-          "line": 294,
-          "kind": "literal-reference",
-          "excerpt": "if (!item.settled && [\"ready\", \"skipped\"].includes(item.status) && item.current) recipe(next, item, payload.decisions || {});"
-        },
-        {
-          "source": "src/features/titles/background/title-batch-service.js",
-          "line": 311,
-          "kind": "literal-reference",
-          "excerpt": "&& [\"ready\", \"skipped\"].includes(item.status)))) {"
-        },
-        {
-          "source": "src/features/titles/background/title-batch-service.js",
-          "line": 355,
-          "kind": "literal-reference",
-          "excerpt": "const hasWrites = job.items.some((item) => item.status === \"ready\");"
-        },
-        {
-          "source": "src/features/titles/background/title-batch-service.js",
-          "line": 425,
-          "kind": "literal-reference",
-          "excerpt": "const item = job.items.find((candidate) => candidate.status === \"ready\");"
-        },
-        {
-          "source": "src/features/titles/background/title-batch-service.js",
-          "line": 476,
-          "kind": "literal-reference",
-          "excerpt": "else { job.phase = job.items.some((candidate) => candidate.status === \"ready\") ? \"applying\" : \"result\";"
-        },
-        {
-          "source": "src/features/titles/background/title-batch-service.js",
-          "line": 509,
-          "kind": "literal-reference",
-          "excerpt": "job.phase = job.items.some(unknown) || job.items.some((candidate) => candidate.status === \"ready\") ? \"paused\" : \"result\";"
-        },
-        {
-          "source": "src/features/titles/chatgpt/title-sync.js",
-          "line": 27,
-          "kind": "literal-reference",
-          "excerpt": "return identity?.phase === \"ready\""
-        },
-        {
-          "source": "src/features/titles/chatgpt/title-sync.js",
-          "line": 36,
-          "kind": "literal-reference",
-          "excerpt": "if (identity.phase !== \"ready\" || (accountKey && !matchesIdentity(identity))) revoke();"
-        },
-        {
-          "source": "src/features/titles/storage/title-operations.js",
-          "line": 25,
-          "kind": "literal-reference",
-          "excerpt": "[\"ready\", \"skipped\"].includes(item?.status) && item.settled === false && !hasWriteEvidence(item));"
-        },
-        {
-          "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 9,
-          "kind": "literal-reference",
-          "excerpt": "const STATUSES = [\"ready\", \"skipped\", \"pending\", \"accepted\", \"verified\", \"conflict\", \"failed\", \"uncertain\"];"
-        },
-        {
-          "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 162,
-          "kind": "literal-reference",
-          "excerpt": "const editable = (item) => !item.settled && [\"ready\", \"skipped\"].includes(item.status);"
-        },
-        {
-          "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 174,
-          "kind": "literal-reference",
-          "excerpt": "&& !needsReconciliation() && state.batch.items.some((item) => [\"ready\", \"failed\", \"conflict\"].includes(item.status)));"
-        },
-        {
-          "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 741,
-          "kind": "literal-reference",
-          "excerpt": "const waiting = items.filter(item => item.status === \"ready\").length;"
-        },
-        {
-          "source": "src/platform/chatgpt/api.js",
-          "line": 71,
-          "kind": "literal-reference",
-          "excerpt": "const changed = force || libraryIdentity.phase === \"ready\";"
-        },
-        {
-          "source": "src/platform/chatgpt/api.js",
-          "line": 163,
-          "kind": "literal-reference",
-          "excerpt": "if (libraryIdentity.accountKey !== accountKey || libraryIdentity.phase !== \"ready\") {"
-        },
-        {
-          "source": "src/platform/chatgpt/api.js",
-          "line": 170,
-          "kind": "literal-reference",
-          "excerpt": "libraryIdentity = { accountKey, epoch: libraryIdentity.epoch + 1, phase: \"ready\" };"
-        },
-        {
-          "source": "src/platform/chatgpt/api.js",
-          "line": 206,
-          "kind": "literal-reference",
-          "excerpt": "if (identity.phase !== \"ready\" || !catalogAccountKey) return null;"
-        },
-        {
-          "source": "src/platform/chatgpt/api.js",
-          "line": 231,
-          "kind": "literal-reference",
-          "excerpt": "|| identity.phase !== \"ready\" || identity.epoch !== ticket.epoch || identity.accountKey !== ticket.accountKey"
-        },
-        {
-          "source": "src/platform/chatgpt/api.js",
-          "line": 318,
-          "kind": "literal-reference",
-          "excerpt": "if (libraryIdentity.phase === \"ready\") return { accountKey: libraryIdentity.accountKey, epoch: libraryIdentity.epoch };"
-        },
-        {
-          "source": "src/platform/chatgpt/api.js",
-          "line": 340,
-          "kind": "literal-reference",
-          "excerpt": "if (session && libraryIdentity.phase === \"ready\" && sessionOwner(session, workspace) !== libraryIdentity.accountKey) {"
-        },
-        {
-          "source": "src/platform/chatgpt/api.js",
-          "line": 343,
-          "kind": "literal-reference",
-          "excerpt": "if (libraryIdentity.phase !== \"ready\") {"
-        },
-        {
-          "source": "src/platform/chatgpt/api.js",
-          "line": 349,
-          "kind": "literal-reference",
-          "excerpt": "if (identityBoundary === boundary && libraryIdentity.phase !== \"ready\") libraryFailure = error;"
-        },
-        {
-          "source": "src/platform/chatgpt/api.js",
-          "line": 476,
-          "kind": "literal-reference",
-          "excerpt": "if (checkLibraryIdentity().phase === \"ready\") publishIdentity();"
-        },
-        {
-          "source": "src/platform/chatgpt/page-navigation-runtime.js",
-          "line": 32,
-          "kind": "literal-reference",
-          "excerpt": "return state === \"ready\";"
-        },
-        {
-          "source": "src/platform/chatgpt/snapshot-projection.js",
-          "line": 91,
-          "kind": "literal-reference",
-          "excerpt": "? \"ready\""
-        },
-        {
-          "source": "src/platform/library/background/library-identity.js",
-          "line": 76,
-          "kind": "literal-reference",
-          "excerpt": "if (record.phase === \"ready\") return admitOwner(tab.id, record);"
-        },
-        {
-          "source": "src/platform/library/background/library-identity.js",
-          "line": 114,
-          "kind": "literal-reference",
-          "excerpt": "&& record.phase === \"ready\" && record.accountKey === accountKey && record.epoch > epoch"
-        },
-        {
-          "source": "src/platform/library/background/library-identity.js",
-          "line": 124,
-          "kind": "literal-reference",
-          "excerpt": "|| (epoch === record.epoch && record.phase === \"ready\" && accountKey !== record.accountKey)) {"
-        },
-        {
-          "source": "src/platform/library/background/library-identity.js",
-          "line": 129,
-          "kind": "literal-reference",
-          "excerpt": "Object.assign(record, { accountKey, lastReadyAccountKey: accountKey, epoch, phase: \"ready\", transition: null });"
-        },
-        {
-          "source": "src/platform/library/background/library-identity.js",
-          "line": 140,
-          "kind": "literal-reference",
-          "excerpt": "if (!lease || lease.tabId !== context.tab.id || record !== lease.record || record.phase !== \"ready\" || record.accountKey !== context.accountKey"
-        },
-        {
-          "source": "src/platform/library/background/library-identity.js",
-          "line": 152,
-          "kind": "literal-reference",
-          "excerpt": "|| ![\"ready\", \"unavailable\"].includes(payload.phase)) return;"
-        },
-        {
-          "source": "src/platform/library/background/library-identity.js",
-          "line": 154,
-          "kind": "literal-reference",
-          "excerpt": "if (payload.phase === \"ready\") {"
-        },
-        {
-          "source": "src/platform/library/background/library-identity.js",
-          "line": 174,
-          "kind": "literal-reference",
-          "excerpt": "|| (payload.epoch === record.epoch && record.phase === \"ready\" && record.accountKey !== accountKey)) return;"
-        },
-        {
-          "source": "src/platform/library/background/library-identity.js",
-          "line": 187,
-          "kind": "literal-reference",
-          "excerpt": "|| (payload.phase === \"ready\" && record.phase === \"ready\" && payload.epoch !== record.epoch)"
-        },
-        {
-          "source": "src/platform/library/background/library-identity.js",
-          "line": 187,
-          "kind": "literal-reference",
-          "excerpt": "|| (payload.phase === \"ready\" && record.phase === \"ready\" && payload.epoch !== record.epoch)"
-        },
-        {
-          "source": "src/platform/library/background/library-identity.js",
-          "line": 189,
-          "kind": "literal-reference",
-          "excerpt": "|| (payload.phase === \"ready\" && record.lastReadyAccountKey && record.lastReadyAccountKey !== accountKey)) {"
-        },
-        {
-          "source": "src/platform/library/background/library-identity.js",
-          "line": 192,
-          "kind": "literal-reference",
-          "excerpt": "if (payload.phase === \"ready\") record.lastReadyAccountKey = accountKey;"
-        },
-        {
-          "source": "src/platform/library/background/library-identity.js",
-          "line": 194,
-          "kind": "literal-reference",
-          "excerpt": "if (record.phase !== \"ready\") libraryAccountReads.delete(sender.tab.id);"
-        },
-        {
-          "source": "src/platform/library/content/library-client.js",
-          "line": 127,
-          "kind": "literal-reference",
-          "excerpt": "|| (sameIdentity(observedIdentity, identity) && observedIdentity.phase === \"ready\""
-        },
-        {
-          "source": "src/platform/library/content/library-client.js",
-          "line": 148,
-          "kind": "literal-reference",
-          "excerpt": "observedIdentity = { ...identity, phase: \"ready\", accountKey: next.accountKey };"
-        },
-        {
-          "source": "src/platform/library/content/library-client.js",
-          "line": 210,
-          "kind": "literal-reference",
-          "excerpt": "if (!identity || ![\"ready\", \"unavailable\"].includes(event.phase)"
-        },
-        {
-          "source": "src/platform/library/content/library-client.js",
-          "line": 211,
-          "kind": "literal-reference",
-          "excerpt": "|| (event.phase === \"ready\" && !validAccountKey(event.accountKey))) return;"
-        },
-        {
-          "source": "src/platform/library/content/library-client.js",
-          "line": 214,
-          "kind": "literal-reference",
-          "excerpt": "const accountKey = event.phase === \"ready\" ? event.accountKey : null;"
-        },
-        {
-          "source": "src/platform/library/content/library-client.js",
-          "line": 222,
-          "kind": "literal-reference",
-          "excerpt": "&& (previous.phase !== \"ready\" || previous.accountKey === event.accountKey));"
-        },
-        {
-          "source": "src/platform/library/content/library-client.js",
-          "line": 223,
-          "kind": "literal-reference",
-          "excerpt": "if (event.phase === \"ready\" && !library && !inFlight && failedInitial && sameInitialization) {"
-        },
-        {
-          "source": "src/platform/library/content/library-client.js",
-          "line": 229,
-          "kind": "literal-reference",
-          "excerpt": "if (event.phase === \"ready\" && library?.accountKey === event.accountKey && sameIdentity(library.identity, identity)) return;"
-        },
-        {
-          "source": "src/platform/library/content/library-client.js",
-          "line": 241,
-          "kind": "literal-reference",
-          "excerpt": "const firstOrSameReady = previous?.phase !== \"ready\""
-        },
-        {
-          "source": "src/platform/library/content/library-client.js",
-          "line": 276,
-          "kind": "literal-reference",
-          "excerpt": "if (library && (event?.phase === \"unavailable\" || (event?.phase === \"ready\""
-        },
-        {
-          "source": "src/platform/library/library-hydration.js",
-          "line": 7,
-          "kind": "literal-reference",
-          "excerpt": "&& a.epoch === b.epoch && a.accountKey === b.accountKey && b.phase === \"ready\");"
-        },
-        {
-          "source": "src/platform/library/library-hydration.js",
-          "line": 16,
-          "kind": "literal-reference",
-          "excerpt": "return isDisconnected(error) && ready?.phase === \"ready\" && same(ready, observed) ? ready : null;"
-        },
-        {
-          "source": "src/platform/library/ui/library-controller.js",
-          "line": 184,
-          "kind": "literal-reference",
-          "excerpt": "|| (sameIdentity(observedIdentity, identity) && observedIdentity.phase === \"ready\""
-        },
-        {
-          "source": "src/platform/library/ui/library-controller.js",
-          "line": 203,
-          "kind": "literal-reference",
-          "excerpt": "observedIdentity = { ...identity, phase: \"ready\", accountKey: result.accountKey };"
-        },
-        {
-          "source": "src/platform/library/ui/library-controller.js",
-          "line": 243,
-          "kind": "literal-reference",
-          "excerpt": "if (!identity || ![\"ready\", \"unavailable\"].includes(event.phase)"
-        },
-        {
-          "source": "src/platform/library/ui/library-controller.js",
-          "line": 244,
-          "kind": "literal-reference",
-          "excerpt": "|| (event.phase === \"ready\" && (typeof event.accountKey !== \"string\" || !event.accountKey))) return;"
-        },
-        {
-          "source": "src/platform/library/ui/library-controller.js",
-          "line": 247,
-          "kind": "literal-reference",
-          "excerpt": "const accountKey = event.phase === \"ready\" ? event.accountKey : null;"
-        },
-        {
-          "source": "src/platform/library/ui/library-controller.js",
-          "line": 258,
-          "kind": "literal-reference",
-          "excerpt": "&& (previous.phase !== \"ready\" || previous.accountKey === event.accountKey));"
-        },
-        {
-          "source": "src/platform/library/ui/library-controller.js",
-          "line": 259,
-          "kind": "literal-reference",
-          "excerpt": "if (event.phase === \"ready\" && !model.accountKey && !pending && failedInitial && sameInitialization) {"
-        },
-        {
-          "source": "src/platform/library/ui/library-controller.js",
-          "line": 269,
-          "kind": "literal-reference",
-          "excerpt": "if (event.phase === \"ready\" && model.accountKey === event.accountKey && sameIdentity(model.identity, identity)) return;"
-        },
-        {
-          "source": "src/platform/library/ui/library-controller.js",
-          "line": 295,
-          "kind": "literal-reference",
-          "excerpt": "const firstOrSameReady = previous?.phase !== \"ready\""
-        },
-        {
-          "source": "src/platform/navigation/background/worker-navigation.js",
-          "line": 151,
-          "kind": "literal-reference",
-          "excerpt": "if (record?.phase === \"ready\") {"
-        },
-        {
-          "source": "src/platform/navigation/background/worker-navigation.js",
-          "line": 221,
-          "kind": "literal-reference",
-          "excerpt": "if (identity?.documentId !== sender.documentId || navigationIdentity.state(identity, ticket.accountKey) !== \"ready\") return;"
-        },
-        {
-          "source": "src/platform/navigation/background/worker-navigation.js",
-          "line": 247,
-          "kind": "literal-reference",
-          "excerpt": "|| navigationIdentity.state(identity, ticket.accountKey) !== \"ready\""
-        },
-        {
-          "source": "src/platform/navigation/background/worker-navigation.js",
-          "line": 314,
-          "kind": "literal-reference",
-          "excerpt": "if (identity?.documentId !== ticket.documentId || navigationIdentity.state(identity, ticket.accountKey) !== \"ready\") {"
-        },
-        {
-          "source": "src/platform/navigation/background/worker-navigation.js",
-          "line": 338,
-          "kind": "literal-reference",
-          "excerpt": "if (identity?.documentId !== ticket.committedDocumentId || navigationIdentity.state(identity, ticket.accountKey) !== \"ready\") return;"
-        },
-        {
-          "source": "src/platform/navigation/background/worker-navigation.js",
-          "line": 535,
-          "kind": "literal-reference",
-          "excerpt": "} else if (identityState === \"revoked\" || (!messageNavigation && (payload.phase !== \"ready\""
-        },
-        {
-          "source": "src/platform/navigation/chatgpt/library-navigation.js",
-          "line": 53,
-          "kind": "literal-reference",
-          "excerpt": "&& (!requireReady || identity.phase === \"ready\");"
-        },
-        {
-          "source": "src/platform/navigation/chatgpt/navigation-intent.js",
-          "line": 70,
-          "kind": "literal-reference",
-          "excerpt": "if (state === \"revoked\" || (!owned && identity.phase !== \"ready\")) {"
-        },
-        {
-          "source": "src/platform/navigation/chatgpt/navigation-intent.js",
-          "line": 74,
-          "kind": "literal-reference",
-          "excerpt": "if (owned && state === \"ready\") current.ownerAccountKey ??= identity.accountKey;"
-        },
-        {
-          "source": "src/platform/navigation/chatgpt/navigation-intent.js",
-          "line": 75,
-          "kind": "literal-reference",
-          "excerpt": "current.identityReady = state === \"ready\";"
-        },
-        {
-          "source": "src/platform/navigation/navigation-identity.js",
-          "line": 14,
-          "kind": "literal-reference",
-          "excerpt": "if (identity?.phase === \"ready\" && typeof identity.accountKey === \"string\" && identity.accountKey) {"
-        },
-        {
-          "source": "src/platform/navigation/navigation-identity.js",
-          "line": 15,
-          "kind": "literal-reference",
-          "excerpt": "return !ownerAccountKey || ownerAccountKey === identity.accountKey ? \"ready\" : \"revoked\";"
-        },
-        {
-          "source": "src/platform/session/ui/page-refresh-notice.js",
-          "line": 18,
-          "kind": "literal-reference",
-          "excerpt": "const blocked = phase !== \"ready\";"
-        },
-        {
-          "source": "src/platform/session/ui/page-session-controller.js",
-          "line": 73,
-          "kind": "literal-reference",
-          "excerpt": "publish({ phase: \"ready\", documentId: result.documentId, error: null });"
-        },
-        {
-          "source": "src/platform/session/ui/page-session-controller.js",
-          "line": 101,
-          "kind": "literal-reference",
-          "excerpt": "if (disposed && capability !== \"cancel\" || business && state.phase !== \"ready\") throw blockedError();"
-        },
-        {
-          "source": "src/platform/session/ui/page-session-controller.js",
-          "line": 106,
-          "kind": "literal-reference",
-          "excerpt": "|| capability !== \"navigation\" && (state.phase !== \"ready\" || state.generation !== generation))) throw blockedError();"
-        },
-        {
-          "source": "src/platform/session/ui/page-session-controller.js",
-          "line": 115,
-          "kind": "literal-reference",
-          "excerpt": "return Object.freeze({ check, run, reject, getState: () => state, isReady: () => !disposed && state.phase === \"ready\","
         }
       ]
     },
@@ -5448,7 +4610,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 316
+        "line": 232
       },
       "references": [
         {
@@ -5526,46 +4688,6 @@
           "line": 54,
           "kind": "literal-reference",
           "excerpt": "return { messageKey: \"reopenTidyPanel\", retryable: false };"
-        }
-      ]
-    },
-    {
-      "key": "resolving",
-      "owner": "common",
-      "translations": {
-        "zh-CN": "解析中",
-        "zh-TW": "解析中",
-        "en": "Resolving",
-        "ja": "解決中"
-      },
-      "definition": {
-        "source": "src/messages/catalogs/common.json",
-        "line": 154
-      },
-      "references": [
-        {
-          "source": "src/platform/chatgpt/binding.js",
-          "line": 50,
-          "kind": "literal-reference",
-          "excerpt": "status: formalId ? \"stable\" : \"resolving\","
-        },
-        {
-          "source": "src/platform/chatgpt/binding.js",
-          "line": 61,
-          "kind": "literal-reference",
-          "excerpt": "status: formalId ? \"stable\" : \"resolving\","
-        },
-        {
-          "source": "src/platform/chatgpt/binding.js",
-          "line": 70,
-          "kind": "literal-reference",
-          "excerpt": "status: formalId ? \"stable\" : \"resolving\","
-        },
-        {
-          "source": "src/platform/snapshot.js",
-          "line": 8,
-          "kind": "literal-reference",
-          "excerpt": "const IDENTITY_STATUS = Object.freeze([\"stable\", \"resolving\", \"draft\", \"empty\", \"unavailable\"]);"
         }
       ]
     },
@@ -5670,40 +4792,6 @@
       ]
     },
     {
-      "key": "route",
-      "owner": "common",
-      "translations": {
-        "zh-CN": "路由",
-        "zh-TW": "路由",
-        "en": "Route",
-        "ja": "ルート"
-      },
-      "definition": {
-        "source": "src/messages/catalogs/common.json",
-        "line": 202
-      },
-      "references": [
-        {
-          "source": "src/platform/chatgpt/native-snapshot-reader.js",
-          "line": 278,
-          "kind": "literal-reference",
-          "excerpt": "? { projectId: itemRoute.projectId, title: null, source: \"route\", status: \"partial\" }"
-        },
-        {
-          "source": "src/platform/chatgpt/native-snapshot-reader.js",
-          "line": 301,
-          "kind": "literal-reference",
-          "excerpt": "source: title ? \"sidebar-dom\" : meta ? \"route+fiber\" : \"route\","
-        },
-        {
-          "source": "src/platform/snapshot.js",
-          "line": 101,
-          "kind": "literal-reference",
-          "excerpt": "if (!snapshot?.route || typeof snapshot.route.pathname !== \"string\") errors.push(\"route\");"
-        }
-      ]
-    },
-    {
       "key": "savedAt",
       "owner": "common",
       "translations": {
@@ -5714,24 +4802,24 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 364
+        "line": 280
       },
       "references": [
         {
           "source": "src/features/favorites/storage/favorites-domain.js",
-          "line": 17,
+          "line": 16,
           "kind": "literal-reference",
           "excerpt": "export const FAVORITE_SORT_FIELDS = Object.freeze([\"savedAt\", \"createdAt\", \"updatedAt\"]);"
         },
         {
           "source": "src/features/favorites/storage/favorites-domain.js",
-          "line": 102,
+          "line": 99,
           "kind": "literal-reference",
           "excerpt": "view: { groupId: \"all\", sortField: \"savedAt\", sortDirection: \"desc\" },"
         },
         {
           "source": "src/features/favorites/storage/favorites-domain.js",
-          "line": 136,
+          "line": 133,
           "kind": "literal-reference",
           "excerpt": "sortField: FAVORITE_SORT_FIELDS.includes(source.view?.sortField) ? source.view.sortField : \"savedAt\","
         },
@@ -5766,7 +4854,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 340
+        "line": 256
       },
       "references": [
         {
@@ -5806,7 +4894,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 358
+        "line": 274
       },
       "references": [
         {
@@ -5858,7 +4946,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 580
+        "line": 490
       },
       "references": [
         {
@@ -5886,7 +4974,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 586
+        "line": 496
       },
       "references": [
         {
@@ -5904,190 +4992,6 @@
       ]
     },
     {
-      "key": "source",
-      "owner": "common",
-      "translations": {
-        "zh-CN": "来源",
-        "zh-TW": "來源",
-        "en": "Source",
-        "ja": "取得元"
-      },
-      "definition": {
-        "source": "src/messages/catalogs/common.json",
-        "line": 220
-      },
-      "references": [
-        {
-          "source": "src/app/sidepanel/export-workflow.js",
-          "line": 42,
-          "kind": "literal-reference",
-          "excerpt": "if (action === \"start\") return begin(source, payload.returnTarget || \"source\");"
-        },
-        {
-          "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 425,
-          "kind": "literal-reference",
-          "excerpt": "returnTarget: \"source\","
-        },
-        {
-          "source": "src/features/export/model/export.js",
-          "line": 106,
-          "kind": "literal-reference",
-          "excerpt": "if (hasOwn(block, \"src\") || hasOwn(block, \"source\")) errors.push(`${prefix}.legacyImageSource`);"
-        },
-        {
-          "source": "src/features/export/ui/export-selection.js",
-          "line": 69,
-          "kind": "literal-reference",
-          "excerpt": "function beginSelection(source, returnTarget = \"source\") {"
-        },
-        {
-          "source": "src/features/export/ui/export-selection.js",
-          "line": 118,
-          "kind": "literal-reference",
-          "excerpt": "if (previous?.returnTarget === \"source\") {"
-        },
-        {
-          "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 489,
-          "kind": "literal-reference",
-          "excerpt": "returnTarget: \"source\","
-        },
-        {
-          "source": "src/messages/notice-registry.js",
-          "line": 9,
-          "kind": "literal-reference",
-          "excerpt": "\"source\": \"src/app/sidepanel/notice-controller.js\","
-        },
-        {
-          "source": "src/messages/notice-registry.js",
-          "line": 21,
-          "kind": "literal-reference",
-          "excerpt": "\"source\": \"src/platform/session/ui/page-refresh-notice.js\","
-        },
-        {
-          "source": "src/messages/notice-registry.js",
-          "line": 32,
-          "kind": "literal-reference",
-          "excerpt": "\"source\": \"src/features/titles/ui/title-view.js\","
-        },
-        {
-          "source": "src/messages/notice-registry.js",
-          "line": 44,
-          "kind": "literal-reference",
-          "excerpt": "\"source\": \"src/features/titles/ui/title-batch-view.js\","
-        },
-        {
-          "source": "src/messages/notice-registry.js",
-          "line": 56,
-          "kind": "literal-reference",
-          "excerpt": "\"source\": \"src/features/titles/ui/title-batch-view.js\","
-        },
-        {
-          "source": "src/messages/notice-registry.js",
-          "line": 67,
-          "kind": "literal-reference",
-          "excerpt": "\"source\": \"src/features/search/ui/search-view.js\","
-        },
-        {
-          "source": "src/messages/notice-registry.js",
-          "line": 78,
-          "kind": "literal-reference",
-          "excerpt": "\"source\": \"src/features/export/ui/export-view.js\","
-        },
-        {
-          "source": "src/messages/notice-registry.js",
-          "line": 89,
-          "kind": "literal-reference",
-          "excerpt": "\"source\": \"src/features/export/ui/export-view.js\","
-        },
-        {
-          "source": "src/messages/notice-registry.js",
-          "line": 100,
-          "kind": "literal-reference",
-          "excerpt": "\"source\": \"src/features/export/ui/export-view.js\","
-        },
-        {
-          "source": "src/messages/notice-registry.js",
-          "line": 111,
-          "kind": "literal-reference",
-          "excerpt": "\"source\": \"src/features/export/ui/export-view.js\","
-        },
-        {
-          "source": "src/messages/notice-registry.js",
-          "line": 122,
-          "kind": "literal-reference",
-          "excerpt": "\"source\": \"src/features/export/ui/export-view.js\","
-        },
-        {
-          "source": "src/messages/notice-registry.js",
-          "line": 134,
-          "kind": "literal-reference",
-          "excerpt": "\"source\": \"src/features/settings/ui/library-backup-view.js\","
-        },
-        {
-          "source": "src/messages/notice-registry.js",
-          "line": 146,
-          "kind": "literal-reference",
-          "excerpt": "\"source\": \"src/features/favorites/chatgpt/favorites-presentation.js\","
-        },
-        {
-          "source": "src/messages/notice-registry.js",
-          "line": 157,
-          "kind": "literal-reference",
-          "excerpt": "\"source\": \"src/features/bookmarks/chatgpt/bookmarks-presentation.js\","
-        },
-        {
-          "source": "src/messages/notice-registry.js",
-          "line": 169,
-          "kind": "literal-reference",
-          "excerpt": "\"source\": \"src/app/sidepanel/shell-presentation.js\","
-        },
-        {
-          "source": "src/messages/notice-registry.js",
-          "line": 181,
-          "kind": "literal-reference",
-          "excerpt": "\"source\": \"src/app/sidepanel/shell-presentation.js\","
-        },
-        {
-          "source": "src/messages/notice-registry.js",
-          "line": 192,
-          "kind": "literal-reference",
-          "excerpt": "\"source\": \"src/app/sidepanel/shell-presentation.js\","
-        },
-        {
-          "source": "src/messages/notice-registry.js",
-          "line": 203,
-          "kind": "literal-reference",
-          "excerpt": "\"source\": \"src/app/sidepanel/shell-presentation.js\","
-        },
-        {
-          "source": "src/messages/notice-registry.js",
-          "line": 214,
-          "kind": "literal-reference",
-          "excerpt": "\"source\": \"src/features/export/ui/export-view.js\","
-        },
-        {
-          "source": "src/messages/notice-registry.js",
-          "line": 225,
-          "kind": "literal-reference",
-          "excerpt": "\"source\": \"src/features/titles/ui/title-view.js\","
-        },
-        {
-          "source": "src/messages/notice-registry.js",
-          "line": 236,
-          "kind": "literal-reference",
-          "excerpt": "\"source\": \"src/features/titles/ui/title-organization-view.js\","
-        },
-        {
-          "source": "src/platform/diagnostics/wire.js",
-          "line": 9,
-          "kind": "literal-reference",
-          "excerpt": "const eventKeys = [\"sequence\", \"at\", \"event\", \"surface\", \"instanceId\", \"messageKey\", \"reasonCode\", \"source\","
-        }
-      ]
-    },
-    {
       "key": "sparkle",
       "owner": "common",
       "translations": {
@@ -6098,168 +5002,32 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 514
+        "line": 424
       },
       "references": [
         {
           "source": "src/features/bookmarks/storage/bookmarks-domain.js",
-          "line": 9,
+          "line": 8,
           "kind": "literal-reference",
           "excerpt": "\"quote\", \"pin\", \"highlighter\", \"note\", \"flag\", \"chat-bubble\", \"text-mark\", \"sparkle\","
         },
         {
           "source": "src/features/bookmarks/storage/bookmarks-domain.js",
-          "line": 15,
+          "line": 14,
           "kind": "literal-reference",
           "excerpt": "Object.freeze({ id: \"bookmark-insight\", preset: \"bookmark-insight\", name: \"灵感\", icon: \"sparkle\" }),"
         },
         {
           "source": "src/features/favorites/storage/favorites-domain.js",
-          "line": 9,
+          "line": 8,
           "kind": "literal-reference",
           "excerpt": "\"folder\", \"archive\", \"book\", \"briefcase\", \"bulb\", \"sparkle\", \"heart\", \"box\","
         },
         {
           "source": "src/features/favorites/storage/favorites-domain.js",
-          "line": 13,
+          "line": 12,
           "kind": "literal-reference",
           "excerpt": "Object.freeze({ id: \"inspiration\", preset: \"inspiration\", name: \"灵感\", icon: \"sparkle\" }),"
-        }
-      ]
-    },
-    {
-      "key": "stable",
-      "owner": "common",
-      "translations": {
-        "zh-CN": "已稳定",
-        "zh-TW": "已穩定",
-        "en": "Stable",
-        "ja": "安定"
-      },
-      "definition": {
-        "source": "src/messages/catalogs/common.json",
-        "line": 148
-      },
-      "references": [
-        {
-          "source": "src/app/background/handlers/export.js",
-          "line": 78,
-          "kind": "literal-reference",
-          "excerpt": "|| snapshot.conversation.identityStatus !== \"stable\""
-        },
-        {
-          "source": "src/features/export/ui/export-context-controller.js",
-          "line": 17,
-          "kind": "literal-reference",
-          "excerpt": "&& snapshot?.conversation?.identityStatus === \"stable\");"
-        },
-        {
-          "source": "src/features/export/ui/export-view.js",
-          "line": 10,
-          "kind": "literal-reference",
-          "excerpt": "&& snapshot.conversation.bindingStatus === \"bound\" && snapshot.conversation.identityStatus === \"stable\");"
-        },
-        {
-          "source": "src/features/titles/model/title-context.js",
-          "line": 11,
-          "kind": "literal-reference",
-          "excerpt": "|| conversation?.bindingStatus !== \"bound\" || conversation.identityStatus !== \"stable\""
-        },
-        {
-          "source": "src/platform/chatgpt/binding.js",
-          "line": 50,
-          "kind": "literal-reference",
-          "excerpt": "status: formalId ? \"stable\" : \"resolving\","
-        },
-        {
-          "source": "src/platform/chatgpt/binding.js",
-          "line": 61,
-          "kind": "literal-reference",
-          "excerpt": "status: formalId ? \"stable\" : \"resolving\","
-        },
-        {
-          "source": "src/platform/chatgpt/binding.js",
-          "line": 70,
-          "kind": "literal-reference",
-          "excerpt": "status: formalId ? \"stable\" : \"resolving\","
-        },
-        {
-          "source": "src/platform/chatgpt/binding.js",
-          "line": 79,
-          "kind": "literal-reference",
-          "excerpt": "status: \"stable\","
-        },
-        {
-          "source": "src/platform/chatgpt/native-snapshot-reader.js",
-          "line": 271,
-          "kind": "literal-reference",
-          "excerpt": "identityStatus: \"stable\","
-        },
-        {
-          "source": "src/platform/chatgpt/native-snapshot-reader.js",
-          "line": 341,
-          "kind": "literal-reference",
-          "excerpt": "status: title ? (identity.status === \"stable\" ? \"available\" : \"provisional\") : \"missing\","
-        },
-        {
-          "source": "src/platform/chatgpt/native-snapshot-reader.js",
-          "line": 470,
-          "kind": "literal-reference",
-          "excerpt": "idStatus: stableId === messageId ? \"stable\" : \"provisional\","
-        },
-        {
-          "source": "src/platform/chatgpt/route.js",
-          "line": 66,
-          "kind": "literal-reference",
-          "excerpt": ": \"stable\""
-        },
-        {
-          "source": "src/platform/chatgpt/snapshot-projection.js",
-          "line": 88,
-          "kind": "literal-reference",
-          "excerpt": ": identity.status === \"stable\" &&"
-        },
-        {
-          "source": "src/platform/chatgpt/snapshot-projection.js",
-          "line": 97,
-          "kind": "literal-reference",
-          "excerpt": "identity.status !== \"stable\" ||"
-        },
-        {
-          "source": "src/platform/snapshot.js",
-          "line": 8,
-          "kind": "literal-reference",
-          "excerpt": "const IDENTITY_STATUS = Object.freeze([\"stable\", \"resolving\", \"draft\", \"empty\", \"unavailable\"]);"
-        },
-        {
-          "source": "src/platform/snapshot.js",
-          "line": 11,
-          "kind": "literal-reference",
-          "excerpt": "const MESSAGE_ID_STATUS = Object.freeze([\"stable\", \"provisional\"]);"
-        },
-        {
-          "source": "src/platform/snapshot.js",
-          "line": 174,
-          "kind": "literal-reference",
-          "excerpt": "snapshot.conversation.identityStatus === \"stable\" &&"
-        },
-        {
-          "source": "src/platform/snapshot.js",
-          "line": 188,
-          "kind": "literal-reference",
-          "excerpt": "conversation.identityStatus === \"stable\" &&"
-        },
-        {
-          "source": "src/platform/snapshot.js",
-          "line": 200,
-          "kind": "literal-reference",
-          "excerpt": "return message?.idStatus === \"stable\" && message.presentationStatus === \"formal\" ? message : null;"
-        },
-        {
-          "source": "src/platform/snapshot.js",
-          "line": 206,
-          "kind": "literal-reference",
-          "excerpt": "message.idStatus === \"stable\" &&"
         }
       ]
     },
@@ -6274,7 +5042,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 226
+        "line": 148
       },
       "references": [
         {
@@ -6596,7 +5364,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 256
+        "line": 172
       },
       "references": [
         {
@@ -6607,7 +5375,7 @@
         },
         {
           "source": "src/features/bookmarks/storage/bookmarks-domain.js",
-          "line": 86,
+          "line": 85,
           "kind": "literal-reference",
           "excerpt": "role: [\"user\", \"assistant\", \"system\", \"tool\", \"unknown\"].includes(value?.role) ? value.role : \"unknown\","
         },
@@ -6686,52 +5454,6 @@
       ]
     },
     {
-      "key": "tab",
-      "owner": "common",
-      "translations": {
-        "zh-CN": "标签页",
-        "zh-TW": "分頁",
-        "en": "Tab",
-        "ja": "タブ"
-      },
-      "definition": {
-        "source": "src/messages/catalogs/common.json",
-        "line": 196
-      },
-      "references": [
-        {
-          "source": "src/features/export/ui/export-markup.js",
-          "line": 409,
-          "kind": "literal-reference",
-          "excerpt": "const modeTabs = `<div class=\"export-mode-tabs\" role=\"tablist\" aria-label=\"${escapeHtml(translate(\"exportMode\"))}\"><button type=\"button\" role=\"tab\" data-export-mode=\"current\" class=\"${!isBatch ? \"is-active\" : \"\"}\" aria-selected=\"${!isBatch}\">${escapeHtml(trans"
-        },
-        {
-          "source": "src/features/export/ui/export-markup.js",
-          "line": 409,
-          "kind": "literal-reference",
-          "excerpt": "const modeTabs = `<div class=\"export-mode-tabs\" role=\"tablist\" aria-label=\"${escapeHtml(translate(\"exportMode\"))}\"><button type=\"button\" role=\"tab\" data-export-mode=\"current\" class=\"${!isBatch ? \"is-active\" : \"\"}\" aria-selected=\"${!isBatch}\">${escapeHtml(trans"
-        },
-        {
-          "source": "src/features/search/ui/search-presentation.js",
-          "line": 38,
-          "kind": "literal-reference",
-          "excerpt": "button.role = \"tab\";"
-        },
-        {
-          "source": "src/features/titles/ui/title-organization-view.js",
-          "line": 10,
-          "kind": "literal-reference",
-          "excerpt": "<button type=\"button\" role=\"tab\" data-titles-mode=\"current\" aria-selected=\"true\"></button>"
-        },
-        {
-          "source": "src/features/titles/ui/title-organization-view.js",
-          "line": 11,
-          "kind": "literal-reference",
-          "excerpt": "<button type=\"button\" role=\"tab\" data-titles-mode=\"batch\" aria-selected=\"false\"></button>"
-        }
-      ]
-    },
-    {
       "key": "textMark",
       "owner": "common",
       "translations": {
@@ -6742,7 +5464,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 574
+        "line": 484
       },
       "references": [
         {
@@ -6838,12 +5560,12 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 262
+        "line": 178
       },
       "references": [
         {
           "source": "src/features/bookmarks/storage/bookmarks-domain.js",
-          "line": 86,
+          "line": 85,
           "kind": "literal-reference",
           "excerpt": "role: [\"user\", \"assistant\", \"system\", \"tool\", \"unknown\"].includes(value?.role) ? value.role : \"unknown\","
         },
@@ -6956,7 +5678,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 418
+        "line": 334
       },
       "references": [
         {
@@ -7128,34 +5850,6 @@
       ]
     },
     {
-      "key": "unbound",
-      "owner": "common",
-      "translations": {
-        "zh-CN": "未绑定",
-        "zh-TW": "未綁定",
-        "en": "Unbound",
-        "ja": "未関連付け"
-      },
-      "definition": {
-        "source": "src/messages/catalogs/common.json",
-        "line": 178
-      },
-      "references": [
-        {
-          "source": "src/platform/chatgpt/binding.js",
-          "line": 7,
-          "kind": "literal-reference",
-          "excerpt": "UNBOUND: \"unbound\","
-        },
-        {
-          "source": "src/platform/snapshot.js",
-          "line": 10,
-          "kind": "literal-reference",
-          "excerpt": "const BINDING_STATUS = Object.freeze([\"unbound\", \"route-only\", \"bound\", \"mismatch\"]);"
-        }
-      ]
-    },
-    {
       "key": "ungrouped",
       "owner": "common",
       "translations": {
@@ -7166,30 +5860,30 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 280
+        "line": 196
       },
       "references": [
         {
           "source": "src/features/bookmarks/storage/bookmarks-domain.js",
-          "line": 7,
+          "line": 6,
           "kind": "literal-reference",
           "excerpt": "export const BOOKMARK_SYSTEM_GROUP_IDS = Object.freeze([\"current\", \"all\", \"ungrouped\"]);"
         },
         {
           "source": "src/features/bookmarks/storage/bookmarks-domain.js",
-          "line": 173,
+          "line": 170,
           "kind": "literal-reference",
           "excerpt": "if (!groupId || groupId === \"ungrouped\") return null;"
         },
         {
           "source": "src/features/bookmarks/storage/bookmarks-domain.js",
-          "line": 331,
+          "line": 327,
           "kind": "literal-reference",
           "excerpt": "if (next.view.groupId === groupId) next.view.groupId = \"ungrouped\";"
         },
         {
           "source": "src/features/bookmarks/storage/bookmarks-domain.js",
-          "line": 382,
+          "line": 378,
           "kind": "literal-reference",
           "excerpt": "if (groupId === \"ungrouped\" && item.groupId !== null) return false;"
         },
@@ -7339,25 +6033,25 @@
         },
         {
           "source": "src/features/favorites/storage/favorites-domain.js",
-          "line": 7,
+          "line": 6,
           "kind": "literal-reference",
           "excerpt": "export const SYSTEM_GROUP_IDS = Object.freeze([\"all\", \"ungrouped\"]);"
         },
         {
           "source": "src/features/favorites/storage/favorites-domain.js",
-          "line": 157,
+          "line": 154,
           "kind": "literal-reference",
           "excerpt": "if (!groupId || groupId === \"ungrouped\") return null;"
         },
         {
           "source": "src/features/favorites/storage/favorites-domain.js",
-          "line": 334,
+          "line": 329,
           "kind": "literal-reference",
           "excerpt": "if (next.view.groupId === groupId) next.view.groupId = \"ungrouped\";"
         },
         {
           "source": "src/features/favorites/storage/favorites-domain.js",
-          "line": 383,
+          "line": 378,
           "kind": "literal-reference",
           "excerpt": "if (groupId === \"ungrouped\") return item.groupId === null;"
         },
@@ -7418,94 +6112,6 @@
       ]
     },
     {
-      "key": "unknown",
-      "owner": "common",
-      "translations": {
-        "zh-CN": "未知",
-        "zh-TW": "未知",
-        "en": "Unknown",
-        "ja": "不明"
-      },
-      "definition": {
-        "source": "src/messages/catalogs/common.json",
-        "line": 238
-      },
-      "references": [
-        {
-          "source": "src/features/bookmarks/storage/bookmarks-domain.js",
-          "line": 86,
-          "kind": "literal-reference",
-          "excerpt": "role: [\"user\", \"assistant\", \"system\", \"tool\", \"unknown\"].includes(value?.role) ? value.role : \"unknown\","
-        },
-        {
-          "source": "src/features/bookmarks/storage/bookmarks-domain.js",
-          "line": 86,
-          "kind": "literal-reference",
-          "excerpt": "role: [\"user\", \"assistant\", \"system\", \"tool\", \"unknown\"].includes(value?.role) ? value.role : \"unknown\","
-        },
-        {
-          "source": "src/features/settings/ui/library-backup-view.js",
-          "line": 62,
-          "kind": "literal-reference",
-          "excerpt": "const restoreBlocksImport = () => [\"pending\", \"unknown\"].includes(restoreForAccount()?.phase);"
-        },
-        {
-          "source": "src/features/settings/ui/library-backup-view.js",
-          "line": 73,
-          "kind": "literal-reference",
-          "excerpt": "if (entry && ![\"pending\", \"unknown\"].includes(entry.phase)) clearRestore(entry);"
-        },
-        {
-          "source": "src/features/settings/ui/library-backup-view.js",
-          "line": 91,
-          "kind": "literal-reference",
-          "excerpt": "const restoring = restoreEntry?.phase === \"pending\", unknown = restoreEntry?.phase === \"unknown\";"
-        },
-        {
-          "source": "src/features/settings/ui/library-backup-view.js",
-          "line": 190,
-          "kind": "literal-reference",
-          "excerpt": "entry.phase = rejected ? \"rejected\" : \"unknown\";"
-        },
-        {
-          "source": "src/features/settings/ui/library-backup-view.js",
-          "line": 207,
-          "kind": "literal-reference",
-          "excerpt": "if (restoreForAccount()?.phase === \"unknown\") { checkLibrary(); return; }"
-        },
-        {
-          "source": "src/features/settings/ui/library-backup-view.js",
-          "line": 214,
-          "kind": "literal-reference",
-          "excerpt": "if (entry?.phase !== \"unknown\") return;"
-        },
-        {
-          "source": "src/platform/chatgpt/native-snapshot-reader.js",
-          "line": 351,
-          "kind": "literal-reference",
-          "excerpt": "return [\"user\", \"assistant\", \"system\", \"tool\"].includes(role) ? role : \"unknown\";"
-        },
-        {
-          "source": "src/platform/chatgpt/native-snapshot-reader.js",
-          "line": 460,
-          "kind": "literal-reference",
-          "excerpt": "recordRole !== \"unknown\","
-        },
-        {
-          "source": "src/platform/chatgpt/native-snapshot-reader.js",
-          "line": 465,
-          "kind": "literal-reference",
-          "excerpt": "if (displayNumber == null || !timestamp) unnumbered.push({ id: messageId, status: record.status || record.message?.status || \"unknown\" });"
-        },
-        {
-          "source": "src/platform/protocol.js",
-          "line": 162,
-          "kind": "literal-reference",
-          "excerpt": "type: requestEnvelope?.type || \"unknown\","
-        }
-      ]
-    },
-    {
       "key": "unsupported",
       "owner": "common",
       "translations": {
@@ -7562,7 +6168,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 442
+        "line": 352
       },
       "references": [
         {
@@ -7856,7 +6462,7 @@
       },
       "definition": {
         "source": "src/messages/catalogs/common.json",
-        "line": 244
+        "line": 160
       },
       "references": [
         {
@@ -7867,7 +6473,7 @@
         },
         {
           "source": "src/features/bookmarks/storage/bookmarks-domain.js",
-          "line": 86,
+          "line": 85,
           "kind": "literal-reference",
           "excerpt": "role: [\"user\", \"assistant\", \"system\", \"tool\", \"unknown\"].includes(value?.role) ? value.role : \"unknown\","
         },
@@ -14090,6 +12696,12 @@
           "line": 48,
           "kind": "literal-reference",
           "excerpt": "createAccountStores(database, \"favorites\");"
+        },
+        {
+          "source": "src/platform/storage/database.js",
+          "line": 76,
+          "kind": "literal-reference",
+          "excerpt": "if ([\"favorites\", \"bookmarks\"].some(kind => record.key === `library:${kind}:${record.accountKey}`)) {"
         },
         {
           "source": "src/platform/storage/schema.js",

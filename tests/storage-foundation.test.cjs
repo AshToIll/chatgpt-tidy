@@ -42,7 +42,7 @@ async function setup(t, factory = new IDBFactory()) {
 async function populate(h) {
   for (const [i, owner] of OWNERS.entries()) {
     for (const kind of ["favorites", "bookmarks"]) {
-      const item = { conversationId: "same", groupId: "custom", note: `note-${i}`,
+      const item = { conversationId: "same", groupId: "custom",
         routePath: "/c/same", ...(kind === "favorites" ? { title: `favorite-${i}`, savedAt: NOW }
           : { bookmarkId: "same::message", messageId: "message", conversationTitle: `bookmark-${i}`,
             role: "assistant", excerpt: `excerpt-${i}`, bookmarkedAt: NOW }) };
@@ -60,8 +60,8 @@ async function populate(h) {
 test("new permanent database creates exactly the six current stores and their exact indexes", async t => {
   const [, schema] = await modules, { db } = await setup(t);
   assert.equal(schema.STORAGE_BOUNDARIES.indexedDb.databaseName, NAME);
-  assert.equal(schema.STORAGE_BOUNDARIES.indexedDb.version, 1);
-  assert.equal(db.name, NAME); assert.equal(db.version, 1);
+  assert.equal(schema.STORAGE_BOUNDARIES.indexedDb.version, 2);
+  assert.equal(db.name, NAME); assert.equal(db.version, 2);
   assert.deepEqual(Array.from(db.objectStoreNames), OFFICIAL);
   const shape = await snapshot(db);
   const index = (name, keyPath, unique = false) => ({ name, keyPath, unique, multiEntry: false });
@@ -82,7 +82,7 @@ test("reopening the same database does not rerun creation or change any stored d
   const before = await snapshot(h.db); h.db.close();
   let upgrades = 0;
   const factory = { open(name, version) {
-    assert.equal(name, NAME); assert.equal(version, 1);
+    assert.equal(name, NAME); assert.equal(version, 2);
     const request = h.factory.open(name, version);
     request.addEventListener("upgradeneeded", () => { upgrades++; request.transaction.abort(); }); return request;
   } };
@@ -100,7 +100,7 @@ test("favorites, bookmarks, both groups, module state and catalog read/write wit
   for (const [i, owner] of OWNERS.entries()) {
     for (const [kind, id] of [["favorites", "same"], ["bookmarks", "same::message"]]) {
       const state = await h[kind].get(owner);
-      assert.equal(state.items[id].note, `note-${i}`);
+      assert.equal(kind === "favorites" ? state.items[id].title : state.items[id].conversationTitle, `${kind === "favorites" ? "favorite" : "bookmark"}-${i}`);
       assert.equal(state.groups.find(group => group.id === "custom").name, `group-${i}`);
       assert.equal(state.view.groupId, "custom"); assert.equal(state.accountKey, owner);
     }
@@ -136,7 +136,7 @@ test("development databases can coexist without being opened, read, copied or de
   assert.ok(Object.values(await snapshot(h.db)).every(store => store.rows.length === 0));
   for (const kind of ["favorites", "bookmarks"]) assert.deepEqual((await h[kind].get(OWNERS[0])).items, {});
   assert.deepEqual(await h.catalog.getSnapshot(OWNERS[0]), { rows: [], state: null });
-  await populate(h); assert.deepEqual(opens, [[NAME, 1]]);
+  await populate(h); assert.deepEqual(opens, [[NAME, 2]]);
   for (const name of oldNames) {
     const db = await result(factory.open(name, 99));
     assert.deepEqual(Array.from(db.objectStoreNames), ["sentinel"]);
@@ -162,5 +162,64 @@ test("production storage/catalog contains no development database or checkpoint 
   const files = ["src/platform/storage/schema.js", "src/platform/storage/database.js", "src/platform/catalog/storage/conversation-catalog.js",
     "src/platform/catalog/ui/conversation-catalog-reader.js"];
   for (const file of files) assert.doesNotMatch(fs.readFileSync(file, "utf8"),
-    /chatgpt-tidy-v[12]|migrat|oldVersion|pre-account|unclaimed-sources|claim-receipts|deleteDatabase|deleteObjectStore|catalogVersion\s*===\s*1\b/i, file);
+    /chatgpt-tidy-v[12]|pre-account|unclaimed-sources|claim-receipts|deleteDatabase|deleteObjectStore|catalogVersion\s*===\s*1\b/i, file);
+});
+
+async function versionOneFixture() {
+  const [database] = await modules, factory = new IDBFactory();
+  const request = factory.open(NAME, 1);
+  request.onupgradeneeded = () => database.ensureTidyStores(request.result);
+  const db = await result(request), tx = db.transaction(OFFICIAL, 'readwrite'), finished = done(tx);
+  for (const accountKey of OWNERS) {
+    for (const kind of ['favorites', 'bookmarks']) {
+      tx.objectStore(kind).put({ accountKey, conversationId: 'same', routePath: '/c/same', groupId: 'custom',
+        title: 'Keep title', excerpt: 'Keep excerpt', note: `remove-${accountKey}`,
+        ...(kind === 'bookmarks' ? { bookmarkId: 'same::message', messageId: 'message' } : {}) });
+      tx.objectStore(kind === 'favorites' ? 'favorite-groups' : 'bookmark-groups')
+        .put({ accountKey, id: 'custom', name: 'Keep group', order: 0 });
+      tx.objectStore('module-state').put({ key: `library:${kind}:${accountKey}`, accountKey,
+        schemaVersion: 1, revision: 4, view: { groupId: 'custom' } });
+    }
+    tx.objectStore('conversation-index').put({ accountKey, conversationId: 'same', catalogMetadata: { title: 'Keep catalog' } });
+    tx.objectStore('module-state').put({ key: `title-operation:${accountKey}`, receipt: 'Keep unresolved write' });
+  }
+  await finished;
+  const before = await snapshot(db); db.close();
+  return { factory, before };
+}
+
+test('v2 upgrade physically removes retired fields for every account while preserving all other library data', async t => {
+  const [database] = await modules, { factory, before } = await versionOneFixture();
+  const db = await database.openTidyDatabase(factory); t.after(() => db.close());
+  const expected = structuredClone(before);
+  for (const kind of ['favorites', 'bookmarks']) for (const row of expected[kind].rows) delete row.note;
+  for (const row of expected['module-state'].rows) if (row.key.startsWith('library:')) {
+    row.schemaVersion = 2; row.revision += 1;
+  }
+  assert.equal(db.version, 2);
+  assert.deepEqual(await snapshot(db), expected);
+  db.close();
+  const reopened = await database.openTidyDatabase(factory); t.after(() => reopened.close());
+  assert.deepEqual(await snapshot(reopened), expected, 'Cleanup must not repeat or bump revisions on normal opens');
+});
+
+test('an interrupted field cleanup rolls back atomically and a subsequent upgrade can finish', async t => {
+  const [database] = await modules, { factory, before } = await versionOneFixture();
+  const interrupted = { open(name, version) {
+    const request = factory.open(name, version);
+    request.addEventListener('upgradeneeded', () => {
+      const tx = request.transaction;
+      tx.objectStore('favorites').getAll().onsuccess = () => tx.abort();
+    });
+    return request;
+  } };
+  await assert.rejects(database.openTidyDatabase(interrupted), error => error.code === 'STORAGE_ERROR');
+  const original = await result(factory.open(NAME, 1));
+  assert.deepEqual(await snapshot(original), before); original.close();
+  const db = await database.openTidyDatabase(factory); t.after(() => db.close());
+  for (const kind of ['favorites', 'bookmarks']) {
+    const rows = (await snapshot(db))[kind].rows;
+    assert.equal(rows.length, OWNERS.length);
+    assert.ok(rows.every(row => !Object.hasOwn(row, 'note')));
+  }
 });

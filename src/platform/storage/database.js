@@ -52,14 +52,45 @@ export function ensureTidyStores(database) {
   }
 }
 
+// v2 是一次性落盘清理，不是旧功能兼容：删除所有账号的退役字段，
+// 保留收藏、书签摘录、分组和其他资料。失败随版本升级事务整体回滚。
+function removeRetiredLibraryFields(transaction) {
+  for (const name of [STORES.favorites, STORES.bookmarks]) {
+    const request = transaction.objectStore(name).openCursor();
+    request.onsuccess = () => {
+      const cursor = request.result;
+      if (!cursor) return;
+      const record = cursor.value;
+      if (Object.hasOwn(record, "note")) {
+        delete record.note;
+        cursor.update(record);
+      }
+      cursor.continue();
+    };
+  }
+  const request = transaction.objectStore(STORES.moduleState).openCursor();
+  request.onsuccess = () => {
+    const cursor = request.result;
+    if (!cursor) return;
+    const record = cursor.value;
+    if (["favorites", "bookmarks"].some(kind => record.key === `library:${kind}:${record.accountKey}`)) {
+      cursor.update({ ...record, schemaVersion: 2, revision: (record.revision || 0) + 1 });
+    }
+    cursor.continue();
+  };
+}
+
 export function openTidyDatabase(indexedDbFactory = globalThis.indexedDB) {
   if (!indexedDbFactory) return Promise.reject(storageError("IndexedDB is unavailable"));
   return new Promise((resolve, reject) => {
     let settled = false;
     const request = indexedDbFactory.open(DB.databaseName, DB.version);
-    request.onupgradeneeded = () => {
+    request.onupgradeneeded = (event) => {
       if (settled) { request.transaction.abort(); return; }
-      try { ensureTidyStores(request.result); }
+      try {
+        ensureTidyStores(request.result);
+        if (event.oldVersion > 0 && event.oldVersion < 2) removeRetiredLibraryFields(request.transaction);
+      }
       catch { request.transaction.abort(); }
     };
     request.onsuccess = () => {

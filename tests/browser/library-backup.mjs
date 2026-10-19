@@ -6,6 +6,7 @@ import { normalizeFavoritesState, createEmptyFavoritesState } from '../../src/fe
 import { normalizeBookmarksState, createEmptyBookmarksState } from '../../src/features/bookmarks/storage/bookmarks-domain.js';
 import { serializeLibraryBackup } from '../../src/features/settings/storage/library-backup-domain.js';
 import { createTranslator } from '../../src/messages/i18n.js';
+import { ensureTidyStores, openTidyDatabase } from '../../src/platform/storage/database.js';
 import '../../src/platform/theme/theme.js';
 
 // 原生 File、IndexedDB、按钮、Blob 与生产模块；账号、Worker 传输及 downloads API 使用合成替身。
@@ -62,9 +63,9 @@ el('file').addEventListener('click', event => event.preventDefault());
 const NOW = '2026-09-19T12:00:00.000Z';
 const sample = {
   favorites: normalizeFavoritesState({ ...createEmptyFavoritesState(), items: { first: { conversationId: 'first', routePath: '/c/first',
-    savedAt: NOW, title: 'Sample conversation', note: 'Private sample note', groupId: 'study' } } }),
+    savedAt: NOW, title: 'Sample conversation', projectTitle: 'Sample project', groupId: 'study' } } }),
   bookmarks: normalizeBookmarksState({ ...createEmptyBookmarksState(), items: { 'first::message': { conversationId: 'first', messageId: 'message',
-    bookmarkId: 'first::message', routePath: '/c/first', bookmarkedAt: NOW, excerpt: 'Sample excerpt', note: 'Sample bookmark note', groupId: 'bookmark-quote' } } }),
+    bookmarkId: 'first::message', routePath: '/c/first', bookmarkedAt: NOW, excerpt: 'Sample excerpt', projectTitle: 'Sample project', groupId: 'bookmark-quote' } } }),
 };
 const text = serializeLibraryBackup(owner.accountKey, sample, NOW);
 function assertSummary(favorites, bookmarks, skipped) {
@@ -81,6 +82,32 @@ async function selectFile(content = text, name = 'TIDY-library.json') {
   await wait(() => !el('choose').disabled);
 }
 try {
+  await check('native IndexedDB upgrade removes retired fields across accounts without losing saved entries', async () => {
+    const requestValue = request => new Promise((resolve, reject) => {
+      request.onsuccess = () => resolve(request.result); request.onerror = () => reject(request.error);
+    });
+    const request = indexedDB.open('chatgpt-tidy-storage', 1);
+    request.onupgradeneeded = () => ensureTidyStores(request.result);
+    const previous = await requestValue(request), accounts = ['retired-fixture-a', 'retired-fixture-b'];
+    const tx = previous.transaction(['favorites', 'bookmarks'], 'readwrite');
+    const done = new Promise((resolve, reject) => { tx.oncomplete = resolve; tx.onabort = () => reject(tx.error); });
+    for (const accountKey of accounts) for (const kind of ['favorites', 'bookmarks']) {
+      const item = Object.values(sample[kind].items)[0];
+      tx.objectStore(kind).put({ ...item, accountKey, groupId: null, note: 'retired-field-must-disappear' });
+    }
+    await done; previous.close();
+    const current = await openTidyDatabase();
+    try {
+      same(current.version, 2, 'Version cleanup not applied');
+      for (const accountKey of accounts) for (const kind of ['favorites', 'bookmarks']) {
+        const id = kind === 'favorites' ? 'first' : 'first::message';
+        const item = await requestValue(current.transaction(kind).objectStore(kind).get([accountKey, id]));
+        assert(item && !Object.hasOwn(item, 'note'), 'Retired field remained on disk');
+        same(kind === 'favorites' ? item.title : item.excerpt,
+          kind === 'favorites' ? 'Sample conversation' : 'Sample excerpt', 'Active saved data was lost');
+      }
+    } finally { current.close(); }
+  });
   view.setActive(true);
   await check('unverified account cannot start backup or restore', async () => {
     assert(el('export').disabled && el('choose').disabled, 'Unowned buttons enabled');
@@ -98,7 +125,7 @@ try {
   await check('native keyboard confirms one atomic restoration and success is a toast, not a sticky card', async () => {
     await key(' ', 'Space', 32); await wait(() => el('preview').hidden);
     const state = await repository.read(owner.accountKey, () => {});
-    same(state.favorites.items.first.note, 'Private sample note', 'Favorite missing');
+    same(state.favorites.items.first.projectTitle, 'Sample project', 'Favorite missing');
     same(state.bookmarks.items['first::message'].excerpt, 'Sample excerpt', 'Bookmark missing');
     same(notices.length, 2, 'Both commit notifications required');
     same(toasts.at(-1).key, 'backupRestored', 'Success toast missing'); same(toasts.at(-1).error, false, 'Restore success is not an error'); same(el('status').hidden, true, 'Sticky success card');
@@ -127,13 +154,23 @@ try {
     await selectFile(JSON.stringify(wrong)); same(el('status').textContent, translator('backupAccountMismatch'), 'Wrong owner not explained');
     assert(el('preview').hidden, 'Wrong owner allowed confirmation');
   });
-  await check('concurrent edits require a fresh preview and never overwrite the current note', async () => {
+  await check('retired backup formats and fields are rejected instead of reintroducing removed data', async () => {
+    const prior = JSON.parse(text); prior.version = 1;
+    await selectFile(JSON.stringify(prior));
+    same(el('status').textContent, translator('backupVersion'), 'Old format not identified');
+    assert(el('preview').hidden, 'Old format allowed confirmation');
+    const extra = JSON.parse(text); extra.favorites.items[0].note = '';
+    await selectFile(JSON.stringify(extra));
+    same(el('status').textContent, translator('backupInvalid'), 'Retired field accepted');
+    assert(el('preview').hidden, 'Retired field allowed confirmation');
+  });
+  await check('concurrent edits require a fresh preview and never overwrite the current project title', async () => {
     await selectFile();
     await favorites.transact(owner.accountKey, state => ({ ...state, revision: state.revision + 1,
-      items: { ...state.items, first: { ...state.items.first, note: 'Keep my changed note' } } }));
+      items: { ...state.items, first: { ...state.items.first, projectTitle: 'Changed project' } } }));
     el('confirm').click(); await wait(() => !el('choose').disabled);
     same(el('status').textContent, translator('backupChanged'), 'Stale confirmation not rejected');
-    same((await repository.read(owner.accountKey, () => {})).favorites.items.first.note, 'Keep my changed note', 'Concurrent edit overwritten');
+    same((await repository.read(owner.accountKey, () => {})).favorites.items.first.projectTitle, 'Changed project', 'Concurrent edit overwritten');
   });
   await check('one busy restore cannot be clicked twice; a failure never claims success', async () => {
     await selectFile(); gate = { action: 'restore', ...deferred() }; failRestore = true;
@@ -163,7 +200,7 @@ try {
     same(downloads.length, before + 1, 'No download API call');
     const { value, saveAs, filename } = downloads.at(-1);
     same(saveAs, true, 'Save chooser not requested'); assert(filename.endsWith('.json'), 'Backup filename missing');
-    same(value.accountKey, owner.accountKey, 'Wrong backup owner'); same(value.favorites.items[0].note, 'Keep my changed note', 'Download lost data');
+    same(value.accountKey, owner.accountKey, 'Wrong backup owner'); same(value.favorites.items[0].projectTitle, 'Changed project', 'Download lost data');
     same(toasts.at(-1).key, 'backupDownloadStarted', 'Download incorrectly claimed saved');
     same(downloadListeners.size, 0, 'Completed download retained listeners');
   });

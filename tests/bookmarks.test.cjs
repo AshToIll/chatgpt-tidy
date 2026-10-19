@@ -58,10 +58,7 @@ assert.equal(state.items[key].excerpt, "bounded excerpt");
 assert.equal(state.items[key].routePath, "/c/conversation-a");
 const duplicate = d.addBookmarkFromSnapshot(state, snapshot(), "message-1", { groupId: "bookmark-insight", now: "2026-08-18T03:00:00Z" });
 assert.equal(Object.keys(duplicate.items).length, 1, "same stable message cannot duplicate");
-// A stored note must survive filing, even without an editing entrypoint.
-state.items[key].note = "review this";
 state = d.moveBookmark(state, key, null);
-assert.equal(state.items[key].note, "review this");
 assert.equal(state.items[key].groupId, null);
 state = d.createBookmarkGroup(state, "New", { idFactory: () => "new-group", now: "2026-08-18T04:00:00Z" });
 state = d.moveBookmark(state, key, "new-group");
@@ -144,7 +141,6 @@ assert.doesNotMatch(renderedRoot.innerHTML, /\bbookmark-current-card(?:__\w+)?\b
 for (const orderNumber of [null, 0, -1, 3, 5, 7, 12, 14, 16]) {
   const saved = d.addBookmarkFromSnapshot(d.createEmptyBookmarksState(), snapshot(), "message-1");
   saved.items[key].orderIndex = 8; saved.items[key].orderNumber = orderNumber;
-  saved.items[key].note = "Keep the saved note and identifier";
   const before = JSON.stringify(saved);
   for (const active of [false, true]) {
     renderedView.render({ store: saved, snapshot: snapshot(), preferences: { language: "zh-CN" }, t: key => key,

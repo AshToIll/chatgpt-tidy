@@ -92,8 +92,6 @@ assert.equal(state.items["conversation-a"].savedAt, t1);
 assert.equal(state.items["conversation-a"].projectId, "g-p-alpha");
 assert.equal(state.items["conversation-a"].routePath, "/g/g-p-alpha/c/conversation-a");
 
-// Seed an already-saved note; there is deliberately no note-editing API.
-state.items["conversation-a"].note = "Keep this context";
 state = domain.upsertFavoriteFromSnapshot(state, snapshot({
   title: "Renamed title",
   updatedAt: "2026-08-18T07:00:00.000Z",
@@ -102,7 +100,6 @@ assert.equal(Object.keys(state.items).length, 1, "duplicate favorite must remain
 assert.equal(state.items["conversation-a"].title, "Renamed title");
 assert.equal(state.items["conversation-a"].savedAt, t1, "metadata refresh must preserve savedAt");
 assert.equal(state.items["conversation-a"].groupId, "group-work");
-assert.equal(state.items["conversation-a"].note, "Keep this context");
 
 const sameState = domain.refreshFavoriteFromSnapshot(state, snapshot({
   title: "Renamed title",
@@ -112,7 +109,7 @@ assert.equal(sameState.revision, state.revision, "unchanged metadata must not pr
 
 const beforeMove = plain(state.items["conversation-a"]);
 state = domain.moveFavorite(state, "conversation-a", "group-study", { now: t3 });
-assert.deepEqual(plain(state.items["conversation-a"]), { ...beforeMove, groupId: "group-study" }, "moving only changes filing, not savedAt, route, title, note, or other metadata");
+assert.deepEqual(plain(state.items["conversation-a"]), { ...beforeMove, groupId: "group-study" }, "moving only changes filing, not savedAt, route, title, or other metadata");
 assert.equal(state.items["conversation-a"].groupId, "group-study");
 state = domain.updateFavoriteGroup(state, "group-study", { icon: "heart", name: "Reference" }, { now: t3 });
 assert.equal(state.groups.find((group) => group.id === "group-study").icon, "heart");

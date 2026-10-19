@@ -260,6 +260,17 @@
         "en": "Favorite actions",
         "ja": "お気に入り操作"
       }
+    },
+    {
+      "catalog": "bookmarks",
+      "key": "bookmarkIconPaper",
+      "reason": "为仍在使用的纸张形状分组图标提供独立名称，解除对已下线备注文案的依赖。",
+      "translations": {
+        "zh-CN": "纸张",
+        "zh-TW": "紙張",
+        "en": "Paper",
+        "ja": "用紙"
+      }
     }
   ]
 }

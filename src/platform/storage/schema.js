@@ -7,7 +7,7 @@ export const STORAGE_BOUNDARIES = Object.freeze({
   indexedDb: Object.freeze({
     // 正式数据库名称固定；结构升级只调整 version。运行时不打开、搬迁或删除旧开发库。
     databaseName: "chatgpt-tidy-storage",
-    version: 1,
+    version: 2,
     stores: Object.freeze({
       bookmarks: "bookmarks",
       bookmarkGroups: "bookmark-groups",
