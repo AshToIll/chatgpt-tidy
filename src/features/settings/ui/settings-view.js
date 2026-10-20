@@ -14,12 +14,8 @@ export function createSettingsView({ root, themes, savePreference }) {
 
   function timeZoneList() {
     const systemZone = Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
-    const fallback = [
-      "UTC", "Asia/Shanghai", "Asia/Tokyo", "Asia/Singapore", "Asia/Kolkata", "Europe/London",
-      "Europe/Paris", "America/New_York", "America/Chicago", "America/Denver", "America/Los_Angeles",
-      "America/Sao_Paulo", "Australia/Sydney", "Pacific/Auckland",
-    ];
-    const supported = typeof Intl.supportedValuesOf === "function" ? Intl.supportedValuesOf("timeZone") : fallback;
+    // 最低 Chrome 116 已支持时区枚举；使用浏览器完整列表，不维护旧浏览器的手写子集。
+    const supported = Intl.supportedValuesOf("timeZone");
     return { systemZone, supported: [...new Set(["UTC", ...supported])] };
   }
 

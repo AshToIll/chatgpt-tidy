@@ -265,8 +265,10 @@ test('settings view retains language, timezone and theme behavior and does not r
   assert.equal(host.language.value, 'en');
   assert.deepEqual(host.language.options.map(item => item.textContent), ['简体中文', '繁體中文', 'English', '日本語']);
   assert.equal(host.timeZone.value, 'UTC');
-  assert.match(host.timeZone.innerHTML, /value="system"/);
-  assert.match(host.timeZone.innerHTML, /value="UTC"/);
+  assert.deepEqual([...host.timeZone.innerHTML.matchAll(/<option value="([^"]+)"/g)].map(match => match[1]),
+    ['system', ...new Set(['UTC', ...Intl.supportedValuesOf('timeZone')])],
+    'time zones include the complete browser list plus system and UTC, without duplicate options');
+  assert.ok(host.timeZone.innerHTML.includes(Intl.DateTimeFormat().resolvedOptions().timeZone));
   assert.equal(host.getInputs()[0].checked, true);
   const originalInput = host.getInputs()[0], originalThemeWrites = host.themes.htmlWrites;
   prefs.theme = 'amber'; view.updateTheme({ preferences: prefs, appearance: 'light' });
@@ -284,4 +286,16 @@ test('settings view retains language, timezone and theme behavior and does not r
   assert.equal(host.root.htmlWrites, 1); assert.equal(host.backup.htmlWrites, 0);
   view.dispose();
   assert.equal(host.language.listenerCount() + host.timeZone.listenerCount() + host.themes.listenerCount(), 0);
+});
+
+test('settings require browser time-zone enumeration instead of silently substituting an incomplete list', async t => {
+  const { createSettingsView } = await import('../src/features/settings/ui/settings-view.js');
+  const host = settingsHost();
+  const view = createSettingsView({ root: host.root, themes: {}, savePreference() {} });
+  // 不支持此 API 的浏览器低于产品门槛；不要用手写时区子集掩盖运行环境错误。
+  t.mock.property(Intl, 'supportedValuesOf', undefined);
+  try {
+    assert.throws(() => view.update({ preferences: preferences(), translator: key => key, appearance: 'light' }),
+      /supportedValuesOf/);
+  } finally { view.dispose(); }
 });

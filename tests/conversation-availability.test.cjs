@@ -293,3 +293,28 @@ test('worker accepts only exact live document ownership and broadcasts locator/r
   assert.deepEqual(messages[0].payload, { accountKey: 'catalog-a', conversationId: 'one' });
   revoke = true; assert.equal(await observer.accept(change(), sender), false); assert.equal(messages.length, 3);
 });
+
+test('availability observer rejects malformed changes before identity and rechecks ownership after admission', async () => {
+  const { createConversationAvailabilityObserver } = await import('../src/app/background/conversation-availability-observer.js');
+  const sender = { tab: { id: 0 }, frameId: 0, documentId: 'doc', documentLifecycle: 'active', url: 'https://chatgpt.com/' };
+  const current = { accountKey: OWNER, epoch: 1, documentId: 'doc', phase: 'ready' };
+  let admissions = 0, release;
+  const gate = new Promise(resolve => { release = resolve; });
+  const observer = createConversationAvailabilityObserver({
+    chrome: { runtime: { sendMessage: () => assert.fail('stale event must not notify') } },
+    identity: { acceptEvent: async () => { admissions++; await gate; }, peek: () => current },
+    repository: { accept: () => assert.fail('stale event must not write') },
+    broadcast: () => assert.fail('stale event must not broadcast'),
+  });
+  const invalid = [null, {}, ...['', 'with/slash', 123].map(conversationId => ({ ...change(), conversationId })),
+    ...['unknown', '', null].map(status => ({ ...change(), status })),
+    ...['', ' leading', 'trailing ', null].map(catalogAccountKey => ({ ...change(), catalogAccountKey })),
+    ...[-1, NaN, Infinity, '100', undefined].map(startedAt => ({ ...change(), startedAt }))];
+  for (const value of invalid) assert.equal(await observer.accept(value, sender), false);
+  assert.equal(admissions, 0);
+  const pending = observer.accept(change(), sender);
+  assert.equal(admissions, 1);
+  current.accountKey = '["another-user","personal"]';
+  release();
+  assert.equal(await pending, false);
+});

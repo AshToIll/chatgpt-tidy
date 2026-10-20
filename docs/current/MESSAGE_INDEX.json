@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "version": "0.5.2",
-  "buildFingerprint": "0b6803f5267fb5bccf0707a8",
+  "buildFingerprint": "f698a18e15e17cd584d0b214",
   "limitations": [
     "静态文字引用不是唯一触发条件；条件以列出的函数和分支为准。",
     "无静态引用不等于未使用；动态计算键另列，不自动删除任何文案。",
@@ -5473,7 +5473,7 @@
         },
         {
           "source": "src/features/settings/ui/settings-view.js",
-          "line": 29,
+          "line": 25,
           "kind": "literal-reference",
           "excerpt": "`<option value=\"system\">${t(\"followSystem\")} · ${systemZone}</option>`,"
         },
@@ -5797,7 +5797,7 @@
       "references": [
         {
           "source": "src/app/background/conversation-availability-observer.js",
-          "line": 12,
+          "line": 9,
           "kind": "literal-reference",
           "excerpt": "|| ![\"deleted\", \"unavailable\", \"available\"].includes(change.status)"
         },
@@ -12335,7 +12335,7 @@
       "references": [
         {
           "source": "src/app/background/conversation-availability-observer.js",
-          "line": 28,
+          "line": 22,
           "kind": "literal-reference",
           "excerpt": "const event = protocol.event(kind === \"favorites\" ? protocol.Type.FAVORITES_UPDATED : protocol.Type.BOOKMARKS_UPDATED, token);"
         },
@@ -15099,7 +15099,7 @@
       "references": [
         {
           "source": "src/features/settings/ui/settings-view.js",
-          "line": 29,
+          "line": 25,
           "kind": "direct-call",
           "excerpt": "`<option value=\"system\">${t(\"followSystem\")} · ${systemZone}</option>`,"
         }
@@ -15183,7 +15183,7 @@
       "references": [
         {
           "source": "src/features/settings/ui/settings-view.js",
-          "line": 72,
+          "line": 68,
           "kind": "literal-reference",
           "excerpt": "const languageNames = { \"zh-CN\": \"languageNameZhCn\", \"zh-TW\": \"languageNameZhTw\", en: \"languageNameEn\", ja: \"languageNameJa\" };"
         }
@@ -15205,7 +15205,7 @@
       "references": [
         {
           "source": "src/features/settings/ui/settings-view.js",
-          "line": 72,
+          "line": 68,
           "kind": "literal-reference",
           "excerpt": "const languageNames = { \"zh-CN\": \"languageNameZhCn\", \"zh-TW\": \"languageNameZhTw\", en: \"languageNameEn\", ja: \"languageNameJa\" };"
         }
@@ -15227,7 +15227,7 @@
       "references": [
         {
           "source": "src/features/settings/ui/settings-view.js",
-          "line": 72,
+          "line": 68,
           "kind": "literal-reference",
           "excerpt": "const languageNames = { \"zh-CN\": \"languageNameZhCn\", \"zh-TW\": \"languageNameZhTw\", en: \"languageNameEn\", ja: \"languageNameJa\" };"
         }
@@ -15249,7 +15249,7 @@
       "references": [
         {
           "source": "src/features/settings/ui/settings-view.js",
-          "line": 72,
+          "line": 68,
           "kind": "literal-reference",
           "excerpt": "const languageNames = { \"zh-CN\": \"languageNameZhCn\", \"zh-TW\": \"languageNameZhTw\", en: \"languageNameEn\", ja: \"languageNameJa\" };"
         }
@@ -15685,9 +15685,9 @@
         },
         {
           "source": "src/features/settings/ui/settings-view.js",
-          "line": 22,
+          "line": 18,
           "kind": "literal-reference",
-          "excerpt": "const supported = typeof Intl.supportedValuesOf === \"function\" ? Intl.supportedValuesOf(\"timeZone\") : fallback;"
+          "excerpt": "const supported = Intl.supportedValuesOf(\"timeZone\");"
         },
         {
           "source": "src/features/time/chatgpt/time-presentation.js",
@@ -20886,7 +20886,7 @@
     },
     {
       "source": "src/features/settings/ui/settings-view.js",
-      "line": 73,
+      "line": 69,
       "callee": "t",
       "expression": "languageNames[option.value]",
       "excerpt": "for (const option of elements.language.options) option.textContent = t(languageNames[option.value]);"

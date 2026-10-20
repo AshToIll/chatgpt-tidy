@@ -18,6 +18,21 @@ export function libraryError(message) {
 }
 
 /**
+ * 原生文档事件共用同一身份准入；业务载荷由调用方先校验。
+ * 返回实时校验函数而非身份快照，供调用方在等待后、存储提交及广播前继续核验。
+ */
+export async function acceptDocumentEvent({ identity, sender, accountKey, epoch }) {
+  if (!isValidTabId(sender?.tab?.id) || sender.frameId !== 0 || !sender.documentId
+    || sender.documentLifecycle !== "active" || !isChatgptUrl(sender.url)) return null;
+  await identity.acceptEvent({ accountKey, epoch, phase: "ready" }, sender);
+  return () => {
+    const current = identity.peek(sender.tab.id);
+    return current?.phase === "ready" && current.documentId === sender.documentId
+      && current.accountKey === accountKey && current.epoch === epoch;
+  };
+}
+
+/**
  * 将请求绑定到明确标签、面板和资料归属，不查询活动标签或创建账号缓存。
  * libraryIdentity 是唯一账号/文档所有者；这里只组合它签发的现有凭证。
  */
