@@ -252,7 +252,7 @@
 
   // 旁观官方请求，不接管删除、不额外发 HTTP，也不改变 fetch 返回的 Promise。
   // 2026-10-19 Edge 实测：DELETE /conversation/id/{id}，JSON 回执 success:true。
-  // 不兼容未经验证的 PATCH 猜测；归档、列表缺席和临时错误都不是删除。
+  // 只接受此端点的明确成功回执；归档、列表缺席和临时错误都不是删除。
   function availabilityTicket(input, init) {
     try {
       const url = new global.URL(typeof input === "string" ? input : input?.url || input?.href, global.location.href);

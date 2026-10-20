@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "version": "0.5.2",
-  "buildFingerprint": "0e73811593f78db20d9dae71",
+  "buildFingerprint": "0b6803f5267fb5bccf0707a8",
   "limitations": [
     "静态文字引用不是唯一触发条件；条件以列出的函数和分支为准。",
     "无静态引用不等于未使用；动态计算键另列，不自动删除任何文案。",

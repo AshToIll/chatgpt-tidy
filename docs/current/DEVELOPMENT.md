@@ -176,7 +176,7 @@ npm run package:source
 
 ## 验证产物归档与显式清理
 
-测试可继续生成 `.tmp/`、`tmp/` 输出；不要在验证尚在运行时清理。保留有用报告/日志至本地 `.artifacts/verification/<run>/`，本次收尾使用 `.artifacts/verification/0.5.0-closeout/`。这些是本机证据，不进入扩展安装包或公开源码包。历史日志中的旧临时路径只表示当时执行位置，查证时按归档映射取副本，不需要重新创建旧目录。
+测试可继续生成 `.tmp/`、`tmp/` 输出；不要在验证尚在运行时清理。保留有用报告/日志至本地 `.artifacts/verification/<run>/`。这些是本机证据，不进入扩展安装包或公开源码包。历史日志中的旧临时路径只表示当时执行位置，查证时按归档映射取副本，不需要重新创建旧目录。
 
 `tools/clean-verification.cjs` 不由测试自动调用。默认 dry-run 只列出已识别验证产物、候选删除计划和保留项；不改正常本地开发权限，不启动/关闭浏览器进程，也不清理真实浏览器资料：
 
@@ -201,7 +201,7 @@ npm run clean:verification -- --apply --archive-manifest .artifacts/verification
 
 ### 行为边界
 
-- MAIN 旁观官方单会话删除：`DELETE /backend-api/conversation/id/{id}`。2026-10-19 在用户 Edge Network 面板直接确认该请求，无请求负载，HTTP 200，JSON 响应 `{"success":true}`。仅在成功、未重定向且 JSON 明确 `success:true` 后通知；已移除未经验证的 PATCH 猜测。归档、批量端点、失败请求、假成功回执和目录缺席不作删除证据。
+- MAIN 旁观官方单会话删除：`DELETE /backend-api/conversation/id/{id}`。2026-10-19 在用户 Edge Network 面板直接确认该请求，无请求负载，HTTP 200，JSON 响应 `{"success":true}`。仅在成功、未重定向且 JSON 明确 `success:true` 后通知。归档、批量端点、失败请求、假成功回执和目录缺席不作删除证据。
 - 既有详情读取 `GET /backend-api/conversation/{id}` 或 `/backend-api/conversations/{id}` 返回 404/410 时标记“不可用”，不宣称确定删除；401/403、429、5xx、断网不改状态。后续成功的 JSON 详情响应可解除“不可用”，不能解除确认删除。
 - 不改变官方 fetch 的参数、Promise、Response、异常或取消信号；只克隆删除接口的小型确认回执，不读取/广播对话正文。不增加远端请求，不轮询，不逐条重扫目录。
 - 历史残留或其他设备上的删除，在下一次实际读取该会话详情时识别；仅加载缓存不能证明该会话仍存在，也不能保证立刻发现未观测到的删除。

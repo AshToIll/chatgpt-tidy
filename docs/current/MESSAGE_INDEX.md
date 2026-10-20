@@ -2,7 +2,7 @@
 
 > 自动生成：node tools/build-message-index.cjs；仅校验加 --check。不要直接编辑本文件。
 
-构建版本：0.5.2；源码指纹：0e73811593f78db20d9dae71。
+构建版本：0.5.2；源码指纹：0b6803f5267fb5bccf0707a8。
 
 ## 怎么修改与追查
 

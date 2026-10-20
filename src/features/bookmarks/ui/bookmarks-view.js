@@ -404,7 +404,7 @@ export function createBookmarksView({ root, onAction, onExportAction = () => {},
   });
   root.addEventListener("keydown", (event) => {
     const row = event.target.closest("[data-bookmark-jump]");
-    const interactive = event.target.closest("button, input, textarea, select, form");
+    const interactive = event.target.closest("button, input, select, form");
     if (event.target.matches("[data-bookmark-page-input]") && event.key === "Enter") { event.preventDefault(); event.target.blur(); return; }
     if (row && !interactive && (event.key === "Enter" || event.key === " ")) { event.preventDefault(); void act("open", { bookmarkId: row.dataset.bookmarkJump }); }
   });
@@ -415,7 +415,7 @@ export function createBookmarksView({ root, onAction, onExportAction = () => {},
     if (!button) {
       const insideOverlay = event.target.closest("[data-bookmark-group-overlay], [data-bookmark-entry-overlay]");
       if (!insideOverlay) transientUi.dismiss();
-      if (row && !event.target.closest("input, textarea, select, form")) void act("open", { bookmarkId: row.dataset.bookmarkJump });
+      if (row && !event.target.closest("input, select, form")) void act("open", { bookmarkId: row.dataset.bookmarkJump });
       return;
     }
     if (
@@ -484,7 +484,7 @@ export function createBookmarksView({ root, onAction, onExportAction = () => {},
   });
   root.addEventListener("dragstart", (event) => {
     const row = event.target.closest("[data-bookmark-group-row]");
-    if (!row || row.classList.contains("is-system") || event.target.closest("input, button, textarea, select")) return;
+    if (!row || row.classList.contains("is-system") || event.target.closest("input, button, select")) return;
     draggingGroupId = row.dataset.bookmarkGroupRow; event.dataTransfer.effectAllowed = "move"; event.dataTransfer.setData("text/plain", draggingGroupId); row.classList.add("is-dragging");
   });
   root.addEventListener("dragover", (event) => { if (draggingGroupId && event.target.closest("[data-bookmark-group-row]:not(.is-system)")) event.preventDefault(); });

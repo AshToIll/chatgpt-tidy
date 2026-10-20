@@ -5,6 +5,16 @@ const test = require('node:test');
 
 const root = path.resolve(__dirname, '..');
 
+test('list views and their DOM patcher have no retired multiline editor branches', () => {
+  // These views use input/select controls. Removing note editing also removes
+  // its textarea synchronization and event exemptions, not just its markup.
+  for (const file of ['src/platform/ui/stable-list-dom.js',
+    'src/features/favorites/ui/favorites-view.js', 'src/features/bookmarks/ui/bookmarks-view.js',
+    'src/features/export/ui/export-view.js']) {
+    assert.doesNotMatch(fs.readFileSync(path.join(root, file), 'utf8'), /textarea/i, file);
+  }
+});
+
 // A thin entrypoint no longer contains every action. Check every production
 // JavaScript owner so moving a forbidden API into a controller cannot hide it.
 function productionJavaScript(directory = 'src') {

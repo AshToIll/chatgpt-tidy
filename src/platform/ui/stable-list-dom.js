@@ -15,9 +15,8 @@ export function patchListNode(node, next) {
     return node;
   }
   // An unchanged value attribute must not overwrite an unsaved live draft.
-  // This also protects group names/notes when only the current card changes.
+  // This protects group-name drafts when only the current card changes.
   const valueChanged = node.getAttribute("value") !== next.getAttribute("value");
-  const textChanged = node.nodeName === "TEXTAREA" && node.textContent !== next.textContent;
   for (const attr of Array.from(node.attributes)) if (!next.hasAttribute(attr.name)) node.removeAttribute(attr.name);
   for (const attr of Array.from(next.attributes)) if (node.getAttribute(attr.name) !== attr.value) node.setAttribute(attr.name, attr.value);
   patchListChildren(node, next);
@@ -26,7 +25,6 @@ export function patchListNode(node, next) {
     if (node.checked !== next.checked) node.checked = next.checked;
     if (valueChanged && node.value !== next.value) node.value = next.value;
   }
-  if (textChanged && node.value !== next.value) node.value = next.value;
   return node;
 }
 
@@ -47,7 +45,7 @@ function patchListChildren(parent, nextParent) {
       else if (!found) parent.insertBefore(next.cloneNode(true), cursor);
       cursor = found || (cursor ? cursor.previousSibling : parent.lastChild);
     } else if (cursor && listNodeKey(cursor)) {
-      // Inserting an optional unkeyed note must not consume the next keyed
+      // Inserting an optional unkeyed notice must not consume the next keyed
       // control/list. Its key may still appear later in the desired order.
       parent.insertBefore(next.cloneNode(true), cursor);
       cursor = cursor.previousSibling;

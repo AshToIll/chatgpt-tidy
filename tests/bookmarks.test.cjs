@@ -80,7 +80,7 @@ assert.doesNotMatch(html, /id="bookmarks-view"[^>]*>\s*<div class="module-placeh
 const view = fs.readFileSync("src/features/bookmarks/ui/bookmarks-view.js", "utf8");
 assert.match(view, /captureScroll\(\)/);
 assert.match(view, /resultScrollTopByView/);
-assert.match(view, /event\.target\.closest\("button, input, textarea, select, form"\)/, "inner controls do not trigger row keyboard navigation");
+assert.match(view, /event\.target\.closest\("button, input, select, form"\)/, "active inner controls do not trigger row keyboard navigation");
 assert.match(view, /from\s+["']\.\.\/\.\.\/\.\.\/platform\/ui\/current-context-card\.js["']/, "Bookmarks consumes the shared current-context card primitive");
 assert.match(view, /data-bookmark-select-group/);
 assert.match(view, /aria-current/);
