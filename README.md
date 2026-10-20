@@ -18,15 +18,13 @@
 
 ## 使用演示
 
-约 1 分 36 秒，演示安装、打开侧栏及主要功能。
+约 42 秒，展示主要功能，含配乐。
 
-https://github.com/user-attachments/assets/b4ebe07a-406b-48ff-8f92-5dfcd9c8c7ca
+[中文版展示视频](https://github.com/AshToIll/chatgpt-tidy/releases/download/v0.5.2/ChatGPT-Tidy-promo-zh.mp4) | [English demo](https://github.com/AshToIll/chatgpt-tidy/releases/download/v0.5.2/ChatGPT-Tidy-promo-en.mp4)
 
-当前源码版本为 **0.5.2**。下方 **0.5.1** 是最近一次已发布的安装包；直接加载本仓库的 `src` 文件夹时，扩展管理页会显示 0.5.2。
+## 安装 0.5.2
 
-## 安装 0.5.1
-
-使用 Chrome / Edge 116 或更新版本。正常使用请下载 [`chatgpt-tidy-0.5.1.zip`](https://github.com/AshToIll/chatgpt-tidy/releases/download/v0.5.1/chatgpt-tidy-0.5.1.zip) 安装包，解压到固定文件夹。
+使用 Chrome / Edge 116 或更新版本。正常使用请下载 [`chatgpt-tidy-0.5.2.zip`](https://github.com/AshToIll/chatgpt-tidy/releases/download/v0.5.2/chatgpt-tidy-0.5.2.zip) 安装包，解压到固定文件夹。
 
 1. Chrome 打开 `chrome://extensions`，Edge 打开 `edge://extensions`。
 2. 开启「开发者模式」，点击「加载已解压的扩展程序」，选择含 `manifest.json` 的文件夹。

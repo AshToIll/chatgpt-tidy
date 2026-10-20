@@ -16,11 +16,15 @@ It started with title organization and now includes:
 
 This is an independent personal project, not affiliated with OpenAI. Changes to the ChatGPT website may affect its features.
 
-The current source version is **0.5.2**. The **0.5.1** package below is the latest published download; loading this repository's `src` folder directly shows 0.5.2 in the extension manager.
+## Demo
 
-## Install 0.5.1
+A 42-second overview of the main features, with music.
 
-Use Chrome / Edge 116 or later. Download the [`chatgpt-tidy-0.5.1.zip`](https://github.com/AshToIll/chatgpt-tidy/releases/download/v0.5.1/chatgpt-tidy-0.5.1.zip) installation package and extract it to a permanent folder.
+[English demo](https://github.com/AshToIll/chatgpt-tidy/releases/download/v0.5.2/ChatGPT-Tidy-promo-en.mp4) | [中文版展示视频](https://github.com/AshToIll/chatgpt-tidy/releases/download/v0.5.2/ChatGPT-Tidy-promo-zh.mp4)
+
+## Install 0.5.2
+
+Use Chrome / Edge 116 or later. Download the [`chatgpt-tidy-0.5.2.zip`](https://github.com/AshToIll/chatgpt-tidy/releases/download/v0.5.2/chatgpt-tidy-0.5.2.zip) installation package and extract it to a permanent folder.
 
 1. Open `chrome://extensions` in Chrome or `edge://extensions` in Edge.
 2. Enable **Developer mode**, click **Load unpacked**, and select the folder containing `manifest.json`.

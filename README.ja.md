@@ -16,11 +16,15 @@
 
 OpenAI とは関係のない個人プロジェクトです。ChatGPT のページの変更により、機能に影響が出る場合があります。
 
-現在のソース版は **0.5.2** です。下記の **0.5.1** は直近の公開済みインストールパッケージで、このリポジトリの `src` フォルダーを直接読み込むと拡張機能の管理画面には 0.5.2 と表示されます。
+## デモ
 
-## インストール 0.5.1
+主な機能を約 42 秒で紹介する、BGM 付きの動画です。
 
-Chrome / Edge 116 以降を使用してください。通常はインストール用の [`chatgpt-tidy-0.5.1.zip`](https://github.com/AshToIll/chatgpt-tidy/releases/download/v0.5.1/chatgpt-tidy-0.5.1.zip) をダウンロードし、そのまま使い続けるフォルダーに展開してください。
+[英語版デモ](https://github.com/AshToIll/chatgpt-tidy/releases/download/v0.5.2/ChatGPT-Tidy-promo-en.mp4) | [中国語版デモ](https://github.com/AshToIll/chatgpt-tidy/releases/download/v0.5.2/ChatGPT-Tidy-promo-zh.mp4)
+
+## インストール 0.5.2
+
+Chrome / Edge 116 以降を使用してください。通常はインストール用の [`chatgpt-tidy-0.5.2.zip`](https://github.com/AshToIll/chatgpt-tidy/releases/download/v0.5.2/chatgpt-tidy-0.5.2.zip) をダウンロードし、そのまま使い続けるフォルダーに展開してください。
 
 1. Chrome では `chrome://extensions`、Edge では `edge://extensions` を開きます。
 2. 「デベロッパー モード」を有効にし、展開済みの拡張機能を読み込むボタンから、`manifest.json` のあるフォルダーを選びます。

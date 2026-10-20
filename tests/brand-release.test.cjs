@@ -25,3 +25,16 @@ test('UI translations use the public name without renaming persisted contracts',
   assert.match(read('src/platform/protocol.js'), /chatgpt-tidy\.window\.v1/);
   assert.match(read('src/platform/storage/schema.js'), /chatgpt-tidy-storage/);
 });
+
+test('public READMEs link the current install package and both localized demos', () => {
+  // 发布时三种语言必须同时更新，避免源码版本升级但下载入口仍指向旧包。
+  const { version } = JSON.parse(read('package.json'));
+  const download = `https://github.com/AshToIll/chatgpt-tidy/releases/download/v${version}/`;
+  for (const file of ['README.md', 'README.en.md', 'README.ja.md']) {
+    const text = read(file);
+    assert.ok(text.includes(`${download}chatgpt-tidy-${version}.zip`), file);
+    for (const language of ['en', 'zh']) assert.ok(text.includes(`${download}ChatGPT-Tidy-promo-${language}.mp4`), file);
+    const releaseLinks = [...text.matchAll(/https:\/\/github\.com\/AshToIll\/chatgpt-tidy\/releases\/download\/([^/]+)\//g)];
+    for (const link of releaseLinks) assert.equal(link[1], `v${version}`, file);
+  }
+});
