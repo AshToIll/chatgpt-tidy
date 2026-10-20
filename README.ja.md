@@ -20,7 +20,18 @@ OpenAI とは関係のない個人プロジェクトです。ChatGPT のペー�
 
 主な機能を約 42 秒で紹介する、BGM 付きの動画です。
 
-[英語版デモ](https://github.com/AshToIll/chatgpt-tidy/releases/download/v0.5.2/ChatGPT-Tidy-promo-en.mp4) | [中国語版デモ](https://github.com/AshToIll/chatgpt-tidy/releases/download/v0.5.2/ChatGPT-Tidy-promo-zh.mp4)
+英語版デモ：
+
+https://github.com/user-attachments/assets/975fb313-f086-45f4-850d-7599ac3fd599
+
+<details>
+<summary>中国語版デモ</summary>
+
+https://github.com/user-attachments/assets/b8192886-dc7d-4943-afb3-7040bbcdf5b8
+
+</details>
+
+[英語版 MP4 をダウンロード](https://github.com/AshToIll/chatgpt-tidy/releases/download/v0.5.2/ChatGPT-Tidy-promo-en.mp4) | [中国語版 MP4 をダウンロード](https://github.com/AshToIll/chatgpt-tidy/releases/download/v0.5.2/ChatGPT-Tidy-promo-zh.mp4)
 
 ## インストール 0.5.2
 

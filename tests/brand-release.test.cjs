@@ -38,3 +38,19 @@ test('public READMEs link the current install package and both localized demos',
     for (const link of releaseLinks) assert.equal(link[1], `v${version}`, file);
   }
 });
+
+test('public READMEs embed playable video attachments, not only download links', () => {
+  // 使用独立段落中的 GitHub 视频附件 URL 生成播放器；Release 链接只作为下载入口。
+  const videos = file => [...read(file).matchAll(/^https:\/\/github\.com\/user-attachments\/assets\/[a-f0-9-]{36}\r?$/gm)]
+    .map(match => match[0].trim());
+  const chinese = videos('README.md');
+  const english = videos('README.en.md');
+  const japanese = videos('README.ja.md');
+  for (const entries of [chinese, english, japanese]) {
+    assert.equal(entries.length, 2);
+    assert.equal(new Set(entries).size, 2);
+  }
+  // 中文首页优先中文；英日文首页优先英文，另一语言保留在可展开的播放器中。
+  assert.deepEqual(chinese, [...english].reverse());
+  assert.deepEqual(japanese, english);
+});

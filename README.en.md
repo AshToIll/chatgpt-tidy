@@ -20,7 +20,16 @@ This is an independent personal project, not affiliated with OpenAI. Changes to 
 
 A 42-second overview of the main features, with music.
 
-[English demo](https://github.com/AshToIll/chatgpt-tidy/releases/download/v0.5.2/ChatGPT-Tidy-promo-en.mp4) | [中文版展示视频](https://github.com/AshToIll/chatgpt-tidy/releases/download/v0.5.2/ChatGPT-Tidy-promo-zh.mp4)
+https://github.com/user-attachments/assets/975fb313-f086-45f4-850d-7599ac3fd599
+
+<details>
+<summary>中文版展示视频</summary>
+
+https://github.com/user-attachments/assets/b8192886-dc7d-4943-afb3-7040bbcdf5b8
+
+</details>
+
+[Download English MP4](https://github.com/AshToIll/chatgpt-tidy/releases/download/v0.5.2/ChatGPT-Tidy-promo-en.mp4) | [下载中文版 MP4](https://github.com/AshToIll/chatgpt-tidy/releases/download/v0.5.2/ChatGPT-Tidy-promo-zh.mp4)
 
 ## Install 0.5.2
 
