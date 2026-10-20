@@ -1,5 +1,6 @@
 const assert = require("node:assert/strict");
 const { test } = require("node:test");
+const domText = node => node.nodeType === 3 ? node.nodeValue : node.childNodes.map(domText).join("");
 
 async function actionsHarness() {
   const { createBookmarksActions } = await import("../src/features/bookmarks/ui/bookmarks-actions.js");
@@ -71,6 +72,16 @@ function harness() {
 }
 // Await production async handlers across the VM boundary, not just the host's
 // first Promise microtask. No fixture performs an actual library write.
+test("deleted bookmark retains its excerpt and management but has no keyboard or pointer jump target", () => {
+  const h = harness(); h.seedBookmarks();
+  h.render({ store: { ...h.model.store, conversationAvailability: { "conversation-a": "deleted" } } });
+  assert.equal(h.root.querySelector("[data-bookmark-jump]"), null);
+  assert.match(domText(h.root), /saved excerpt/); assert.match(domText(h.root), /libraryConversationDeleted/);
+  assert.ok(h.root.querySelector('[data-bookmark-entry-menu="conversation-a::bookmark-a"]'));
+  h.render({ store: { ...h.model.store, conversationAvailability: { "conversation-a": "unavailable" } } });
+  assert.ok(h.root.querySelector("[data-bookmark-jump]"));
+});
+
 const settle = () => new Promise(setImmediate);
 const overlaySelector = "[data-bookmark-group-overlay], [data-bookmark-entry-overlay]";
 const groupMenu = '[data-bookmark-group-menu="bookmark-quote"]';

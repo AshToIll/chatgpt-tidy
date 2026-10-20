@@ -60,7 +60,7 @@ export function createFavoritesActions({
       if (!isOwnerCurrent(owner)) return;
       // 校验已在落库前明确拒绝，不是结果未知；名称空白由表单就近拦截，其他非法值不冒充空名。
       const rejected = action !== "open" && error.code === protocol.ErrorCode.VALIDATION_ERROR;
-      const key = error.code === protocol.ErrorCode.CONTEXT_MISMATCH
+      const key = error.code === "CONVERSATION_DELETED" ? "libraryConversationDeleted" : error.code === protocol.ErrorCode.CONTEXT_MISMATCH
         ? "contextChanged"
         : error.code === protocol.ErrorCode.PERSISTENCE_REJECTED
           ? "favoriteUnavailable"

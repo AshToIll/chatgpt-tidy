@@ -18,6 +18,8 @@ import { createCatalogSelection } from "./catalog-selection.js";
 import { createLibraryWorkflow } from "./library-workflow.js";
 import { createExportJobs } from "./export-jobs.js";
 import { createTitleCatalogObserver } from "./title-catalog-observer.js";
+import { createConversationAvailabilityObserver } from "./conversation-availability-observer.js";
+import { createConversationAvailabilityRepository } from "../../platform/storage/conversation-availability.js";
 import { createTitlesHandler } from "./handlers/titles.js";
 import { createFavoritesHandler } from "./handlers/favorites.js";
 import { createBookmarksHandler } from "./handlers/bookmarks.js";
@@ -84,6 +86,8 @@ const messageListener = createWorkerMessageListener({ toolbarTheme, exportJobs, 
   identity: libraryIdentity, requests,
   diagnostics: createDiagnosticsService({ chrome }),
   titleCatalog: createTitleCatalogObserver({ chrome, identity: libraryIdentity, repository: conversationCatalogRepository }),
+  conversationAvailability: createConversationAvailabilityObserver({ chrome, identity: libraryIdentity,
+    repository: createConversationAvailabilityRepository(), broadcast: pageGateway.broadcast }),
   pageEvents: createPageEvents({ chrome, identity: libraryIdentity }),
 });
 

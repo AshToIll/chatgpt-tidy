@@ -32,6 +32,7 @@ export function createTitleCatalog({ repository, requestAdapter, beforeLoad = as
   let publication = Promise.resolve(), refreshing = null, refreshTimer = null, selectionIsActive = () => true;
   let loadingEpoch = null;
   const titleChanges = new Map();
+  const removedRows = new Set();
   const rowReads = new Map();
   const iso = (value) => Number.isFinite(value) ? new Date(value).toISOString() : null;
   const cancelled = () => Object.assign(new Error("Catalog cancelled"), { code: "CANCELLED" });
@@ -53,7 +54,7 @@ export function createTitleCatalog({ repository, requestAdapter, beforeLoad = as
       // them never grants this superseded run another automatic refresh turn.
       if (next.pauseReason === "catalog-superseded") clearRefreshTimer();
       const account = typeof next.accountKey === "string" && next.accountKey.trim() ? next.accountKey : null;
-      if (account !== accountKey) { snapshotOwner = null; rowProjection = null; titleChanges.clear(); rowReads.clear(); }
+      if (account !== accountKey) { snapshotOwner = null; rowProjection = null; titleChanges.clear(); removedRows.clear(); rowReads.clear(); }
       accountKey = account;
       // The enumerator has already read this account's whole directory. Reuse
       // that exact observation, not a second full read with potentially newer
@@ -72,7 +73,7 @@ export function createTitleCatalog({ repository, requestAdapter, beforeLoad = as
     // Reuse only that array's display DTOs, so status-only updates do not flush
     // the view's row memo. A new snapshot is always projected independently.
     if (rowProjection?.sourceRows !== sourceRows) rowProjection = { sourceRows,
-      rows: sourceRows.map((row) => {
+      rows: sourceRows.filter(row => !removedRows.has(row.conversationId)).map((row) => {
         const changed = titleChanges.get(row.conversationId);
         const newerScan = changed && snapshot.state?.snapshotStartedAt > changed.observedAt
           && row.catalogGeneration === snapshot.state?.generation;
@@ -171,7 +172,7 @@ export function createTitleCatalog({ repository, requestAdapter, beforeLoad = as
     const epoch = ++generation;
     loadingEpoch = epoch;
     active = false; clearRefreshTimer(); accountKey = null; snapshotOwner = null; rowProjection = null;
-    titleChanges.clear(); rowReads.clear();
+    titleChanges.clear(); removedRows.clear(); rowReads.clear();
     // Search and Titles share one persisted enumeration checkpoint. Drain the
     // other reader before claiming it; never race two generations into storage.
     try {
@@ -206,7 +207,18 @@ export function createTitleCatalog({ repository, requestAdapter, beforeLoad = as
     rowReads.set(conversationId, ticket);
     try {
       const row = await repository.getRow(account, conversationId);
-      if (!active || epoch !== generation || account !== accountKey || rowReads.get(conversationId) !== ticket || !row) return;
+      if (!active || epoch !== generation || account !== accountKey || rowReads.get(conversationId) !== ticket) return;
+      if (!row) {
+        // 已落库的失效通知：只删本行，旧的在途扫描快照也不能把它重新放回来。
+        removedRows.add(conversationId); titleChanges.delete(conversationId); rowProjection = null;
+        await publish(); return;
+      }
+      if (removedRows.delete(conversationId)) rowProjection = null;
+      if (snapshotOwner?.snapshot && !snapshotOwner.snapshot.rows.some(current => current.conversationId === conversationId)) {
+        snapshotOwner = { ...snapshotOwner, snapshot: { ...snapshotOwner.snapshot,
+          rows: [...snapshotOwner.snapshot.rows, row] } };
+        rowProjection = null;
+      }
       titleChanges.set(conversationId, row);
       if (rowProjection) rowProjection = { ...rowProjection,
         rows: rowProjection.rows.map(current => current.conversationId === conversationId

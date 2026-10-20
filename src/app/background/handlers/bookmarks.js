@@ -85,6 +85,9 @@ export function createBookmarksHandler({ binding, library, navigation, filingCon
       const state = await readLibrary("bookmarks", libraryOwner);
       navigation.assertCurrent(navigationHandle);
       const bookmark = state.items[payload.bookmarkId];
+      if (state.conversationAvailability?.[bookmark?.conversationId] === "deleted") {
+        throw Object.assign(new Error("This conversation was deleted."), { tidyCode: "CONVERSATION_DELETED" });
+      }
       if (!bookmark) {
         throw Object.assign(new Error(`Bookmark not found: ${payload.bookmarkId}`), {
           tidyCode: protocol.ErrorCode.NOT_FOUND,

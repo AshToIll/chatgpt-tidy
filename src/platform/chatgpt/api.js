@@ -36,6 +36,8 @@
   const identityListeners = new Set();
   const responseTickets = new WeakMap();
   const titleListeners = new Set();
+  const availabilityListeners = new Set();
+  const pendingAvailabilityReads = new Map();
   const ownTitleRequests = new WeakSet();
   // 仅登记正在发生的改名，不保存所有会话 ID，也不轮询目录。
   const pendingRenames = new Map();
@@ -81,6 +83,7 @@
     cachedAccessToken = "";
     sessionRequest = null;
     pendingRenames.clear();
+    pendingAvailabilityReads.clear();
     // A soft-to-hard cause upgrade is observable even if the lease is already
     // invalid. Keep its original epoch/ticket rules and publish that escalation
     // once; repeated hard failures remain silent, as before.
@@ -247,6 +250,74 @@
     return () => titleListeners.delete(listener);
   }
 
+  // 旁观官方请求，不接管删除、不额外发 HTTP，也不改变 fetch 返回的 Promise。
+  // 单会话 is_visible:false 成功才是删除；归档、列表缺席和临时错误都不是。
+  function availabilityTicket(input, init) {
+    try {
+      const url = new global.URL(typeof input === "string" ? input : input?.url || input?.href, global.location.href);
+      const match = /^\/backend-api\/(conversation|conversations)\/([A-Za-z0-9_-]+)$/.exec(url.pathname);
+      const method = String(init?.method || input?.method || "GET").toUpperCase();
+      if (url.origin !== "https://chatgpt.com" || url.origin !== global.location.origin || url.hash
+        || !match || !["GET", "PATCH"].includes(method)
+        || method === "PATCH" && (url.search || match[1] !== "conversation")) return null;
+      const identity = checkLibraryIdentity();
+      const catalogAccountKey = catalogIdentity(cachedSession).accountKey;
+      if (identity.phase !== "ready" || !catalogAccountKey) return null;
+      const ticket = { ...identity, catalogAccountKey, conversationId: match[2], method,
+        startedAt: global.performance?.timeOrigin + global.performance?.now() || Date.now() };
+      ticket.deletion = method === "PATCH" ? Promise.resolve(init?.body !== undefined ? init.body
+        : typeof input?.clone === "function" ? input.clone().text() : null).then(body => {
+          if (typeof body !== "string" || body.length > 16_384) return false;
+          const value = JSON.parse(body);
+          return value?.is_visible === false && !Object.hasOwn(value, "is_archived");
+        }).catch(() => false) : Promise.resolve(false);
+      if (method === "GET") pendingAvailabilityReads.set(ticket.conversationId, ticket);
+      return ticket;
+    } catch { return null; }
+  }
+
+  function releaseAvailability(ticket) {
+    if (ticket && pendingAvailabilityReads.get(ticket.conversationId) === ticket) pendingAvailabilityReads.delete(ticket.conversationId);
+  }
+
+  async function observeAvailability(ticket, response) {
+    if (!ticket) return;
+    try {
+      if (!response || response.redirected || ticket.method === "GET"
+        && pendingAvailabilityReads.get(ticket.conversationId) !== ticket) return;
+      await publishAvailability(ticket, response);
+    } finally { releaseAvailability(ticket); }
+  }
+
+  async function publishAvailability(ticket, response) {
+    let status;
+    if (ticket.method === "PATCH") {
+      if (!response.ok || !await ticket.deletion) return;
+      status = "deleted";
+    } else if (response.status === 404 || response.status === 410) status = "unavailable";
+    else if (response.ok && response.headers?.get("content-type")?.split(";")[0].trim() === "application/json") {
+      // 原详情端点重新可读可解除“不可用”，但永远不能解除确认删除。
+      // 不克隆/解析可能很大的对话正文，也不广播正文。
+      status = "available";
+    } else return;
+    const current = checkLibraryIdentity();
+    if (!pageSession.check() || !documentActive || current.phase !== "ready"
+      || current.accountKey !== ticket.accountKey || current.epoch !== ticket.epoch
+      || catalogIdentity(cachedSession).accountKey !== ticket.catalogAccountKey) return;
+    const change = { ownerAccountKey: ticket.accountKey, epoch: ticket.epoch,
+      catalogAccountKey: ticket.catalogAccountKey, conversationId: ticket.conversationId,
+      startedAt: ticket.startedAt, status };
+    for (const listener of availabilityListeners) {
+      try { listener(change); } catch { /* 观察失败不影响官方删除/读取。 */ }
+    }
+  }
+
+  function onConversationAvailabilityChanged(listener) {
+    if (!pageSession.check() || typeof listener !== "function") return () => {};
+    availabilityListeners.add(listener);
+    return () => availabilityListeners.delete(listener);
+  }
+
   // TIDY 写入走原有回执链路，不把自己的请求再当成“外部改名”。标记只在内存中。
   function fetchTitleRequest(input, init) {
     pageSession.assertActive();
@@ -276,11 +347,14 @@
       if (!pageSession.check()) return originalFetch.apply(this, args);
       if (!sessionEndpoint(args[0])) {
         const ticket = renameTicket(args[0], args[1]);
+        const availability = availabilityTicket(args[0], args[1]);
         let request;
         try { request = originalFetch.apply(this, args); }
-        catch (error) { void observeRename(ticket, null).catch(() => {}); throw error; }
+        catch (error) { void observeRename(ticket, null).catch(() => {}); releaseAvailability(availability); throw error; }
         if (ticket) void Promise.resolve(request).then(response => observeRename(ticket, response),
           () => observeRename(ticket, null)).catch(() => {});
+        if (availability) void Promise.resolve(request).then(response => observeAvailability(availability, response),
+          () => releaseAvailability(availability)).catch(() => {});
         return request;
       }
       const ticket = sessionTicket();
@@ -491,6 +565,7 @@
     observedSessionPending = null;
     identityListeners.clear();
     titleListeners.clear();
+    availabilityListeners.clear();
     global.removeEventListener?.("pagehide", onPageHide);
     global.removeEventListener?.("pageshow", onPageShow);
     global.document?.removeEventListener?.("prerenderingchange", onPrerenderingChange);
@@ -499,5 +574,5 @@
   });
 
   global.TidyChatgptApi = Object.freeze({ activeWorkspace, readLibraryAccount, checkLibraryIdentity,
-    onLibraryIdentityChanged, onTitleChanged, fetchTitleRequest, catalogIdentity, loadSession, loadAccessToken, fetchAuthenticated });
+    onLibraryIdentityChanged, onTitleChanged, onConversationAvailabilityChanged, fetchTitleRequest, catalogIdentity, loadSession, loadAccessToken, fetchAuthenticated });
 })(globalThis);

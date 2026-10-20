@@ -1,6 +1,20 @@
 const assert = require("node:assert/strict");
 const { test } = require("node:test");
 const { createLibraryViewHarness: harness } = require("./helpers/library-view-harness.cjs");
+const domText = node => node.nodeType === 3 ? node.nodeValue : node.childNodes.map(domText).join("");
+
+test("deleted favorites keep their title and removal menu but cannot navigate or be selected for live export", () => {
+  const h = harness(); h.seedFavorites();
+  h.render({ store: { ...h.model.store, conversationAvailability: { "favorite-a": "deleted" } } });
+  const button = h.root.querySelector('[data-open-favorite="favorite-a"]');
+  assert.equal(button.hasAttribute("disabled"), true);
+  assert.match(domText(h.root), /libraryConversationDeleted/);
+  assert.ok(h.root.querySelector('[data-favorite-menu="favorite-a"]'));
+  assert.ok(h.model.store.items["favorite-a"]);
+  h.render({ store: { ...h.model.store, conversationAvailability: { "favorite-a": "unavailable" } } });
+  assert.equal(h.root.querySelector('[data-open-favorite="favorite-a"]').hasAttribute("disabled"), false);
+  assert.match(domText(h.root), /libraryConversationUnavailable/);
+});
 
 for (const picker of [false, true]) {
   test(`switching group closes ${picker ? "icon picker" : "menu"} before the pending view save`, () => {

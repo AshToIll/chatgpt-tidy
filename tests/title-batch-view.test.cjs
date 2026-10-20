@@ -108,6 +108,20 @@ const actions = (h) => h.calls.map((c) => c.action);
 const button = (h, action) => h.root.innerHTML.match(new RegExp(`<button[^>]*data-batch-action="${action}"[^>]*>`))?.[0];
 const visibleIds = (h) => [...h.root.innerHTML.matchAll(/data-batch-select="([^"]+)"/g)].map((match) => match[1]);
 
+test("deleted selection disappears without losing other checks or scroll; a frozen preview cannot apply", async () => {
+  const h = harness(); h.update(); await flush(); h.select("one"); h.select("two"); h.view.state.selectScroll = 87;
+  const before = actions(h);
+  h.catalog({ accountKey: "account-1", rows: rows.filter(row => row.conversationId !== "one"), loading: false });
+  assert.deepEqual([...h.view.state.selected], ["two"]); assert.equal(h.view.state.selectScroll, 87);
+  assert.deepEqual(actions(h), before);
+  const preview = harness(); await review(preview, ["one", "four"]);
+  const frozen = plain(preview.view.state.batch), requests = actions(preview);
+  preview.catalog({ accountKey: "account-1", rows: rows.filter(row => row.conversationId !== "one"), loading: false });
+  assert.deepEqual(plain(preview.view.state.batch), frozen);
+  assert.match(button(preview, "apply"), /disabled/); preview.click("apply"); await flush();
+  assert.deepEqual(actions(preview), requests);
+});
+
 test("external rename updates only its selection row and preserves filters, checks and scroll without requests", async () => {
   const h = harness(); h.update(); await flush(); h.select("one"); h.view.state.selectScroll = 87;
   const before = actions(h), catalogCalls = h.catalogCalls;

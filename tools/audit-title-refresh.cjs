@@ -68,6 +68,7 @@ async function auditScenario({ name, count = 679, seed = "fresh", accountStatus 
   load("src/features/titles/model/title-context.js", ["titleSnapshotContext"]);
   load("src/platform/storage/schema.js", ["STORAGE_BOUNDARIES"]);
   load("src/platform/storage/database.js", ["ensureTidyStores", "storageError", "openTidyDatabase", "assertAccountKey"]);
+  load("src/platform/storage/conversation-availability.js", ["isConversationUnavailable"]);
   load("src/platform/catalog/storage/conversation-catalog.js", ["createConversationCatalogRepository"]);
   for (const file of ["src/platform/chatgpt/api.js", "src/platform/chatgpt/route.js", "src/platform/chatgpt/messages.js", "src/platform/catalog/chatgpt/date-index.js", "src/features/titles/chatgpt/titles.js"]) load(file);
   load("src/platform/catalog/ui/conversation-catalog-reader.js", ["createConversationCatalogReader"]);

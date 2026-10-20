@@ -115,6 +115,9 @@ export function createFavoritesHandler({ binding, library, navigation, filingCon
       const state = await readLibrary("favorites", libraryOwner);
       navigation.assertCurrent(navigationHandle);
       const favorite = state.items[payload.conversationId];
+      if (state.conversationAvailability?.[payload.conversationId] === "deleted") {
+        throw Object.assign(new Error("This conversation was deleted."), { tidyCode: "CONVERSATION_DELETED" });
+      }
       if (!favorite) {
         throw Object.assign(new Error(`Favorite not found: ${payload.conversationId}`), {
           tidyCode: protocol.ErrorCode.NOT_FOUND,

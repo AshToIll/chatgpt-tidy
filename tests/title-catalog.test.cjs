@@ -68,6 +68,32 @@ test("a title change reads just that row, publishes no HTTP and does not change 
   await h.service.pause();
 });
 
+test("confirmed disappearance removes one row without HTTP or timer restart, and recovery restores the row", async () => {
+  let missing = true;
+  const h = harness({ rowRead: async (_account, id) => missing ? null : { conversationId: id, title: "Recovered" } });
+  await h.load(); await flush(); const calls = plain(h.calls), timers = [...h.timers.keys()];
+  const change = { accountKey: "account-one", conversationId: "missing-date" };
+  await h.service.changed(change); assert.equal(h.updates.at(-1).rows.length, 0);
+  missing = false; await h.service.changed(change); assert.equal(h.updates.at(-1).rows[0].title, "Recovered");
+  assert.deepEqual(h.calls, calls); assert.deepEqual([...h.timers.keys()], timers); await h.service.pause();
+});
+
+test("recovery inserts a row excluded from the initial snapshot without rescanning", async () => {
+  const h = harness({
+    rowRead: async (_account, id) => ({ conversationId: id, title: "Recovered", createdAt: 1 }),
+    pageRead: async ({ source }) => ({ schemaVersion: "tidy.date-search.v1", source,
+      conversations: [], projects: [], nextCursor: null, done: true, coverageReasons: [] }),
+  });
+  await h.load(); await flush(); assert.equal(h.updates.at(-1).rows.length, 0);
+  const calls = plain(h.calls), timers = [...h.timers.keys()];
+  const change = { accountKey: "account-one", conversationId: "recovered" };
+  await h.service.changed(change); await h.service.changed(change);
+  assert.equal(h.updates.at(-1).rows.length, 1);
+  assert.equal(h.updates.at(-1).rows[0].title, "Recovered");
+  assert.deepEqual(h.calls, calls); assert.deepEqual([...h.timers.keys()], timers);
+  await h.service.pause();
+});
+
 test("late row reads cannot overwrite newer changes or publish after hide/account replacement", async () => {
   const pending = [];
   const h = harness({ rowRead: (account, id) => new Promise(resolve => pending.push(resolve)) });

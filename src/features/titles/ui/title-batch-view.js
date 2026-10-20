@@ -165,8 +165,9 @@ export function createTitleBatchView({ root, request: sendRequest, loadCatalog, 
   const changedPreviewIds = () => {
     if (state.batch?.phase !== "preview") return [];
     const rows = new Map(state.rows.map(row => [row.conversationId, row]));
-    return state.batch.items.filter(item => editable(item) && rows.get(item.conversationId)?.titleChangeStartedAt != null
-      && rows.get(item.conversationId).title !== item.current?.title).map(item => item.conversationId);
+    return state.batch.items.filter(item => editable(item) && (!rows.has(item.conversationId)
+      || rows.get(item.conversationId)?.titleChangeStartedAt != null
+      && rows.get(item.conversationId).title !== item.current?.title)).map(item => item.conversationId);
   };
   const hasUnknown = () => state.batch?.items.some((item) => ["pending", "uncertain"].includes(item.status));
   const needsReconciliation = () => hasUnknown() || state.error === "titlesReceiptMissing";
@@ -293,6 +294,9 @@ export function createTitleBatchView({ root, request: sendRequest, loadCatalog, 
         }
         return { ...row, ...settled.current };
       });
+    const remaining = new Set(state.rows.map(row => row.conversationId));
+    // 目录移除只取消对应选择；其他选择、筛选、滚动及未决写入回执保持不动。
+    for (const id of state.selected) if (!remaining.has(id)) state.selected.delete(id);
     state.loading = value.loading === true; state.catalogLoaded = true;
     state.catalogIssue = catalogIssueFor(value); state.catalogError = ["account", "rate", "read"].includes(state.catalogIssue);
     state.catalogErrorOrigin = state.catalogError ? value.errorOrigin === "current" ? "current" : "previous" : null;

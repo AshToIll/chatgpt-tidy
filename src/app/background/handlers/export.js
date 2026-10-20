@@ -104,6 +104,10 @@ export function createExportHandler({ binding, pageGateway, library, catalog, ex
         readLibrary("bookmarks", libraryOwner),
       ]);
       const bookmarkItems = bookmarkIds.map((id) => bookmarks.items[id]).filter(Boolean);
+      if (conversationIds.some(id => favorites.conversationAvailability?.[id] || bookmarks.conversationAvailability?.[id])
+        || bookmarkItems.some(item => bookmarks.conversationAvailability?.[item.conversationId])) {
+        throw Object.assign(new Error("A selected conversation is unavailable."), { tidyCode: protocol.ErrorCode.NOT_FOUND });
+      }
       if (bookmarkItems.length !== bookmarkIds.length) {
         throw Object.assign(new Error("One or more selected bookmarks no longer exist."), {
           tidyCode: protocol.ErrorCode.NOT_FOUND,

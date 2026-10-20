@@ -30,7 +30,7 @@ export function createLibraryWorkflow({ chrome, identity, pageGateway }) {
 
   function invalidateLibrary(kind, state) {
     // Broadcast only an invalidation token. Never deliver another account's
-    // excerpts/notes to all content scripts; each visible consumer revalidates
+    // excerpts to all content scripts; each visible consumer revalidates
     // its own tab before reading a fresh scoped library.
     const envelope = protocol.event(kind === "favorites" ? protocol.Type.FAVORITES_UPDATED : protocol.Type.BOOKMARKS_UPDATED,
       { accountKey: state.accountKey, revision: state.revision });

@@ -1326,6 +1326,7 @@ test("real catalog service streams into the view and settles pagination without 
   for (const [file, names] of [
     ["src/platform/storage/schema.js", ["STORAGE_BOUNDARIES"]],
     ["src/platform/storage/database.js", ["openTidyDatabase", "storageError", "assertAccountKey"]],
+    ["src/platform/storage/conversation-availability.js", ["isConversationUnavailable"]],
     ["src/platform/catalog/storage/conversation-catalog.js", ["createConversationCatalogRepository"]],
     ["src/platform/catalog/ui/conversation-catalog-reader.js", ["createConversationCatalogReader"]],
     ["src/features/search/ui/conversation-date-search.js", ["createConversationDateSearch"]],
@@ -1389,7 +1390,8 @@ for (const changes of [["2026-09-05"], ["2026-09-05", "2026-09-04", "2026-09-05"
     for (const [file, names] of [
       ["src/platform/storage/schema.js", ["STORAGE_BOUNDARIES"]],
       ["src/platform/storage/database.js", ["openTidyDatabase", "storageError", "assertAccountKey"]],
-      ["src/platform/catalog/storage/conversation-catalog.js", ["createConversationCatalogRepository"]],
+      ["src/platform/storage/conversation-availability.js", ["isConversationUnavailable"]],
+    ["src/platform/catalog/storage/conversation-catalog.js", ["createConversationCatalogRepository"]],
       ["src/platform/catalog/ui/conversation-catalog-reader.js", ["createConversationCatalogReader"]],
       ["src/features/search/ui/conversation-date-search.js", ["createConversationDateSearch"]],
     ]) {

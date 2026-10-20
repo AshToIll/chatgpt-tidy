@@ -1,5 +1,6 @@
 import { STORAGE_BOUNDARIES } from "../../storage/schema.js";
 import { openTidyDatabase, storageError, assertAccountKey } from "../../storage/database.js";
+import { isConversationUnavailable } from "../../storage/conversation-availability.js";
 
 const STORES = STORAGE_BOUNDARIES.indexedDb.stores;
 const stateKey = (accountKey) => `conversation-catalog:${accountKey}`;
@@ -86,7 +87,7 @@ export function createConversationCatalogRepository(options = {}) {
       const stateRequest = transaction.objectStore(STORES.moduleState).get(stateKey(accountKey));
       const [rows, state] = await Promise.all([requestValue(rowsRequest), requestValue(stateRequest)]);
       await done;
-      return { rows: rows.map(catalogRow), state: state || null };
+      return { rows: rows.filter(row => row.catalogMetadata && !isConversationUnavailable(row)).map(catalogRow), state: state || null };
     } catch (error) {
       await done?.catch(() => {});
       throw catalogStorageError(error, "Catalog snapshot could not be read");
@@ -102,7 +103,7 @@ export function createConversationCatalogRepository(options = {}) {
     try {
       const row = await requestValue(transaction.objectStore(STORES.conversationIndex).get([accountKey, conversationId]));
       await done;
-      return row?.catalogMetadata ? catalogRow(row) : null;
+      return row?.catalogMetadata && !isConversationUnavailable(row) ? catalogRow(row) : null;
     } catch (error) { await done.catch(() => {}); throw catalogStorageError(error, "Title row could not be read"); }
   }
 
@@ -120,7 +121,7 @@ export function createConversationCatalogRepository(options = {}) {
         const row = await requestValue(store.get([accountKey, change.conversationId]));
         const previous = row?.catalogMetadata;
         // 身份在真正提交前再封口；迟到事件、重复事件和较新的 TIDY 写入不能被覆盖。
-        if (!isCurrent() || !previous
+        if (!isCurrent() || !previous || isConversationUnavailable(row)
           || change.startedAt <= Math.max(previous.titleChangeStartedAt ?? -Infinity,
             previous.titleReadbackAt ?? -Infinity, previous.titleAcceptedAt ?? -Infinity)) {
           await done; return false;
@@ -165,6 +166,7 @@ export function createConversationCatalogRepository(options = {}) {
         const store = transaction.objectStore(STORES.conversationIndex);
         for (const candidate of page?.conversations || []) {
           const current = await requestValue(store.get([accountKey, candidate.conversationId]));
+          if (isConversationUnavailable(current)) continue;
           const previous = current ? catalogRow(current) : {};
           const sameSnapshot = current?.catalogMetadata?.catalogGeneration === state.generation;
           const retained = sameSnapshot ? previous : {};
@@ -203,9 +205,10 @@ export function createConversationCatalogRepository(options = {}) {
             observedAt: now(),
             catalogGeneration: state.generation,
           };
-          store.put({ accountKey, conversationId: candidate.conversationId, catalogMetadata: metadata });
+          store.put({ ...current, accountKey, conversationId: candidate.conversationId, catalogMetadata: metadata });
         }
-        states.put({ ...state, key: stateKey(accountKey), accountKey });
+        states.put({ ...state, key: stateKey(accountKey), accountKey,
+          ...(persisted?.availabilityRevision ? { availabilityRevision: persisted.availabilityRevision } : {}) });
         await done;
       } catch (error) {
         try { transaction?.abort(); } catch (_) { /* Already aborted or completed. */ }
@@ -231,11 +234,11 @@ export function createConversationCatalogRepository(options = {}) {
         for (const observation of observations || []) {
           if (!observation || typeof observation.conversationId !== "string" || typeof observation.title !== "string") continue;
           const current = await requestValue(store.get([accountKey, observation.conversationId]));
-          if (!current?.catalogMetadata) continue;
+          if (!current?.catalogMetadata || isConversationUnavailable(current)) continue;
           const updatedAt = Date.parse(observation.updatedAt);
           if (!Number.isFinite(updatedAt) || (current.catalogMetadata.updatedAt ?? -Infinity) > updatedAt) continue;
           const createdAt = Date.parse(observation.createdAt);
-          store.put({ accountKey, conversationId: current.conversationId, catalogMetadata: { ...current.catalogMetadata,
+          store.put({ ...current, accountKey, conversationId: current.conversationId, catalogMetadata: { ...current.catalogMetadata,
             title: observation.title, updatedAt, observedAt: now(), titleReadbackAt: now(),
             ...(Number.isFinite(createdAt) ? { createdAt } : {}),
           } });
@@ -264,8 +267,8 @@ export function createConversationCatalogRepository(options = {}) {
         for (const intent of intents || []) {
           if (!intent || typeof intent.conversationId !== "string" || typeof intent.title !== "string") continue;
           const current = await requestValue(store.get([accountKey, intent.conversationId]));
-          if (!current?.catalogMetadata) continue;
-          store.put({ accountKey, conversationId: current.conversationId, catalogMetadata: { ...current.catalogMetadata,
+          if (!current?.catalogMetadata || isConversationUnavailable(current)) continue;
+          store.put({ ...current, accountKey, conversationId: current.conversationId, catalogMetadata: { ...current.catalogMetadata,
             title: intent.title, observedAt: now(), titleAcceptedAt: now(),
           } });
         }

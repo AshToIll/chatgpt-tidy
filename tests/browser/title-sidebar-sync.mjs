@@ -19,7 +19,7 @@ const environment = {
   TidyChatgptApi: {
     activeWorkspace: () => "personal",
     checkLibraryIdentity: () => ({ phase: "ready", accountKey: JSON.stringify([identity.accountKey, "personal"]), epoch: 1 }),
-    onLibraryIdentityChanged: () => () => {}, onTitleChanged: () => () => {},
+    onLibraryIdentityChanged: () => () => {}, onTitleChanged: () => () => {}, onConversationAvailabilityChanged: () => () => {},
   },
 };
 for (const file of ["src/platform/snapshot.js", "src/platform/chatgpt/route.js", "src/platform/chatgpt/sidebar-dom.js", "src/features/titles/chatgpt/title-sync.js"]) {

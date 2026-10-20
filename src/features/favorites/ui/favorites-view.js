@@ -257,6 +257,9 @@ export function createFavoritesView({ root, onAction, onExportAction = () => {},
   }
 
   function favoriteRow(item, t) {
+    const availability = model.store.conversationAvailability?.[item.conversationId];
+    const unavailable = availability ? `<span role="status">${escapeHtml(t(availability === "deleted"
+      ? "libraryConversationDeleted" : "libraryConversationUnavailable"))}</span>` : "";
     const listTime = favoriteTime(item, model.preferences, model.store.view.sortField, t);
     // This count remains read-only until the Bookmarks module supplies real
     // records; the Favorites page never invents bookmark data.
@@ -270,13 +273,13 @@ export function createFavoritesView({ root, onAction, onExportAction = () => {},
       const added = sources.includes("favorites");
       const alreadyInBasket = sources.length > 0;
       const selected = selection.draftIds?.includes(item.conversationId);
-      return `<button class="favorite-conversation favorite-conversation--export${selected ? " is-selected" : ""}${added ? " is-added" : ""}" type="button" data-list-key="conversation:${escapeHtml(item.conversationId)}" data-export-draft-conversation="${escapeHtml(item.conversationId)}" aria-pressed="${Boolean(selected)}"${added ? " disabled" : ""}><span class="source-export-check" aria-hidden="true"></span><span class="favorite-conversation__export-copy"><strong>${escapeHtml(item.title || t("untitled"))}</strong><span class="favorite-conversation-meta"><span>${escapeHtml(listTime)}</span>${bookmark}</span></span>${added ? `<em>${escapeHtml(t("alreadyInExportList"))}</em>` : alreadyInBasket ? `<em>${escapeHtml(t("supplementExportSource"))}</em>` : ""}</button>`;
+      return `<button class="favorite-conversation favorite-conversation--export${selected ? " is-selected" : ""}${added ? " is-added" : ""}" type="button" data-list-key="conversation:${escapeHtml(item.conversationId)}" data-export-draft-conversation="${escapeHtml(item.conversationId)}" aria-pressed="${Boolean(selected)}"${added || availability ? " disabled" : ""}><span class="source-export-check" aria-hidden="true"></span><span class="favorite-conversation__export-copy"><strong>${escapeHtml(item.title || t("untitled"))}</strong><span class="favorite-conversation-meta"><span>${escapeHtml(listTime)}</span>${bookmark}</span>${unavailable ? `<span class="favorite-conversation-meta">${unavailable}</span>` : ""}</span>${added ? `<em>${escapeHtml(t("alreadyInExportList"))}</em>` : alreadyInBasket ? `<em>${escapeHtml(t("supplementExportSource"))}</em>` : ""}</button>`;
     }
     // 导航与管理是相邻原生按钮，不嵌套点击目标；书签计数仍归属会话元信息。
     return `<div class="favorite-conversation-row" data-list-key="conversation:${escapeHtml(item.conversationId)}">
-      <button class="favorite-conversation" type="button" data-open-favorite="${escapeHtml(item.conversationId)}">
+      <button class="favorite-conversation" type="button" data-open-favorite="${escapeHtml(item.conversationId)}"${availability === "deleted" ? " disabled" : ""}>
         <strong>${escapeHtml(item.title || t("untitled"))}</strong>
-        <span class="favorite-conversation-meta"><span>${escapeHtml(listTime)}</span>${bookmark}</span>
+        <span class="favorite-conversation-meta"><span>${escapeHtml(listTime)}</span>${bookmark}</span>${unavailable ? `<span class="favorite-conversation-meta">${unavailable}</span>` : ""}
       </button>
       <button class="favorite-entry-menu-toggle" type="button" data-favorite-menu="${escapeHtml(item.conversationId)}" aria-label="${escapeHtml(t("favoritesActions"))}" aria-haspopup="menu" aria-expanded="${openEntryId === item.conversationId}">···</button>
     </div>`;
@@ -373,7 +376,7 @@ export function createFavoritesView({ root, onAction, onExportAction = () => {},
     });
 
     const selectableIds = entries
-      .filter((item) => !(selection.basketConversationSources?.[item.conversationId] || []).includes("favorites"))
+      .filter((item) => !model.store.conversationAvailability?.[item.conversationId] && !(selection.basketConversationSources?.[item.conversationId] || []).includes("favorites"))
       .map((item) => item.conversationId);
     const allSelected = selectableIds.length > 0 && selectableIds.every((id) => selection.draftIds?.includes(id));
     const rangeAction = selection.active
@@ -605,7 +608,7 @@ export function createFavoritesView({ root, onAction, onExportAction = () => {},
     if (!model?.store) return [];
     const selection = model.exportSelection || { basketConversationSources: {} };
     return selectFavorites(model.store)
-      .filter((item) => !(selection.basketConversationSources?.[item.conversationId] || []).includes("favorites"))
+      .filter((item) => !model.store.conversationAvailability?.[item.conversationId] && !(selection.basketConversationSources?.[item.conversationId] || []).includes("favorites"))
       .map((item) => item.conversationId);
   }
 

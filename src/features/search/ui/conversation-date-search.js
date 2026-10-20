@@ -21,7 +21,8 @@ function normalizeCriteria(value) {
 function resultPage(snapshot, criteria, status) {
   const { dateField, sortField, startMs, endMs, direction, limit } = criteria;
   const revision = snapshot.state?.revision || 0;
-  const identity = { dateField, sortField, startMs, endMs, direction, revision };
+  const identity = { dateField, sortField, startMs, endMs, direction, revision,
+    availabilityRevision: snapshot.state?.availabilityRevision || 0 };
   let offset = 0;
   if (criteria.cursor != null) {
     let cursor;

@@ -2,6 +2,11 @@ import { createLibraryBackupView, downloadLibraryBackup } from '../../src/featur
 import { createLibraryBackupService } from '../../src/features/settings/background/library-backup-service.js';
 import { createLibraryBackupRepository } from '../../src/features/settings/storage/library-backup.js';
 import { createFavoritesRepository } from '../../src/features/favorites/storage/favorites.js';
+import { createBookmarksRepository } from '../../src/features/bookmarks/storage/bookmarks.js';
+import { createConversationAvailabilityRepository } from '../../src/platform/storage/conversation-availability.js';
+import { createConversationCatalogRepository } from '../../src/platform/catalog/storage/conversation-catalog.js';
+import { createFavoritesView } from '../../src/features/favorites/ui/favorites-view.js';
+import { createBookmarksView } from '../../src/features/bookmarks/ui/bookmarks-view.js';
 import { normalizeFavoritesState, createEmptyFavoritesState } from '../../src/features/favorites/storage/favorites-domain.js';
 import { normalizeBookmarksState, createEmptyBookmarksState } from '../../src/features/bookmarks/storage/bookmarks-domain.js';
 import { serializeLibraryBackup } from '../../src/features/settings/storage/library-backup-domain.js';
@@ -254,6 +259,43 @@ try {
       same(getComputedStyle(el('choose')).backgroundColor, rgb(theme.surface), 'Wrong button surface');
       assert(root.scrollWidth <= root.clientWidth, 'Backup layout overflows'); same(document.activeElement, button, 'Theme reset focus');
     }
+  });
+  await check('native IndexedDB invalidation preserves excerpts and updates both multilingual library views without navigation', async () => {
+    const accountKey = '["availability-fixture","personal"]';
+    const catalog = createConversationCatalogRepository(), availability = createConversationAvailabilityRepository();
+    const favorites = createFavoritesRepository(), bookmarks = createBookmarksRepository();
+    await favorites.transact(accountKey, current => ({ ...current, ...sample.favorites, revision: 1 }));
+    await bookmarks.transact(accountKey, current => ({ ...current, ...sample.bookmarks, revision: 1, view: { ...current.view, groupId: 'all' } }));
+    const state = { catalogVersion: 2, generation: 1, revision: 1, snapshotStartedAt: 1 };
+    const page = { conversations: [{ conversationId: 'first', title: 'Before', directoryBounds: { createdAt: 1 } }] };
+    await catalog.commitPage('availability-catalog', page, state);
+    await availability.accept({ ownerAccountKey: accountKey, catalogAccountKey: 'availability-catalog',
+      conversationId: 'first', status: 'deleted', startedAt: 100 });
+    await catalog.commitPage('availability-catalog', page, state);
+    same((await catalog.getSnapshot('availability-catalog')).rows.length, 0, 'Stale page resurrected deleted conversation');
+    const favoriteStore = await favorites.get(accountKey), bookmarkStore = await bookmarks.get(accountKey);
+    same(bookmarkStore.items['first::message'].excerpt, 'Sample excerpt', 'Excerpt was erased');
+    same(favoriteStore.conversationAvailability.first, 'deleted', 'Missing favorite status');
+    same(bookmarkStore.conversationAvailability.first, 'deleted', 'Missing bookmark status');
+    const favoriteRoot = document.createElement('section'), bookmarkRoot = document.createElement('section');
+    for (const element of [favoriteRoot, bookmarkRoot]) { element.style.width = '300px'; document.body.append(element); }
+    const actions = [], favoriteView = createFavoritesView({ root: favoriteRoot, onAction: action => actions.push(action) });
+    const bookmarkView = createBookmarksView({ root: bookmarkRoot, onAction: action => actions.push(action) });
+    for (const language of ['zh-CN', 'zh-TW', 'en', 'ja']) {
+      const t = createTranslator(language), options = { preferences: { timeDisplayEnabled: false }, t, snapshot: null };
+      favoriteView.render({ ...options, store: favoriteStore }); bookmarkView.render({ ...options, store: bookmarkStore });
+      const open = favoriteRoot.querySelector('[data-open-favorite="first"]');
+      assert(open.disabled, 'Deleted favorite can still navigate'); open.click();
+      same(bookmarkRoot.querySelector('[data-bookmark-jump]'), null, 'Deleted bookmark can still jump');
+      assert(favoriteRoot.textContent.includes(t('libraryConversationDeleted')), 'Missing translated favorite status');
+      assert(bookmarkRoot.textContent.includes(t('libraryConversationDeleted')), 'Missing translated bookmark status');
+      assert(bookmarkRoot.textContent.includes('Sample excerpt'), 'Excerpt disappeared from view');
+      assert(favoriteRoot.querySelector('[data-favorite-menu]') && bookmarkRoot.querySelector('[data-bookmark-entry-menu]'), 'Manual cleanup unavailable');
+      assert(favoriteRoot.scrollWidth <= favoriteRoot.clientWidth, 'Favorite status overflows');
+      assert(bookmarkRoot.scrollWidth <= bookmarkRoot.clientWidth, 'Bookmark status overflows');
+    }
+    same(actions.length, 0, 'Status render or disabled click initiated navigation');
+    favoriteView.dispose(); bookmarkView.dispose(); favoriteRoot.remove(); bookmarkRoot.remove();
   });
 } catch (error) {
   if (!checks.some(check => !check.ok)) checks.push({ name: 'initialization', ok: false, error: error.stack });

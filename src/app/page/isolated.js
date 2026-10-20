@@ -116,7 +116,7 @@
       session.runtimeRequest(envelope).catch(() => {});
       return;
     }
-    if (envelope.kind === protocol.Kind.EVENT && [protocol.Type.TITLE_CHANGED, protocol.Type.NAVIGATION_CANCELLED, protocol.Type.NAVIGATION_RESULT].includes(envelope.type)) {
+    if (envelope.kind === protocol.Kind.EVENT && [protocol.Type.TITLE_CHANGED, protocol.Type.CONVERSATION_AVAILABILITY_CHANGED, protocol.Type.NAVIGATION_CANCELLED, protocol.Type.NAVIGATION_RESULT].includes(envelope.type)) {
       // Worker 以浏览器提供的标签页/文档身份核验单条改名或导航事件；
       // 页面只传目标及结果，不能指定可信的发送者身份。
       session.runtimeRequest(envelope).catch(() => {});

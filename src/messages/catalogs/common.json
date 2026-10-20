@@ -516,6 +516,18 @@
       "zh-TW": "移動到分組",
       "en": "Move to group",
       "ja": "グループへ移動"
+    },
+    "libraryConversationDeleted": {
+      "zh-CN": "会话已删除",
+      "zh-TW": "會話已刪除",
+      "en": "Conversation deleted",
+      "ja": "会話は削除されました"
+    },
+    "libraryConversationUnavailable": {
+      "zh-CN": "会话不可用，可点击重试",
+      "zh-TW": "會話無法存取，可點擊重試",
+      "en": "Unavailable · click to retry",
+      "ja": "利用不可 · クリックして再試行"
     }
   }
 }

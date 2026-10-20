@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "version": "0.5.2",
-  "buildFingerprint": "15b37e66efc48d38ee9942da",
+  "buildFingerprint": "a43f9006f2814fa2601e2f22",
   "limitations": [
     "静态文字引用不是唯一触发条件；条件以列出的函数和分支为准。",
     "无静态引用不等于未使用；动态计算键另列，不自动删除任何文案。",
@@ -127,19 +127,19 @@
       "observationSites": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 663
+          "line": 667
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 758
+          "line": 762
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 908
+          "line": 912
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 937
+          "line": 941
         }
       ]
     },
@@ -156,19 +156,19 @@
       "observationSites": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 758
+          "line": 762
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 778
+          "line": 782
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 908
+          "line": 912
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 937
+          "line": 941
         }
       ]
     },
@@ -515,13 +515,13 @@
       "references": [
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 314,
+          "line": 317,
           "kind": "direct-call",
           "excerpt": "const groups = [...systemGroups, ...store.groups].map((group) => rowForGroup({ ...group, name: group.id === \"all\" ? t(\"allBookmarks\") : group.id === \"ungrouped\" ? t(\"ungrouped\") : group.name }, counts[group.id] || 0, t)).join(\"\");"
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 327,
+          "line": 330,
           "kind": "direct-call",
           "excerpt": "const baseLabel = store.view.groupId === \"current\" ? t(\"bookmarks\") : store.view.groupId === \"all\" ? t(\"allBookmarks\") : store.view.groupId === \"ungrouped\" ? t(\"ungrouped\") : groupName(selectedGroup, t);"
         }
@@ -543,9 +543,9 @@
       "references": [
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 252,
+          "line": 255,
           "kind": "direct-call",
-          "excerpt": "return `<article class=\"bookmark-entry${model.activeBookmarkId === item.bookmarkId ? \" is-active\" : \"\"}\" data-list-key=\"bookmark:${escapeHtml(item.bookmarkId)}\" data-bookmark-jump=\"${escapeHtml(item.bookmarkId)}\" tabindex=\"0\" role=\"button\" aria-busy=\"${pending"
+          "excerpt": "return `<article class=\"bookmark-entry${model.activeBookmarkId === item.bookmarkId ? \" is-active\" : \"\"}\" data-list-key=\"bookmark:${escapeHtml(item.bookmarkId)}\" ${availability === \"deleted\" ? '' : `data-bookmark-jump=\"${escapeHtml(item.bookmarkId)}\" tabindex=\""
         }
       ]
     },
@@ -565,7 +565,7 @@
       "references": [
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 248,
+          "line": 251,
           "kind": "direct-call",
           "excerpt": "return `<button class=\"bookmark-entry bookmark-entry--export${selected ? \" is-selected\" : \"\"}${added ? \" is-added\" : \"\"}\" type=\"button\" data-list-key=\"bookmark:${escapeHtml(item.bookmarkId)}\" data-export-draft-bookmark=\"${escapeHtml(item.bookmarkId)}\" aria-pre"
         },
@@ -745,7 +745,7 @@
       "references": [
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 251,
+          "line": 254,
           "kind": "direct-call",
           "excerpt": "const progress = pending ? `<span class=\"bookmark-entry-progress\" role=\"status\">${escapeHtml(t(\"bookmarkLocating\"))}</span>` : \"\";"
         }
@@ -795,9 +795,9 @@
         },
         {
           "source": "src/app/sidepanel/panel.js",
-          "line": 275,
+          "line": 276,
           "kind": "literal-reference",
-          "excerpt": "showToast(payload.error?.code === protocol.ErrorCode.CONTEXT_MISMATCH ? \"contextChanged\" : \"bookmarkOpenFailed\", true, {},"
+          "excerpt": ": payload.error?.code === protocol.ErrorCode.CONTEXT_MISMATCH ? \"contextChanged\" : \"bookmarkOpenFailed\", true, {},"
         },
         {
           "source": "src/features/export/ui/export-view.js",
@@ -951,7 +951,7 @@
         },
         {
           "source": "src/app/background/handlers/bookmarks.js",
-          "line": 136,
+          "line": 139,
           "kind": "literal-reference",
           "excerpt": "route: \"bookmarks\","
         },
@@ -1089,25 +1089,25 @@
         },
         {
           "source": "src/app/sidepanel/panel.js",
-          "line": 341,
+          "line": 342,
           "kind": "literal-reference",
           "excerpt": "for (const route of [\"favorites\", \"bookmarks\"]) if (state.route !== route) notice.dismissOwnedToast(route);"
         },
         {
           "source": "src/app/sidepanel/panel.js",
-          "line": 368,
+          "line": 369,
           "kind": "literal-reference",
           "excerpt": "if (route !== \"bookmarks\") bookmarkNavigation.cancel();"
         },
         {
           "source": "src/app/sidepanel/panel.js",
-          "line": 437,
+          "line": 438,
           "kind": "literal-reference",
           "excerpt": "notice.dismissOwnedToast(\"favorites\"); notice.dismissOwnedToast(\"bookmarks\");"
         },
         {
           "source": "src/app/sidepanel/panel.js",
-          "line": 491,
+          "line": 493,
           "kind": "literal-reference",
           "excerpt": "library.observeRevision(envelope.type === protocol.Type.FAVORITES_UPDATED ? \"favorites\" : \"bookmarks\", payload);"
         },
@@ -1173,55 +1173,55 @@
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 327,
+          "line": 330,
           "kind": "direct-call",
           "excerpt": "const baseLabel = store.view.groupId === \"current\" ? t(\"bookmarks\") : store.view.groupId === \"all\" ? t(\"allBookmarks\") : store.view.groupId === \"ungrouped\" ? t(\"ungrouped\") : groupName(selectedGroup, t);"
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 335,
+          "line": 338,
           "kind": "literal-reference",
           "excerpt": "? `<button class=\"source-export-entry bookmark-export-entry\" type=\"button\" data-export-select-current=\"bookmarks\"${selectableIds.length ? \"\" : \" disabled\"}>${escapeHtml(allSelected ? t(\"cancelSelectAll\") : store.view.groupId === \"all\" ? t(\"selectAllCurrentRang"
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 336,
+          "line": 339,
           "kind": "literal-reference",
           "excerpt": ": `<button class=\"source-export-entry bookmark-export-entry\" type=\"button\" data-export-select-mode=\"bookmarks\">${escapeHtml(t(\"selectExport\"))}</button>`;"
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 341,
+          "line": 344,
           "kind": "literal-reference",
           "excerpt": "renderListMarkup(root, `<div class=\"bookmarks-panel${selection.active ? \" is-export-select\" : \"\"}\">${backRow}${currentHero}<div class=\"bookmark-search-row\" data-list-key=\"search\"><input class=\"bookmark-search\" type=\"search\" data-bookmark-search value=\"${escape"
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 428,
+          "line": 431,
           "kind": "literal-reference",
           "excerpt": "void onExportAction?.(\"selection-back\", { source: \"bookmarks\" });"
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 430,
+          "line": 433,
           "kind": "literal-reference",
           "excerpt": "if (!button.disabled) void onExportAction?.(\"toggle\", { source: \"bookmarks\", id: button.dataset.exportDraftBookmark });"
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 433,
+          "line": 436,
           "kind": "literal-reference",
           "excerpt": "source: \"bookmarks\","
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 437,
+          "line": 440,
           "kind": "literal-reference",
           "excerpt": "if (!button.disabled) void onExportAction?.(\"submit\", { source: \"bookmarks\" });"
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 439,
+          "line": 442,
           "kind": "literal-reference",
           "excerpt": "void onExportAction?.(\"view-basket\", { source: \"bookmarks\" });"
         },
@@ -1413,7 +1413,7 @@
         },
         {
           "source": "src/platform/library/storage/account-library.js",
-          "line": 45,
+          "line": 46,
           "kind": "literal-reference",
           "excerpt": "const isBookmark = kind === \"bookmarks\";"
         },
@@ -1432,6 +1432,12 @@
         {
           "source": "src/platform/library/ui/library-controller.js",
           "line": 190,
+          "kind": "literal-reference",
+          "excerpt": "for (const kind of [\"favorites\", \"bookmarks\"]) {"
+        },
+        {
+          "source": "src/platform/storage/conversation-availability.js",
+          "line": 62,
           "kind": "literal-reference",
           "excerpt": "for (const kind of [\"favorites\", \"bookmarks\"]) {"
         },
@@ -1477,7 +1483,7 @@
       "references": [
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 341,
+          "line": 344,
           "kind": "direct-call",
           "excerpt": "renderListMarkup(root, `<div class=\"bookmarks-panel${selection.active ? \" is-export-select\" : \"\"}\">${backRow}${currentHero}<div class=\"bookmark-search-row\" data-list-key=\"search\"><input class=\"bookmark-search\" type=\"search\" data-bookmark-search value=\"${escape"
         }
@@ -1499,7 +1505,7 @@
       "references": [
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 265,
+          "line": 268,
           "kind": "direct-call",
           "excerpt": "? `<span class=\"favorite-bookmark-stat\" title=\"${escapeHtml(t(\"bookmarksCount\", { count: bookmarkCount }))}\">${BOOKMARK_ICON}<span>${bookmarkCount}</span></span>`"
         }
@@ -1587,7 +1593,7 @@
       "references": [
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 325,
+          "line": 328,
           "kind": "literal-reference",
           "excerpt": "const rows = visible.length ? visible.map((item) => bookmarkRow(item, currentActive, t)).join(\"\") : `<div class=\"bookmark-empty\">${escapeHtml(t(Object.keys(store.items).length ? \"emptyBookmarksView\" : \"emptyBookmarks\"))}</div>`;"
         }
@@ -1609,7 +1615,7 @@
       "references": [
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 325,
+          "line": 328,
           "kind": "literal-reference",
           "excerpt": "const rows = visible.length ? visible.map((item) => bookmarkRow(item, currentActive, t)).join(\"\") : `<div class=\"bookmark-empty\">${escapeHtml(t(Object.keys(store.items).length ? \"emptyBookmarksView\" : \"emptyBookmarks\"))}</div>`;"
         }
@@ -1631,9 +1637,9 @@
       "references": [
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 252,
+          "line": 255,
           "kind": "direct-call",
-          "excerpt": "return `<article class=\"bookmark-entry${model.activeBookmarkId === item.bookmarkId ? \" is-active\" : \"\"}\" data-list-key=\"bookmark:${escapeHtml(item.bookmarkId)}\" data-bookmark-jump=\"${escapeHtml(item.bookmarkId)}\" tabindex=\"0\" role=\"button\" aria-busy=\"${pending"
+          "excerpt": "return `<article class=\"bookmark-entry${model.activeBookmarkId === item.bookmarkId ? \" is-active\" : \"\"}\" data-list-key=\"bookmark:${escapeHtml(item.bookmarkId)}\" ${availability === \"deleted\" ? '' : `data-bookmark-jump=\"${escapeHtml(item.bookmarkId)}\" tabindex=\""
         },
         {
           "source": "src/features/search/ui/search-presentation.js",
@@ -1671,15 +1677,15 @@
       "references": [
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 248,
+          "line": 251,
           "kind": "direct-call",
           "excerpt": "return `<button class=\"bookmark-entry bookmark-entry--export${selected ? \" is-selected\" : \"\"}${added ? \" is-added\" : \"\"}\" type=\"button\" data-list-key=\"bookmark:${escapeHtml(item.bookmarkId)}\" data-export-draft-bookmark=\"${escapeHtml(item.bookmarkId)}\" aria-pre"
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 252,
+          "line": 255,
           "kind": "direct-call",
-          "excerpt": "return `<article class=\"bookmark-entry${model.activeBookmarkId === item.bookmarkId ? \" is-active\" : \"\"}\" data-list-key=\"bookmark:${escapeHtml(item.bookmarkId)}\" data-bookmark-jump=\"${escapeHtml(item.bookmarkId)}\" tabindex=\"0\" role=\"button\" aria-busy=\"${pending"
+          "excerpt": "return `<article class=\"bookmark-entry${model.activeBookmarkId === item.bookmarkId ? \" is-active\" : \"\"}\" data-list-key=\"bookmark:${escapeHtml(item.bookmarkId)}\" ${availability === \"deleted\" ? '' : `data-bookmark-jump=\"${escapeHtml(item.bookmarkId)}\" tabindex=\""
         },
         {
           "source": "src/features/export/ui/export-view.js",
@@ -1849,13 +1855,13 @@
       "references": [
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 341,
+          "line": 344,
           "kind": "direct-call",
           "excerpt": "renderListMarkup(root, `<div class=\"bookmarks-panel${selection.active ? \" is-export-select\" : \"\"}\">${backRow}${currentHero}<div class=\"bookmark-search-row\" data-list-key=\"search\"><input class=\"bookmark-search\" type=\"search\" data-bookmark-search value=\"${escape"
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 341,
+          "line": 344,
           "kind": "direct-call",
           "excerpt": "renderListMarkup(root, `<div class=\"bookmarks-panel${selection.active ? \" is-export-select\" : \"\"}\">${backRow}${currentHero}<div class=\"bookmark-search-row\" data-list-key=\"search\"><input class=\"bookmark-search\" type=\"search\" data-bookmark-search value=\"${escape"
         }
@@ -1877,7 +1883,7 @@
       "references": [
         {
           "source": "src/app/sidepanel/panel.js",
-          "line": 286,
+          "line": 287,
           "kind": "literal-reference",
           "excerpt": "if (route === \"search\") showSearchToast(payload.placement === \"latest\" ? \"favoriteLatestUnavailable\" : \"actionFailed\", payload.navigationIntentId);"
         },
@@ -1967,7 +1973,7 @@
       "references": [
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 392,
+          "line": 395,
           "kind": "literal-reference",
           "excerpt": "<section class=\"favorite-sort-section\" data-list-key=\"sort\"><div class=\"favorite-section-heading\"><span>${escapeHtml(t(\"sort\"))}</span><div class=\"favorite-sort-control\"><select data-favorite-sort aria-label=\"${escapeHtml(t(\"sort\"))}\"><option value=\"savedAt\"${"
         },
@@ -2001,7 +2007,7 @@
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 241,
+          "line": 244,
           "kind": "literal-reference",
           "excerpt": "const role = [\"user\", \"assistant\", \"system\", \"tool\"].includes(item.role)"
         },
@@ -2279,7 +2285,7 @@
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 329,
+          "line": 332,
           "kind": "direct-call",
           "excerpt": "const newGroup = nameEditor.state && !nameEditor.state.groupId ? `<form class=\"bookmark-group-create\" data-list-key=\"new-group\" data-bookmark-new-group novalidate>${nameEditor.inputMarkup({ label: t(\"groupName\") })}<button type=\"submit\" aria-label=\"${escapeHtm"
         },
@@ -2315,7 +2321,7 @@
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 346,
+          "line": 349,
           "kind": "direct-call",
           "excerpt": "const newGroup = nameEditor.state && !nameEditor.state.groupId ? `<form class=\"favorite-group-create\" data-list-key=\"new-group\" data-new-group novalidate>${nameEditor.inputMarkup({ label: t(\"groupName\") })}<button type=\"submit\" aria-label=\"${escapeHtml(t(\"crea"
         },
@@ -2525,9 +2531,9 @@
         },
         {
           "source": "src/app/sidepanel/panel.js",
-          "line": 275,
+          "line": 276,
           "kind": "literal-reference",
-          "excerpt": "showToast(payload.error?.code === protocol.ErrorCode.CONTEXT_MISMATCH ? \"contextChanged\" : \"bookmarkOpenFailed\", true, {},"
+          "excerpt": ": payload.error?.code === protocol.ErrorCode.CONTEXT_MISMATCH ? \"contextChanged\" : \"bookmarkOpenFailed\", true, {},"
         },
         {
           "source": "src/app/sidepanel/search-actions.js",
@@ -2583,13 +2589,13 @@
       "references": [
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 329,
+          "line": 332,
           "kind": "direct-call",
           "excerpt": "const newGroup = nameEditor.state && !nameEditor.state.groupId ? `<form class=\"bookmark-group-create\" data-list-key=\"new-group\" data-bookmark-new-group novalidate>${nameEditor.inputMarkup({ label: t(\"groupName\") })}<button type=\"submit\" aria-label=\"${escapeHtm"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 346,
+          "line": 349,
           "kind": "direct-call",
           "excerpt": "const newGroup = nameEditor.state && !nameEditor.state.groupId ? `<form class=\"favorite-group-create\" data-list-key=\"new-group\" data-new-group novalidate>${nameEditor.inputMarkup({ label: t(\"groupName\") })}<button type=\"submit\" aria-label=\"${escapeHtml(t(\"crea"
         }
@@ -2659,13 +2665,13 @@
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 710,
+          "line": 714,
           "kind": "literal-reference",
           "excerpt": "return `<section class=\"titles-rule\" data-batch-key=\"rules\"><h3>${text(\"titlesRules\")}</h3><div class=\"titles-rule-controls\">${select(\"dateFormat\", formats, \"titlesBatchFormat\")}${select(\"mode\", [[\"created\", state.t(\"titlesCreatedDate\")], [\"range\", state.t(\"ti"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 871,
+          "line": 875,
           "kind": "literal-reference",
           "excerpt": "if ((field === \"mode\" && [\"created\", \"range\"].includes(node.value)) || (field === \"dateFormat\" && TITLE_RULE_FORMATS.includes(node.value))) {"
         },
@@ -2723,7 +2729,7 @@
       "references": [
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 392,
+          "line": 395,
           "kind": "direct-call",
           "excerpt": "<section class=\"favorite-sort-section\" data-list-key=\"sort\"><div class=\"favorite-section-heading\"><span>${escapeHtml(t(\"sort\"))}</span><div class=\"favorite-sort-control\"><select data-favorite-sort aria-label=\"${escapeHtml(t(\"sort\"))}\"><option value=\"savedAt\"${"
         },
@@ -2759,13 +2765,13 @@
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 690,
+          "line": 694,
           "kind": "literal-reference",
           "excerpt": "const sortLabel = state.t(state.sortDirection === \"asc\" ? \"sortAscending\" : \"sortDescending\", { field: state.t(state.sortField === \"createdAt\" ? \"createdTime\" : \"updatedTime\") });"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 699,
+          "line": 703,
           "kind": "literal-reference",
           "excerpt": "<section class=\"titles-batch-select-toolbar\" data-batch-key=\"toolbar\"><span>${countsKnown ? text(\"titlesBatchSelectionCount\", { total: rows.length, selected: visibleSelected }) : text(\"titlesBatchCatalogUnconfirmed\")}</span><div class=\"titles-batch-list-tools\""
         }
@@ -2787,7 +2793,7 @@
       "references": [
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 309,
+          "line": 312,
           "kind": "direct-call",
           "excerpt": "title: t(\"currentConversation\"),"
         },
@@ -2811,7 +2817,7 @@
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 672,
+          "line": 676,
           "kind": "literal-reference",
           "excerpt": "const label = state.receiptStatusError ? \"titlesBatchRecheckStatus\" : unsupported ? \"currentConversation\""
         },
@@ -2839,7 +2845,7 @@
       "references": [
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 291,
+          "line": 294,
           "kind": "direct-call",
           "excerpt": "<span class=\"result-pagination__position\"><input class=\"result-pagination__input\" type=\"text\" inputmode=\"numeric\" value=\"${page}\" data-page-input data-page-total=\"${totalPages}\" aria-label=\"${escapeHtml(t(\"currentPage\"))}\" /><span class=\"result-pagination__tot"
         },
@@ -2941,7 +2947,7 @@
       "references": [
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 392,
+          "line": 395,
           "kind": "literal-reference",
           "excerpt": "<section class=\"favorite-sort-section\" data-list-key=\"sort\"><div class=\"favorite-section-heading\"><span>${escapeHtml(t(\"sort\"))}</span><div class=\"favorite-sort-control\"><select data-favorite-sort aria-label=\"${escapeHtml(t(\"sort\"))}\"><option value=\"savedAt\"${"
         },
@@ -2997,7 +3003,7 @@
       "references": [
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 345,
+          "line": 348,
           "kind": "literal-reference",
           "excerpt": ": `<div class=\"favorite-empty\">${escapeHtml(t(store.view.groupId === \"all\" ? \"emptyFavorites\" : \"emptyGroup\"))}</div>`;"
         }
@@ -3131,7 +3137,7 @@
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 329,
+          "line": 332,
           "kind": "direct-call",
           "excerpt": "const newGroup = nameEditor.state && !nameEditor.state.groupId ? `<form class=\"bookmark-group-create\" data-list-key=\"new-group\" data-bookmark-new-group novalidate>${nameEditor.inputMarkup({ label: t(\"groupName\") })}<button type=\"submit\" aria-label=\"${escapeHtm"
         },
@@ -3143,7 +3149,7 @@
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 346,
+          "line": 349,
           "kind": "direct-call",
           "excerpt": "const newGroup = nameEditor.state && !nameEditor.state.groupId ? `<form class=\"favorite-group-create\" data-list-key=\"new-group\" data-new-group novalidate>${nameEditor.inputMarkup({ label: t(\"groupName\") })}<button type=\"submit\" aria-label=\"${escapeHtml(t(\"crea"
         }
@@ -3177,7 +3183,7 @@
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 329,
+          "line": 332,
           "kind": "direct-call",
           "excerpt": "const newGroup = nameEditor.state && !nameEditor.state.groupId ? `<form class=\"bookmark-group-create\" data-list-key=\"new-group\" data-bookmark-new-group novalidate>${nameEditor.inputMarkup({ label: t(\"groupName\") })}<button type=\"submit\" aria-label=\"${escapeHtm"
         },
@@ -3195,7 +3201,7 @@
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 346,
+          "line": 349,
           "kind": "direct-call",
           "excerpt": "const newGroup = nameEditor.state && !nameEditor.state.groupId ? `<form class=\"favorite-group-create\" data-list-key=\"new-group\" data-new-group novalidate>${nameEditor.inputMarkup({ label: t(\"groupName\") })}<button type=\"submit\" aria-label=\"${escapeHtml(t(\"crea"
         }
@@ -3217,25 +3223,25 @@
       "references": [
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 341,
+          "line": 344,
           "kind": "literal-reference",
           "excerpt": "renderListMarkup(root, `<div class=\"bookmarks-panel${selection.active ? \" is-export-select\" : \"\"}\">${backRow}${currentHero}<div class=\"bookmark-search-row\" data-list-key=\"search\"><input class=\"bookmark-search\" type=\"search\" data-bookmark-search value=\"${escape"
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 341,
+          "line": 344,
           "kind": "direct-call",
           "excerpt": "renderListMarkup(root, `<div class=\"bookmarks-panel${selection.active ? \" is-export-select\" : \"\"}\">${backRow}${currentHero}<div class=\"bookmark-search-row\" data-list-key=\"search\"><input class=\"bookmark-search\" type=\"search\" data-bookmark-search value=\"${escape"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 388,
+          "line": 391,
           "kind": "literal-reference",
           "excerpt": "<section class=\"favorite-groups-section\" data-list-key=\"groups\">"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 389,
+          "line": 392,
           "kind": "direct-call",
           "excerpt": "<div class=\"favorite-section-heading\"><span>${escapeHtml(t(\"groups\"))}</span><button class=\"favorite-add-group\" type=\"button\" data-open-new-group aria-label=\"${escapeHtml(t(\"newGroup\"))}\" data-tooltip=\"${escapeHtml(t(\"newGroup\"))}\">+</button></div>"
         },
@@ -3353,13 +3359,13 @@
       "references": [
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 341,
+          "line": 344,
           "kind": "direct-call",
           "excerpt": "renderListMarkup(root, `<div class=\"bookmarks-panel${selection.active ? \" is-export-select\" : \"\"}\">${backRow}${currentHero}<div class=\"bookmark-search-row\" data-list-key=\"search\"><input class=\"bookmark-search\" type=\"search\" data-bookmark-search value=\"${escape"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 394,
+          "line": 397,
           "kind": "direct-call",
           "excerpt": "<div class=\"favorite-list-heading\"><span>${escapeHtml(groupName)}</span>${rangeAction}<small>${escapeHtml(t(\"itemsCount\", { count: entries.length }))}</small></div>"
         }
@@ -3381,19 +3387,19 @@
       "references": [
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 255,
+          "line": 258,
           "kind": "direct-call",
           "excerpt": "return `<nav class=\"result-pagination\" aria-label=\"${escapeHtml(t(\"pagination\"))}\"><label class=\"result-page-size\" title=\"${escapeHtml(t(\"itemsPerPage\"))}\"><span class=\"result-page-size__select\"><select data-bookmark-page-size>${PAGE_SIZE_OPTIONS.map((size) =>"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 288,
+          "line": 291,
           "kind": "direct-call",
           "excerpt": "<label class=\"result-page-size\" title=\"${escapeHtml(t(\"itemsPerPage\"))}\"><span class=\"result-page-size__select\"><select data-page-size aria-label=\"${escapeHtml(t(\"itemsPerPage\"))}\">${options}</select></span></label>"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 288,
+          "line": 291,
           "kind": "direct-call",
           "excerpt": "<label class=\"result-page-size\" title=\"${escapeHtml(t(\"itemsPerPage\"))}\"><span class=\"result-page-size__select\"><select data-page-size aria-label=\"${escapeHtml(t(\"itemsPerPage\"))}\">${options}</select></span></label>"
         },
@@ -3436,6 +3442,74 @@
           "line": 67,
           "kind": "literal-reference",
           "excerpt": ": rejected ? \"actionFailed\" : action === \"open\" ? \"bookmarkOpenFailed\" : \"libraryChangeUnknown\";"
+        }
+      ]
+    },
+    {
+      "key": "libraryConversationDeleted",
+      "owner": "common",
+      "translations": {
+        "zh-CN": "会话已删除",
+        "zh-TW": "會話已刪除",
+        "en": "Conversation deleted",
+        "ja": "会話は削除されました"
+      },
+      "definition": {
+        "source": "src/messages/catalogs/common.json",
+        "line": 520
+      },
+      "references": [
+        {
+          "source": "src/app/sidepanel/panel.js",
+          "line": 275,
+          "kind": "literal-reference",
+          "excerpt": "showToast(payload.error?.code === \"CONVERSATION_DELETED\" ? \"libraryConversationDeleted\""
+        },
+        {
+          "source": "src/features/bookmarks/ui/bookmarks-view.js",
+          "line": 227,
+          "kind": "literal-reference",
+          "excerpt": "? \"libraryConversationDeleted\" : \"libraryConversationUnavailable\"))}</span>` : \"\";"
+        },
+        {
+          "source": "src/features/favorites/ui/favorites-actions.js",
+          "line": 63,
+          "kind": "literal-reference",
+          "excerpt": "const key = error.code === \"CONVERSATION_DELETED\" ? \"libraryConversationDeleted\" : error.code === protocol.ErrorCode.CONTEXT_MISMATCH"
+        },
+        {
+          "source": "src/features/favorites/ui/favorites-view.js",
+          "line": 262,
+          "kind": "literal-reference",
+          "excerpt": "? \"libraryConversationDeleted\" : \"libraryConversationUnavailable\"))}</span>` : \"\";"
+        }
+      ]
+    },
+    {
+      "key": "libraryConversationUnavailable",
+      "owner": "common",
+      "translations": {
+        "zh-CN": "会话不可用，可点击重试",
+        "zh-TW": "會話無法存取，可點擊重試",
+        "en": "Unavailable · click to retry",
+        "ja": "利用不可 · クリックして再試行"
+      },
+      "definition": {
+        "source": "src/messages/catalogs/common.json",
+        "line": 526
+      },
+      "references": [
+        {
+          "source": "src/features/bookmarks/ui/bookmarks-view.js",
+          "line": 227,
+          "kind": "literal-reference",
+          "excerpt": "? \"libraryConversationDeleted\" : \"libraryConversationUnavailable\"))}</span>` : \"\";"
+        },
+        {
+          "source": "src/features/favorites/ui/favorites-view.js",
+          "line": 262,
+          "kind": "literal-reference",
+          "excerpt": "? \"libraryConversationDeleted\" : \"libraryConversationUnavailable\"))}</span>` : \"\";"
         }
       ]
     },
@@ -3557,19 +3631,19 @@
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 341,
+          "line": 344,
           "kind": "literal-reference",
           "excerpt": "renderListMarkup(root, `<div class=\"bookmarks-panel${selection.active ? \" is-export-select\" : \"\"}\">${backRow}${currentHero}<div class=\"bookmark-search-row\" data-list-key=\"search\"><input class=\"bookmark-search\" type=\"search\" data-bookmark-search value=\"${escape"
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 341,
+          "line": 344,
           "kind": "literal-reference",
           "excerpt": "renderListMarkup(root, `<div class=\"bookmarks-panel${selection.active ? \" is-export-select\" : \"\"}\">${backRow}${currentHero}<div class=\"bookmark-search-row\" data-list-key=\"search\"><input class=\"bookmark-search\" type=\"search\" data-bookmark-search value=\"${escape"
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 341,
+          "line": 344,
           "kind": "direct-call",
           "excerpt": "renderListMarkup(root, `<div class=\"bookmarks-panel${selection.active ? \" is-export-select\" : \"\"}\">${backRow}${currentHero}<div class=\"bookmark-search-row\" data-list-key=\"search\"><input class=\"bookmark-search\" type=\"search\" data-bookmark-search value=\"${escape"
         }
@@ -3625,7 +3699,7 @@
       "references": [
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 297,
+          "line": 300,
           "kind": "direct-call",
           "excerpt": "const title = activeSnapshot?.conversation?.title?.value || t(\"newChat\");"
         }
@@ -3647,19 +3721,19 @@
       "references": [
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 341,
+          "line": 344,
           "kind": "direct-call",
           "excerpt": "renderListMarkup(root, `<div class=\"bookmarks-panel${selection.active ? \" is-export-select\" : \"\"}\">${backRow}${currentHero}<div class=\"bookmark-search-row\" data-list-key=\"search\"><input class=\"bookmark-search\" type=\"search\" data-bookmark-search value=\"${escape"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 389,
+          "line": 392,
           "kind": "direct-call",
           "excerpt": "<div class=\"favorite-section-heading\"><span>${escapeHtml(t(\"groups\"))}</span><button class=\"favorite-add-group\" type=\"button\" data-open-new-group aria-label=\"${escapeHtml(t(\"newGroup\"))}\" data-tooltip=\"${escapeHtml(t(\"newGroup\"))}\">+</button></div>"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 389,
+          "line": 392,
           "kind": "direct-call",
           "excerpt": "<div class=\"favorite-section-heading\"><span>${escapeHtml(t(\"groups\"))}</span><button class=\"favorite-add-group\" type=\"button\" data-open-new-group aria-label=\"${escapeHtml(t(\"newGroup\"))}\" data-tooltip=\"${escapeHtml(t(\"newGroup\"))}\">+</button></div>"
         }
@@ -3709,7 +3783,7 @@
       "references": [
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 292,
+          "line": 295,
           "kind": "direct-call",
           "excerpt": "<button class=\"result-pagination__step result-pagination__step--next\" type=\"button\" data-page-direction=\"next\" aria-label=\"${escapeHtml(t(\"nextPage\"))}\"${page >= totalPages || total === 0 ? \" disabled\" : \"\"}></button>"
         },
@@ -3891,13 +3965,13 @@
       "references": [
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 255,
+          "line": 258,
           "kind": "direct-call",
           "excerpt": "return `<nav class=\"result-pagination\" aria-label=\"${escapeHtml(t(\"pagination\"))}\"><label class=\"result-page-size\" title=\"${escapeHtml(t(\"itemsPerPage\"))}\"><span class=\"result-page-size__select\"><select data-bookmark-page-size>${PAGE_SIZE_OPTIONS.map((size) =>"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 287,
+          "line": 290,
           "kind": "direct-call",
           "excerpt": "return `<nav class=\"result-pagination\" aria-label=\"${escapeHtml(t(\"pagination\"))}\">"
         },
@@ -4067,121 +4141,121 @@
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 173,
+          "line": 174,
           "kind": "literal-reference",
           "excerpt": "const retryable = () => Boolean(state.batch && ([\"preview\", \"paused\", \"result\"].includes(state.batch.phase) || state.recovery && state.batch.phase === \"applying\")"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 198,
+          "line": 199,
           "kind": "literal-reference",
           "excerpt": "if (state.batch && (!state.active || state.batch.phase !== \"preview\" || state.operation !== \"assign\" || state.error)) return;"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 225,
+          "line": 226,
           "kind": "literal-reference",
           "excerpt": "if (value.phase === \"preview\" || value.phase === \"result\") state.pauseReason = \"\";"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 378,
+          "line": 382,
           "kind": "literal-reference",
           "excerpt": "const dismissed = !state.batch && value.batchId === state.dismissedBatchId && [\"preview\", \"result\"].includes(value.phase)"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 416,
+          "line": 420,
           "kind": "literal-reference",
           "excerpt": "setBusy(\"preview\"); state.error = \"\";"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 435,
+          "line": 439,
           "kind": "literal-reference",
           "excerpt": "if (locked() || receiptBlocked() || !state.batch || state.batch.phase !== \"preview\" || changedPreviewIds().length) return;"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 471,
+          "line": 475,
           "kind": "literal-reference",
           "excerpt": "if (locked() || receiptBlocked() || state.replanning || state.error || !state.active || state.batch?.phase !== \"preview\" || changedPreviewIds().length) return;"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 502,
+          "line": 506,
           "kind": "literal-reference",
           "excerpt": "const rejectedStart = !stepDispatched && state.batch?.phase === \"preview\""
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 526,
+          "line": 530,
           "kind": "literal-reference",
           "excerpt": "|| !state.batch || needsReconciliation() || !([\"preview\", \"paused\", \"result\"].includes(state.batch.phase)"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 534,
+          "line": 538,
           "kind": "literal-reference",
           "excerpt": "setBusy(\"preview\"); state.error = \"\"; render();"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 645,
+          "line": 649,
           "kind": "literal-reference",
           "excerpt": ": state.busy === \"preview\" ? \"titlesPreviewing\" : phase() === \"select\""
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 705,
+          "line": 709,
           "kind": "literal-reference",
           "excerpt": "<footer class=\"titles-batch-select-footer is-action-only\" data-batch-key=\"footer\"><button type=\"button\" data-batch-action=\"preview\"${!state.eligible || !state.selected.size || !state.accountKey || locked() || receiptBlocked() || accountBlocked() ? \" disabled\" "
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 727,
+          "line": 731,
           "kind": "literal-reference",
           "excerpt": "<div class=\"titles-batch-preview-list\" data-batch-scroll=\"preview\" data-batch-key=\"list\">${conflicts.length ? `<section class=\"titles-batch-exceptions\" data-batch-key=\"conflicts\"><header><strong>${text(\"titlesBatchConflictsHeading\", { count: conflicts.length }"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 780,
+          "line": 784,
           "kind": "literal-reference",
           "excerpt": "const markup = `<div class=\"titles-batch titles-batch--${viewPhase}\" data-batch-key=\"${viewPhase}\">${receiptNotice}${viewPhase === \"select\" ? selectMarkup() : viewPhase === \"preview\" ? reviewMarkup() : viewPhase === \"result\" ? resultMarkup() : progressMarkup()"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 834,
+          "line": 838,
           "kind": "literal-reference",
           "excerpt": "} else if (action === \"preview\" && phase() === \"select\") void preview();"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 835,
+          "line": 839,
           "kind": "literal-reference",
           "excerpt": "else if (action === \"refresh-preview\" && phase() === \"preview\") void retryPreview();"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 868,
+          "line": 872,
           "kind": "literal-reference",
           "excerpt": "if (state.operation !== \"assign\" || ![\"select\", \"preview\"].includes(phase())) return;"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 877,
+          "line": 881,
           "kind": "literal-reference",
           "excerpt": "} else if (phase() === \"preview\" && node.dataset.batchDecision && DECISIONS.includes(node.value)"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 893,
+          "line": 897,
           "kind": "literal-reference",
           "excerpt": "&& (!state.batch || [\"preview\", \"result\"].includes(state.batch.phase));"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 933,
+          "line": 937,
           "kind": "literal-reference",
           "excerpt": "else if (zoneChanged && state.batch?.phase === \"preview\" && !locked()) replan();"
         },
@@ -4287,7 +4361,7 @@
       "references": [
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 290,
+          "line": 293,
           "kind": "direct-call",
           "excerpt": "<button class=\"result-pagination__step result-pagination__step--previous\" type=\"button\" data-page-direction=\"previous\" aria-label=\"${escapeHtml(t(\"previousPage\"))}\"${page <= 1 ? \" disabled\" : \"\"}></button>"
         },
@@ -4467,13 +4541,13 @@
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 710,
+          "line": 714,
           "kind": "literal-reference",
           "excerpt": "return `<section class=\"titles-rule\" data-batch-key=\"rules\"><h3>${text(\"titlesRules\")}</h3><div class=\"titles-rule-controls\">${select(\"dateFormat\", formats, \"titlesBatchFormat\")}${select(\"mode\", [[\"created\", state.t(\"titlesCreatedDate\")], [\"range\", state.t(\"ti"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 871,
+          "line": 875,
           "kind": "literal-reference",
           "excerpt": "if ((field === \"mode\" && [\"created\", \"range\"].includes(node.value)) || (field === \"dateFormat\" && TITLE_RULE_FORMATS.includes(node.value))) {"
         },
@@ -4559,7 +4633,7 @@
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 673,
+          "line": 677,
           "kind": "literal-reference",
           "excerpt": ": resume ? \"titlesBatchCatalogContinue\" : state.catalogIssue === \"account\" ? \"reconnect\" : \"titlesBatchRetryRead\";"
         },
@@ -4633,7 +4707,7 @@
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 456,
+          "line": 459,
           "kind": "literal-reference",
           "excerpt": "if (action === \"rename\") openGroupEditor(id);"
         },
@@ -4657,7 +4731,7 @@
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 560,
+          "line": 563,
           "kind": "literal-reference",
           "excerpt": "if (action === \"rename\") {"
         }
@@ -4825,19 +4899,19 @@
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 392,
+          "line": 395,
           "kind": "literal-reference",
           "excerpt": "<section class=\"favorite-sort-section\" data-list-key=\"sort\"><div class=\"favorite-section-heading\"><span>${escapeHtml(t(\"sort\"))}</span><div class=\"favorite-sort-control\"><select data-favorite-sort aria-label=\"${escapeHtml(t(\"sort\"))}\"><option value=\"savedAt\"${"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 392,
+          "line": 395,
           "kind": "literal-reference",
           "excerpt": "<section class=\"favorite-sort-section\" data-list-key=\"sort\"><div class=\"favorite-section-heading\"><span>${escapeHtml(t(\"sort\"))}</span><div class=\"favorite-sort-control\"><select data-favorite-sort aria-label=\"${escapeHtml(t(\"sort\"))}\"><option value=\"savedAt\"${"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 392,
+          "line": 395,
           "kind": "direct-call",
           "excerpt": "<section class=\"favorite-sort-section\" data-list-key=\"sort\"><div class=\"favorite-section-heading\"><span>${escapeHtml(t(\"sort\"))}</span><div class=\"favorite-sort-control\"><select data-favorite-sort aria-label=\"${escapeHtml(t(\"sort\"))}\"><option value=\"savedAt\"${"
         }
@@ -4865,13 +4939,13 @@
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 336,
+          "line": 339,
           "kind": "direct-call",
           "excerpt": ": `<button class=\"source-export-entry bookmark-export-entry\" type=\"button\" data-export-select-mode=\"bookmarks\">${escapeHtml(t(\"selectExport\"))}</button>`;"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 381,
+          "line": 384,
           "kind": "direct-call",
           "excerpt": ": `<button class=\"source-export-entry favorite-export-entry\" type=\"button\" data-export-select-mode=\"favorites\">${escapeHtml(t(\"selectExport\"))}</button>`;"
         },
@@ -4899,31 +4973,31 @@
       "references": [
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 341,
+          "line": 344,
           "kind": "literal-reference",
           "excerpt": "renderListMarkup(root, `<div class=\"bookmarks-panel${selection.active ? \" is-export-select\" : \"\"}\">${backRow}${currentHero}<div class=\"bookmark-search-row\" data-list-key=\"search\"><input class=\"bookmark-search\" type=\"search\" data-bookmark-search value=\"${escape"
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 341,
+          "line": 344,
           "kind": "direct-call",
           "excerpt": "renderListMarkup(root, `<div class=\"bookmarks-panel${selection.active ? \" is-export-select\" : \"\"}\">${backRow}${currentHero}<div class=\"bookmark-search-row\" data-list-key=\"search\"><input class=\"bookmark-search\" type=\"search\" data-bookmark-search value=\"${escape"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 392,
+          "line": 395,
           "kind": "literal-reference",
           "excerpt": "<section class=\"favorite-sort-section\" data-list-key=\"sort\"><div class=\"favorite-section-heading\"><span>${escapeHtml(t(\"sort\"))}</span><div class=\"favorite-sort-control\"><select data-favorite-sort aria-label=\"${escapeHtml(t(\"sort\"))}\"><option value=\"savedAt\"${"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 392,
+          "line": 395,
           "kind": "direct-call",
           "excerpt": "<section class=\"favorite-sort-section\" data-list-key=\"sort\"><div class=\"favorite-section-heading\"><span>${escapeHtml(t(\"sort\"))}</span><div class=\"favorite-sort-control\"><select data-favorite-sort aria-label=\"${escapeHtml(t(\"sort\"))}\"><option value=\"savedAt\"${"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 392,
+          "line": 395,
           "kind": "direct-call",
           "excerpt": "<section class=\"favorite-sort-section\" data-list-key=\"sort\"><div class=\"favorite-section-heading\"><span>${escapeHtml(t(\"sort\"))}</span><div class=\"favorite-sort-control\"><select data-favorite-sort aria-label=\"${escapeHtml(t(\"sort\"))}\"><option value=\"savedAt\"${"
         },
@@ -4957,7 +5031,7 @@
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 690,
+          "line": 694,
           "kind": "literal-reference",
           "excerpt": "const sortLabel = state.t(state.sortDirection === \"asc\" ? \"sortAscending\" : \"sortDescending\", { field: state.t(state.sortField === \"createdAt\" ? \"createdTime\" : \"updatedTime\") });"
         }
@@ -4985,7 +5059,7 @@
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 690,
+          "line": 694,
           "kind": "literal-reference",
           "excerpt": "const sortLabel = state.t(state.sortDirection === \"asc\" ? \"sortAscending\" : \"sortDescending\", { field: state.t(state.sortField === \"createdAt\" ? \"createdTime\" : \"updatedTime\") });"
         }
@@ -5095,7 +5169,13 @@
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 251,
+          "line": 226,
+          "kind": "literal-reference",
+          "excerpt": "const unavailable = availability ? `<span role=\"status\">${escapeHtml(t(availability === \"deleted\""
+        },
+        {
+          "source": "src/features/bookmarks/ui/bookmarks-view.js",
+          "line": 254,
           "kind": "literal-reference",
           "excerpt": "const progress = pending ? `<span class=\"bookmark-entry-progress\" role=\"status\">${escapeHtml(t(\"bookmarkLocating\"))}</span>` : \"\";"
         },
@@ -5134,6 +5214,12 @@
           "line": 256,
           "kind": "literal-reference",
           "excerpt": "return `<div class=\"export-source-notice\" data-list-key=\"selection-notice\" role=\"status\"><span>${escapeHtml(selection.notice)}</span><button type=\"button\" data-export-view-basket>${escapeHtml(t(\"viewExportList\"))}</button></div>`;"
+        },
+        {
+          "source": "src/features/favorites/ui/favorites-view.js",
+          "line": 261,
+          "kind": "literal-reference",
+          "excerpt": "const unavailable = availability ? `<span role=\"status\">${escapeHtml(t(availability === \"deleted\""
         },
         {
           "source": "src/features/search/ui/search-presentation.js",
@@ -5227,43 +5313,43 @@
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 332,
+          "line": 336,
           "kind": "literal-reference",
           "excerpt": "&& !state.batch && (!state.busy || state.busy === \"status\") && !state.running,"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 351,
+          "line": 355,
           "kind": "literal-reference",
           "excerpt": "setBusy(receiptRetry ? null : \"status\"); restoreReceiptError(); render();"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 644,
+          "line": 648,
           "kind": "literal-reference",
           "excerpt": "const caption = !waiting ? \"\" : state.busy === \"apply\" ? \"titlesSaving\" : state.busy === \"status\" || state.receiptChecking ? \"titlesBatchCheckingStatus\""
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 649,
+          "line": 653,
           "kind": "literal-reference",
           "excerpt": "return `<div class=\"titles-status titles-batch-status\" data-batch-key=\"status\" role=\"status\" aria-live=\"polite\" aria-busy=\"${waiting}\">${waiting ? loadingFlowerMarkup(state.startedAt) : \"\"}<span class=\"titles-status__label--sr-only\">${text(caption)}</span></di"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 649,
+          "line": 653,
           "kind": "literal-reference",
           "excerpt": "return `<div class=\"titles-status titles-batch-status\" data-batch-key=\"status\" role=\"status\" aria-live=\"polite\" aria-busy=\"${waiting}\">${waiting ? loadingFlowerMarkup(state.startedAt) : \"\"}<span class=\"titles-status__label--sr-only\">${text(caption)}</span></di"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 676,
+          "line": 680,
           "kind": "literal-reference",
           "excerpt": "return notice ? `<div class=\"titles-notice titles-catalog-notice${informational ? \"\" : \" is-warning\"}\" role=\"status\" data-batch-key=\"notice\" data-catalog-issue=\"${esc(state.catalogIssue)}\" data-catalog-origin=\"${esc(state.catalogErrorOrigin || \"\")}\"><span>${te"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 699,
+          "line": 703,
           "kind": "literal-reference",
           "excerpt": "<section class=\"titles-batch-select-toolbar\" data-batch-key=\"toolbar\"><span>${countsKnown ? text(\"titlesBatchSelectionCount\", { total: rows.length, selected: visibleSelected }) : text(\"titlesBatchCatalogUnconfirmed\")}</span><div class=\"titles-batch-list-tools\""
         },
@@ -5381,7 +5467,7 @@
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 241,
+          "line": 244,
           "kind": "literal-reference",
           "excerpt": "const role = [\"user\", \"assistant\", \"system\", \"tool\"].includes(item.role)"
         },
@@ -5571,7 +5657,7 @@
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 241,
+          "line": 244,
           "kind": "literal-reference",
           "excerpt": "const role = [\"user\", \"assistant\", \"system\", \"tool\"].includes(item.role)"
         },
@@ -5683,7 +5769,7 @@
       "references": [
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 291,
+          "line": 294,
           "kind": "direct-call",
           "excerpt": "<span class=\"result-pagination__position\"><input class=\"result-pagination__input\" type=\"text\" inputmode=\"numeric\" value=\"${page}\" data-page-input data-page-total=\"${totalPages}\" aria-label=\"${escapeHtml(t(\"currentPage\"))}\" /><span class=\"result-pagination__tot"
         },
@@ -5710,6 +5796,12 @@
       },
       "references": [
         {
+          "source": "src/app/background/conversation-availability-observer.js",
+          "line": 12,
+          "kind": "literal-reference",
+          "excerpt": "|| ![\"deleted\", \"unavailable\", \"available\"].includes(change.status)"
+        },
+        {
           "source": "src/app/sidepanel/shell-presentation.js",
           "line": 135,
           "kind": "literal-reference",
@@ -5729,13 +5821,19 @@
         },
         {
           "source": "src/platform/chatgpt/api.js",
-          "line": 76,
+          "line": 78,
           "kind": "literal-reference",
           "excerpt": "libraryIdentity = { accountKey: null, epoch: libraryIdentity.epoch + Number(changed), phase: \"unavailable\", transition };"
         },
         {
           "source": "src/platform/chatgpt/api.js",
-          "line": 337,
+          "line": 297,
+          "kind": "literal-reference",
+          "excerpt": "} else if (response.status === 404 || response.status === 410) status = \"unavailable\";"
+        },
+        {
+          "source": "src/platform/chatgpt/api.js",
+          "line": 411,
           "kind": "literal-reference",
           "excerpt": "throw (libraryIdentity.phase === \"unavailable\" && libraryFailure)"
         },
@@ -5846,6 +5944,18 @@
           "line": 8,
           "kind": "literal-reference",
           "excerpt": "const IDENTITY_STATUS = Object.freeze([\"stable\", \"resolving\", \"draft\", \"empty\", \"unavailable\"]);"
+        },
+        {
+          "source": "src/platform/storage/conversation-availability.js",
+          "line": 11,
+          "kind": "literal-reference",
+          "excerpt": "export const isConversationUnavailable = row => [\"deleted\", \"unavailable\"].includes(row?.availability?.status);"
+        },
+        {
+          "source": "src/platform/storage/conversation-availability.js",
+          "line": 31,
+          "kind": "literal-reference",
+          "excerpt": "if (!/^[A-Za-z0-9_-]+$/.test(conversationId || \"\") || ![\"deleted\", \"unavailable\", \"available\"].includes(status)"
         }
       ]
     },
@@ -5901,67 +6011,67 @@
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 228,
+          "line": 231,
           "kind": "direct-call",
           "excerpt": "const groupLabel = item.groupId ? (group?.name || t(\"ungrouped\")) : t(\"ungrouped\");"
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 228,
+          "line": 231,
           "kind": "direct-call",
           "excerpt": "const groupLabel = item.groupId ? (group?.name || t(\"ungrouped\")) : t(\"ungrouped\");"
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 313,
+          "line": 316,
           "kind": "literal-reference",
           "excerpt": "const systemGroups = [{ id: \"all\", icon: \"all\", system: true }, { id: \"ungrouped\", icon: \"ungrouped\", system: true }];"
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 313,
+          "line": 316,
           "kind": "literal-reference",
           "excerpt": "const systemGroups = [{ id: \"all\", icon: \"all\", system: true }, { id: \"ungrouped\", icon: \"ungrouped\", system: true }];"
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 314,
+          "line": 317,
           "kind": "literal-reference",
           "excerpt": "const groups = [...systemGroups, ...store.groups].map((group) => rowForGroup({ ...group, name: group.id === \"all\" ? t(\"allBookmarks\") : group.id === \"ungrouped\" ? t(\"ungrouped\") : group.name }, counts[group.id] || 0, t)).join(\"\");"
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 314,
+          "line": 317,
           "kind": "direct-call",
           "excerpt": "const groups = [...systemGroups, ...store.groups].map((group) => rowForGroup({ ...group, name: group.id === \"all\" ? t(\"allBookmarks\") : group.id === \"ungrouped\" ? t(\"ungrouped\") : group.name }, counts[group.id] || 0, t)).join(\"\");"
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 327,
+          "line": 330,
           "kind": "literal-reference",
           "excerpt": "const baseLabel = store.view.groupId === \"current\" ? t(\"bookmarks\") : store.view.groupId === \"all\" ? t(\"allBookmarks\") : store.view.groupId === \"ungrouped\" ? t(\"ungrouped\") : groupName(selectedGroup, t);"
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 327,
+          "line": 330,
           "kind": "direct-call",
           "excerpt": "const baseLabel = store.view.groupId === \"current\" ? t(\"bookmarks\") : store.view.groupId === \"all\" ? t(\"allBookmarks\") : store.view.groupId === \"ungrouped\" ? t(\"ungrouped\") : groupName(selectedGroup, t);"
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 342,
+          "line": 345,
           "kind": "literal-reference",
           "excerpt": "root.dataset.targetGroup = !store.view.query.trim() && selectedGroup ? selectedGroup.id : \"ungrouped\";"
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 473,
+          "line": 476,
           "kind": "literal-reference",
           "excerpt": "if (id !== \"ungrouped\" && !model.store.groups.some(group => group.id === id)) return;"
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 475,
+          "line": 478,
           "kind": "literal-reference",
           "excerpt": "const groupId = id === \"ungrouped\" ? null : id;"
         },
@@ -6069,43 +6179,43 @@
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 332,
+          "line": 335,
           "kind": "literal-reference",
           "excerpt": "{ id: \"ungrouped\", name: t(\"ungrouped\"), icon: \"ungrouped\", system: true },"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 332,
+          "line": 335,
           "kind": "direct-call",
           "excerpt": "{ id: \"ungrouped\", name: t(\"ungrouped\"), icon: \"ungrouped\", system: true },"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 332,
+          "line": 335,
           "kind": "literal-reference",
           "excerpt": "{ id: \"ungrouped\", name: t(\"ungrouped\"), icon: \"ungrouped\", system: true },"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 349,
+          "line": 352,
           "kind": "literal-reference",
           "excerpt": ": store.view.groupId === \"ungrouped\""
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 350,
+          "line": 353,
           "kind": "direct-call",
           "excerpt": "? t(\"ungrouped\")"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 400,
+          "line": 403,
           "kind": "literal-reference",
           "excerpt": "root.dataset.targetGroup = selectedCustomGroup || \"ungrouped\";"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 544,
+          "line": 547,
           "kind": "literal-reference",
           "excerpt": "const groupId = button.dataset.libraryMoveGroup === \"ungrouped\" ? null : button.dataset.libraryMoveGroup;"
         }
@@ -6173,7 +6283,7 @@
       "references": [
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 226,
+          "line": 229,
           "kind": "direct-call",
           "excerpt": "const source = currentView ? \"\" : `<span class=\"bookmark-entry-source\">${escapeHtml(item.conversationTitle || t(\"untitled\"))}</span>`;"
         },
@@ -6245,19 +6355,19 @@
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 273,
+          "line": 276,
           "kind": "direct-call",
           "excerpt": "return `<button class=\"favorite-conversation favorite-conversation--export${selected ? \" is-selected\" : \"\"}${added ? \" is-added\" : \"\"}\" type=\"button\" data-list-key=\"conversation:${escapeHtml(item.conversationId)}\" data-export-draft-conversation=\"${escapeHtml(i"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 278,
+          "line": 281,
           "kind": "direct-call",
           "excerpt": "<strong>${escapeHtml(item.title || t(\"untitled\"))}</strong>"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 370,
+          "line": 373,
           "kind": "direct-call",
           "excerpt": "? snapshot.conversation.title?.value || t(\"untitled\")"
         },
@@ -6403,7 +6513,7 @@
       "references": [
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 392,
+          "line": 395,
           "kind": "direct-call",
           "excerpt": "<section class=\"favorite-sort-section\" data-list-key=\"sort\"><div class=\"favorite-section-heading\"><span>${escapeHtml(t(\"sort\"))}</span><div class=\"favorite-sort-control\"><select data-favorite-sort aria-label=\"${escapeHtml(t(\"sort\"))}\"><option value=\"savedAt\"${"
         },
@@ -6439,13 +6549,13 @@
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 690,
+          "line": 694,
           "kind": "literal-reference",
           "excerpt": "const sortLabel = state.t(state.sortDirection === \"asc\" ? \"sortAscending\" : \"sortDescending\", { field: state.t(state.sortField === \"createdAt\" ? \"createdTime\" : \"updatedTime\") });"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 699,
+          "line": 703,
           "kind": "literal-reference",
           "excerpt": "<section class=\"titles-batch-select-toolbar\" data-batch-key=\"toolbar\"><span>${countsKnown ? text(\"titlesBatchSelectionCount\", { total: rows.length, selected: visibleSelected }) : text(\"titlesBatchCatalogUnconfirmed\")}</span><div class=\"titles-batch-list-tools\""
         }
@@ -6479,7 +6589,7 @@
         },
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 241,
+          "line": 244,
           "kind": "literal-reference",
           "excerpt": "const role = [\"user\", \"assistant\", \"system\", \"tool\"].includes(item.role)"
         },
@@ -6819,13 +6929,13 @@
       "references": [
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 248,
+          "line": 251,
           "kind": "direct-call",
           "excerpt": "return `<button class=\"bookmark-entry bookmark-entry--export${selected ? \" is-selected\" : \"\"}${added ? \" is-added\" : \"\"}\" type=\"button\" data-list-key=\"bookmark:${escapeHtml(item.bookmarkId)}\" data-export-draft-bookmark=\"${escapeHtml(item.bookmarkId)}\" aria-pre"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 273,
+          "line": 276,
           "kind": "direct-call",
           "excerpt": "return `<button class=\"favorite-conversation favorite-conversation--export${selected ? \" is-selected\" : \"\"}${added ? \" is-added\" : \"\"}\" type=\"button\" data-list-key=\"conversation:${escapeHtml(item.conversationId)}\" data-export-draft-conversation=\"${escapeHtml(i"
         },
@@ -6887,13 +6997,13 @@
       "references": [
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 335,
+          "line": 338,
           "kind": "direct-call",
           "excerpt": "? `<button class=\"source-export-entry bookmark-export-entry\" type=\"button\" data-export-select-current=\"bookmarks\"${selectableIds.length ? \"\" : \" disabled\"}>${escapeHtml(allSelected ? t(\"cancelSelectAll\") : store.view.groupId === \"all\" ? t(\"selectAllCurrentRang"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 380,
+          "line": 383,
           "kind": "direct-call",
           "excerpt": "? `<button class=\"source-export-entry favorite-export-entry\" type=\"button\" data-export-select-current=\"favorites\"${selectableIds.length ? \"\" : \" disabled\"}>${escapeHtml(allSelected ? t(\"cancelSelectAll\") : store.view.groupId === \"all\" ? t(\"selectAllCurrentRang"
         }
@@ -7109,13 +7219,13 @@
         },
         {
           "source": "src/app/sidepanel/panel.js",
-          "line": 351,
+          "line": 352,
           "kind": "literal-reference",
           "excerpt": "exportView.suspend({ translator: t, preferences: state.preferences, active: isReady() && state.route === \"export\" });"
         },
         {
           "source": "src/app/sidepanel/panel.js",
-          "line": 357,
+          "line": 358,
           "kind": "literal-reference",
           "excerpt": "translator: t, active: state.route === \"export\", favorites: model.favorites, bookmarks: model.bookmarks });"
         },
@@ -11741,7 +11851,7 @@
       "references": [
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 335,
+          "line": 338,
           "kind": "direct-call",
           "excerpt": "? `<button class=\"source-export-entry bookmark-export-entry\" type=\"button\" data-export-select-current=\"bookmarks\"${selectableIds.length ? \"\" : \" disabled\"}>${escapeHtml(allSelected ? t(\"cancelSelectAll\") : store.view.groupId === \"all\" ? t(\"selectAllCurrentRang"
         }
@@ -11763,13 +11873,13 @@
       "references": [
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 335,
+          "line": 338,
           "kind": "direct-call",
           "excerpt": "? `<button class=\"source-export-entry bookmark-export-entry\" type=\"button\" data-export-select-current=\"bookmarks\"${selectableIds.length ? \"\" : \" disabled\"}>${escapeHtml(allSelected ? t(\"cancelSelectAll\") : store.view.groupId === \"all\" ? t(\"selectAllCurrentRang"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 380,
+          "line": 383,
           "kind": "direct-call",
           "excerpt": "? `<button class=\"source-export-entry favorite-export-entry\" type=\"button\" data-export-select-current=\"favorites\"${selectableIds.length ? \"\" : \" disabled\"}>${escapeHtml(allSelected ? t(\"cancelSelectAll\") : store.view.groupId === \"all\" ? t(\"selectAllCurrentRang"
         }
@@ -11813,13 +11923,13 @@
       "references": [
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 335,
+          "line": 338,
           "kind": "direct-call",
           "excerpt": "? `<button class=\"source-export-entry bookmark-export-entry\" type=\"button\" data-export-select-current=\"bookmarks\"${selectableIds.length ? \"\" : \" disabled\"}>${escapeHtml(allSelected ? t(\"cancelSelectAll\") : store.view.groupId === \"all\" ? t(\"selectAllCurrentRang"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 380,
+          "line": 383,
           "kind": "direct-call",
           "excerpt": "? `<button class=\"source-export-entry favorite-export-entry\" type=\"button\" data-export-select-current=\"favorites\"${selectableIds.length ? \"\" : \" disabled\"}>${escapeHtml(allSelected ? t(\"cancelSelectAll\") : store.view.groupId === \"all\" ? t(\"selectAllCurrentRang"
         }
@@ -11841,7 +11951,7 @@
       "references": [
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 273,
+          "line": 276,
           "kind": "direct-call",
           "excerpt": "return `<button class=\"favorite-conversation favorite-conversation--export${selected ? \" is-selected\" : \"\"}${added ? \" is-added\" : \"\"}\" type=\"button\" data-list-key=\"conversation:${escapeHtml(item.conversationId)}\" data-export-draft-conversation=\"${escapeHtml(i"
         },
@@ -11925,19 +12035,19 @@
       "references": [
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 331,
+          "line": 334,
           "kind": "direct-call",
           "excerpt": "{ id: \"all\", name: t(\"allFavorites\"), icon: \"all\", system: true },"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 348,
+          "line": 351,
           "kind": "direct-call",
           "excerpt": "? t(\"allFavorites\")"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 351,
+          "line": 354,
           "kind": "direct-call",
           "excerpt": ": displayGroupName(store.groups.find((group) => group.id === store.view.groupId), t) || t(\"allFavorites\");"
         }
@@ -11959,7 +12069,7 @@
       "references": [
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 345,
+          "line": 348,
           "kind": "literal-reference",
           "excerpt": ": `<div class=\"favorite-empty\">${escapeHtml(t(store.view.groupId === \"all\" ? \"emptyFavorites\" : \"emptyGroup\"))}</div>`;"
         }
@@ -12003,7 +12113,7 @@
       "references": [
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 367,
+          "line": 370,
           "kind": "direct-call",
           "excerpt": "? t(\"favoriteCurrent\")"
         }
@@ -12025,7 +12135,7 @@
       "references": [
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 365,
+          "line": 368,
           "kind": "direct-call",
           "excerpt": "? t(\"favoritedShort\")"
         },
@@ -12053,13 +12163,13 @@
       "references": [
         {
           "source": "src/app/sidepanel/panel.js",
-          "line": 286,
+          "line": 287,
           "kind": "literal-reference",
           "excerpt": "if (route === \"search\") showSearchToast(payload.placement === \"latest\" ? \"favoriteLatestUnavailable\" : \"actionFailed\", payload.navigationIntentId);"
         },
         {
           "source": "src/app/sidepanel/panel.js",
-          "line": 287,
+          "line": 288,
           "kind": "direct-call",
           "excerpt": "else if (route === \"favorites\") showToast(\"favoriteLatestUnavailable\", true, {},"
         }
@@ -12224,6 +12334,12 @@
       },
       "references": [
         {
+          "source": "src/app/background/conversation-availability-observer.js",
+          "line": 28,
+          "kind": "literal-reference",
+          "excerpt": "const event = protocol.event(kind === \"favorites\" ? protocol.Type.FAVORITES_UPDATED : protocol.Type.BOOKMARKS_UPDATED, token);"
+        },
+        {
           "source": "src/app/background/handlers/export.js",
           "line": 103,
           "kind": "literal-reference",
@@ -12381,31 +12497,31 @@
         },
         {
           "source": "src/app/sidepanel/panel.js",
-          "line": 287,
+          "line": 288,
           "kind": "literal-reference",
           "excerpt": "else if (route === \"favorites\") showToast(\"favoriteLatestUnavailable\", true, {},"
         },
         {
           "source": "src/app/sidepanel/panel.js",
-          "line": 288,
+          "line": 289,
           "kind": "literal-reference",
           "excerpt": "{ owner: \"favorites\", navigationIntentId: payload.navigationIntentId, durationMs: 5000 });"
         },
         {
           "source": "src/app/sidepanel/panel.js",
-          "line": 341,
+          "line": 342,
           "kind": "literal-reference",
           "excerpt": "for (const route of [\"favorites\", \"bookmarks\"]) if (state.route !== route) notice.dismissOwnedToast(route);"
         },
         {
           "source": "src/app/sidepanel/panel.js",
-          "line": 437,
+          "line": 438,
           "kind": "literal-reference",
           "excerpt": "notice.dismissOwnedToast(\"favorites\"); notice.dismissOwnedToast(\"bookmarks\");"
         },
         {
           "source": "src/app/sidepanel/panel.js",
-          "line": 491,
+          "line": 493,
           "kind": "literal-reference",
           "excerpt": "library.observeRevision(envelope.type === protocol.Type.FAVORITES_UPDATED ? \"favorites\" : \"bookmarks\", payload);"
         },
@@ -12537,75 +12653,75 @@
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 270,
+          "line": 273,
           "kind": "literal-reference",
           "excerpt": "const added = sources.includes(\"favorites\");"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 376,
+          "line": 379,
           "kind": "literal-reference",
-          "excerpt": ".filter((item) => !(selection.basketConversationSources?.[item.conversationId] || []).includes(\"favorites\"))"
+          "excerpt": ".filter((item) => !model.store.conversationAvailability?.[item.conversationId] && !(selection.basketConversationSources?.[item.conversationId] || []).includes(\"favorites\"))"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 380,
+          "line": 383,
           "kind": "literal-reference",
           "excerpt": "? `<button class=\"source-export-entry favorite-export-entry\" type=\"button\" data-export-select-current=\"favorites\"${selectableIds.length ? \"\" : \" disabled\"}>${escapeHtml(allSelected ? t(\"cancelSelectAll\") : store.view.groupId === \"all\" ? t(\"selectAllCurrentRang"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 381,
+          "line": 384,
           "kind": "literal-reference",
           "excerpt": ": `<button class=\"source-export-entry favorite-export-entry\" type=\"button\" data-export-select-mode=\"favorites\">${escapeHtml(t(\"selectExport\"))}</button>`;"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 385,
+          "line": 388,
           "kind": "literal-reference",
           "excerpt": "const footer = exportSelectionFooter(selection, \"favorites\", t);"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 395,
+          "line": 398,
           "kind": "literal-reference",
           "excerpt": "<div class=\"favorite-conversation-list\" data-results-viewport=\"favorites\">${entryMarkup}</div>"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 492,
+          "line": 495,
           "kind": "literal-reference",
           "excerpt": "void onExportAction?.(\"selection-back\", { source: \"favorites\" });"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 494,
+          "line": 497,
           "kind": "literal-reference",
           "excerpt": "if (!button.disabled) void onExportAction?.(\"toggle\", { source: \"favorites\", id: button.dataset.exportDraftConversation });"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 497,
+          "line": 500,
           "kind": "literal-reference",
           "excerpt": "source: \"favorites\","
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 501,
+          "line": 504,
           "kind": "literal-reference",
           "excerpt": "if (!button.disabled) void onExportAction?.(\"submit\", { source: \"favorites\" });"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 503,
+          "line": 506,
           "kind": "literal-reference",
           "excerpt": "void onExportAction?.(\"view-basket\", { source: \"favorites\" });"
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 608,
+          "line": 611,
           "kind": "literal-reference",
-          "excerpt": ".filter((item) => !(selection.basketConversationSources?.[item.conversationId] || []).includes(\"favorites\"))"
+          "excerpt": ".filter((item) => !model.store.conversationAvailability?.[item.conversationId] && !(selection.basketConversationSources?.[item.conversationId] || []).includes(\"favorites\"))"
         },
         {
           "source": "src/features/settings/storage/library-backup-domain.js",
@@ -12692,6 +12808,18 @@
           "excerpt": "for (const kind of [\"favorites\", \"bookmarks\"]) {"
         },
         {
+          "source": "src/platform/storage/conversation-availability.js",
+          "line": 62,
+          "kind": "literal-reference",
+          "excerpt": "for (const kind of [\"favorites\", \"bookmarks\"]) {"
+        },
+        {
+          "source": "src/platform/storage/conversation-availability.js",
+          "line": 63,
+          "kind": "literal-reference",
+          "excerpt": "if (!(kind === \"favorites\" ? favorite : bookmarks.length)) continue;"
+        },
+        {
           "source": "src/platform/storage/database.js",
           "line": 48,
           "kind": "literal-reference",
@@ -12727,7 +12855,7 @@
       "references": [
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 281,
+          "line": 284,
           "kind": "direct-call",
           "excerpt": "<button class=\"favorite-entry-menu-toggle\" type=\"button\" data-favorite-menu=\"${escapeHtml(item.conversationId)}\" aria-label=\"${escapeHtml(t(\"favoritesActions\"))}\" aria-haspopup=\"menu\" aria-expanded=\"${openEntryId === item.conversationId}\">···</button>"
         }
@@ -12799,7 +12927,7 @@
         },
         {
           "source": "src/features/favorites/ui/favorites-view.js",
-          "line": 368,
+          "line": 371,
           "kind": "direct-call",
           "excerpt": ": t(\"favoriteUnavailable\"),"
         }
@@ -13921,7 +14049,7 @@
       "references": [
         {
           "source": "src/features/bookmarks/ui/bookmarks-view.js",
-          "line": 328,
+          "line": 331,
           "kind": "direct-call",
           "excerpt": "const label = store.view.query.trim() ? `${baseLabel} · ${t(\"searchResults\")}` : baseLabel;"
         },
@@ -15227,7 +15355,7 @@
         },
         {
           "source": "src/app/sidepanel/panel.js",
-          "line": 342,
+          "line": 343,
           "kind": "literal-reference",
           "excerpt": "backupView.setActive(isReady() && state.route === \"settings\");"
         },
@@ -15325,7 +15453,7 @@
       "references": [
         {
           "source": "src/app/sidepanel/panel.js",
-          "line": 414,
+          "line": 415,
           "kind": "literal-reference",
           "excerpt": "if (changed.length === 1 && changed[0] === \"theme\") {"
         }
@@ -15841,13 +15969,13 @@
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 710,
+          "line": 714,
           "kind": "literal-reference",
           "excerpt": "return `<section class=\"titles-rule\" data-batch-key=\"rules\"><h3>${text(\"titlesRules\")}</h3><div class=\"titles-rule-controls\">${select(\"dateFormat\", formats, \"titlesBatchFormat\")}${select(\"mode\", [[\"created\", state.t(\"titlesCreatedDate\")], [\"range\", state.t(\"ti"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 871,
+          "line": 875,
           "kind": "literal-reference",
           "excerpt": "if ((field === \"mode\" && [\"created\", \"range\"].includes(node.value)) || (field === \"dateFormat\" && TITLE_RULE_FORMATS.includes(node.value))) {"
         },
@@ -16175,7 +16303,7 @@
       "references": [
         {
           "source": "src/app/sidepanel/panel.js",
-          "line": 376,
+          "line": 377,
           "kind": "literal-reference",
           "excerpt": "precision: preferences?.messageTimePrecision || \"second\" });"
         },
@@ -16251,7 +16379,7 @@
         },
         {
           "source": "src/app/sidepanel/panel.js",
-          "line": 369,
+          "line": 370,
           "kind": "literal-reference",
           "excerpt": "if (route === \"time\") timeView.renderDateFormatLabels(state.preferences);"
         },
@@ -16421,13 +16549,13 @@
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 250,
+          "line": 251,
           "kind": "literal-reference",
           "excerpt": "if (error?.code === \"TITLE_ACCOUNT_CHANGED\") return observe(\"titlesAccountChanged\");"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 271,
+          "line": 272,
           "kind": "literal-reference",
           "excerpt": "state.error = observeError(\"titlesAccountChanged\", { code: \"TITLE_ACCOUNT_CHANGED\" });"
         },
@@ -16489,7 +16617,7 @@
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 252,
+          "line": 253,
           "kind": "literal-reference",
           "excerpt": "if (error?.code === \"TITLE_AUTH_EXPIRED\") return observe(\"titlesAuthExpired\");"
         },
@@ -16523,7 +16651,7 @@
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 251,
+          "line": 252,
           "kind": "literal-reference",
           "excerpt": "if (error?.code === \"TITLE_AUTH_REQUIRED\") return observe(\"titlesAuthPending\");"
         },
@@ -16601,13 +16729,13 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 590,
+          "line": 594,
           "kind": "literal-reference",
           "excerpt": "accepted: \"titlesBatchAccepted\", verified: \"titlesBatchSaved\", failed: \"titlesBatchFailed\", uncertain: \"titlesBatchUncertain\" }[item.status];"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 721,
+          "line": 725,
           "kind": "literal-reference",
           "excerpt": "const staticLabel = (item) => item.status === \"accepted\" ? \"titlesBatchAccepted\" : item.status === \"verified\" ? \"titlesBatchSaved\" : item.status === \"failed\" ? \"titlesBatchFailed\""
         }
@@ -16629,7 +16757,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 727,
+          "line": 731,
           "kind": "literal-reference",
           "excerpt": "<div class=\"titles-batch-preview-list\" data-batch-scroll=\"preview\" data-batch-key=\"list\">${conflicts.length ? `<section class=\"titles-batch-exceptions\" data-batch-key=\"conflicts\"><header><strong>${text(\"titlesBatchConflictsHeading\", { count: conflicts.length }"
         }
@@ -16651,7 +16779,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 685,
+          "line": 689,
           "kind": "literal-reference",
           "excerpt": "const filters = [[\"all\", \"titlesBatchAll\"], [\"no-head\", \"titlesBatchNoDate\"], [\"has-head\", \"titlesBatchHasDate\"], [\"decision\", \"titlesBatchDateConflict\"]];"
         }
@@ -16673,7 +16801,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 728,
+          "line": 732,
           "kind": "literal-reference",
           "excerpt": "<footer class=\"titles-batch-select-footer\" data-batch-key=\"footer\"><span>${skipped ? text(removing ? \"titlesBatchSkipRemoveCount\" : \"titlesBatchSkipCount\", { count: skipped }) : \"\"}</span>${(state.error || stale) && !state.receiptStatusError ? `<button class=\""
         }
@@ -16695,7 +16823,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 743,
+          "line": 747,
           "kind": "literal-reference",
           "excerpt": "return `${statusMarkup()}<section class=\"titles-batch-progress-hero\" data-batch-key=\"hero\"><strong>${text(paused ? \"titlesBatchPaused\" : state.operation === \"remove\" ? \"titlesBatchRemoving\" : \"titlesBatchApplying\")}</strong><small>${done} / ${items.length}</sm"
         }
@@ -16717,7 +16845,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 753,
+          "line": 757,
           "kind": "direct-call",
           "excerpt": "return `${statusMarkup()}<section class=\"titles-batch-result-hero\" data-batch-key=\"hero\"><span class=\"${issues ? \"is-warning\" : \"\"}\" aria-hidden=\"true\">${issues ? \"!\" : \"✓\"}</span><strong>${text(saved ? state.operation === \"remove\" ? \"titlesBatchRemovedResult\""
         }
@@ -16739,7 +16867,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 725,
+          "line": 729,
           "kind": "literal-reference",
           "excerpt": "return `<header class=\"titles-batch-back-header\" data-batch-key=\"back\"><button type=\"button\" data-batch-action=\"back\" aria-label=\"${text(\"titlesBatchBackSelection\")}\"${locked() || state.receiptChecking || state.replanning ? \" disabled\" : \"\"}>‹</button><strong>"
         }
@@ -16761,13 +16889,13 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 725,
+          "line": 729,
           "kind": "direct-call",
           "excerpt": "return `<header class=\"titles-batch-back-header\" data-batch-key=\"back\"><button type=\"button\" data-batch-action=\"back\" aria-label=\"${text(\"titlesBatchBackSelection\")}\"${locked() || state.receiptChecking || state.replanning ? \" disabled\" : \"\"}>‹</button><strong>"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 725,
+          "line": 729,
           "kind": "literal-reference",
           "excerpt": "return `<header class=\"titles-batch-back-header\" data-batch-key=\"back\"><button type=\"button\" data-batch-action=\"back\" aria-label=\"${text(\"titlesBatchBackSelection\")}\"${locked() || state.receiptChecking || state.replanning ? \" disabled\" : \"\"}>‹</button><strong>"
         }
@@ -16789,19 +16917,19 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 702,
+          "line": 706,
           "kind": "literal-reference",
           "excerpt": "const label = removing ? !plan.canApply ? \"titlesBatchCannotRemove\" : \"\" : plan.needsDecision ? \"titlesBatchDateConflict\" : plan.noOp ? \"titlesNoChange\" : \"\";"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 722,
+          "line": 726,
           "kind": "literal-reference",
           "excerpt": ": item.status === \"conflict\" ? itemStatusKey(item) : item.plan?.noOp ? \"titlesNoChange\" : removing ? \"titlesBatchCannotRemove\" : \"titlesBatchSkipped\";"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 727,
+          "line": 731,
           "kind": "literal-reference",
           "excerpt": "<div class=\"titles-batch-preview-list\" data-batch-scroll=\"preview\" data-batch-key=\"list\">${conflicts.length ? `<section class=\"titles-batch-exceptions\" data-batch-key=\"conflicts\"><header><strong>${text(\"titlesBatchConflictsHeading\", { count: conflicts.length }"
         }
@@ -16823,7 +16951,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 660,
+          "line": 664,
           "kind": "literal-reference",
           "excerpt": "const notice = operationNotice || (changedPreviewIds().length ? \"titlesPreviewStale\" : \"\") || (rateLimited ? \"titlesRateLimited\" : \"\") || (unsupported ? \"titlesCatalogUnsupported\" : \"\") || (phase() === \"select\" ? { account: \"titlesBatchCatalogAccount\", rate: c"
         }
@@ -16845,7 +16973,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 673,
+          "line": 677,
           "kind": "literal-reference",
           "excerpt": ": resume ? \"titlesBatchCatalogContinue\" : state.catalogIssue === \"account\" ? \"reconnect\" : \"titlesBatchRetryRead\";"
         }
@@ -16867,13 +16995,13 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 646,
+          "line": 650,
           "kind": "literal-reference",
           "excerpt": "? state.rows.length ? \"titlesBatchCatalogRefreshing\" : \"titlesBatchCatalogLoading\" : \"titlesPreviewing\";"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 694,
+          "line": 698,
           "kind": "literal-reference",
           "excerpt": "const emptyLabel = state.loading || state.busy ? \"titlesBatchCatalogLoading\""
         }
@@ -16895,7 +17023,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 661,
+          "line": 665,
           "kind": "literal-reference",
           "excerpt": "read: catalogRead, paused: \"titlesBatchCatalogPaused\", superseded: \"titlesBatchCatalogSuperseded\" }[state.catalogIssue] : \"\");"
         }
@@ -16917,7 +17045,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 653,
+          "line": 657,
           "kind": "literal-reference",
           "excerpt": "const catalogRate = state.catalogErrorOrigin === \"current\" ? \"titlesBatchCatalogRateLimited\" : \"titlesBatchCatalogPreviousRateLimit\";"
         }
@@ -16939,7 +17067,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 654,
+          "line": 658,
           "kind": "literal-reference",
           "excerpt": "const catalogRead = state.catalogErrorOrigin === \"current\" ? \"titlesBatchCatalogReadFailed\" : \"titlesBatchCatalogPreviousReadFailed\";"
         }
@@ -16961,7 +17089,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 653,
+          "line": 657,
           "kind": "literal-reference",
           "excerpt": "const catalogRate = state.catalogErrorOrigin === \"current\" ? \"titlesBatchCatalogRateLimited\" : \"titlesBatchCatalogPreviousRateLimit\";"
         }
@@ -16983,7 +17111,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 654,
+          "line": 658,
           "kind": "literal-reference",
           "excerpt": "const catalogRead = state.catalogErrorOrigin === \"current\" ? \"titlesBatchCatalogReadFailed\" : \"titlesBatchCatalogPreviousReadFailed\";"
         }
@@ -17005,7 +17133,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 646,
+          "line": 650,
           "kind": "literal-reference",
           "excerpt": "? state.rows.length ? \"titlesBatchCatalogRefreshing\" : \"titlesBatchCatalogLoading\" : \"titlesPreviewing\";"
         }
@@ -17027,7 +17155,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 661,
+          "line": 665,
           "kind": "literal-reference",
           "excerpt": "read: catalogRead, paused: \"titlesBatchCatalogPaused\", superseded: \"titlesBatchCatalogSuperseded\" }[state.catalogIssue] : \"\");"
         }
@@ -17049,13 +17177,13 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 696,
+          "line": 700,
           "kind": "literal-reference",
           "excerpt": "? \"titlesBatchCatalogUnconfirmed\" : \"titlesBatchEmpty\";"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 699,
+          "line": 703,
           "kind": "direct-call",
           "excerpt": "<section class=\"titles-batch-select-toolbar\" data-batch-key=\"toolbar\"><span>${countsKnown ? text(\"titlesBatchSelectionCount\", { total: rows.length, selected: visibleSelected }) : text(\"titlesBatchCatalogUnconfirmed\")}</span><div class=\"titles-batch-list-tools\""
         }
@@ -17077,7 +17205,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 644,
+          "line": 648,
           "kind": "literal-reference",
           "excerpt": "const caption = !waiting ? \"\" : state.busy === \"apply\" ? \"titlesSaving\" : state.busy === \"status\" || state.receiptChecking ? \"titlesBatchCheckingStatus\""
         }
@@ -17099,7 +17227,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 728,
+          "line": 732,
           "kind": "literal-reference",
           "excerpt": "<footer class=\"titles-batch-select-footer\" data-batch-key=\"footer\"><span>${skipped ? text(removing ? \"titlesBatchSkipRemoveCount\" : \"titlesBatchSkipCount\", { count: skipped }) : \"\"}</span>${(state.error || stale) && !state.receiptStatusError ? `<button class=\""
         }
@@ -17121,7 +17249,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 753,
+          "line": 757,
           "kind": "literal-reference",
           "excerpt": "return `${statusMarkup()}<section class=\"titles-batch-result-hero\" data-batch-key=\"hero\"><span class=\"${issues ? \"is-warning\" : \"\"}\" aria-hidden=\"true\">${issues ? \"!\" : \"✓\"}</span><strong>${text(saved ? state.operation === \"remove\" ? \"titlesBatchRemovedResult\""
         }
@@ -17143,7 +17271,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 727,
+          "line": 731,
           "kind": "direct-call",
           "excerpt": "<div class=\"titles-batch-preview-list\" data-batch-scroll=\"preview\" data-batch-key=\"list\">${conflicts.length ? `<section class=\"titles-batch-exceptions\" data-batch-key=\"conflicts\"><header><strong>${text(\"titlesBatchConflictsHeading\", { count: conflicts.length }"
         }
@@ -17165,13 +17293,13 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 685,
+          "line": 689,
           "kind": "literal-reference",
           "excerpt": "const filters = [[\"all\", \"titlesBatchAll\"], [\"no-head\", \"titlesBatchNoDate\"], [\"has-head\", \"titlesBatchHasDate\"], [\"decision\", \"titlesBatchDateConflict\"]];"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 702,
+          "line": 706,
           "kind": "literal-reference",
           "excerpt": "const label = removing ? !plan.canApply ? \"titlesBatchCannotRemove\" : \"\" : plan.needsDecision ? \"titlesBatchDateConflict\" : plan.noOp ? \"titlesNoChange\" : \"\";"
         }
@@ -17193,7 +17321,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 699,
+          "line": 703,
           "kind": "literal-reference",
           "excerpt": "<section class=\"titles-batch-select-toolbar\" data-batch-key=\"toolbar\"><span>${countsKnown ? text(\"titlesBatchSelectionCount\", { total: rows.length, selected: visibleSelected }) : text(\"titlesBatchCatalogUnconfirmed\")}</span><div class=\"titles-batch-list-tools\""
         }
@@ -17215,7 +17343,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 728,
+          "line": 732,
           "kind": "direct-call",
           "excerpt": "<footer class=\"titles-batch-select-footer\" data-batch-key=\"footer\"><span>${skipped ? text(removing ? \"titlesBatchSkipRemoveCount\" : \"titlesBatchSkipCount\", { count: skipped }) : \"\"}</span>${(state.error || stale) && !state.receiptStatusError ? `<button class=\""
         }
@@ -17237,7 +17365,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 696,
+          "line": 700,
           "kind": "literal-reference",
           "excerpt": "? \"titlesBatchCatalogUnconfirmed\" : \"titlesBatchEmpty\";"
         }
@@ -17259,7 +17387,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 689,
+          "line": 693,
           "kind": "literal-reference",
           "excerpt": "? `<section class=\"titles-batch-remove-shortcut${removing ? \" is-active\" : \"\"}\" data-batch-key=\"remove\"><button data-batch-action=\"${removing ? \"exit-remove\" : \"remove\"}\" type=\"button\"${locked() ? \" disabled\" : \"\"}>${trash}<span>${text(removing ? \"titlesBatchE"
         }
@@ -17281,13 +17409,13 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 590,
+          "line": 594,
           "kind": "literal-reference",
           "excerpt": "accepted: \"titlesBatchAccepted\", verified: \"titlesBatchSaved\", failed: \"titlesBatchFailed\", uncertain: \"titlesBatchUncertain\" }[item.status];"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 721,
+          "line": 725,
           "kind": "literal-reference",
           "excerpt": "const staticLabel = (item) => item.status === \"accepted\" ? \"titlesBatchAccepted\" : item.status === \"verified\" ? \"titlesBatchSaved\" : item.status === \"failed\" ? \"titlesBatchFailed\""
         }
@@ -17309,7 +17437,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 753,
+          "line": 757,
           "kind": "literal-reference",
           "excerpt": "return `${statusMarkup()}<section class=\"titles-batch-result-hero\" data-batch-key=\"hero\"><span class=\"${issues ? \"is-warning\" : \"\"}\" aria-hidden=\"true\">${issues ? \"!\" : \"✓\"}</span><strong>${text(saved ? state.operation === \"remove\" ? \"titlesBatchRemovedResult\""
         }
@@ -17331,7 +17459,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 698,
+          "line": 702,
           "kind": "direct-call",
           "excerpt": "<section class=\"titles-batch-status-tabs\" data-batch-key=\"filters\" aria-label=\"${text(\"titlesBatchFilter\")}\">${filters.map(([id, label]) => `<button type=\"button\" data-batch-filter=\"${id}\" aria-pressed=\"${state.filter === id}\"${(removing && id !== \"has-head\") "
         }
@@ -17353,7 +17481,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 710,
+          "line": 714,
           "kind": "literal-reference",
           "excerpt": "return `<section class=\"titles-rule\" data-batch-key=\"rules\"><h3>${text(\"titlesRules\")}</h3><div class=\"titles-rule-controls\">${select(\"dateFormat\", formats, \"titlesBatchFormat\")}${select(\"mode\", [[\"created\", state.t(\"titlesCreatedDate\")], [\"range\", state.t(\"ti"
         }
@@ -17375,7 +17503,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 685,
+          "line": 689,
           "kind": "literal-reference",
           "excerpt": "const filters = [[\"all\", \"titlesBatchAll\"], [\"no-head\", \"titlesBatchNoDate\"], [\"has-head\", \"titlesBatchHasDate\"], [\"decision\", \"titlesBatchDateConflict\"]];"
         }
@@ -17397,7 +17525,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 604,
+          "line": 608,
           "kind": "direct-call",
           "excerpt": "return `<details class=\"titles-batch-issue-details\" data-batch-key=\"issue-details\"><summary>${text(\"titlesBatchIssueDetails\")}</summary>${issues.map((item) => {"
         }
@@ -17419,7 +17547,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 746,
+          "line": 750,
           "kind": "direct-call",
           "excerpt": "${!paused ? `<p>${text(\"titlesBatchKeepOpen\")}</p>` : \"\"}${pausedActions}${ownerAction}`;"
         }
@@ -17441,7 +17569,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 588,
+          "line": 592,
           "kind": "literal-reference",
           "excerpt": ": item.messageCode === \"title_conflict\" ? \"titlesBatchTitleChanged\" : \"titlesBatchMetadataChanged\";"
         }
@@ -17463,7 +17591,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 608,
+          "line": 612,
           "kind": "literal-reference",
           "excerpt": ": item.messageCode === \"title_conflict\" ? \"titlesBatchTitleChangedHelp\" : \"titlesBatchMetadataChangedHelp\""
         }
@@ -17485,7 +17613,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 753,
+          "line": 757,
           "kind": "literal-reference",
           "excerpt": "return `${statusMarkup()}<section class=\"titles-batch-result-hero\" data-batch-key=\"hero\"><span class=\"${issues ? \"is-warning\" : \"\"}\" aria-hidden=\"true\">${issues ? \"!\" : \"✓\"}</span><strong>${text(saved ? state.operation === \"remove\" ? \"titlesBatchRemovedResult\""
         }
@@ -17507,7 +17635,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 685,
+          "line": 689,
           "kind": "literal-reference",
           "excerpt": "const filters = [[\"all\", \"titlesBatchAll\"], [\"no-head\", \"titlesBatchNoDate\"], [\"has-head\", \"titlesBatchHasDate\"], [\"decision\", \"titlesBatchDateConflict\"]];"
         }
@@ -17529,7 +17657,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 699,
+          "line": 703,
           "kind": "direct-call",
           "excerpt": "<section class=\"titles-batch-select-toolbar\" data-batch-key=\"toolbar\"><span>${countsKnown ? text(\"titlesBatchSelectionCount\", { total: rows.length, selected: visibleSelected }) : text(\"titlesBatchCatalogUnconfirmed\")}</span><div class=\"titles-batch-list-tools\""
         }
@@ -17551,7 +17679,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 743,
+          "line": 747,
           "kind": "literal-reference",
           "excerpt": "return `${statusMarkup()}<section class=\"titles-batch-progress-hero\" data-batch-key=\"hero\"><strong>${text(paused ? \"titlesBatchPaused\" : state.operation === \"remove\" ? \"titlesBatchRemoving\" : \"titlesBatchApplying\")}</strong><small>${done} / ${items.length}</sm"
         }
@@ -17573,7 +17701,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 597,
+          "line": 601,
           "kind": "literal-reference",
           "excerpt": "if (reason === \"panel-hidden\") return \"titlesBatchPauseHidden\";"
         }
@@ -17595,7 +17723,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 598,
+          "line": 602,
           "kind": "literal-reference",
           "excerpt": "if (reason === \"runtime-restarted\") return \"titlesBatchPauseRestarted\";"
         }
@@ -17617,7 +17745,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 599,
+          "line": 603,
           "kind": "literal-reference",
           "excerpt": "return \"titlesBatchPauseReview\";"
         }
@@ -17639,7 +17767,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 593,
+          "line": 597,
           "kind": "literal-reference",
           "excerpt": "if (needsReconciliation()) return \"titlesBatchPauseUnknown\";"
         }
@@ -17661,7 +17789,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 705,
+          "line": 709,
           "kind": "literal-reference",
           "excerpt": "<footer class=\"titles-batch-select-footer is-action-only\" data-batch-key=\"footer\"><button type=\"button\" data-batch-action=\"preview\"${!state.eligible || !state.selected.size || !state.accountKey || locked() || receiptBlocked() || accountBlocked() ? \" disabled\" "
         }
@@ -17683,7 +17811,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 737,
+          "line": 741,
           "kind": "direct-call",
           "excerpt": "? `<button type=\"button\" data-batch-action=\"retry-preview\"${actionDisabled}>${text(\"titlesBatchPreviewRemaining\")}</button>`"
         }
@@ -17705,7 +17833,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 705,
+          "line": 709,
           "kind": "literal-reference",
           "excerpt": "<footer class=\"titles-batch-select-footer is-action-only\" data-batch-key=\"footer\"><button type=\"button\" data-batch-action=\"preview\"${!state.eligible || !state.selected.size || !state.accountKey || locked() || receiptBlocked() || accountBlocked() ? \" disabled\" "
         }
@@ -17727,7 +17855,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 743,
+          "line": 747,
           "kind": "direct-call",
           "excerpt": "return `${statusMarkup()}<section class=\"titles-batch-progress-hero\" data-batch-key=\"hero\"><strong>${text(paused ? \"titlesBatchPaused\" : state.operation === \"remove\" ? \"titlesBatchRemoving\" : \"titlesBatchApplying\")}</strong><small>${done} / ${items.length}</sm"
         }
@@ -17749,25 +17877,25 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 276,
+          "line": 277,
           "kind": "literal-reference",
           "excerpt": "state.error = state.receiptStatusError = observeError(\"titlesBatchReceiptUnconfirmed\", { code: \"TITLE_ACCOUNT_CHANGED\" });"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 658,
+          "line": 662,
           "kind": "literal-reference",
           "excerpt": "? \"titlesBatchReceiptUnconfirmed\" : state.error;"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 776,
+          "line": 780,
           "kind": "direct-call",
           "excerpt": "? `<div class=\"titles-notice is-warning\" data-batch-key=\"receipt-status\"><span>${text(\"titlesBatchReceiptUnconfirmed\")}</span><button class=\"titles-button\" type=\"button\" data-batch-action=\"recheck-status\"${state.busy || state.running || state.receiptChecking |"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 779,
+          "line": 783,
           "kind": "literal-reference",
           "excerpt": "messageKey: \"titlesBatchReceiptUnconfirmed\", reasonCode: \"RECEIPT_STATE_UNCONFIRMED\" });"
         }
@@ -17789,13 +17917,13 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 672,
+          "line": 676,
           "kind": "literal-reference",
           "excerpt": "const label = state.receiptStatusError ? \"titlesBatchRecheckStatus\" : unsupported ? \"currentConversation\""
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 776,
+          "line": 780,
           "kind": "direct-call",
           "excerpt": "? `<div class=\"titles-notice is-warning\" data-batch-key=\"receipt-status\"><span>${text(\"titlesBatchReceiptUnconfirmed\")}</span><button class=\"titles-button\" type=\"button\" data-batch-action=\"recheck-status\"${state.busy || state.running || state.receiptChecking |"
         }
@@ -17817,7 +17945,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 753,
+          "line": 757,
           "kind": "literal-reference",
           "excerpt": "return `${statusMarkup()}<section class=\"titles-batch-result-hero\" data-batch-key=\"hero\"><span class=\"${issues ? \"is-warning\" : \"\"}\" aria-hidden=\"true\">${issues ? \"!\" : \"✓\"}</span><strong>${text(saved ? state.operation === \"remove\" ? \"titlesBatchRemovedResult\""
         }
@@ -17839,7 +17967,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 727,
+          "line": 731,
           "kind": "literal-reference",
           "excerpt": "<div class=\"titles-batch-preview-list\" data-batch-scroll=\"preview\" data-batch-key=\"list\">${conflicts.length ? `<section class=\"titles-batch-exceptions\" data-batch-key=\"conflicts\"><header><strong>${text(\"titlesBatchConflictsHeading\", { count: conflicts.length }"
         }
@@ -17861,7 +17989,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 743,
+          "line": 747,
           "kind": "literal-reference",
           "excerpt": "return `${statusMarkup()}<section class=\"titles-batch-progress-hero\" data-batch-key=\"hero\"><strong>${text(paused ? \"titlesBatchPaused\" : state.operation === \"remove\" ? \"titlesBatchRemoving\" : \"titlesBatchApplying\")}</strong><small>${done} / ${items.length}</sm"
         }
@@ -17883,7 +18011,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 753,
+          "line": 757,
           "kind": "direct-call",
           "excerpt": "return `${statusMarkup()}<section class=\"titles-batch-result-hero\" data-batch-key=\"hero\"><span class=\"${issues ? \"is-warning\" : \"\"}\" aria-hidden=\"true\">${issues ? \"!\" : \"✓\"}</span><strong>${text(saved ? state.operation === \"remove\" ? \"titlesBatchRemovedResult\""
         }
@@ -17905,13 +18033,13 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 673,
+          "line": 677,
           "kind": "literal-reference",
           "excerpt": ": resume ? \"titlesBatchCatalogContinue\" : state.catalogIssue === \"account\" ? \"reconnect\" : \"titlesBatchRetryRead\";"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 728,
+          "line": 732,
           "kind": "direct-call",
           "excerpt": "<footer class=\"titles-batch-select-footer\" data-batch-key=\"footer\"><span>${skipped ? text(removing ? \"titlesBatchSkipRemoveCount\" : \"titlesBatchSkipCount\", { count: skipped }) : \"\"}</span>${(state.error || stale) && !state.receiptStatusError ? `<button class=\""
         }
@@ -17933,7 +18061,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 739,
+          "line": 743,
           "kind": "direct-call",
           "excerpt": "const ownerAction = !sameContext() ? `<button type=\"button\" data-batch-action=\"return-owner\"${state.busy || state.running ? \" disabled\" : \"\"}>${text(\"titlesBatchReturnOwner\")}</button>` : \"\";"
         }
@@ -17955,7 +18083,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 726,
+          "line": 730,
           "kind": "direct-call",
           "excerpt": "${removing ? \"\" : rulesMarkup()}${statusMarkup()}<section class=\"titles-batch-summary\" data-batch-key=\"summary\"><strong>${text(\"titlesBatchReviewCount\", { count: items.length })}</strong></section>${noticeMarkup()}"
         }
@@ -17977,7 +18105,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 586,
+          "line": 590,
           "kind": "literal-reference",
           "excerpt": "if (item.status === \"conflict\" && [\"title_unchanged\", \"title_rechecked\"].includes(item.messageCode)) return \"titlesBatchReviewRequired\";"
         }
@@ -17999,19 +18127,19 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 590,
+          "line": 594,
           "kind": "literal-reference",
           "excerpt": "accepted: \"titlesBatchAccepted\", verified: \"titlesBatchSaved\", failed: \"titlesBatchFailed\", uncertain: \"titlesBatchUncertain\" }[item.status];"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 721,
+          "line": 725,
           "kind": "literal-reference",
           "excerpt": "const staticLabel = (item) => item.status === \"accepted\" ? \"titlesBatchAccepted\" : item.status === \"verified\" ? \"titlesBatchSaved\" : item.status === \"failed\" ? \"titlesBatchFailed\""
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 727,
+          "line": 731,
           "kind": "literal-reference",
           "excerpt": "<div class=\"titles-batch-preview-list\" data-batch-scroll=\"preview\" data-batch-key=\"list\">${conflicts.length ? `<section class=\"titles-batch-exceptions\" data-batch-key=\"conflicts\"><header><strong>${text(\"titlesBatchConflictsHeading\", { count: conflicts.length }"
         }
@@ -18033,13 +18161,13 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 697,
+          "line": 701,
           "kind": "direct-call",
           "excerpt": "return `${removing ? \"\" : rulesMarkup()}<label class=\"titles-batch-search\" data-batch-key=\"search\"><span aria-hidden=\"true\">⌕</span><input type=\"search\" data-batch-query value=\"${esc(state.query)}\" placeholder=\"${text(\"titlesBatchSearch\")}\" aria-label=\"${text("
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 697,
+          "line": 701,
           "kind": "direct-call",
           "excerpt": "return `${removing ? \"\" : rulesMarkup()}<label class=\"titles-batch-search\" data-batch-key=\"search\"><span aria-hidden=\"true\">⌕</span><input type=\"search\" data-batch-query value=\"${esc(state.query)}\" placeholder=\"${text(\"titlesBatchSearch\")}\" aria-label=\"${text("
         }
@@ -18061,7 +18189,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 699,
+          "line": 703,
           "kind": "literal-reference",
           "excerpt": "<section class=\"titles-batch-select-toolbar\" data-batch-key=\"toolbar\"><span>${countsKnown ? text(\"titlesBatchSelectionCount\", { total: rows.length, selected: visibleSelected }) : text(\"titlesBatchCatalogUnconfirmed\")}</span><div class=\"titles-batch-list-tools\""
         }
@@ -18083,7 +18211,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 699,
+          "line": 703,
           "kind": "direct-call",
           "excerpt": "<section class=\"titles-batch-select-toolbar\" data-batch-key=\"toolbar\"><span>${countsKnown ? text(\"titlesBatchSelectionCount\", { total: rows.length, selected: visibleSelected }) : text(\"titlesBatchCatalogUnconfirmed\")}</span><div class=\"titles-batch-list-tools\""
         }
@@ -18105,7 +18233,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 689,
+          "line": 693,
           "kind": "direct-call",
           "excerpt": "? `<section class=\"titles-batch-remove-shortcut${removing ? \" is-active\" : \"\"}\" data-batch-key=\"remove\"><button data-batch-action=\"${removing ? \"exit-remove\" : \"remove\"}\" type=\"button\"${locked() ? \" disabled\" : \"\"}>${trash}<span>${text(removing ? \"titlesBatchE"
         }
@@ -18127,13 +18255,13 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 728,
+          "line": 732,
           "kind": "literal-reference",
           "excerpt": "<footer class=\"titles-batch-select-footer\" data-batch-key=\"footer\"><span>${skipped ? text(removing ? \"titlesBatchSkipRemoveCount\" : \"titlesBatchSkipCount\", { count: skipped }) : \"\"}</span>${(state.error || stale) && !state.receiptStatusError ? `<button class=\""
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 753,
+          "line": 757,
           "kind": "literal-reference",
           "excerpt": "return `${statusMarkup()}<section class=\"titles-batch-result-hero\" data-batch-key=\"hero\"><span class=\"${issues ? \"is-warning\" : \"\"}\" aria-hidden=\"true\">${issues ? \"!\" : \"✓\"}</span><strong>${text(saved ? state.operation === \"remove\" ? \"titlesBatchRemovedResult\""
         }
@@ -18155,13 +18283,13 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 589,
+          "line": 593,
           "kind": "literal-reference",
           "excerpt": "return { ready: \"titlesBatchWaiting\", skipped: \"titlesBatchSkipped\", pending: \"titlesBatchWorking\","
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 722,
+          "line": 726,
           "kind": "literal-reference",
           "excerpt": ": item.status === \"conflict\" ? itemStatusKey(item) : item.plan?.noOp ? \"titlesNoChange\" : removing ? \"titlesBatchCannotRemove\" : \"titlesBatchSkipped\";"
         }
@@ -18183,7 +18311,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 728,
+          "line": 732,
           "kind": "literal-reference",
           "excerpt": "<footer class=\"titles-batch-select-footer\" data-batch-key=\"footer\"><span>${skipped ? text(removing ? \"titlesBatchSkipRemoveCount\" : \"titlesBatchSkipCount\", { count: skipped }) : \"\"}</span>${(state.error || stale) && !state.receiptStatusError ? `<button class=\""
         }
@@ -18205,7 +18333,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 699,
+          "line": 703,
           "kind": "direct-call",
           "excerpt": "<section class=\"titles-batch-select-toolbar\" data-batch-key=\"toolbar\"><span>${countsKnown ? text(\"titlesBatchSelectionCount\", { total: rows.length, selected: visibleSelected }) : text(\"titlesBatchCatalogUnconfirmed\")}</span><div class=\"titles-batch-list-tools\""
         }
@@ -18227,7 +18355,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 587,
+          "line": 591,
           "kind": "literal-reference",
           "excerpt": "if (item.status === \"conflict\") return item.messageCode === \"dates_changed\" ? \"titlesBatchTimeChanged\""
         }
@@ -18249,7 +18377,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 607,
+          "line": 611,
           "kind": "literal-reference",
           "excerpt": ": item.messageCode === \"dates_changed\" ? \"titlesBatchTimeChangedHelp\""
         }
@@ -18271,7 +18399,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 588,
+          "line": 592,
           "kind": "literal-reference",
           "excerpt": ": item.messageCode === \"title_conflict\" ? \"titlesBatchTitleChanged\" : \"titlesBatchMetadataChanged\";"
         }
@@ -18293,7 +18421,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 608,
+          "line": 612,
           "kind": "literal-reference",
           "excerpt": ": item.messageCode === \"title_conflict\" ? \"titlesBatchTitleChangedHelp\" : \"titlesBatchMetadataChangedHelp\""
         }
@@ -18315,7 +18443,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 590,
+          "line": 594,
           "kind": "literal-reference",
           "excerpt": "accepted: \"titlesBatchAccepted\", verified: \"titlesBatchSaved\", failed: \"titlesBatchFailed\", uncertain: \"titlesBatchUncertain\" }[item.status];"
         }
@@ -18337,7 +18465,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 753,
+          "line": 757,
           "kind": "literal-reference",
           "excerpt": "return `${statusMarkup()}<section class=\"titles-batch-result-hero\" data-batch-key=\"hero\"><span class=\"${issues ? \"is-warning\" : \"\"}\" aria-hidden=\"true\">${issues ? \"!\" : \"✓\"}</span><strong>${text(saved ? state.operation === \"remove\" ? \"titlesBatchRemovedResult\""
         }
@@ -18359,7 +18487,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 727,
+          "line": 731,
           "kind": "literal-reference",
           "excerpt": "<div class=\"titles-batch-preview-list\" data-batch-scroll=\"preview\" data-batch-key=\"list\">${conflicts.length ? `<section class=\"titles-batch-exceptions\" data-batch-key=\"conflicts\"><header><strong>${text(\"titlesBatchConflictsHeading\", { count: conflicts.length }"
         }
@@ -18381,7 +18509,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 753,
+          "line": 757,
           "kind": "literal-reference",
           "excerpt": "return `${statusMarkup()}<section class=\"titles-batch-result-hero\" data-batch-key=\"hero\"><span class=\"${issues ? \"is-warning\" : \"\"}\" aria-hidden=\"true\">${issues ? \"!\" : \"✓\"}</span><strong>${text(saved ? state.operation === \"remove\" ? \"titlesBatchRemovedResult\""
         }
@@ -18403,7 +18531,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 589,
+          "line": 593,
           "kind": "literal-reference",
           "excerpt": "return { ready: \"titlesBatchWaiting\", skipped: \"titlesBatchSkipped\", pending: \"titlesBatchWorking\","
         }
@@ -18425,7 +18553,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 589,
+          "line": 593,
           "kind": "literal-reference",
           "excerpt": "return { ready: \"titlesBatchWaiting\", skipped: \"titlesBatchSkipped\", pending: \"titlesBatchWorking\","
         }
@@ -18469,7 +18597,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 660,
+          "line": 664,
           "kind": "literal-reference",
           "excerpt": "const notice = operationNotice || (changedPreviewIds().length ? \"titlesPreviewStale\" : \"\") || (rateLimited ? \"titlesRateLimited\" : \"\") || (unsupported ? \"titlesCatalogUnsupported\" : \"\") || (phase() === \"select\" ? { account: \"titlesBatchCatalogAccount\", rate: c"
         }
@@ -18601,25 +18729,25 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 256,
+          "line": 257,
           "kind": "literal-reference",
           "excerpt": "if ([\"TITLE_CONFLICT\", \"CONTEXT_MISMATCH\"].includes(error?.code)) return observe(\"titlesConflict\");"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 596,
+          "line": 600,
           "kind": "literal-reference",
           "excerpt": "if (reason === \"context-changed\") return \"titlesConflict\";"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 813,
+          "line": 817,
           "kind": "literal-reference",
           "excerpt": "state.error = observeError(\"titlesConflict\", error); render();"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 899,
+          "line": 903,
           "kind": "literal-reference",
           "excerpt": "state.recovery = true; state.error = observeError(\"titlesConflict\", { code: \"CONTEXT_MISMATCH\" }); setRunning(false);"
         },
@@ -18675,7 +18803,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 710,
+          "line": 714,
           "kind": "direct-call",
           "excerpt": "return `<section class=\"titles-rule\" data-batch-key=\"rules\"><h3>${text(\"titlesRules\")}</h3><div class=\"titles-rule-controls\">${select(\"dateFormat\", formats, \"titlesBatchFormat\")}${select(\"mode\", [[\"created\", state.t(\"titlesCreatedDate\")], [\"range\", state.t(\"ti"
         },
@@ -18703,7 +18831,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 710,
+          "line": 714,
           "kind": "literal-reference",
           "excerpt": "return `<section class=\"titles-rule\" data-batch-key=\"rules\"><h3>${text(\"titlesRules\")}</h3><div class=\"titles-rule-controls\">${select(\"dateFormat\", formats, \"titlesBatchFormat\")}${select(\"mode\", [[\"created\", state.t(\"titlesCreatedDate\")], [\"range\", state.t(\"ti"
         },
@@ -18803,7 +18931,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 610,
+          "line": 614,
           "kind": "literal-reference",
           "excerpt": ": item.messageCode === \"title_not_dispatched\" ? \"titlesNotDispatched\" : \"titlesFailed\";"
         },
@@ -18897,7 +19025,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 760,
+          "line": 764,
           "kind": "direct-call",
           "excerpt": "root.innerHTML = `<div class=\"titles-batch-empty\">${text(\"titlesNeedsConversation\")}</div>`;"
         },
@@ -18931,13 +19059,13 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 702,
+          "line": 706,
           "kind": "literal-reference",
           "excerpt": "const label = removing ? !plan.canApply ? \"titlesBatchCannotRemove\" : \"\" : plan.needsDecision ? \"titlesBatchDateConflict\" : plan.noOp ? \"titlesNoChange\" : \"\";"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 722,
+          "line": 726,
           "kind": "literal-reference",
           "excerpt": ": item.status === \"conflict\" ? itemStatusKey(item) : item.plan?.noOp ? \"titlesNoChange\" : removing ? \"titlesBatchCannotRemove\" : \"titlesBatchSkipped\";"
         },
@@ -18965,7 +19093,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 610,
+          "line": 614,
           "kind": "literal-reference",
           "excerpt": ": item.messageCode === \"title_not_dispatched\" ? \"titlesNotDispatched\" : \"titlesFailed\";"
         },
@@ -19033,7 +19161,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 257,
+          "line": 258,
           "kind": "literal-reference",
           "excerpt": "if ([\"TITLE_PLAN_EXPIRED\", \"TITLE_PREVIEW_REQUIRED\", \"TITLE_INVALID_PLAN\"].includes(error?.code)) return observe(\"titlesPlanExpired\");"
         },
@@ -19117,13 +19245,13 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 645,
+          "line": 649,
           "kind": "literal-reference",
           "excerpt": ": state.busy === \"preview\" ? \"titlesPreviewing\" : phase() === \"select\""
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 646,
+          "line": 650,
           "kind": "literal-reference",
           "excerpt": "? state.rows.length ? \"titlesBatchCatalogRefreshing\" : \"titlesBatchCatalogLoading\" : \"titlesPreviewing\";"
         },
@@ -19151,7 +19279,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 660,
+          "line": 664,
           "kind": "literal-reference",
           "excerpt": "const notice = operationNotice || (changedPreviewIds().length ? \"titlesPreviewStale\" : \"\") || (rateLimited ? \"titlesRateLimited\" : \"\") || (unsupported ? \"titlesCatalogUnsupported\" : \"\") || (phase() === \"select\" ? { account: \"titlesBatchCatalogAccount\", rate: c"
         },
@@ -19191,7 +19319,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 710,
+          "line": 714,
           "kind": "direct-call",
           "excerpt": "return `<section class=\"titles-rule\" data-batch-key=\"rules\"><h3>${text(\"titlesRules\")}</h3><div class=\"titles-rule-controls\">${select(\"dateFormat\", formats, \"titlesBatchFormat\")}${select(\"mode\", [[\"created\", state.t(\"titlesCreatedDate\")], [\"range\", state.t(\"ti"
         },
@@ -19225,19 +19353,19 @@
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 253,
+          "line": 254,
           "kind": "literal-reference",
           "excerpt": "if (error?.code === \"TITLE_RATE_LIMITED\") return observe(\"titlesRateLimited\");"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 595,
+          "line": 599,
           "kind": "literal-reference",
           "excerpt": "if (reason === \"rate-limited\") return \"titlesRateLimited\";"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 660,
+          "line": 664,
           "kind": "literal-reference",
           "excerpt": "const notice = operationNotice || (changedPreviewIds().length ? \"titlesPreviewStale\" : \"\") || (rateLimited ? \"titlesRateLimited\" : \"\") || (unsupported ? \"titlesCatalogUnsupported\" : \"\") || (phase() === \"select\" ? { account: \"titlesBatchCatalogAccount\", rate: c"
         },
@@ -19271,19 +19399,19 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 255,
+          "line": 256,
           "kind": "literal-reference",
           "excerpt": "if (readingStatus) return observe(\"titlesReadFailed\");"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 258,
+          "line": 259,
           "kind": "literal-reference",
           "excerpt": "return observe(\"titlesReadFailed\");"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 657,
+          "line": 661,
           "kind": "literal-reference",
           "excerpt": "const operationNotice = state.receiptStatusError && state.error === \"titlesReadFailed\""
         },
@@ -19311,13 +19439,13 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 172,
+          "line": 173,
           "kind": "literal-reference",
           "excerpt": "const needsReconciliation = () => hasUnknown() || state.error === \"titlesReceiptMissing\";"
         },
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 505,
+          "line": 509,
           "kind": "literal-reference",
           "excerpt": "state.error = rejectedStart ? errorKey(error) : observeError(\"titlesReceiptMissing\", error);"
         },
@@ -19345,7 +19473,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 738,
+          "line": 742,
           "kind": "direct-call",
           "excerpt": ": `<button type=\"button\" data-batch-action=\"reconcile\"${actionDisabled}>${text(\"titlesReconcile\")}</button>`}</div>` : \"\";"
         },
@@ -19395,7 +19523,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 606,
+          "line": 610,
           "kind": "literal-reference",
           "excerpt": ": item.messageCode === \"title_rechecked\" ? \"titlesRecoveryReady\""
         },
@@ -19467,7 +19595,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 708,
+          "line": 712,
           "kind": "direct-call",
           "excerpt": "const formats = [[\"locale\", state.t(\"titlesRegional\")], ...Object.entries(globalThis.TidyTimeFormat.dateFormatLabels(state.timeZone))];"
         },
@@ -19495,7 +19623,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 689,
+          "line": 693,
           "kind": "literal-reference",
           "excerpt": "? `<section class=\"titles-batch-remove-shortcut${removing ? \" is-active\" : \"\"}\" data-batch-key=\"remove\"><button data-batch-action=\"${removing ? \"exit-remove\" : \"remove\"}\" type=\"button\"${locked() ? \" disabled\" : \"\"}>${trash}<span>${text(removing ? \"titlesBatchE"
         },
@@ -19523,7 +19651,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 727,
+          "line": 731,
           "kind": "literal-reference",
           "excerpt": "<div class=\"titles-batch-preview-list\" data-batch-scroll=\"preview\" data-batch-key=\"list\">${conflicts.length ? `<section class=\"titles-batch-exceptions\" data-batch-key=\"conflicts\"><header><strong>${text(\"titlesBatchConflictsHeading\", { count: conflicts.length }"
         },
@@ -19551,7 +19679,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 710,
+          "line": 714,
           "kind": "direct-call",
           "excerpt": "return `<section class=\"titles-rule\" data-batch-key=\"rules\"><h3>${text(\"titlesRules\")}</h3><div class=\"titles-rule-controls\">${select(\"dateFormat\", formats, \"titlesBatchFormat\")}${select(\"mode\", [[\"created\", state.t(\"titlesCreatedDate\")], [\"range\", state.t(\"ti"
         },
@@ -19579,7 +19707,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 644,
+          "line": 648,
           "kind": "literal-reference",
           "excerpt": "const caption = !waiting ? \"\" : state.busy === \"apply\" ? \"titlesSaving\" : state.busy === \"status\" || state.receiptChecking ? \"titlesBatchCheckingStatus\""
         },
@@ -19679,7 +19807,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 727,
+          "line": 731,
           "kind": "literal-reference",
           "excerpt": "<div class=\"titles-batch-preview-list\" data-batch-scroll=\"preview\" data-batch-key=\"list\">${conflicts.length ? `<section class=\"titles-batch-exceptions\" data-batch-key=\"conflicts\"><header><strong>${text(\"titlesBatchConflictsHeading\", { count: conflicts.length }"
         },
@@ -19707,7 +19835,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 727,
+          "line": 731,
           "kind": "literal-reference",
           "excerpt": "<div class=\"titles-batch-preview-list\" data-batch-scroll=\"preview\" data-batch-key=\"list\">${conflicts.length ? `<section class=\"titles-batch-exceptions\" data-batch-key=\"conflicts\"><header><strong>${text(\"titlesBatchConflictsHeading\", { count: conflicts.length }"
         },
@@ -19757,7 +19885,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 609,
+          "line": 613,
           "kind": "literal-reference",
           "excerpt": ": item.status === \"uncertain\" ? \"titlesUncertain\""
         },
@@ -19803,7 +19931,7 @@
       "references": [
         {
           "source": "src/features/titles/ui/title-batch-view.js",
-          "line": 605,
+          "line": 609,
           "kind": "literal-reference",
           "excerpt": "const reason = item.status === \"conflict\" ? item.messageCode === \"title_unchanged\" ? \"titlesUnchanged\""
         },
@@ -19934,12 +20062,12 @@
       "source": "src/app/sidepanel/panel.js",
       "line": 275,
       "callee": "showToast",
-      "expression": "payload.error?.code === protocol.ErrorCode.CONTEXT_MISMATCH ? \"contextChanged\" : \"bookmarkOpenFailed\"",
-      "excerpt": "showToast(payload.error?.code === protocol.ErrorCode.CONTEXT_MISMATCH ? \"contextChanged\" : \"bookmarkOpenFailed\", true, {},"
+      "expression": "payload.error?.code === \"CONVERSATION_DELETED\" ? \"libraryConversationDeleted\"",
+      "excerpt": "showToast(payload.error?.code === \"CONVERSATION_DELETED\" ? \"libraryConversationDeleted\""
     },
     {
       "source": "src/app/sidepanel/panel.js",
-      "line": 286,
+      "line": 287,
       "callee": "showSearchToast",
       "expression": "payload.placement === \"latest\" ? \"favoriteLatestUnavailable\" : \"actionFailed\"",
       "excerpt": "if (route === \"search\") showSearchToast(payload.placement === \"latest\" ? \"favoriteLatestUnavailable\" : \"actionFailed\", payload.navigationIntentId);"
@@ -20051,7 +20179,14 @@
     },
     {
       "source": "src/features/bookmarks/ui/bookmarks-view.js",
-      "line": 325,
+      "line": 226,
+      "callee": "t",
+      "expression": "availability === \"deleted\"",
+      "excerpt": "const unavailable = availability ? `<span role=\"status\">${escapeHtml(t(availability === \"deleted\""
+    },
+    {
+      "source": "src/features/bookmarks/ui/bookmarks-view.js",
+      "line": 328,
       "callee": "t",
       "expression": "Object.keys(store.items",
       "excerpt": "const rows = visible.length ? visible.map((item) => bookmarkRow(item, currentActive, t)).join(\"\") : `<div class=\"bookmark-empty\">${escapeHtml(t(Object.keys(store.items).length ? \"emptyBookmarksView\" : \"emptyBookmarks\"))}</div>`;"
@@ -20527,14 +20662,21 @@
     },
     {
       "source": "src/features/favorites/ui/favorites-view.js",
-      "line": 345,
+      "line": 261,
+      "callee": "t",
+      "expression": "availability === \"deleted\"",
+      "excerpt": "const unavailable = availability ? `<span role=\"status\">${escapeHtml(t(availability === \"deleted\""
+    },
+    {
+      "source": "src/features/favorites/ui/favorites-view.js",
+      "line": 348,
       "callee": "t",
       "expression": "store.view.groupId === \"all\" ? \"emptyFavorites\" : \"emptyGroup\"",
       "excerpt": ": `<div class=\"favorite-empty\">${escapeHtml(t(store.view.groupId === \"all\" ? \"emptyFavorites\" : \"emptyGroup\"))}</div>`;"
     },
     {
       "source": "src/features/favorites/ui/favorites-view.js",
-      "line": 392,
+      "line": 395,
       "callee": "t",
       "expression": "store.view.sortDirection === \"asc\" ? \"ascending\" : \"descending\"",
       "excerpt": "<section class=\"favorite-sort-section\" data-list-key=\"sort\"><div class=\"favorite-section-heading\"><span>${escapeHtml(t(\"sort\"))}</span><div class=\"favorite-sort-control\"><select data-favorite-sort aria-label=\"${escapeHtml(t(\"sort\"))}\"><option value=\"savedAt\"${"
@@ -20779,175 +20921,175 @@
     },
     {
       "source": "src/features/titles/ui/title-batch-view.js",
-      "line": 611,
+      "line": 615,
       "callee": "text",
       "expression": "reason",
       "excerpt": "return `<article><strong>${esc(item.plan?.before || item.current?.title || \"—\")}</strong><p>${text(reason)}</p></article>`;"
     },
     {
       "source": "src/features/titles/ui/title-batch-view.js",
-      "line": 649,
+      "line": 653,
       "callee": "text",
       "expression": "caption",
       "excerpt": "return `<div class=\"titles-status titles-batch-status\" data-batch-key=\"status\" role=\"status\" aria-live=\"polite\" aria-busy=\"${waiting}\">${waiting ? loadingFlowerMarkup(state.startedAt) : \"\"}<span class=\"titles-status__label--sr-only\">${text(caption)}</span></di"
     },
     {
       "source": "src/features/titles/ui/title-batch-view.js",
-      "line": 675,
+      "line": 679,
       "callee": "text",
       "expression": "label",
       "excerpt": "? `<button type=\"button\" data-batch-action=\"${action}\"${locked() || state.receiptChecking || state.receiptStatusError && !state.eligible ? \" disabled\" : \"\"}>${text(label)}</button>` : \"\";"
     },
     {
       "source": "src/features/titles/ui/title-batch-view.js",
-      "line": 676,
+      "line": 680,
       "callee": "text",
       "expression": "notice",
       "excerpt": "return notice ? `<div class=\"titles-notice titles-catalog-notice${informational ? \"\" : \" is-warning\"}\" role=\"status\" data-batch-key=\"notice\" data-catalog-issue=\"${esc(state.catalogIssue)}\" data-catalog-origin=\"${esc(state.catalogErrorOrigin || \"\")}\"><span>${te"
     },
     {
       "source": "src/features/titles/ui/title-batch-view.js",
-      "line": 689,
+      "line": 693,
       "callee": "text",
       "expression": "removing ? \"titlesBatchExitRemove\" : \"titlesRemove\"",
       "excerpt": "? `<section class=\"titles-batch-remove-shortcut${removing ? \" is-active\" : \"\"}\" data-batch-key=\"remove\"><button data-batch-action=\"${removing ? \"exit-remove\" : \"remove\"}\" type=\"button\"${locked() ? \" disabled\" : \"\"}>${trash}<span>${text(removing ? \"titlesBatchE"
     },
     {
       "source": "src/features/titles/ui/title-batch-view.js",
-      "line": 690,
+      "line": 694,
       "callee": "t",
       "expression": "state.sortDirection === \"asc\" ? \"sortAscending\" : \"sortDescending\"",
       "excerpt": "const sortLabel = state.t(state.sortDirection === \"asc\" ? \"sortAscending\" : \"sortDescending\", { field: state.t(state.sortField === \"createdAt\" ? \"createdTime\" : \"updatedTime\") });"
     },
     {
       "source": "src/features/titles/ui/title-batch-view.js",
-      "line": 690,
+      "line": 694,
       "callee": "t",
       "expression": "state.sortField === \"createdAt\" ? \"createdTime\" : \"updatedTime\"",
       "excerpt": "const sortLabel = state.t(state.sortDirection === \"asc\" ? \"sortAscending\" : \"sortDescending\", { field: state.t(state.sortField === \"createdAt\" ? \"createdTime\" : \"updatedTime\") });"
     },
     {
       "source": "src/features/titles/ui/title-batch-view.js",
-      "line": 698,
+      "line": 702,
       "callee": "text",
       "expression": "label",
       "excerpt": "<section class=\"titles-batch-status-tabs\" data-batch-key=\"filters\" aria-label=\"${text(\"titlesBatchFilter\")}\">${filters.map(([id, label]) => `<button type=\"button\" data-batch-filter=\"${id}\" aria-pressed=\"${state.filter === id}\"${(removing && id !== \"has-head\") "
     },
     {
       "source": "src/features/titles/ui/title-batch-view.js",
-      "line": 699,
+      "line": 703,
       "callee": "text",
       "expression": "field === \"createdAt\" ? \"createdTime\" : \"updatedTime\"",
       "excerpt": "<section class=\"titles-batch-select-toolbar\" data-batch-key=\"toolbar\"><span>${countsKnown ? text(\"titlesBatchSelectionCount\", { total: rows.length, selected: visibleSelected }) : text(\"titlesBatchCatalogUnconfirmed\")}</span><div class=\"titles-batch-list-tools\""
     },
     {
       "source": "src/features/titles/ui/title-batch-view.js",
-      "line": 699,
+      "line": 703,
       "callee": "text",
       "expression": "selectedAll ? \"titlesBatchDeselectAll\" : \"titlesBatchSelectAll\"",
       "excerpt": "<section class=\"titles-batch-select-toolbar\" data-batch-key=\"toolbar\"><span>${countsKnown ? text(\"titlesBatchSelectionCount\", { total: rows.length, selected: visibleSelected }) : text(\"titlesBatchCatalogUnconfirmed\")}</span><div class=\"titles-batch-list-tools\""
     },
     {
       "source": "src/features/titles/ui/title-batch-view.js",
-      "line": 703,
+      "line": 707,
       "callee": "text",
       "expression": "label",
       "excerpt": "return `<button class=\"titles-batch-select-row${selected ? \" is-selected\" : \"\"}${label ? \"\" : \" has-no-status\"}\" data-batch-key=\"row-${esc(row.conversationId)}\" data-batch-select=\"${esc(row.conversationId)}\" type=\"button\" aria-pressed=\"${selected}\"${locked() |"
     },
     {
       "source": "src/features/titles/ui/title-batch-view.js",
-      "line": 704,
+      "line": 708,
       "callee": "text",
       "expression": "emptyLabel",
       "excerpt": "}).join(\"\") || `<div class=\"titles-batch-empty\">${text(emptyLabel)}</div>`}</div>"
     },
     {
       "source": "src/features/titles/ui/title-batch-view.js",
-      "line": 705,
+      "line": 709,
       "callee": "text",
       "expression": "removing ? \"titlesBatchPreviewRemove\" : \"titlesBatchPreview\"",
       "excerpt": "<footer class=\"titles-batch-select-footer is-action-only\" data-batch-key=\"footer\"><button type=\"button\" data-batch-action=\"preview\"${!state.eligible || !state.selected.size || !state.accountKey || locked() || receiptBlocked() || accountBlocked() ? \" disabled\" "
     },
     {
       "source": "src/features/titles/ui/title-batch-view.js",
-      "line": 709,
+      "line": 713,
       "callee": "text",
       "expression": "label",
       "excerpt": "const select = (field, values, label) => `<label class=\"titles-rule-select\"><select data-batch-rule=\"${field}\" aria-label=\"${text(label)}\"${locked() || state.batch && receiptBlocked() || !state.rules ? \" disabled\" : \"\"}>${values.map(([value, caption]) => `<opt"
     },
     {
       "source": "src/features/titles/ui/title-batch-view.js",
-      "line": 723,
+      "line": 727,
       "callee": "text",
       "expression": "staticLabel(item",
       "excerpt": "const rows = (group, staticRows = false) => group.map((item) => `<article class=\"titles-batch-compact-row${staticRows ? \" is-unchanged\" : \"\"}\" data-batch-key=\"row-${esc(item.conversationId)}\"><strong title=\"${esc(completed(item) ? item.current?.title : item.pl"
     },
     {
       "source": "src/features/titles/ui/title-batch-view.js",
-      "line": 724,
+      "line": 728,
       "callee": "text",
       "expression": "label",
       "excerpt": "const group = (label, entries, staticRows = false) => entries.length ? `<section class=\"titles-batch-preview-group\" data-batch-key=\"group-${label}\"><header><span>${text(label)}</span></header><div>${rows(entries, staticRows)}</div></section>` : \"\";"
     },
     {
       "source": "src/features/titles/ui/title-batch-view.js",
-      "line": 725,
+      "line": 729,
       "callee": "text",
       "expression": "removing ? \"titlesBatchBackRemove\" : \"titlesBatchBackSelection\"",
       "excerpt": "return `<header class=\"titles-batch-back-header\" data-batch-key=\"back\"><button type=\"button\" data-batch-action=\"back\" aria-label=\"${text(\"titlesBatchBackSelection\")}\"${locked() || state.receiptChecking || state.replanning ? \" disabled\" : \"\"}>‹</button><strong>"
     },
     {
       "source": "src/features/titles/ui/title-batch-view.js",
-      "line": 727,
+      "line": 731,
       "callee": "text",
       "expression": "{ skip: \"titlesSkip\"",
       "excerpt": "<div class=\"titles-batch-preview-list\" data-batch-scroll=\"preview\" data-batch-key=\"list\">${conflicts.length ? `<section class=\"titles-batch-exceptions\" data-batch-key=\"conflicts\"><header><strong>${text(\"titlesBatchConflictsHeading\", { count: conflicts.length }"
     },
     {
       "source": "src/features/titles/ui/title-batch-view.js",
-      "line": 728,
+      "line": 732,
       "callee": "text",
       "expression": "removing ? \"titlesBatchSkipRemoveCount\" : \"titlesBatchSkipCount\"",
       "excerpt": "<footer class=\"titles-batch-select-footer\" data-batch-key=\"footer\"><span>${skipped ? text(removing ? \"titlesBatchSkipRemoveCount\" : \"titlesBatchSkipCount\", { count: skipped }) : \"\"}</span>${(state.error || stale) && !state.receiptStatusError ? `<button class=\""
     },
     {
       "source": "src/features/titles/ui/title-batch-view.js",
-      "line": 728,
+      "line": 732,
       "callee": "text",
       "expression": "removing ? \"titlesBatchConfirmRemove\" : \"titlesBatchApply\"",
       "excerpt": "<footer class=\"titles-batch-select-footer\" data-batch-key=\"footer\"><span>${skipped ? text(removing ? \"titlesBatchSkipRemoveCount\" : \"titlesBatchSkipCount\", { count: skipped }) : \"\"}</span>${(state.error || stale) && !state.receiptStatusError ? `<button class=\""
     },
     {
       "source": "src/features/titles/ui/title-batch-view.js",
-      "line": 742,
+      "line": 746,
       "callee": "text",
       "expression": "itemStatusKey(item",
       "excerpt": "const rowsMarkup = items.map((item) => `<article class=\"titles-batch-progress-row is-${item.status}\" data-batch-key=\"progress-${esc(item.conversationId)}\"><span class=\"titles-batch-progress-state\" aria-hidden=\"true\">${completed(item) ? \"✓\" : [\"conflict\", \"fail"
     },
     {
       "source": "src/features/titles/ui/title-batch-view.js",
-      "line": 743,
+      "line": 747,
       "callee": "text",
       "expression": "paused ? \"titlesBatchPaused\" : state.operation === \"remove\" ? \"titlesBatchRemoving\" : \"titlesBatchApplying\"",
       "excerpt": "return `${statusMarkup()}<section class=\"titles-batch-progress-hero\" data-batch-key=\"hero\"><strong>${text(paused ? \"titlesBatchPaused\" : state.operation === \"remove\" ? \"titlesBatchRemoving\" : \"titlesBatchApplying\")}</strong><small>${done} / ${items.length}</sm"
     },
     {
       "source": "src/features/titles/ui/title-batch-view.js",
-      "line": 744,
+      "line": 748,
       "callee": "text",
       "expression": "pauseExplanation(",
       "excerpt": "${paused && !notice ? `<p class=\"titles-batch-pause-explanation\">${text(pauseExplanation())}</p>` : \"\"}"
     },
     {
       "source": "src/features/titles/ui/title-batch-view.js",
-      "line": 753,
+      "line": 757,
       "callee": "text",
       "expression": "saved ? state.operation === \"remove\" ? \"titlesBatchRemovedResult\" : \"titlesBatchUpdatedResult\" : \"titlesBatchNoChanges\"",
       "excerpt": "return `${statusMarkup()}<section class=\"titles-batch-result-hero\" data-batch-key=\"hero\"><span class=\"${issues ? \"is-warning\" : \"\"}\" aria-hidden=\"true\">${issues ? \"!\" : \"✓\"}</span><strong>${text(saved ? state.operation === \"remove\" ? \"titlesBatchRemovedResult\""
     },
     {
       "source": "src/features/titles/ui/title-batch-view.js",
-      "line": 753,
+      "line": 757,
       "callee": "text",
       "expression": "key",
       "excerpt": "return `${statusMarkup()}<section class=\"titles-batch-result-hero\" data-batch-key=\"hero\"><span class=\"${issues ? \"is-warning\" : \"\"}\" aria-hidden=\"true\">${issues ? \"!\" : \"✓\"}</span><strong>${text(saved ? state.operation === \"remove\" ? \"titlesBatchRemovedResult\""

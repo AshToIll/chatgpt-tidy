@@ -31,6 +31,7 @@ async function setup(t, dispatch = async (request) => page(request.source)) {
   vm.runInContext(fs.readFileSync(path.join(root, "src/platform/catalog/date-search.js"), "utf8"), context);
   loadModule(context, "src/platform/storage/schema.js", ["STORAGE_BOUNDARIES"]);
   loadModule(context, "src/platform/storage/database.js", ["openTidyDatabase", "storageError", "assertAccountKey"]);
+  loadModule(context, "src/platform/storage/conversation-availability.js", ["isConversationUnavailable"]);
   loadModule(context, "src/platform/catalog/storage/conversation-catalog.js", ["createConversationCatalogRepository"]);
   loadModule(context, "src/platform/catalog/ui/conversation-catalog-reader.js", ["createConversationCatalogReader"]);
   loadModule(context, "src/features/search/ui/conversation-date-search.js", ["createConversationDateSearch"]);
@@ -99,6 +100,26 @@ test("catalog searches the selected metadata field only with stable conversation
   assert.equal(requests.filter((request) => request.action === "source-page").length, 0);
   await assert.rejects(service.queryDate(criteria({ refresh: true, dateField: "updatedAt", cursor: first.cursor })),
     (error) => error.code === "CURSOR_STALE");
+});
+
+test("availability changes invalidate offset cursors without interrupting the catalog scan checkpoint", async (t) => {
+  const h = await setup(t);
+  globalThis.IDBKeyRange = IDBKeyRange;
+  const { createConversationAvailabilityRepository } = await import("../src/platform/storage/conversation-availability.js");
+  const lifecycle = createConversationAvailabilityRepository({ openDatabase: async () => h.db });
+  const checkpoint = { catalogVersion: 2, generation: 1, revision: 1, snapshotStartedAt: 1,
+    sources: {}, phase: "settled", completedAt: TIME };
+  const rows = [candidate("a", TIME + 20, TIME + 20), candidate("b", TIME + 10, TIME + 10)];
+  await h.repository.commitPage(ACCOUNT, { conversations: rows }, checkpoint);
+  const first = await h.service.queryDate(criteria({ refresh: true, limit: 1 }));
+  await lifecycle.accept({ ownerAccountKey: "owner", catalogAccountKey: ACCOUNT, conversationId: "a", status: "deleted", startedAt: TIME });
+  // A queued scan can still commit, but cannot overwrite the content version/tombstone.
+  await h.repository.commitPage(ACCOUNT, { conversations: rows }, checkpoint);
+  assert.equal((await h.repository.getSnapshot(ACCOUNT)).state.revision, 1);
+  assert.equal((await h.repository.getSnapshot(ACCOUNT)).state.availabilityRevision, 1);
+  await assert.rejects(h.service.queryDate(criteria({ refresh: true, limit: 1, cursor: first.cursor })), error => error.code === "CURSOR_STALE");
+  const fresh = await h.service.queryDate(criteria({ refresh: true }));
+  assert.deepEqual(Array.from(fresh.items, row => row.conversationId), ["b"]);
 });
 
 test("verified title observations update only the exact existing account row and preserve catalog scope", async (t) => {

@@ -1,5 +1,6 @@
 import { STORAGE_BOUNDARIES } from "../../storage/schema.js";
 import { assertAccountKey, openTidyDatabase, storageError } from "../../storage/database.js";
+import { projectConversationAvailability } from "../../storage/conversation-availability.js";
 
 const STORES = STORAGE_BOUNDARIES.indexedDb.stores;
 
@@ -112,7 +113,8 @@ export function createAccountLibraryRepository({ kind, normalizeState, createEmp
       const stored = await readAccount(transaction, accountKey);
       // Defaults are a pure projection. Merely opening a panel must not write
       // metadata or repeatedly execute an alleged one-time schema migration.
-      return { ...(stored.empty ? createEmptyState() : normalizeState(stored.state)), accountKey };
+      return projectConversationAvailability(transaction, accountKey,
+        { ...(stored.empty ? createEmptyState() : normalizeState(stored.state)), accountKey });
     });
   }
 
@@ -132,7 +134,7 @@ export function createAccountLibraryRepository({ kind, normalizeState, createEmp
       }
       const next = normalizeState(candidate);
       if (JSON.stringify(next) !== currentValue) writeAccount(transaction, accountKey, stored, next);
-      return { ...next, accountKey };
+      return projectConversationAvailability(transaction, accountKey, { ...next, accountKey });
     });
   }
 

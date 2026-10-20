@@ -45,13 +45,16 @@
   const unsubscribeTitle = api.onTitleChanged(change => {
     postEnvelope(protocol.event(protocol.Type.TITLE_CHANGED, change));
   });
+  const unsubscribeAvailability = api.onConversationAvailabilityChanged(change => {
+    postEnvelope(protocol.event(protocol.Type.CONVERSATION_AVAILABILITY_CHANGED, change));
+  });
   const observer = global.TidyChatgptNativeObserver.create({
     onRefresh: publisher.schedule, onHidden: navigation.hidden, onMessage: router.handleMessage,
     onRoute: () => { navigation.routeChanged(); titleProjection?.refresh(); publisher.resetRetry(); },
   });
   session.onDispose(() => {
     // 先停触发器，再清理投影；已排队回调仍由同步 page-session 闸门拒绝。
-    observer.dispose(); publisher.dispose(); unsubscribeIdentity(); unsubscribeTitle();
+    observer.dispose(); publisher.dispose(); unsubscribeIdentity(); unsubscribeTitle(); unsubscribeAvailability();
     navigation.dispose(); reader.dispose(); metadata.dispose();
     delete global.document.documentElement.dataset.tidyMainWorld;
   });

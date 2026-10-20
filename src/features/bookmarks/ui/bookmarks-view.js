@@ -222,6 +222,9 @@ export function createBookmarksView({ root, onAction, onExportAction = () => {},
   }
 
   function bookmarkRow(item, currentView, t) {
+    const availability = model.store.conversationAvailability?.[item.conversationId];
+    const unavailable = availability ? `<span role="status">${escapeHtml(t(availability === "deleted"
+      ? "libraryConversationDeleted" : "libraryConversationUnavailable"))}</span>` : "";
     const time = formatMessageTime(item, model.preferences);
     const source = currentView ? "" : `<span class="bookmark-entry-source">${escapeHtml(item.conversationTitle || t("untitled"))}</span>`;
     const group = model?.store?.groups?.find((candidate) => candidate.id === item.groupId);
@@ -245,11 +248,11 @@ export function createBookmarksView({ root, onAction, onExportAction = () => {},
     if (selection?.active) {
       const selected = selection.draftIds?.includes(item.bookmarkId);
       const added = Boolean(selection.basketBookmarkIds?.includes(item.bookmarkId));
-      return `<button class="bookmark-entry bookmark-entry--export${selected ? " is-selected" : ""}${added ? " is-added" : ""}" type="button" data-list-key="bookmark:${escapeHtml(item.bookmarkId)}" data-export-draft-bookmark="${escapeHtml(item.bookmarkId)}" aria-pressed="${Boolean(selected)}"${added ? " disabled" : ""}><span class="source-export-check" aria-hidden="true"></span><span class="bookmark-entry-main">${source}<span class="bookmark-entry-origin">${escapeHtml(t("bookmarkFromGroup", { group: groupLabel }))}</span><span class="bookmark-entry-meta">${numberMarkup}${time ? `<span>${escapeHtml(time)}</span>` : ""}<span class="bookmark-entry-meta__role">${escapeHtml(role)}</span></span><p>${escapeHtml(item.excerpt || t("messageMissing"))}</p></span>${added ? `<em>${escapeHtml(t("alreadyInExportList"))}</em>` : ""}</button>`;
+      return `<button class="bookmark-entry bookmark-entry--export${selected ? " is-selected" : ""}${added ? " is-added" : ""}" type="button" data-list-key="bookmark:${escapeHtml(item.bookmarkId)}" data-export-draft-bookmark="${escapeHtml(item.bookmarkId)}" aria-pressed="${Boolean(selected)}"${added || availability ? " disabled" : ""}><span class="source-export-check" aria-hidden="true"></span><span class="bookmark-entry-main">${source}${unavailable}<span class="bookmark-entry-origin">${escapeHtml(t("bookmarkFromGroup", { group: groupLabel }))}</span><span class="bookmark-entry-meta">${numberMarkup}${time ? `<span>${escapeHtml(time)}</span>` : ""}<span class="bookmark-entry-meta__role">${escapeHtml(role)}</span></span><p>${escapeHtml(item.excerpt || t("messageMissing"))}</p></span>${added ? `<em>${escapeHtml(t("alreadyInExportList"))}</em>` : ""}</button>`;
     }
     const pending = model.pendingBookmarkId === item.bookmarkId;
     const progress = pending ? `<span class="bookmark-entry-progress" role="status">${escapeHtml(t("bookmarkLocating"))}</span>` : "";
-    return `<article class="bookmark-entry${model.activeBookmarkId === item.bookmarkId ? " is-active" : ""}" data-list-key="bookmark:${escapeHtml(item.bookmarkId)}" data-bookmark-jump="${escapeHtml(item.bookmarkId)}" tabindex="0" role="button" aria-busy="${pending}" aria-label="${escapeHtml(t("jumpMessage"))}"><div class="bookmark-entry-main">${source}<div class="bookmark-entry-meta">${numberMarkup}${time ? `<span>${escapeHtml(time)}</span>` : ""}<span class="bookmark-entry-meta__role">${escapeHtml(role)}</span>${progress}</div><p>${escapeHtml(item.excerpt || t("messageMissing"))}</p></div><div class="bookmark-entry-actions"><button class="bookmark-entry-menu-toggle" type="button" data-bookmark-entry-menu="${escapeHtml(item.bookmarkId)}" aria-label="${escapeHtml(t("bookmarkActions"))}" aria-expanded="${openEntryId === item.bookmarkId}">···</button></div></article>`;
+    return `<article class="bookmark-entry${model.activeBookmarkId === item.bookmarkId ? " is-active" : ""}" data-list-key="bookmark:${escapeHtml(item.bookmarkId)}" ${availability === "deleted" ? '' : `data-bookmark-jump="${escapeHtml(item.bookmarkId)}" tabindex="0" role="button"`} aria-busy="${pending}" aria-label="${escapeHtml(t("jumpMessage"))}"><div class="bookmark-entry-main">${source}<div class="bookmark-entry-meta">${numberMarkup}${time ? `<span>${escapeHtml(time)}</span>` : ""}<span class="bookmark-entry-meta__role">${escapeHtml(role)}</span>${progress}${unavailable}</div><p>${escapeHtml(item.excerpt || t("messageMissing"))}</p></div><div class="bookmark-entry-actions"><button class="bookmark-entry-menu-toggle" type="button" data-bookmark-entry-menu="${escapeHtml(item.bookmarkId)}" aria-label="${escapeHtml(t("bookmarkActions"))}" aria-expanded="${openEntryId === item.bookmarkId}">···</button></div></article>`;
   }
   function pagination(total, totalPages, t) {
     return `<nav class="result-pagination" aria-label="${escapeHtml(t("pagination"))}"><label class="result-page-size" title="${escapeHtml(t("itemsPerPage"))}"><span class="result-page-size__select"><select data-bookmark-page-size>${PAGE_SIZE_OPTIONS.map((size) => `<option value="${size}"${size === pageSize ? " selected" : ""}>${size}</option>`).join("")}</select></span></label><span class="result-pagination__rail"><button class="result-pagination__step result-pagination__step--previous" type="button" data-bookmark-page="previous"${page <= 1 ? " disabled" : ""}></button><span class="result-pagination__position"><input class="result-pagination__input" data-bookmark-page-input value="${page}" data-page-total="${totalPages}" inputmode="numeric" /><span class="result-pagination__total">/ ${totalPages}</span></span><button class="result-pagination__step result-pagination__step--next" type="button" data-bookmark-page="next"${page >= totalPages || total === 0 ? " disabled" : ""}></button></span></nav>`;
@@ -328,7 +331,7 @@ export function createBookmarksView({ root, onAction, onExportAction = () => {},
     const label = store.view.query.trim() ? `${baseLabel} · ${t("searchResults")}` : baseLabel;
     const newGroup = nameEditor.state && !nameEditor.state.groupId ? `<form class="bookmark-group-create" data-list-key="new-group" data-bookmark-new-group novalidate>${nameEditor.inputMarkup({ label: t("groupName") })}<button type="submit" aria-label="${escapeHtml(t("create"))}">✓</button><button type="button" data-cancel-bookmark-new-group aria-label="${escapeHtml(t("cancel"))}">×</button>${nameEditor.errorMarkup({ message: t("groupNameRequired") })}</form>` : "";
     const selectableIds = entries
-      .filter((item) => !selection.basketBookmarkIds?.includes(item.bookmarkId))
+      .filter((item) => !model.store.conversationAvailability?.[item.conversationId] && !selection.basketBookmarkIds?.includes(item.bookmarkId))
       .map((item) => item.bookmarkId);
     const allSelected = selectableIds.length > 0 && selectableIds.every((id) => selection.draftIds?.includes(id));
     const rangeAction = selection.active
@@ -496,7 +499,7 @@ export function createBookmarksView({ root, onAction, onExportAction = () => {},
     if (!model?.store) return [];
     const selection = model.exportSelection || { basketBookmarkIds: [] };
     return selectBookmarks(model.store, { currentConversationId: currentConversationId() })
-      .filter((item) => !selection.basketBookmarkIds?.includes(item.bookmarkId))
+      .filter((item) => !model.store.conversationAvailability?.[item.conversationId] && !selection.basketBookmarkIds?.includes(item.bookmarkId))
       .map((item) => item.bookmarkId);
   }
 

@@ -106,6 +106,8 @@
     TITLE_RETURN_OWNER: "titles.return-owner",
     TITLE_CHANGED: "titles.changed",
     TITLE_CATALOG_CHANGED: "titles.catalog-changed",
+    CONVERSATION_AVAILABILITY_CHANGED: "conversation.availability-changed",
+    CONVERSATION_CATALOG_CHANGED: "conversation.catalog-changed",
     // Internal adapter operations are not accepted as Side Panel commands.
     TITLE_READ_CURRENT: "titles.adapter.read-current",
     TITLE_WRITE_CURRENT: "titles.adapter.write-current",

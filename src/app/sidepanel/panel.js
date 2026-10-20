@@ -272,7 +272,8 @@ const navigationResults = createPanelNavigationCoordinator({
   ownerTabId: panelOwnerTabId, owner: panelNavigation, phase: () => state.pageSession.phase,
   consumers: { bookmarks: bookmarkNavigation.complete, search: payload => searchView.completeNavigation(payload), favorites: () => true },
   onOpenFailed: (payload, route) => {
-    showToast(payload.error?.code === protocol.ErrorCode.CONTEXT_MISMATCH ? "contextChanged" : "bookmarkOpenFailed", true, {},
+    showToast(payload.error?.code === "CONVERSATION_DELETED" ? "libraryConversationDeleted"
+      : payload.error?.code === protocol.ErrorCode.CONTEXT_MISMATCH ? "contextChanged" : "bookmarkOpenFailed", true, {},
       { owner: route, terminalNavigationIntentId: payload.navigationIntentId, durationMs: 5000, cause: payload.error });
   },
   onCancelled: ({ navigationIntentId, reason }) => {
@@ -478,6 +479,7 @@ chrome.runtime.onMessage.addListener(envelope => {
     return;
   }
   if (envelope.type === protocol.Type.TITLE_CATALOG_CHANGED) void titleCatalog.changed(payload).catch(() => {});
+  else if (envelope.type === protocol.Type.CONVERSATION_CATALOG_CHANGED) void titleCatalog.changed(payload).catch(() => {});
   else if (envelope.type === protocol.Type.NAVIGATION_CANCELLED) navigationResults.cancelled(payload);
   else if (envelope.type === protocol.Type.NAVIGATION_RESULT) navigationResults.receive(payload);
   else if (envelope.type === protocol.Type.LIBRARY_IDENTITY_CHANGED) {

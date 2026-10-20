@@ -2,7 +2,7 @@ import { TOOLBAR_THEME_CHANNEL } from "../../platform/theme/background/toolbar-t
 import "../../platform/protocol.js";
 
 // One runtime listener decides who owns a response; events never compete with business requests.
-export function createWorkerMessageListener({ toolbarTheme, exportJobs, titleCatalog, navigation, identity, pageEvents, requests, diagnostics }) {
+export function createWorkerMessageListener({ toolbarTheme, exportJobs, titleCatalog, conversationAvailability, navigation, identity, pageEvents, requests, diagnostics }) {
   const protocol = globalThis.TidyProtocol;
   function onMessage(envelope, sender, sendResponse) {
     // Diagnostic envelopes have narrow sender/shape admission but acquire no business authority.
@@ -20,6 +20,10 @@ export function createWorkerMessageListener({ toolbarTheme, exportJobs, titleCat
       return true;
     }
     if (!protocol.isEnvelope(envelope)) return false;
+    if (envelope.kind === protocol.Kind.EVENT && envelope.type === protocol.Type.CONVERSATION_AVAILABILITY_CHANGED) {
+      conversationAvailability.accept(envelope.payload, sender).then(ok => sendResponse({ ok })).catch(() => sendResponse({ ok: false }));
+      return true;
+    }
     if (envelope.kind === protocol.Kind.EVENT && envelope.type === protocol.Type.TITLE_CHANGED) {
       titleCatalog.accept(envelope.payload, sender).then(ok => sendResponse({ ok })).catch(() => sendResponse({ ok: false }));
       return true;

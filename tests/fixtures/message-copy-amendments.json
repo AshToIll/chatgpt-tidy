@@ -271,6 +271,28 @@
         "en": "Paper",
         "ja": "用紙"
       }
+    },
+    {
+      "catalog": "common",
+      "key": "libraryConversationDeleted",
+      "reason": "用户要求删除会话后的失效同步；区分确认删除与暂不可用，保留资料与手动清理入口。",
+      "translations": {
+        "zh-CN": "会话已删除",
+        "zh-TW": "會話已刪除",
+        "en": "Conversation deleted",
+        "ja": "会話は削除されました"
+      }
+    },
+    {
+      "catalog": "common",
+      "key": "libraryConversationUnavailable",
+      "reason": "用户要求删除会话后的失效同步；区分确认删除与暂不可用，保留资料与手动清理入口。",
+      "translations": {
+        "zh-CN": "会话不可用，可点击重试",
+        "zh-TW": "會話無法存取，可點擊重試",
+        "en": "Unavailable · click to retry",
+        "ja": "利用不可 · クリックして再試行"
+      }
     }
   ]
 }
