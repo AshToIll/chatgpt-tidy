@@ -9,11 +9,14 @@ const plain = value => JSON.parse(JSON.stringify(value));
 const OWNER = '["user-a","personal"]';
 const change = (id = 'one', status = 'deleted', startedAt = 100) => ({ ownerAccountKey: OWNER,
   catalogAccountKey: 'catalog-a', conversationId: id, status, startedAt, epoch: 1 });
+// Sanitized contract read from the user's Edge Network panel on 2026-10-19.
+// The real request is DELETE /backend-api/conversation/id/{id}, with no payload.
+const deletionReply = () => new Response('{"success":true}', { headers: { 'content-type': 'application/json' } });
 
 async function page() {
   const changes = [], calls = [], events = new Map(); let clock = 0;
   let session = { user: { id: 'user-a' }, activeAccountId: 'catalog-a', accessToken: 'private-token' };
-  let reply = () => Promise.resolve(new Response('{}'));
+  let reply = () => Promise.resolve(deletionReply());
   const context = vm.createContext({ URL, Request, Response, Headers, document: { cookie: '' },
     location: new URL('https://chatgpt.com/c/owner'), performance: { timeOrigin: 1000, now: () => ++clock },
     addEventListener: (type, fn) => events.set(type, fn),
@@ -26,46 +29,64 @@ async function page() {
   api.onConversationAvailabilityChanged(value => changes.push(plain(value)));
   await api.readLibraryAccount(); await settle();
   return { api, context, events, calls, changes, reply: value => { reply = value; },
-    delete: (id = 'one', body = { is_visible: false }) => context.fetch('/backend-api/conversation/' + id,
-      { method: 'PATCH', body: JSON.stringify(body) }),
+    delete: (id = 'one') => context.fetch('/backend-api/conversation/id/' + id, { method: 'DELETE' }),
     switchUser: async () => { session = { ...session, user: { id: 'other' } }; await api.loadSession({ refresh: true }); },
   };
 }
 
 test('native confirmed deletion is asynchronous, preserves request/response identity, and does no extra HTTP', async () => {
   const h = await page(); let resolve;
-  const pending = new Promise(done => { resolve = done; }), response = new Response('private body');
+  const pending = new Promise(done => { resolve = done; }), response = deletionReply();
   h.reply(() => pending); const result = h.delete();
   assert.equal(result, pending); assert.equal(h.changes.length, 0);
   resolve(response); assert.equal(await result, response); await settle();
   assert.deepEqual(h.changes, [{ ...change(), startedAt: 1001 }]);
-  assert.equal(h.calls.length, 2); assert.equal(await response.text(), 'private body');
+  assert.equal(h.calls.length, 2); assert.equal(await response.text(), '{"success":true}');
   assert.doesNotMatch(JSON.stringify(h.changes), /private/);
 });
 
-test('Request clone and URL inputs observe deletion without consuming the site body', async () => {
+test('Request and URL inputs observe the captured DELETE contract without consuming the request', async () => {
   const h = await page();
-  const request = new Request('https://chatgpt.com/backend-api/conversation/request-id', {
-    method: 'PATCH', body: '{"is_visible":false}',
+  const request = new Request('https://chatgpt.com/backend-api/conversation/id/request-id', {
+    method: 'DELETE',
   });
   await h.context.fetch(request); await settle();
   assert.equal(request.bodyUsed, false); assert.equal(h.changes[0].conversationId, 'request-id');
-  await h.context.fetch(new URL('https://chatgpt.com/backend-api/conversation/url-id'), { method: 'PATCH', body: '{"is_visible":false}' });
+  await h.context.fetch(new URL('https://chatgpt.com/backend-api/conversation/id/url-id'), { method: 'DELETE' });
   await settle(); assert.equal(h.changes[1].conversationId, 'url-id');
 });
 
-test('archive, unarchive, malformed bodies, wrong endpoints and failed deletes are never deletion evidence', async () => {
+test('old PATCH guesses, archive, wrong endpoints and failed deletes are never deletion evidence', async () => {
   const h = await page();
-  for (const body of [{ is_archived: true }, { is_visible: true }, { is_visible: false, is_archived: true }, {}, null]) await h.delete('one', body);
-  for (const body of ['oops', 'x'.repeat(20000)]) await h.context.fetch('/backend-api/conversation/one', { method: 'PATCH', body });
-  for (const url of ['https://example.com/backend-api/conversation/one', '/backend-api/conversations',
-    '/backend-api/conversations/one', '/backend-api/conversation/one?x=1', '/backend-api/conversation/one/rename']) {
-    await h.context.fetch(url, { method: 'PATCH', body: '{"is_visible":false}' });
+  for (const body of [{ is_archived: true }, { is_visible: true }, { is_visible: false }, {}, null]) {
+    await h.context.fetch('/backend-api/conversation/one', { method: 'PATCH', body: JSON.stringify(body) });
+  }
+  for (const url of ['https://example.com/backend-api/conversation/id/one', '/backend-api/conversations',
+    '/backend-api/conversations/id/one', '/backend-api/conversation/one',
+    '/backend-api/conversation/id/one?x=1', '/backend-api/conversation/id/one#hash',
+    '/backend-api/conversation/id/one/rename']) {
+    await h.context.fetch(url, { method: 'DELETE' });
+  }
+  for (const method of ['PATCH', 'POST', 'PUT']) {
+    await h.context.fetch('/backend-api/conversation/id/one', { method });
   }
   for (const status of [400, 401, 403, 404, 409, 429, 500]) { h.reply(() => Promise.resolve(new Response('{}', { status }))); await h.delete(); }
   const error = new Error('network'); h.reply(() => Promise.reject(error)); await assert.rejects(h.delete(), e => e === error);
   h.reply(() => { throw error; }); assert.throws(h.delete, e => e === error);
   await settle(); assert.deepEqual(h.changes, []);
+});
+
+test('HTTP success without the observed explicit JSON success:true cannot erase saved data', async () => {
+  const h = await page();
+  for (const body of ['{}', '{"success":false}', '{"success":"true"}', 'true', 'null', 'broken']) {
+    h.reply(() => Promise.resolve(new Response(body, { headers: { 'content-type': 'application/json' } })));
+    await h.delete(); await settle();
+  }
+  for (const response of [new Response('{"success":true}'), new Response(null, { status: 204 }),
+    Object.defineProperty(deletionReply(), 'redirected', { value: true })]) {
+    h.reply(() => Promise.resolve(response)); await h.delete(); await settle();
+  }
+  assert.deepEqual(h.changes, []);
 });
 
 test('detail failures distinguish unavailable from deletion; authentication/rate/network failures leave records alone', async () => {
@@ -103,7 +124,7 @@ for (const boundary of ['user', 'workspace', 'pagehide', 'dispose']) test(`late 
   else if (boundary === 'workspace') { h.context.document.cookie = '_account=team'; h.api.checkLibraryIdentity(); }
   else if (boundary === 'pagehide') h.events.get('pagehide')();
   else h.context.TidyPageSession.stop();
-  resolve(new Response('{}')); await pending; await settle(); assert.deepEqual(h.changes, []);
+  resolve(deletionReply()); await pending; await settle(); assert.deepEqual(h.changes, []);
 });
 
 async function storage(t) {
@@ -129,25 +150,56 @@ async function storage(t) {
   return { db, lifecycle, catalog, favorites, bookmarks, page, state };
 }
 
-test('one atomic invalidation removes catalog eligibility, preserves all user content, and isolates accounts', async t => {
+test('unconfirmed unavailability preserves saved content and account isolation while hiding catalog candidates', async t => {
   const h = await storage(t), { favorites, bookmarks, catalog, lifecycle } = h;
   const before = await favorites.get(OWNER), beforeBookmarks = await bookmarks.get(OWNER);
   const other = await favorites.get('other-owner');
-  const receipt = await lifecycle.accept(change());
+  const receipt = await lifecycle.accept(change('one', 'unavailable'));
   assert.deepEqual(receipt.libraries, { favorites: { accountKey: OWNER, revision: 2 }, bookmarks: { accountKey: OWNER, revision: 2 } });
   const after = await favorites.get(OWNER), afterBookmarks = await bookmarks.get(OWNER);
   assert.deepEqual(after.items, before.items); assert.deepEqual(after.groups, before.groups);
   assert.deepEqual(afterBookmarks.items, beforeBookmarks.items); assert.equal(afterBookmarks.items['one::m'].excerpt, 'Keep this excerpt');
-  assert.deepEqual(after.conversationAvailability, { one: 'deleted' });
-  assert.deepEqual(afterBookmarks.conversationAvailability, { one: 'deleted' });
+  assert.deepEqual(after.conversationAvailability, { one: 'unavailable' });
+  assert.deepEqual(afterBookmarks.conversationAvailability, { one: 'unavailable' });
   assert.deepEqual(await favorites.get('other-owner'), other);
   assert.equal(await catalog.getRow('catalog-a', 'one'), null);
   assert.deepEqual((await catalog.getSnapshot('catalog-a')).rows.map(x => x.conversationId), ['two']);
   assert.equal((await catalog.getSnapshot('catalog-b')).rows.length, 2);
   assert.deepEqual((await catalog.getSnapshot('catalog-a')).state.accountKey, 'catalog-a');
-  assert.equal(await lifecycle.accept(change()), null, 'duplicate deletion is a no-op');
+  assert.equal(await lifecycle.accept(change('one', 'unavailable')), null, 'duplicate status is a no-op');
   const moved = await favorites.transact(OWNER, current => ({ ...current, revision: current.revision + 1, view: { ...current.view, groupId: 'all' } }));
-  assert.equal(moved.conversationAvailability.one, 'deleted', 'normal writes keep the status projection');
+  assert.equal(moved.conversationAvailability.one, 'unavailable', 'normal writes keep the status projection');
+});
+
+test('confirmed deletion physically removes only that conversation and every associated bookmark, preserving groups', async t => {
+  const h = await storage(t);
+  await h.favorites.transact(OWNER, current => ({ ...current, items: { ...current.items,
+    two: { ...current.items.one, conversationId: 'two', routePath: '/c/two' },
+  } }));
+  await h.bookmarks.transact(OWNER, current => ({ ...current, items: { ...current.items,
+    'one::m2': { ...current.items['one::m'], bookmarkId: 'one::m2', messageId: 'm2' },
+    'two::m': { ...current.items['one::m'], conversationId: 'two', bookmarkId: 'two::m', routePath: '/c/two' },
+  } }));
+  const before = await h.favorites.get(OWNER), beforeBookmarks = await h.bookmarks.get(OWNER);
+  const otherFavorites = await h.favorites.get('other-owner'), otherBookmarks = await h.bookmarks.get('other-owner');
+  const receipt = await h.lifecycle.accept(change());
+  assert.deepEqual(receipt.libraries, { favorites: { accountKey: OWNER, revision: 2 }, bookmarks: { accountKey: OWNER, revision: 2 } });
+  const after = await h.favorites.get(OWNER), afterBookmarks = await h.bookmarks.get(OWNER);
+  assert.deepEqual(Object.keys(after.items), ['two']); assert.deepEqual(Object.keys(afterBookmarks.items), ['two::m']);
+  assert.deepEqual(after.groups, before.groups); assert.deepEqual(afterBookmarks.groups, beforeBookmarks.groups);
+  assert.deepEqual(after.items.two, before.items.two); assert.deepEqual(afterBookmarks.items['two::m'], beforeBookmarks.items['two::m']);
+  assert.equal(after.conversationAvailability, undefined); assert.equal(afterBookmarks.conversationAvailability, undefined);
+  assert.deepEqual(await h.favorites.get('other-owner'), otherFavorites);
+  assert.deepEqual(await h.bookmarks.get('other-owner'), otherBookmarks);
+  const raw = h.db.transaction(['favorites', 'bookmarks'], 'readonly');
+  const request = request => new Promise(resolve => { request.onsuccess = () => resolve(request.result); });
+  assert.deepEqual(await Promise.all([
+    request(raw.objectStore('favorites').get([OWNER, 'one'])),
+    request(raw.objectStore('bookmarks').get([OWNER, 'one::m'])),
+    request(raw.objectStore('bookmarks').get([OWNER, 'one::m2'])),
+  ]), [undefined, undefined, undefined], 'rows are deleted from storage, not merely hidden');
+  assert.equal(await h.lifecycle.accept(change()), null);
+  assert.deepEqual(await h.favorites.get(OWNER), after);
 });
 
 test('late scans and title receipts cannot resurrect tombstones, including a not-yet-enumerated conversation', async t => {
@@ -178,7 +230,7 @@ test('unavailable can recover from a newer detail response, never an older read 
 });
 
 test('identity is checked inside the transaction and injected storage failure rolls back the whole invalidation', async t => {
-  const h = await storage(t), before = await h.favorites.get(OWNER);
+  const h = await storage(t), before = await h.favorites.get(OWNER), beforeBookmarks = await h.bookmarks.get(OWNER);
   assert.equal(await h.lifecycle.accept(change(), () => false), null);
   const original = h.db.transaction.bind(h.db);
   h.db.transaction = (...args) => {
@@ -190,7 +242,27 @@ test('identity is checked inside the transaction and injected storage failure ro
     return tx;
   };
   await assert.rejects(h.lifecycle.accept(change())); h.db.transaction = original;
-  assert.deepEqual(await h.favorites.get(OWNER), before); assert.ok(await h.catalog.getRow('catalog-a', 'one'));
+  assert.deepEqual(await h.favorites.get(OWNER), before);
+  assert.deepEqual(await h.bookmarks.get(OWNER), beforeBookmarks); assert.ok(await h.catalog.getRow('catalog-a', 'one'));
+});
+
+test('observed native DELETE acknowledgment flows through the worker into local removal and revision notifications', async t => {
+  const h = await storage(t), native = await page();
+  const { createConversationAvailabilityObserver } = await import('../src/app/background/conversation-availability-observer.js');
+  const sender = { tab: { id: 7 }, frameId: 0, documentId: 'doc', documentLifecycle: 'active', url: 'https://chatgpt.com/' };
+  const events = [], pending = [];
+  const observer = createConversationAvailabilityObserver({
+    chrome: { runtime: { sendMessage: async event => events.push(event) } },
+    identity: { acceptEvent: async () => {}, peek: () => ({ accountKey: OWNER, epoch: 1, documentId: 'doc', phase: 'ready' }) },
+    repository: h.lifecycle, broadcast: async () => {},
+  });
+  native.api.onConversationAvailabilityChanged(event => pending.push(observer.accept(event, sender)));
+  await native.delete(); await settle(); await Promise.all(pending);
+  assert.equal(pending.length, 1); assert.equal(events.length, 3);
+  assert.equal((await h.favorites.get(OWNER)).items.one, undefined);
+  assert.equal((await h.bookmarks.get(OWNER)).items['one::m'], undefined);
+  assert.equal(await h.catalog.getRow('catalog-a', 'one'), null);
+  assert.equal(native.calls.length, 2, 'only the original auth read and original website DELETE were sent');
 });
 
 test('worker accepts only exact live document ownership and broadcasts locator/revision tokens, not private data', async () => {

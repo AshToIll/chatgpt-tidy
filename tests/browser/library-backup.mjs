@@ -260,7 +260,7 @@ try {
       assert(root.scrollWidth <= root.clientWidth, 'Backup layout overflows'); same(document.activeElement, button, 'Theme reset focus');
     }
   });
-  await check('native IndexedDB invalidation preserves excerpts and updates both multilingual library views without navigation', async () => {
+  await check('native IndexedDB keeps uncertain failures but removes confirmed deletions from both multilingual libraries', async () => {
     const accountKey = '["availability-fixture","personal"]';
     const catalog = createConversationCatalogRepository(), availability = createConversationAvailabilityRepository();
     const favorites = createFavoritesRepository(), bookmarks = createBookmarksRepository();
@@ -270,13 +270,13 @@ try {
     const page = { conversations: [{ conversationId: 'first', title: 'Before', directoryBounds: { createdAt: 1 } }] };
     await catalog.commitPage('availability-catalog', page, state);
     await availability.accept({ ownerAccountKey: accountKey, catalogAccountKey: 'availability-catalog',
-      conversationId: 'first', status: 'deleted', startedAt: 100 });
+      conversationId: 'first', status: 'unavailable', startedAt: 100 });
     await catalog.commitPage('availability-catalog', page, state);
     same((await catalog.getSnapshot('availability-catalog')).rows.length, 0, 'Stale page resurrected deleted conversation');
     const favoriteStore = await favorites.get(accountKey), bookmarkStore = await bookmarks.get(accountKey);
     same(bookmarkStore.items['first::message'].excerpt, 'Sample excerpt', 'Excerpt was erased');
-    same(favoriteStore.conversationAvailability.first, 'deleted', 'Missing favorite status');
-    same(bookmarkStore.conversationAvailability.first, 'deleted', 'Missing bookmark status');
+    same(favoriteStore.conversationAvailability.first, 'unavailable', 'Missing favorite status');
+    same(bookmarkStore.conversationAvailability.first, 'unavailable', 'Missing bookmark status');
     const favoriteRoot = document.createElement('section'), bookmarkRoot = document.createElement('section');
     for (const element of [favoriteRoot, bookmarkRoot]) { element.style.width = '300px'; document.body.append(element); }
     const actions = [], favoriteView = createFavoritesView({ root: favoriteRoot, onAction: action => actions.push(action) });
@@ -285,16 +285,31 @@ try {
       const t = createTranslator(language), options = { preferences: { timeDisplayEnabled: false }, t, snapshot: null };
       favoriteView.render({ ...options, store: favoriteStore }); bookmarkView.render({ ...options, store: bookmarkStore });
       const open = favoriteRoot.querySelector('[data-open-favorite="first"]');
-      assert(open.disabled, 'Deleted favorite can still navigate'); open.click();
-      same(bookmarkRoot.querySelector('[data-bookmark-jump]'), null, 'Deleted bookmark can still jump');
-      assert(favoriteRoot.textContent.includes(t('libraryConversationDeleted')), 'Missing translated favorite status');
-      assert(bookmarkRoot.textContent.includes(t('libraryConversationDeleted')), 'Missing translated bookmark status');
+      assert(!open.disabled, 'Unconfirmed failure prevents retry');
+      assert(bookmarkRoot.querySelector('[data-bookmark-jump]'), 'Unconfirmed bookmark failure prevents retry');
+      assert(favoriteRoot.textContent.includes(t('libraryConversationUnavailable')), 'Missing translated favorite status');
+      assert(bookmarkRoot.textContent.includes(t('libraryConversationUnavailable')), 'Missing translated bookmark status');
       assert(bookmarkRoot.textContent.includes('Sample excerpt'), 'Excerpt disappeared from view');
       assert(favoriteRoot.querySelector('[data-favorite-menu]') && bookmarkRoot.querySelector('[data-bookmark-entry-menu]'), 'Manual cleanup unavailable');
       assert(favoriteRoot.scrollWidth <= favoriteRoot.clientWidth, 'Favorite status overflows');
       assert(bookmarkRoot.scrollWidth <= bookmarkRoot.clientWidth, 'Bookmark status overflows');
     }
-    same(actions.length, 0, 'Status render or disabled click initiated navigation');
+    await availability.accept({ ownerAccountKey: accountKey, catalogAccountKey: 'availability-catalog',
+      conversationId: 'first', status: 'deleted', startedAt: 200 });
+    const deletedFavorites = await favorites.get(accountKey), deletedBookmarks = await bookmarks.get(accountKey);
+    same(Object.keys(deletedFavorites.items).length, 0, 'Deleted favorite is still stored');
+    same(Object.keys(deletedBookmarks.items).length, 0, 'Deleted bookmark is still stored');
+    same(JSON.stringify(deletedFavorites.groups), JSON.stringify(favoriteStore.groups), 'Favorite groups were changed');
+    same(JSON.stringify(deletedBookmarks.groups), JSON.stringify(bookmarkStore.groups), 'Bookmark groups were changed');
+    for (const language of ['zh-CN', 'zh-TW', 'en', 'ja']) {
+      const options = { preferences: { timeDisplayEnabled: false }, t: createTranslator(language), snapshot: null };
+      favoriteView.render({ ...options, store: deletedFavorites }); bookmarkView.render({ ...options, store: deletedBookmarks });
+      same(favoriteRoot.querySelector('[data-list-key="conversation:first"]'), null, 'Deleted favorite remains on screen');
+      same(bookmarkRoot.querySelector('[data-list-key="bookmark:first::message"]'), null, 'Deleted bookmark remains on screen');
+      assert(!bookmarkRoot.textContent.includes('Sample excerpt'), 'Deleted excerpt remains on screen');
+      assert(favoriteRoot.scrollWidth <= favoriteRoot.clientWidth && bookmarkRoot.scrollWidth <= bookmarkRoot.clientWidth, 'Removal layout overflows');
+    }
+    same(actions.length, 0, 'Status or removal rendering initiated navigation');
     favoriteView.dispose(); bookmarkView.dispose(); favoriteRoot.remove(); bookmarkRoot.remove();
   });
 } catch (error) {

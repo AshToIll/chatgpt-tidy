@@ -251,26 +251,22 @@
   }
 
   // 旁观官方请求，不接管删除、不额外发 HTTP，也不改变 fetch 返回的 Promise。
-  // 单会话 is_visible:false 成功才是删除；归档、列表缺席和临时错误都不是。
+  // 2026-10-19 Edge 实测：DELETE /conversation/id/{id}，JSON 回执 success:true。
+  // 不兼容未经验证的 PATCH 猜测；归档、列表缺席和临时错误都不是删除。
   function availabilityTicket(input, init) {
     try {
       const url = new global.URL(typeof input === "string" ? input : input?.url || input?.href, global.location.href);
-      const match = /^\/backend-api\/(conversation|conversations)\/([A-Za-z0-9_-]+)$/.exec(url.pathname);
       const method = String(init?.method || input?.method || "GET").toUpperCase();
+      const match = method === "DELETE" && !url.search
+        ? /^\/backend-api\/conversation\/id\/([A-Za-z0-9_-]+)$/.exec(url.pathname)
+        : method === "GET" ? /^\/backend-api\/conversations?\/([A-Za-z0-9_-]+)$/.exec(url.pathname) : null;
       if (url.origin !== "https://chatgpt.com" || url.origin !== global.location.origin || url.hash
-        || !match || !["GET", "PATCH"].includes(method)
-        || method === "PATCH" && (url.search || match[1] !== "conversation")) return null;
+        || !match) return null;
       const identity = checkLibraryIdentity();
       const catalogAccountKey = catalogIdentity(cachedSession).accountKey;
       if (identity.phase !== "ready" || !catalogAccountKey) return null;
-      const ticket = { ...identity, catalogAccountKey, conversationId: match[2], method,
+      const ticket = { ...identity, catalogAccountKey, conversationId: match[1], method,
         startedAt: global.performance?.timeOrigin + global.performance?.now() || Date.now() };
-      ticket.deletion = method === "PATCH" ? Promise.resolve(init?.body !== undefined ? init.body
-        : typeof input?.clone === "function" ? input.clone().text() : null).then(body => {
-          if (typeof body !== "string" || body.length > 16_384) return false;
-          const value = JSON.parse(body);
-          return value?.is_visible === false && !Object.hasOwn(value, "is_archived");
-        }).catch(() => false) : Promise.resolve(false);
       if (method === "GET") pendingAvailabilityReads.set(ticket.conversationId, ticket);
       return ticket;
     } catch { return null; }
@@ -291,8 +287,12 @@
 
   async function publishAvailability(ticket, response) {
     let status;
-    if (ticket.method === "PATCH") {
-      if (!response.ok || !await ticket.deletion) return;
+    if (ticket.method === "DELETE") {
+      if (!response.ok || response.headers?.get("content-type")?.split(";")[0].trim() !== "application/json") return;
+      // 仅克隆这一条删除确认的小回执，不消费网站响应，也不读取会话正文。
+      // HTTP 200 本身不足以触发本地清理：显式 success:true 才能提交。
+      try { if ((await response.clone().json())?.success !== true) return; }
+      catch { return; }
       status = "deleted";
     } else if (response.status === 404 || response.status === 410) status = "unavailable";
     else if (response.ok && response.headers?.get("content-type")?.split(";")[0].trim() === "application/json") {

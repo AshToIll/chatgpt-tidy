@@ -201,23 +201,23 @@ npm run clean:verification -- --apply --archive-manifest .artifacts/verification
 
 ### 行为边界
 
-- MAIN 旁观官方单会话删除：`PATCH /backend-api/conversation/{id}`，请求体明确 `is_visible:false`，仅在成功、未重定向的响应后通知。归档 `is_archived`、批量端点、失败请求和目录缺席不作删除证据。
+- MAIN 旁观官方单会话删除：`DELETE /backend-api/conversation/id/{id}`。2026-10-19 在用户 Edge Network 面板直接确认该请求，无请求负载，HTTP 200，JSON 响应 `{"success":true}`。仅在成功、未重定向且 JSON 明确 `success:true` 后通知；已移除未经验证的 PATCH 猜测。归档、批量端点、失败请求、假成功回执和目录缺席不作删除证据。
 - 既有详情读取 `GET /backend-api/conversation/{id}` 或 `/backend-api/conversations/{id}` 返回 404/410 时标记“不可用”，不宣称确定删除；401/403、429、5xx、断网不改状态。后续成功的 JSON 详情响应可解除“不可用”，不能解除确认删除。
-- 不改变官方 fetch 的参数、Promise、Response、异常或取消信号；不增加远端请求，不读取/广播对话正文。不轮询，不逐条重扫目录，不自动删除用户保存的资料。
+- 不改变官方 fetch 的参数、Promise、Response、异常或取消信号；只克隆删除接口的小型确认回执，不读取/广播对话正文。不增加远端请求，不轮询，不逐条重扫目录。
 - 历史残留或其他设备上的删除，在下一次实际读取该会话详情时识别；仅加载缓存不能证明该会话仍存在，也不能保证立刻发现未观测到的删除。
 
 ### 唯一持久状态与投影
 
 - `platform/storage/conversation-availability.js` 持有账号作用域的状态写入能力。一次 IndexedDB 短事务更新状态、目录墓碑、受影响的收藏/书签 revision；中断整体回滚。
 - 资料状态键用 `[ownerAccountKey, conversationId]`，目录墓碑使用现有目录账号键。只有经过现有身份所有者验证的当前活动顶层文档可提交；落库和广播前均核对账号、文档、epoch。
-- 收藏、书签仍保留原有条目、分组和摘录。状态按读时投影加入 `conversationAvailability`，不成为用户可编辑内容、不进入资料备份、不会恢复已退役的备注字段。
-- 收藏/书签显示确认删除或不可用；删除项不再导航，不可用项允许重试；管理菜单保留，可手动移组/移除。已失效项不进入实时会话导出。
+- 官方确认删除后，同一事务物理移除该账号下的对应收藏和全部消息书签，广播现有 revision 让面板局部刷新；保留用户分组、其他会话及未决写入回执。书签使用现有索引获取目标主键，不扫描整个资料库。
+- 只有“不可用”但尚未确认删除时，保留条目和摘录并允许重试。状态按读时投影加入 `conversationAvailability`，不成为用户可编辑内容、不进入资料备份、不会恢复已退役的备注字段。已失效项不进入实时会话导出。
 - 标题批处理只按主键重新读取受影响行，取消该行选择、更新列表数量，保留其他选择和滚动位置。已确认的预览不会被静默改写，失效预览禁止继续确认；未决写入回执不被删除。
 - 目录页面和标题回执都不能覆盖失效墓碑。日期检索的分页游标增加独立 `availabilityRevision`；失效变化不会推进扫描 revision 或使正在进行的目录扫描被误判为竞争任务。日期结果在下一次本地读取时投影新状态。
 
 ### 验证范围
 
-- `tests/conversation-availability.test.cjs` 覆盖请求透传、失败/归档排除、Request/URL、身份切换、并发乱序、账号隔离、重复通知、迟到目录/标题写入、事务回滚及 Worker 通知。
+- `tests/conversation-availability.test.cjs` 以实际观察的 DELETE 和确认回执为契约，覆盖请求透传、假成功/失败/归档排除、Request/URL、身份切换、并发乱序、账号隔离、重复通知、物理移除全部对应书签、迟到目录/标题写入、事务回滚及 API→Worker→存储通知链路。
 - 标题目录/批处理和收藏/书签视图测试覆盖删除后的局部更新与导航/管理边界；日期测试覆盖内容变更后的旧游标失效。
-- `tests/browser/library-backup.mjs` 增加真实 Chromium IndexedDB 与生产视图验证，使用合成账号，检查四语言状态、内容保留、导航禁用及窄栏溢出。
+- `tests/browser/library-backup.mjs` 使用真实 Chromium IndexedDB、生产视图和合成账号，检查四语言不可用状态、未确认时内容保留、确认删除后两个列表移除对应行及窄栏溢出。
 - 自动化通过不等于真实 ChatGPT 或已安装扩展验收。未自动删除真实会话，未将其他设备上的未知删除当成已观测事实；若官方切换删除端点，应以新的实际请求证据修改适配器，不猜测备用写入接口。

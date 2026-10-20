@@ -27,7 +27,7 @@ export function createConversationAvailabilityObserver({ chrome, identity, repos
     for (const [kind, token] of Object.entries(saved.libraries)) {
       const event = protocol.event(kind === "favorites" ? protocol.Type.FAVORITES_UPDATED : protocol.Type.BOOKMARKS_UPDATED, token);
       notifications.push(chrome.runtime.sendMessage(event).catch(() => {}));
-      void broadcast(event);
+      notifications.push(broadcast(event).catch(() => {}));
     }
     // 同批发出两个库的版本通知，便于现有面板调度器合并读取。
     await Promise.all(notifications);

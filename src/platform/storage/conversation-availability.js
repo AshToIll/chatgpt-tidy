@@ -19,7 +19,7 @@ export async function projectConversationAvailability(transaction, accountKey, s
   return Object.keys(availability).length ? { ...state, conversationAvailability: availability } : state;
 }
 
-/** 一次短事务更新一条会话及相关库版本；不遍历会话目录、不改用户资料、不碰写入回执。 */
+/** 一次短事务移除确认删除会话的资料并更新库版本；不扫目录、不改分组、不碰写入回执。 */
 export function createConversationAvailabilityRepository(options = {}) {
   let databasePromise;
   const database = () => databasePromise ||= (options.openDatabase?.() || openTidyDatabase(options.indexedDbFactory))
@@ -57,7 +57,7 @@ export function createConversationAvailabilityRepository(options = {}) {
       const checkpointKey = `conversation-catalog:${catalogAccountKey}`;
       const checkpoint = await read(states.get(checkpointKey));
       const favorite = await read(tx.objectStore(STORES.favorites).get([ownerAccountKey, conversationId]));
-      const bookmarks = await read(tx.objectStore(STORES.bookmarks).index("message").getAll(
+      const bookmarks = await read(tx.objectStore(STORES.bookmarks).index("message").getAllKeys(
         IDBKeyRange.bound([ownerAccountKey, conversationId], [ownerAccountKey, conversationId, []])));
       for (const kind of ["favorites", "bookmarks"]) {
         if (!(kind === "favorites" ? favorite : bookmarks.length)) continue;
@@ -68,6 +68,11 @@ export function createConversationAvailabilityRepository(options = {}) {
       }
       if (!isCurrent()) { await done; return null; }
       states.put({ key, accountKey: ownerAccountKey, conversationId, status, startedAt });
+      if (status === "deleted") {
+        // 官方删除成功才物理移除对应收藏及全部消息书签；404/410 的“不可用”不删除资料。
+        if (favorite) tx.objectStore(STORES.favorites).delete([ownerAccountKey, conversationId]);
+        for (const primaryKey of bookmarks) tx.objectStore(STORES.bookmarks).delete(primaryKey);
+      }
       // 保留最小墓碑，哪怕删除时目录尚未枚举到它，迟到页面也不能复活该会话。
       catalog.put({ ...row, accountKey: catalogAccountKey, conversationId,
         availability: { status, startedAt } });
